@@ -27,7 +27,7 @@ margin: 0 10px;
 
 .nav-link-custom.active, .nav-link-custom:hover {
 color: #28a745;
-border-bottom: 3px solid #ff0000;
+border-bottom: 3px solid #28a745;
 }
 
 .btn-green {
