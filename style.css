@@ -1,0 +1,108 @@
+body {
+    background-color: #ebf4fa;
+    font-family: 'Nunito', sans-serif;
+    color: #2c3e50;
+}
+        /* Estilos personalizados para las Tarjetas/Paneles */
+.custom-card {
+background-color: #ffffff;
+border: none;
+border-radius: 20px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+margin-bottom: 20px;
+padding: 20px;
+}
+
+.navbar-custom {
+background-color: #ffffff;
+border-radius: 0 0 25px 25px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.nav-link-custom {
+color: #5c6b73;
+font-weight: 600;
+margin: 0 10px;
+}
+
+.nav-link-custom.active, .nav-link-custom:hover {
+color: #28a745;
+border-bottom: 3px solid #28a745;
+}
+
+.btn-green {
+background-color: #28a745;
+color: white;
+border-radius: 12px;
+font-weight: 700;
+}
+
+.btn-green:hover {
+background-color: #218838;
+color: white;
+}
+
+
+.btn-blue {
+background-color: #007bff;
+color: white;
+border-radius: 12px;
+font-weight: 700;
+}
+
+/* Simulación del Mapa Central */
+.map-container {
+background-color: #d4ecfc;
+border-radius: 25px;
+min-height: 450px;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+
+.map-placeholder {
+color: #70a1ff;
+font-size: 1.5rem;
+font-weight: bold;
+text-align: center;
+}
+
+        /* Progreso Circular */
+.progress-circle {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+background: conic-gradient(#007bff 75%, #e9ecef 0);
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto;
+}
+        
+.progress-circle-inner {
+width: 80px;
+height: 80px;
+background-color: white;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 800;
+font-size: 1.2rem;
+}
+
+.list-group-item-custom {
+border: 1px solid #e9ecef;
+border-radius: 12px !important;
+margin-bottom: 8px;
+font-weight: 600;
+transition: all 0.2s;
+}
+
+        
+.list-group-item-custom:hover {
+background-color: #f8f9fa;
+cursor: pointer;
+}
