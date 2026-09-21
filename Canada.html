@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Canadá | Historia Sin Fronteras</title>
+
+    <link rel="stylesheet" href="Estilo.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="fondo"></div>
+
+<main class="contenedor">
+
+    <h1>🇨🇦 CANADÁ</h1>
+
+    <div class="imagen-pais">
+        <img 
+            src="https://ichef.bbci.co.uk/news/1024/branded_mundo/deb7/live/2c01cab0-6110-11ee-ab71-b9227e76905d.jpg" 
+            alt="Canadá">
+    </div>
+
+    <h2>Explora su historia y cultura</h2>
+
+
+    <!-- ================= CATEGORÍAS ================= -->
+
+    <div class="categorias">
+
+        <button class="categoria" onclick="mostrarHistoria()">
+            <span>📜</span>
+            HISTORIA
+        </button>
+
+        <button class="categoria" onclick="mostrarCultura()">
+            <span>🎭</span>
+            CULTURA
+        </button>
+
+    </div>
+
+
+    <!-- ================= HISTORIA ================= -->
+
+    <section id="historia" class="subcategorias">
+
+        <h3>📜 Historia de Canadá</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarInfo('pueblos')">
+                🗿 Pueblos originarios
+            </button>
+
+            <button onclick="mostrarInfo('exploracion')">
+                ⛵ Exploración europea
+            </button>
+
+            <button onclick="mostrarInfo('francesa')">
+                🇫🇷 Colonización francesa
+            </button>
+
+            <button onclick="mostrarInfo('britanica')">
+                🇬🇧 Colonización británica
+            </button>
+
+            <button onclick="mostrarInfo('confederacion')">
+                🍁 Confederación canadiense
+            </button>
+
+            <button onclick="mostrarInfo('moderno')">
+                🌎 Canadá moderno
+            </button>
+
+            <button onclick="mostrarInfo('personajes')">
+                👤 Personajes históricos
+            </button>
+
+        </div>
+
+
+        <!-- INFORMACIÓN DE HISTORIA -->
+
+        <div id="informacionHistoria" class="informacion">
+
+            <h4 id="tituloInfo"></h4>
+
+            <p id="textoInfo"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CULTURA ================= -->
+
+    <section id="cultura" class="subcategorias">
+
+        <h3>🎭 Cultura de Canadá</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarCulturaInfo('musica')">
+                🎵 Música
+            </button>
+
+            <button onclick="mostrarCulturaInfo('deportes')">
+                🏒 Deportes
+            </button>
+
+            <button onclick="mostrarCulturaInfo('tradiciones')">
+                🍁 Tradiciones
+            </button>
+
+            <button onclick="mostrarCulturaInfo('gastronomia')">
+                🍲 Gastronomía
+            </button>
+
+            <button onclick="mostrarCulturaInfo('arte')">
+                🎨 Arte y literatura
+            </button>
+
+            <button onclick="mostrarCulturaInfo('fiestas')">
+                🎉 Fiestas y celebraciones
+            </button>
+
+            <button onclick="mostrarCulturaInfo('diversidad')">
+                🗣️ Diversidad cultural
+            </button>
+
+        </div>
+
+
+        <!-- INFORMACIÓN DE CULTURA -->
+
+        <div id="informacionCultura" class="informacion">
+
+            <h4 id="tituloCultura"></h4>
+
+            <p id="textoCultura"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   MOSTRAR HISTORIA
+===================================================== */
+
+function mostrarHistoria() {
+
+    document.getElementById("historia").style.display = "block";
+
+    document.getElementById("cultura").style.display = "none";
+
+}
+
+
+/* =====================================================
+   MOSTRAR CULTURA
+===================================================== */
+
+function mostrarCultura() {
+
+    document.getElementById("cultura").style.display = "block";
+
+    document.getElementById("historia").style.display = "none";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE HISTORIA DE CANADÁ
+===================================================== */
+
+const informacion = {
+
+    pueblos: {
+
+        titulo: "🗿 Pueblos originarios",
+
+        texto: `Mucho antes de la llegada de los europeos, el territorio que hoy
+        conocemos como Canadá estaba habitado por numerosos pueblos indígenas.
+
+        Entre ellos se encuentran las Primeras Naciones, los inuit y los métis.
+        Estos pueblos desarrollaron diferentes culturas, lenguas y formas de
+        organización adaptadas a las distintas regiones del territorio.
+
+        Sus conocimientos sobre la naturaleza, la caza, la pesca y la agricultura
+        han formado parte de la historia y la identidad de Canadá.`
+
+    },
+
+
+    exploracion: {
+
+        titulo: "⛵ Exploración europea",
+
+        texto: `Los europeos comenzaron a explorar las costas de América del Norte
+        a finales del siglo XV y durante el siglo XVI.
+
+        El navegante italiano Giovanni Caboto, conocido como John Cabot, exploró
+        parte de las costas atlánticas en 1497 al servicio de Inglaterra.
+
+        Posteriormente, exploradores franceses recorrieron el río San Lorenzo
+        y otras regiones. Estas exploraciones aumentaron el interés europeo
+        por establecer asentamientos y desarrollar actividades comerciales.`
+
+    },
+
+
+    francesa: {
+
+        titulo: "🇫🇷 Colonización francesa",
+
+        texto: `Francia estableció colonias en América del Norte, especialmente
+        en la región conocida como Nueva Francia.
+
+        En 1608, Samuel de Champlain fundó Quebec, que se convirtió en un
+        importante centro de la colonia francesa.
+
+        Los franceses desarrollaron relaciones comerciales con diferentes
+        pueblos indígenas, especialmente relacionadas con el comercio de pieles.
+
+        Nueva Francia se extendió por grandes territorios, aunque tenía una
+        población menor que las colonias británicas.`
+
+    },
+
+
+    britanica: {
+
+        titulo: "🇬🇧 Colonización británica",
+
+        texto: `Gran Bretaña también estableció una importante presencia en
+        América del Norte. Durante el siglo XVIII aumentaron los conflictos
+        entre las colonias británicas y Francia.
+
+        La Guerra de los Siete Años terminó en 1763 con la victoria británica
+        en América del Norte. Francia cedió gran parte de sus territorios
+        americanos a Gran Bretaña.
+
+        A partir de entonces, la influencia británica aumentó en las regiones
+        que posteriormente formarían Canadá.`
+
+    },
+
+
+    confederacion: {
+
+        titulo: "🍁 Confederación canadiense",
+
+        texto: `La Confederación canadiense ocurrió el 1 de julio de 1867.
+        En ese momento se unieron Ontario, Quebec, Nueva Escocia y Nuevo
+        Brunswick para formar el Dominio de Canadá.
+
+        El nuevo país utilizó un sistema de gobierno basado en el modelo
+        parlamentario británico.
+
+        Posteriormente, Canadá incorporó otros territorios y provincias,
+        ampliando progresivamente el territorio del país hasta llegar a
+        su configuración actual.`
+
+    },
+
+
+    moderno: {
+
+        titulo: "🌎 Canadá moderno",
+
+        texto: `Durante los siglos XX y XXI, Canadá experimentó importantes
+        cambios sociales, económicos y políticos.
+
+        El país desarrolló una economía industrial y posteriormente
+        fortaleció sectores como los servicios, la tecnología y los recursos
+        naturales.
+
+        Canadá también se convirtió en una sociedad caracterizada por la
+        diversidad cultural y por la presencia de comunidades procedentes
+        de diferentes partes del mundo.
+
+        Actualmente es una federación formada por diez provincias y tres
+        territorios.`
+
+    },
+
+
+    personajes: {
+
+        titulo: "👤 Personajes históricos",
+
+        texto: `La historia de Canadá cuenta con numerosos personajes importantes.
+
+        Samuel de Champlain fue uno de los principales exploradores y fundadores
+        de asentamientos franceses en América del Norte.
+
+        John A. Macdonald fue uno de los principales líderes de la Confederación
+        y se convirtió en el primer primer ministro de Canadá en 1867.
+
+        Louis Riel fue una figura importante en la historia de los métis y
+        participó en movimientos políticos relacionados con los territorios
+        del oeste canadiense.
+
+        También destacan diferentes líderes indígenas que han defendido las
+        culturas, los territorios y los derechos de sus comunidades.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE HISTORIA
+===================================================== */
+
+function mostrarInfo(categoria) {
+
+    document.getElementById("tituloInfo").textContent =
+        informacion[categoria].titulo;
+
+    document.getElementById("textoInfo").textContent =
+        informacion[categoria].texto;
+
+    document.getElementById("informacionHistoria").style.display = "block";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE CULTURA DE CANADÁ
+===================================================== */
+
+const informacionCultura = {
+
+    musica: {
+
+        titulo: "🎵 Música",
+
+        texto: `Canadá tiene una gran variedad de estilos musicales y artistas
+        reconocidos internacionalmente.
+
+        Entre los géneros presentes en el país se encuentran el rock, pop,
+        música folk, country, jazz y música clásica.
+
+        También existen tradiciones musicales propias de diferentes pueblos
+        indígenas y comunidades culturales.
+
+        La diversidad de la población canadiense ha contribuido a enriquecer
+        la escena musical del país.`
+
+    },
+
+
+    deportes: {
+
+        titulo: "🏒 Deportes",
+
+        texto: `El hockey sobre hielo es uno de los deportes más representativos
+        de Canadá y tiene una gran importancia cultural.
+
+        Canadá también destaca en deportes como el lacrosse, el curling,
+        el esquí, el snowboard y el patinaje artístico.
+
+        El país ha organizado importantes eventos deportivos internacionales,
+        incluyendo los Juegos Olímpicos de Invierno de 2010 en Vancouver.`
+
+    },
+
+
+    tradiciones: {
+
+        titulo: "🍁 Tradiciones",
+
+        texto: `Entre las tradiciones canadienses se encuentran actividades
+        relacionadas con el invierno, los deportes sobre hielo y diferentes
+        celebraciones comunitarias.
+
+        La hoja de arce es uno de los símbolos nacionales más reconocidos
+        y aparece en la bandera de Canadá.
+
+        Las tradiciones también cambian según la región y reflejan las
+        influencias indígenas, francesas, británicas y de otras comunidades
+        que forman parte del país.`
+
+    },
+
+
+    gastronomia: {
+
+        titulo: "🍲 Gastronomía",
+
+        texto: `La gastronomía canadiense presenta influencias de diferentes
+        culturas y regiones.
+
+        Uno de los platos más conocidos es la poutine, preparada con papas
+        fritas, queso en trozos y salsa.
+
+        También son conocidos productos elaborados con jarabe de arce,
+        especialmente en las regiones donde se produce este alimento.
+
+        En las zonas costeras son comunes diferentes preparaciones con
+        pescados y mariscos.`
+
+    },
+
+
+    arte: {
+
+        titulo: "🎨 Arte y literatura",
+
+        texto: `Canadá tiene una importante tradición artística y literaria.
+
+        La literatura canadiense incluye obras escritas en inglés y francés,
+        además de expresiones literarias de pueblos indígenas.
+
+        En el arte se encuentran la pintura, la escultura, el cine, la
+        fotografía y diferentes expresiones contemporáneas.
+
+        También existen numerosos museos y galerías que conservan y presentan
+        obras relacionadas con la historia y la cultura del país.`
+
+    },
+
+
+    fiestas: {
+
+        titulo: "🎉 Fiestas y celebraciones",
+
+        texto: `Una de las principales celebraciones nacionales es el Día de
+        Canadá, que se celebra cada 1 de julio.
+
+        Durante esta fecha se realizan actividades comunitarias, eventos
+        culturales y espectáculos en diferentes ciudades.
+
+        También se celebran festividades relacionadas con las tradiciones
+        indígenas, francesas, británicas y de comunidades provenientes
+        de diferentes países.
+
+        Las celebraciones pueden variar según la provincia y la región.`
+
+    },
+
+
+    diversidad: {
+
+        titulo: "🗣️ Diversidad cultural",
+
+        texto: `Canadá es conocido por su diversidad cultural. Su población
+        está formada por personas con diferentes orígenes, lenguas y
+        tradiciones.
+
+        Los idiomas oficiales a nivel federal son el inglés y el francés.
+        Además, se hablan muchas lenguas indígenas y otros idiomas debido
+        a la inmigración.
+
+        Esta diversidad se refleja en la gastronomía, la música, las
+        celebraciones, las artes y la vida cotidiana de las ciudades
+        y comunidades canadienses.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE CULTURA
+===================================================== */
+
+function mostrarCulturaInfo(categoria) {
+
+    document.getElementById("tituloCultura").textContent =
+        informacionCultura[categoria].titulo;
+
+    document.getElementById("textoCultura").textContent =
+        informacionCultura[categoria].texto;
+
+    document.getElementById("informacionCultura").style.display = "block";
+
+}
+
+
+/* =====================================================
+   AL CARGAR LA PÁGINA
+===================================================== */
+
+document.getElementById("historia").style.display = "none";
+
+document.getElementById("cultura").style.display = "none";
+
+</script>
+
+</body>
+</html>

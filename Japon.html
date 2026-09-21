@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Japón | Historia Sin Fronteras</title>
+
+    <link rel="stylesheet" href="Estilo.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="fondo"></div>
+
+<main class="contenedor">
+
+    <h1>🇯🇵 JAPÓN</h1>
+
+    <div class="imagen-pais">
+        <img 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQKkhLMGtWfMEathoVICDW3iK3pcZyxJsVAQK3hpw4iEpRO_7-E7kls7e_&s=10" 
+            alt="Japón">
+    </div>
+
+    <h2>Explora su historia y cultura</h2>
+
+
+    <!-- ================= CATEGORÍAS ================= -->
+
+    <div class="categorias">
+
+        <button class="categoria" onclick="mostrarHistoria()">
+            <span>📜</span>
+            HISTORIA
+        </button>
+
+        <button class="categoria" onclick="mostrarCultura()">
+            <span>🎭</span>
+            CULTURA
+        </button>
+
+    </div>
+
+
+    <!-- ================= HISTORIA ================= -->
+
+    <section id="historia" class="subcategorias">
+
+        <h3>📜 Historia de Japón</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarInfo('antiguo')">
+                🏺 Japón antiguo
+            </button>
+
+            <button onclick="mostrarInfo('samurais')">
+                ⚔️ Época de los samuráis
+            </button>
+
+            <button onclick="mostrarInfo('edo')">
+                🏯 Periodo Edo
+            </button>
+
+            <button onclick="mostrarInfo('meiji')">
+                👑 Restauración Meiji
+            </button>
+
+            <button onclick="mostrarInfo('guerras')">
+                ⚔️ Japón en las guerras mundiales
+            </button>
+
+            <button onclick="mostrarInfo('moderno')">
+                🌎 Japón moderno
+            </button>
+
+            <button onclick="mostrarInfo('personajes')">
+                👤 Personajes históricos
+            </button>
+
+        </div>
+
+
+        <div id="informacionHistoria" class="informacion">
+
+            <h4 id="tituloInfo"></h4>
+
+            <p id="textoInfo"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CULTURA ================= -->
+
+    <section id="cultura" class="subcategorias">
+
+        <h3>🎭 Cultura de Japón</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarCulturaInfo('gastronomia')">
+                🍣 Gastronomía
+            </button>
+
+            <button onclick="mostrarCulturaInfo('vestimenta')">
+                👘 Vestimenta tradicional
+            </button>
+
+            <button onclick="mostrarCulturaInfo('tradiciones')">
+                🎎 Tradiciones
+            </button>
+
+            <button onclick="mostrarCulturaInfo('fiestas')">
+                🎌 Fiestas y celebraciones
+            </button>
+
+            <button onclick="mostrarCulturaInfo('arte')">
+                🎨 Arte japonés
+            </button>
+
+            <button onclick="mostrarCulturaInfo('musica')">
+                🎵 Música
+            </button>
+
+            <button onclick="mostrarCulturaInfo('lengua')">
+                🗣️ Lengua japonesa
+            </button>
+
+        </div>
+
+
+        <div id="informacionCultura" class="informacion">
+
+            <h4 id="tituloCultura"></h4>
+
+            <p id="textoCultura"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   MOSTRAR HISTORIA
+===================================================== */
+
+function mostrarHistoria() {
+
+    document.getElementById("historia").style.display = "block";
+
+    document.getElementById("cultura").style.display = "none";
+
+}
+
+
+/* =====================================================
+   MOSTRAR CULTURA
+===================================================== */
+
+function mostrarCultura() {
+
+    document.getElementById("cultura").style.display = "block";
+
+    document.getElementById("historia").style.display = "none";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE HISTORIA
+===================================================== */
+
+const informacion = {
+
+    antiguo: {
+
+        titulo: "🏺 Japón antiguo",
+
+        texto: `La historia de Japón comenzó con diferentes comunidades que
+        se establecieron en las islas durante tiempos muy antiguos.
+
+        Entre los primeros períodos se encuentran el Jōmon, caracterizado
+        por comunidades que utilizaban herramientas de piedra y cerámica,
+        y el período Yayoi, durante el cual se desarrollaron la agricultura
+        y nuevas formas de organización social.
+
+        Posteriormente surgieron Estados más organizados y aumentó la
+        influencia de China y Corea en la escritura, la religión y la
+        administración.`
+
+    },
+
+
+    samurais: {
+
+        titulo: "⚔️ Época de los samuráis",
+
+        texto: `Los samuráis fueron guerreros que tuvieron una importante
+        función militar y social en Japón durante varios siglos.
+
+        Formaban parte de diferentes grupos al servicio de señores
+        y gobernantes.
+
+        Con el tiempo, los guerreros samuráis adquirieron gran influencia
+        política y desarrollaron códigos de conducta relacionados con
+        la disciplina y la lealtad.
+
+        Su importancia disminuyó durante los cambios políticos del
+        siglo XIX.`
+
+    },
+
+
+    edo: {
+
+        titulo: "🏯 Periodo Edo",
+
+        texto: `El periodo Edo comenzó en 1603, cuando Tokugawa Ieyasu
+        estableció el shogunato Tokugawa.
+
+        Durante este período Japón tuvo un gobierno central dirigido
+        por el shogun y disfrutó de una larga etapa de estabilidad
+        interna.
+
+        Las ciudades crecieron y se desarrollaron actividades comerciales,
+        culturales y artísticas.
+
+        El periodo Edo terminó en 1868 con el inicio de la Restauración
+        Meiji.`
+
+    },
+
+
+    meiji: {
+
+        titulo: "👑 Restauración Meiji",
+
+        texto: `La Restauración Meiji comenzó en 1868 y produjo grandes cambios
+        en Japón.
+
+        El poder político volvió a concentrarse en el emperador y el país
+        inició un proceso de modernización.
+
+        Japón desarrolló nuevas industrias, sistemas educativos, fuerzas
+        militares e instituciones inspiradas parcialmente en modelos
+        occidentales.
+
+        Estos cambios permitieron que Japón se convirtiera en una potencia
+        industrial y militar durante las décadas siguientes.`
+
+    },
+
+
+    guerras: {
+
+        titulo: "⚔️ Japón en las guerras mundiales",
+
+        texto: `Japón participó en la Primera Guerra Mundial del lado de los
+        Aliados y aprovechó el conflicto para aumentar su influencia
+        en Asia.
+
+        Durante la década de 1930, Japón expandió su presencia militar
+        en diferentes territorios de Asia.
+
+        En 1941 entró en la Segunda Guerra Mundial después del ataque
+        a Pearl Harbor.
+
+        Japón fue derrotado en 1945 y el país inició posteriormente un
+        proceso de reconstrucción y transformación política.`
+
+    },
+
+
+    moderno: {
+
+        titulo: "🌎 Japón moderno",
+
+        texto: `Después de la Segunda Guerra Mundial, Japón comenzó un
+        importante proceso de reconstrucción.
+
+        Durante la segunda mitad del siglo XX, el país desarrolló
+        rápidamente su industria, tecnología y economía.
+
+        Japón se convirtió en uno de los principales centros tecnológicos
+        y económicos del mundo.
+
+        Actualmente es una monarquía constitucional y una democracia
+        parlamentaria, con Tokio como su capital.`
+
+    },
+
+
+    personajes: {
+
+        titulo: "👤 Personajes históricos",
+
+        texto: `Japón ha tenido numerosos personajes importantes a lo largo
+        de su historia.
+
+        Tokugawa Ieyasu fue el fundador del shogunato Tokugawa y una
+        figura fundamental del periodo Edo.
+
+        Oda Nobunaga y Toyotomi Hideyoshi fueron importantes líderes
+        militares durante el proceso de unificación de Japón.
+
+        El emperador Meiji estuvo relacionado con el período de grandes
+        transformaciones iniciado en 1868.
+
+        Murasaki Shikibu fue una importante escritora japonesa de la
+        época Heian y autora de una de las obras clásicas de la literatura
+        japonesa.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE HISTORIA
+===================================================== */
+
+function mostrarInfo(categoria) {
+
+    document.getElementById("tituloInfo").textContent =
+        informacion[categoria].titulo;
+
+    document.getElementById("textoInfo").textContent =
+        informacion[categoria].texto;
+
+    document.getElementById("informacionHistoria").style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE CULTURA
+===================================================== */
+
+const informacionCultura = {
+
+    gastronomia: {
+
+        titulo: "🍣 Gastronomía",
+
+        texto: `La gastronomía japonesa se caracteriza por el uso de
+        ingredientes frescos y por una presentación cuidadosa.
+
+        Algunos alimentos conocidos son el sushi, el ramen, la tempura,
+        el arroz y diferentes tipos de pescado.
+
+        La alimentación tradicional también incluye verduras, algas,
+        tofu y productos fermentados.
+
+        La cocina japonesa tiene una gran variedad regional y es conocida
+        internacionalmente.`
+
+    },
+
+
+    vestimenta: {
+
+        titulo: "👘 Vestimenta tradicional",
+
+        texto: `El kimono es una de las prendas tradicionales más conocidas
+        de Japón.
+
+        Se utiliza especialmente en determinadas ceremonias, festividades
+        y ocasiones especiales.
+
+        También existe el yukata, una prenda más ligera que suele utilizarse
+        durante festivales de verano.
+
+        Los diseños, colores y materiales pueden variar según la ocasión
+        y la región.`
+
+    },
+
+
+    tradiciones: {
+
+        titulo: "🎎 Tradiciones",
+
+        texto: `Japón posee numerosas tradiciones relacionadas con la familia,
+        la naturaleza y las comunidades.
+
+        Algunas prácticas tradicionales incluyen la ceremonia del té,
+        los jardines japoneses y diferentes artes como el origami.
+
+        También existe una fuerte tradición de respeto hacia las personas
+        mayores y de cuidado de los espacios compartidos.
+
+        Estas costumbres continúan formando parte de la vida cultural
+        japonesa.`
+
+    },
+
+
+    fiestas: {
+
+        titulo: "🎌 Fiestas y celebraciones",
+
+        texto: `Japón celebra numerosas festividades durante el año.
+
+        Una de las más conocidas es el Hanami, una tradición relacionada
+        con la observación de los cerezos en flor.
+
+        También existen festivales llamados matsuri, que pueden incluir
+        desfiles, música, comida y actividades tradicionales.
+
+        Otras celebraciones importantes incluyen el Año Nuevo japonés
+        y diferentes festividades locales.`
+
+    },
+
+
+    arte: {
+
+        titulo: "🎨 Arte japonés",
+
+        texto: `El arte japonés incluye diferentes expresiones tradicionales
+        y modernas.
+
+        Entre ellas se encuentran la pintura, la cerámica, la caligrafía,
+        el origami y los grabados ukiyo-e.
+
+        También son importantes formas artísticas como el ikebana,
+        relacionado con los arreglos florales.
+
+        El arte japonés ha influido en numerosos artistas y movimientos
+        artísticos de otros países.`
+
+    },
+
+
+    musica: {
+
+        titulo: "🎵 Música",
+
+        texto: `La música japonesa incluye instrumentos y estilos
+        tradicionales y modernos.
+
+        Entre los instrumentos tradicionales se encuentran el shamisen,
+        el koto y la flauta shakuhachi.
+
+        Japón también desarrolló diferentes géneros de música popular,
+        incluyendo el J-pop y otros estilos contemporáneos.
+
+        La música tradicional continúa presente en ceremonias,
+        festivales y representaciones culturales.`
+
+    },
+
+
+    lengua: {
+
+        titulo: "🗣️ Lengua japonesa",
+
+        texto: `El japonés es la lengua principal utilizada en Japón.
+
+        Su sistema de escritura combina tres formas principales:
+        hiragana, katakana y kanji.
+
+        Los kanji tienen su origen histórico en caracteres chinos,
+        mientras que hiragana y katakana son sistemas desarrollados
+        en Japón.
+
+        El japonés posee diferentes formas de hablar según la situación
+        y utiliza expresiones de respeto que tienen gran importancia
+        en la comunicación.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE CULTURA
+===================================================== */
+
+function mostrarCulturaInfo(categoria) {
+
+    document.getElementById("tituloCultura").textContent =
+        informacionCultura[categoria].titulo;
+
+    document.getElementById("textoCultura").textContent =
+        informacionCultura[categoria].texto;
+
+    document.getElementById("informacionCultura").style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   AL CARGAR LA PÁGINA
+===================================================== */
+
+document.getElementById("historia").style.display = "none";
+
+document.getElementById("cultura").style.display = "none";
+
+</script>
+
+</

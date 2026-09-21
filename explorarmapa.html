@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Sin Fronteras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/css/jsvectormap.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/maps/world.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-custom py-3 mb-4 container-fluid px-4">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i><a href="inicio.html"><img src="celstatecontenido-s-removebg-preview.png" width="60" height="60" alt=""></a></i>
+                <div class="lh-1">
+                    <span class="fw-extrabold text-primary d-block h5 mb-0">HISTORIA</span>
+                    <span class="text-success fw-bold small">SIN FRONTERAS</span>
+                </div>
+            </a>
+            
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link nav-link-custom active" href="inicio.html"><i class="bi bi-house-door-fill me-1"></i> Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="explorarmapa.html"><i class="bi bi-compass me-1"></i> Explorar</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#"><i class="bi bi-trophy me-1"></i> Misiones</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#"><i class="bi bi-award me-1"></i> Logros</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#"><i class="bi bi-person me-1"></i> Mi Perfil</a></li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <div class="text-end me-2">
+                    <span class="fw-bold d-block small">Explorador</span>
+                    <span class="text-muted text-xs block" style="font-size: 0.8rem;">Nivel 7</span>
+                </div>
+                <i class="bi bi-person-circle fs-2 text-secondary"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4">
+        <div class="row">
+            
+            <div class="col-12 col-lg-2">
+                <div class="custom-card">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-green text-start py-2"><i class="bi bi-globe me-2"></i> Explorar el mundo</button>
+                        <button class="btn btn-light text-start text-secondary bg-transparent border-0"><i class="bi bi-flag me-2"></i> Misiones diarias</button>
+                        <button class="btn btn-light text-start text-secondary bg-transparent border-0"><i class="bi bi-bar-chart me-2"></i> Ranking</button>
+                        <button class="btn btn-light text-start text-secondary bg-transparent border-0"><i class="bi bi-calendar-event me-2"></i> Eventos</button>
+                        <button class="btn btn-light text-start text-secondary bg-transparent border-0"><i class="bi bi-book me-2"></i> Biblioteca</button>
+                        <button class="btn btn-light text-start text-secondary bg-transparent border-0"><i class="bi bi-gear me-2"></i> Configuración</button>
+                    </div>
+                </div>
+
+                <div class="custom-card text-center">
+                    <h6 class="fw-bold text-start text-primary mb-3"><i class="bi bi-person-badge me-1"></i> Mi progreso</h6>
+                    <div class="progress-circle mb-3">
+                        <div class="progress-circle-inner">75%</div>
+                    </div>
+                    <p class="small text-muted mb-3">Explorador mundial</p>
+                    <div class="text-start small">
+                        <div class="d-flex justify-content-between mb-1"><span>⭐ 2.450 Puntos</span></div>
+                        <div class="d-flex justify-content-between mb-1"><span>🏅 18 Insignias</span></div>
+                        <div class="d-flex justify-content-between"><span>🌍 12 Países</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-7">
+                <div class="custom-card p-3">
+                    <div class="alert alert-info border-0 rounded-4 d-flex align-items-center mb-3 py-2" style="background-color: #e3f2fd;">
+                        <i class="bi bi-info-circle-fill text-primary fs-4 me-3"></i>
+                        <div>
+                            <strong class="text-primary">Explora el mundo sin fronteras</strong><br>
+                            <span class="small text-muted">Elige un país y descubre su historia, cultura y mucho más.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <div id="world-map"></div>
+                        <div id="countryInfo">
+                            🌎 Pasa el cursor sobre un país
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12 col-md-6">
+                            <div class="custom-card">
+                                <h6 class="fw-bold text-primary mb-3"><i class="bi bi-flag-fill me-1"></i> Misiones disponibles</h6>
+                                <div class="small">
+                                    <div class="p-2 border-bottom d-flex justify-content-between align-items-center">
+                                        <div><i class="bi bi-book text-success me-2"></i>Independencia de Col.</div>
+                                        <span class="badge bg-light text-success">+100 pts</span>
+                                    </div>
+                                    <div class="p-2 border-bottom d-flex justify-content-between align-items-center">
+                                        <div><i class="bi bi-camera text-primary me-2"></i>Descubre 3 monumentos</div>
+                                        <span class="badge bg-light text-success">+150 pts</span>
+                                    </div>
+                                    <div class="p-2 d-flex justify-content-between align-items-center">
+                                        <div><i class="bi bi-question-circle text-warning me-2"></i>Responde 5 preguntas</div>
+                                        <span class="badge bg-light text-success">+200 pts</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-blue w-100 btn-sm mt-3">Ver todas las misiones</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="custom-card">
+                                <h6 class="fw-bold text-primary mb-3"><i class="bi bi-signpost-split-fill me-1"></i> Mi recorrido</h6>
+                                <div class="d-flex justify-content-around align-items-center py-2">
+                                    <div class="text-center">🇨🇴<br><span class="small font-monospace">Col</span></div>
+                                    <div class="text-center">🇲🇽<br><span class="small font-monospace">Méx</span></div>
+                                    <div class="text-center">🇵🇪<br><span class="small font-monospace">Per</span></div>
+                                    <div class="text-center text-muted"><i class="bi bi-lock-fill"></i><br><span class="small">Japón</span></div>
+                                    <div class="text-center text-muted"><i class="bi bi-lock-fill"></i><br><span class="small">Egipto</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const countries = {
+            CO: "Colombia 🇨🇴",
+            MX: "México 🇲🇽",
+            AR: "Argentina 🇦🇷",
+            PE: "Perú 🇵🇪",
+            BR: "Brasil 🇧🇷",
+            US: "Estados Unidos 🇺🇸",
+            CA: "Canadá 🇨🇦",
+            ES: "España 🇪🇸",
+            FR: "Francia 🇫🇷",
+            DE: "Alemania 🇩🇪",
+            IT: "Italia 🇮🇹",
+            JP: "Japón 🇯🇵",
+            CN: "China 🇨🇳",
+            RU: "Rusia 🇷🇺",
+            EG: "Egipto 🇪🇬"
+        };
+
+        // Aquí configuras a qué HTML debe ir cada país
+        const countryUrls = {
+            CO: "colombia.html",
+            MX: "mexico.html",
+            AR: "argentina.html",
+            PE: "peru.html",
+            BR: "brasil.html",
+            US: "estados_unidos.html",
+            CA: "canada.html",
+            ES: "espana.html",
+            FR: "francia.html",
+            DE: "alemania.html",
+            IT: "italia.html",
+            JP: "japon.html",
+            CN: "china.html",
+            RU: "rusia.html",
+            EG: "egipto.html"
+        };
+
+        const map = new jsVectorMap({
+            selector: "#world-map",
+            map: "world",
+            zoomButtons: true,
+            zoomOnScroll: true,
+            regionStyle: {
+                initial: {
+                    fill: "#6bb5ff",
+                    stroke: "#ffffff",
+                    strokeWidth: 0.8
+                },
+                hover: {
+                    fill: "#28a745",
+                    cursor: "pointer"
+                },
+                selected: {
+                    fill: "#ff9800"
+                }
+            },
+            onRegionTooltipShow(event, tooltip, code) {
+                tooltip.text(countries[code] || tooltip.text());
+            },
+            onRegionOver(code) {
+                document.getElementById("countryInfo").innerHTML = countries[code] || code;
+            },
+            onRegionOut() {
+                document.getElementById("countryInfo").innerHTML = "🌎 Pasa el cursor sobre un país";
+            },
+            onRegionClick(event, code) {
+                // Si el país clickeado está en nuestra lista de URLs, lo redirigimos
+                if(countryUrls[code]) {
+                    window.location.href = countryUrls[code];
+                } else {
+                    // Si no tiene HTML asignado, mostramos un mensaje temporal
+                    console.log("No hay una página asignada para: " + (countries[code] || code));
+                }
+            }
+        });
+    </script>
+</body>
+</html>

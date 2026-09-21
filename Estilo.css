@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #dcecff 0%,
+        #eef8f5 50%,
+        #e8e1fa 100%
+    );
+
+    color: #35406f;
+}
+
+
+/* FONDO */
+
+.fondo {
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(120, 190, 200, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(120, 100, 200, 0.15),
+            transparent 30%
+        );
+
+    z-index: -1;
+}
+
+
+/* CONTENEDOR */
+
+.contenedor {
+    width: 900px;
+    max-width: 92%;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    padding: 30px 35px;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 40px rgba(70, 80, 130, 0.15);
+
+    text-align: center;
+}
+
+
+/* TÍTULO */
+
+h1 {
+    font-size: 34px;
+
+    color: #403c88;
+
+    margin-bottom: 22px;
+
+    font-weight: 700;
+}
+
+
+/* IMAGEN */
+
+.imagen-pais {
+    width: 100%;
+    height: 250px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    margin-bottom: 22px;
+
+    box-shadow:
+        0 8px 20px rgba(60, 70, 110, 0.12);
+}
+
+.imagen-pais img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* SUBTÍTULO */
+
+h2 {
+    font-size: 22px;
+
+    color: #358b87;
+
+    margin-bottom: 22px;
+
+    font-weight: 600;
+}
+
+
+/* CATEGORÍAS */
+
+.categorias {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    margin-bottom: 25px;
+}
+
+
+/* BOTONES */
+
+.categoria {
+    width: 250px;
+    height: 105px;
+
+    border: none;
+
+    border-radius: 22px;
+
+    background: linear-gradient(
+        135deg,
+        #65bbb5,
+        #7168d1
+    );
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    box-shadow:
+        0 8px 18px rgba(80, 90, 150, 0.18);
+}
+
+.categoria span {
+    display: block;
+
+    font-size: 28px;
+
+    margin-bottom: 5px;
+}
+
+.categoria:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 14px 25px rgba(70, 80, 140, 0.22);
+}
+
+
+/* SUBCATEGORÍAS */
+
+.subcategorias {
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 25px;
+
+    background: #f5f7ff;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(100, 100, 170, 0.08);
+
+    animation: aparecer 0.4s ease;
+}
+
+.subcategorias h3 {
+    color: #403c88;
+
+    font-size: 21px;
+
+    margin-bottom: 18px;
+
+    font-weight: 600;
+}
+
+
+/* OPCIONES */
+
+.opciones {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.opciones button {
+    border: none;
+
+    padding: 14px 12px;
+
+    border-radius: 14px;
+
+    background: white;
+
+    color: #435080;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 12px rgba(80, 90, 150, 0.08);
+
+    transition: all 0.3s ease;
+}
+
+.opciones button:hover {
+    background: linear-gradient(
+        135deg,
+        #d9f1ef,
+        #e5e1f8
+    );
+
+    transform: translateY(-3px);
+
+    color: #403c88;
+}
+
+
+/* ANIMACIÓN */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    .contenedor {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    .categorias {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 15px;
+    }
+
+    .categoria {
+        width: 100%;
+    }
+
+    .opciones {
+        grid-template-columns: 1fr;
+    }
+
+    .imagen-pais {
+        height: 190px;
+    }
+}
+
+
+

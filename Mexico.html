@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Sin Fronteras - México</title>
+
+    <link rel="stylesheet" href="Mexico.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon"><i><a href="explorarmapa.html"><img src="celstatecontenido-s-removebg-preview.png" width="60" height="60" alt=""></a></i></div>
+
+            <div>
+                <h1>Historia</h1>
+                <h1>Sin Fronteras</h1>
+            </div>
+        </div>
+
+        <!-- HISTORIA -->
+        <div class="menu-seccion">
+            <h2>🏛️ HISTORIA</h2>
+
+            <button onclick="cambiarTema('civilizaciones')">
+                🏺 Civilizaciones prehispánicas
+            </button>
+
+            <button onclick="cambiarTema('conquista')">
+                ⚔️ Conquista de México
+            </button>
+
+            <button onclick="cambiarTema('colonial')">
+                🚢 Época colonial
+            </button>
+
+            <button onclick="cambiarTema('independencia')">
+                🇲🇽 Independencia
+            </button>
+
+            <button onclick="cambiarTema('personajes')">
+                👤 Personajes históricos
+            </button>
+
+            <button onclick="cambiarTema('revolucion')">
+                ⚔️ Revolución Mexicana
+            </button>
+        </div>
+
+        <!-- CULTURA -->
+        <div class="menu-seccion">
+
+            <h2>📖 CULTURA</h2>
+
+            <button onclick="cambiarTema('gastronomia')" class="activo">
+                🌮 Gastronomía
+            </button>
+
+            <button onclick="cambiarTema('musica')">
+                🎵 Música y bailes
+            </button>
+
+            <button onclick="cambiarTema('tradiciones')">
+                🌸 Tradiciones
+            </button>
+
+            <button onclick="cambiarTema('fiestas')">
+                🎉 Fiestas
+            </button>
+
+            <button onclick="cambiarTema('vestimenta')">
+                👕 Vestimenta típica
+            </button>
+
+            <button onclick="cambiarTema('arte')">
+                🎨 Arte y literatura
+            </button>
+
+            <button onclick="cambiarTema('monumentos')">
+                🏛️ Monumentos
+            </button>
+
+        </div>
+
+        <!-- TARJETA MÉXICO -->
+        <div class="mexico-card">
+
+            <div class="mexico-imagen">
+                🏛️
+            </div>
+
+            <p>
+                Conoce, aprende y valora
+                la historia y cultura de
+                <strong>México</strong>
+            </p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= CONTENIDO ================= -->
+    <main class="contenido">
+
+        <!-- ================= CABECERA ================= -->
+        <header class="cabecera">
+
+            <!-- TÍTULO -->
+            <div class="titulo">
+
+                <div class="titulo-icono" id="iconoTema">
+                    🌮
+                </div>
+
+                <div>
+                    <h1 id="tituloTema">
+                        Gastronomía
+                    </h1>
+
+                    <p id="subtituloTema">
+                        Sabores que cuentan historias
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- PUNTOS Y VIDAS -->
+            <div class="estadisticas">
+
+                <div class="estadistica puntos">
+
+                    <span>⭐</span>
+
+                    <div>
+                        <span>Puntos</span>
+                        <strong id="puntos">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="estadistica vidas">
+
+                    <span>❤️</span>
+
+                    <div>
+                        <span>Vidas</span>
+                        <strong id="vidas">3</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= MENSAJE ROBOT ================= -->
+        <div class="robot-mensaje">
+
+            <div class="robot">
+                🤖
+            </div>
+
+            <p id="mensaje">
+                ¡Hola! Hoy vamos a descubrir la gastronomía
+                de México. Escucha la explicación y después
+                responde el mini reto.
+            </p>
+
+        </div>
+
+
+        <!-- ================= INFORMACIÓN ================= -->
+        <section class="informacion">
+
+            <!-- IMAGEN -->
+            <div class="imagen-contenedor">
+
+                <img
+                    id="imagenTema"
+                    src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=900&q=80"
+                    alt="Gastronomía mexicana"
+                >
+
+                <button
+                    class="audio-btn"
+                    onclick="escuchar()"
+                >
+                    🔊
+                    <span>Escuchar explicación</span>
+                    <span>▶</span>
+                </button>
+
+            </div>
+
+
+            <!-- DATO CURIOSO -->
+            <div class="dato">
+
+                <h2>💡 Dato curioso</h2>
+
+                <p id="datoTexto">
+                    El maíz es uno de los ingredientes
+                    fundamentales de la gastronomía mexicana.
+                </p>
+
+                <h3>📍 Regiones destacadas</h3>
+
+                <div
+                    class="regiones"
+                    id="regiones"
+                >
+                    <span>Norte</span>
+                    <span>Centro</span>
+                    <span>Oaxaca</span>
+                    <span>Yucatán</span>
+                    <span>Jalisco</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RETO ================= -->
+        <section class="reto">
+
+            <div class="reto-titulo">
+
+                <span>🎮</span>
+
+                <div>
+
+                    <h2>Mini reto</h2>
+
+                    <p id="pregunta">
+                        ¿Cuál de estos alimentos es típico de México?
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- OPCIONES -->
+            <div
+                class="opciones"
+                id="opciones"
+            >
+            </div>
+
+
+            <!-- RESULTADO -->
+            <div
+                id="resultado"
+                class="resultado"
+            >
+            </div>
+
+
+            <!-- BOTÓN SIGUIENTE -->
+            <div class="boton-final">
+
+                <button
+                    id="botonSiguiente"
+                    onclick="siguienteTema()"
+                    disabled
+                >
+                    Siguiente →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= PANEL DERECHO ================= -->
+    <aside class="derecha">
+
+
+        <!-- PROGRESO -->
+        <div class="progreso">
+
+            <h2>📊 Progreso del estudiante</h2>
+
+            <div class="circulo-progreso">
+
+                <svg viewBox="0 0 120 120">
+
+                    <circle
+                        class="circulo-fondo"
+                        cx="60"
+                        cy="60"
+                        r="50"
+                    ></circle>
+
+                    <circle
+                        id="circuloProgreso"
+                        class="circulo-avance"
+                        cx="60"
+                        cy="60"
+                        r="50"
+                    ></circle>
+
+                </svg>
+
+                <strong id="porcentaje">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="datos-progreso">
+
+                <div>
+
+                    <strong id="retosCompletados">
+                        0
+                    </strong>
+
+                    <span>
+                        Retos completados
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="respuestasCorrectas">
+                        0
+                    </strong>
+
+                    <span>
+                        Respuestas correctas
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p id="mensajeProgreso">
+                ¡Comienza a explorar México! 🇲🇽
+            </p>
+
+        </div>
+
+
+        <!-- SOBRE ESTE TEMA -->
+        <div class="sobre">
+
+            <h2>📖 Sobre este tema</h2>
+
+            <p id="sobreTexto">
+                La gastronomía mexicana es reconocida
+                en todo el mundo por su diversidad,
+                sus sabores y sus tradiciones.
+            </p>
+
+            <div class="comida">
+                🌮
+            </div>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script src="Mexico.js"></script>
+
+</body>
+</html>

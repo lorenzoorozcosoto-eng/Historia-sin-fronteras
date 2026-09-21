@@ -1,0 +1,518 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Francia | Historia Sin Fronteras</title>
+
+    <link rel="stylesheet" href="Estilo.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="fondo"></div>
+
+<main class="contenedor">
+
+    <h1>🇫🇷 FRANCIA</h1>
+
+    <div class="imagen-pais">
+        <img 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdO8_lUxL8ffkb-QtJlUdUgdc4c1fd6McwfZ9MMo3OI7gRsQFEE3wb_nM&s=10" 
+            alt="Francia">
+    </div>
+
+    <h2>Explora su historia y cultura</h2>
+
+    <!-- ================= CATEGORÍAS ================= -->
+
+    <div class="categorias">
+
+        <button class="categoria" onclick="mostrarHistoria()">
+            <span>📜</span>
+            HISTORIA
+        </button>
+
+        <button class="categoria" onclick="mostrarCultura()">
+            <span>🎭</span>
+            CULTURA
+        </button>
+
+    </div>
+
+
+    <!-- ================= HISTORIA ================= -->
+
+    <section id="historia" class="subcategorias">
+
+        <h3>📜 Historia de Francia</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarInfo('reino')">
+                🏰 Reino de Francia
+            </button>
+
+            <button onclick="mostrarInfo('monarquia')">
+                👑 Monarquía francesa
+            </button>
+
+            <button onclick="mostrarInfo('revolucion')">
+                ⚔️ Revolución Francesa
+            </button>
+
+            <button onclick="mostrarInfo('napoleon')">
+                👤 Napoleón Bonaparte
+            </button>
+
+            <button onclick="mostrarInfo('sigloXX')">
+                🌎 Francia en el siglo XX
+            </button>
+
+            <button onclick="mostrarInfo('contemporanea')">
+                🇫🇷 Francia contemporánea
+            </button>
+
+            <button onclick="mostrarInfo('personajes')">
+                👤 Personajes históricos
+            </button>
+
+        </div>
+
+
+        <div id="informacionHistoria" class="informacion">
+
+            <h4 id="tituloInfo"></h4>
+
+            <p id="textoInfo"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CULTURA ================= -->
+
+    <section id="cultura" class="subcategorias">
+
+        <h3>🎭 Cultura de Francia</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarCulturaInfo('arte')">
+                🎨 Arte
+            </button>
+
+            <button onclick="mostrarCulturaInfo('musica')">
+                🎵 Música
+            </button>
+
+            <button onclick="mostrarCulturaInfo('gastronomia')">
+                🥐 Gastronomía
+            </button>
+
+            <button onclick="mostrarCulturaInfo('moda')">
+                👗 Moda
+            </button>
+
+            <button onclick="mostrarCulturaInfo('literatura')">
+                📚 Literatura
+            </button>
+
+            <button onclick="mostrarCulturaInfo('fiestas')">
+                🎉 Fiestas y celebraciones
+            </button>
+
+            <button onclick="mostrarCulturaInfo('lengua')">
+                🗣️ Lengua francesa
+            </button>
+
+        </div>
+
+
+        <div id="informacionCultura" class="informacion">
+
+            <h4 id="tituloCultura"></h4>
+
+            <p id="textoCultura"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   MOSTRAR HISTORIA
+===================================================== */
+
+function mostrarHistoria() {
+
+    document.getElementById("historia").style.display = "block";
+    document.getElementById("cultura").style.display = "none";
+
+}
+
+
+/* =====================================================
+   MOSTRAR CULTURA
+===================================================== */
+
+function mostrarCultura() {
+
+    document.getElementById("cultura").style.display = "block";
+    document.getElementById("historia").style.display = "none";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE HISTORIA
+===================================================== */
+
+const informacion = {
+
+    reino: {
+
+        titulo: "🏰 Reino de Francia",
+
+        texto: `El Reino de Francia fue una de las principales monarquías de Europa
+        durante la Edad Media y la Edad Moderna.
+
+        Sus orígenes se relacionan con la formación del reino de los francos.
+        Con el paso de los siglos, diferentes dinastías gobernaron el territorio,
+        entre ellas los Capetos, los Valois y los Borbones.
+
+        Francia aumentó progresivamente su territorio y su influencia política
+        en Europa. París se convirtió en un importante centro político y cultural.
+
+        El Reino de Francia llegó a ser una de las grandes potencias europeas
+        antes de la Revolución Francesa de 1789.`
+
+    },
+
+
+    monarquia: {
+
+        titulo: "👑 Monarquía francesa",
+
+        texto: `La monarquía fue durante muchos siglos la principal forma de
+        gobierno de Francia.
+
+        Los reyes concentraron importantes poderes políticos y administrativos.
+        Durante el reinado de Luis XIV, conocido como el Rey Sol, la monarquía
+        francesa alcanzó un gran poder y prestigio en Europa.
+
+        El Palacio de Versalles se convirtió en un símbolo de la monarquía
+        francesa y de la autoridad real.
+
+        Las dificultades económicas y las desigualdades sociales contribuyeron
+        a generar una fuerte crisis que terminó provocando la Revolución
+        Francesa en 1789.`
+
+    },
+
+
+    revolucion: {
+
+        titulo: "⚔️ Revolución Francesa",
+
+        texto: `La Revolución Francesa comenzó en 1789 debido a una combinación de
+        problemas económicos, sociales y políticos.
+
+        La sociedad estaba dividida en diferentes grupos y existían grandes
+        desigualdades entre ellos. Además, el Estado tenía importantes
+        dificultades financieras.
+
+        En 1789 se produjo la toma de la Bastilla y se aprobó la Declaración
+        de los Derechos del Hombre y del Ciudadano.
+
+        La revolución terminó con la caída de la monarquía y produjo cambios
+        profundos en la organización política y social de Francia y de Europa.`
+
+    },
+
+
+    napoleon: {
+
+        titulo: "👤 Napoleón Bonaparte",
+
+        texto: `Napoleón Bonaparte fue un militar y gobernante francés que llegó
+        al poder después de la Revolución Francesa.
+
+        En 1804 se proclamó emperador de los franceses. Durante su gobierno,
+        Francia extendió su influencia sobre gran parte de Europa mediante
+        diferentes campañas militares.
+
+        También impulsó importantes reformas administrativas y jurídicas.
+        El Código Napoleónico tuvo una gran influencia en los sistemas legales
+        de diferentes países.
+
+        Napoleón fue derrotado definitivamente en 1815 y murió en el exilio
+        en la isla de Santa Elena.`
+
+    },
+
+
+    sigloXX: {
+
+        titulo: "🌎 Francia en el siglo XX",
+
+        texto: `Durante el siglo XX, Francia participó en importantes acontecimientos
+        internacionales.
+
+        El país participó en la Primera Guerra Mundial entre 1914 y 1918 y
+        posteriormente fue ocupado por la Alemania nazi durante parte de la
+        Segunda Guerra Mundial.
+
+        Después de 1945, Francia participó en la reconstrucción de Europa y
+        tuvo un papel importante en la creación del proceso de integración
+        europea.
+
+        Durante este período también terminó gran parte del imperio colonial
+        francés mediante procesos de descolonización.`
+
+    },
+
+
+    contemporanea: {
+
+        titulo: "🇫🇷 Francia contemporánea",
+
+        texto: `La Francia contemporánea es una república democrática conocida
+        oficialmente como República Francesa.
+
+        El sistema político actual se basa en la Constitución de la Quinta
+        República, establecida en 1958.
+
+        Francia es miembro de organizaciones internacionales como las Naciones
+        Unidas y forma parte de la Unión Europea.
+
+        París es la capital y uno de los principales centros políticos,
+        económicos, científicos y culturales de Europa.`
+
+    },
+
+
+    personajes: {
+
+        titulo: "👤 Personajes históricos",
+
+        texto: `Francia ha tenido numerosos personajes importantes a lo largo
+        de su historia.
+
+        Juana de Arco es una de las figuras históricas francesas más conocidas
+        por su participación en la Guerra de los Cien Años.
+
+        Luis XIV fue uno de los monarcas franceses más destacados y gobernó
+        durante un largo período.
+
+        Napoleón Bonaparte fue un importante militar y gobernante.
+
+        Victor Hugo fue uno de los escritores franceses más reconocidos y
+        escribió obras como Los miserables y Nuestra Señora de París.
+
+        Marie Curie, nacida en Polonia pero posteriormente nacionalizada
+        francesa, realizó importantes investigaciones científicas sobre
+        la radiactividad.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE HISTORIA
+===================================================== */
+
+function mostrarInfo(categoria) {
+
+    document.getElementById("tituloInfo").textContent =
+        informacion[categoria].titulo;
+
+    document.getElementById("textoInfo").textContent =
+        informacion[categoria].texto;
+
+    document.getElementById("informacionHistoria").style.display = "block";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE CULTURA
+===================================================== */
+
+const informacionCultura = {
+
+    arte: {
+
+        titulo: "🎨 Arte",
+
+        texto: `Francia ha tenido una gran influencia en la historia del arte
+        europeo.
+
+        Durante diferentes períodos se desarrollaron estilos como el
+        impresionismo, el realismo y el arte moderno.
+
+        Artistas como Claude Monet, Edgar Degas, Auguste Renoir y Paul Cézanne
+        realizaron importantes aportes.
+
+        El Museo del Louvre, ubicado en París, es uno de los museos de arte
+        más conocidos del mundo y conserva obras de diferentes épocas.`
+
+    },
+
+
+    musica: {
+
+        titulo: "🎵 Música",
+
+        texto: `La música francesa incluye una gran variedad de estilos
+        tradicionales y modernos.
+
+        Francia tuvo una importante tradición de música clásica, con
+        compositores como Claude Debussy y Maurice Ravel.
+
+        También existen géneros populares como la chanson francesa y,
+        en tiempos recientes, diferentes estilos de pop, rap y música
+        electrónica.
+
+        La música forma parte importante de la vida cultural francesa.`
+
+    },
+
+
+    gastronomia: {
+
+        titulo: "🥐 Gastronomía",
+
+        texto: `La gastronomía francesa es reconocida por su variedad y por
+        la importancia que da a la preparación y presentación de los alimentos.
+
+        Entre sus productos y preparaciones conocidas se encuentran el pan,
+        los quesos, los croissants, las crepas y diferentes platos regionales.
+
+        La cocina francesa también utiliza ingredientes como mantequilla,
+        hierbas, verduras, carnes y pescados.
+
+        La gastronomía francesa tiene una importante influencia internacional
+        y forma parte del patrimonio cultural del país.`
+
+    },
+
+
+    moda: {
+
+        titulo: "👗 Moda",
+
+        texto: `Francia, especialmente París, es considerada uno de los principales
+        centros internacionales de la moda.
+
+        La ciudad alberga importantes casas de moda y eventos relacionados
+        con el diseño y la alta costura.
+
+        Diseñadores franceses han tenido una gran influencia en la evolución
+        de la ropa y las tendencias internacionales.
+
+        La moda forma parte importante de la identidad cultural y de la
+        industria creativa francesa.`
+
+    },
+
+
+    literatura: {
+
+        titulo: "📚 Literatura",
+
+        texto: `Francia posee una de las tradiciones literarias más importantes
+        de Europa.
+
+        Entre sus escritores destacados se encuentran Victor Hugo,
+        Alexandre Dumas, Gustave Flaubert y Marcel Proust.
+
+        La literatura francesa ha desarrollado diferentes géneros y
+        movimientos, como el romanticismo, el realismo y el existencialismo.
+
+        Sus obras han sido traducidas a numerosos idiomas y han tenido
+        influencia internacional.`
+
+    },
+
+
+    fiestas: {
+
+        titulo: "🎉 Fiestas y celebraciones",
+
+        texto: `Una de las principales celebraciones nacionales de Francia
+        es el Día de la Bastilla, que se conmemora el 14 de julio.
+
+        Esta fecha recuerda la toma de la Bastilla en 1789 y se relaciona
+        con la Revolución Francesa.
+
+        En diferentes regiones también se realizan festivales, carnavales,
+        celebraciones religiosas y eventos culturales.
+
+        Las fiestas francesas reflejan la diversidad de tradiciones que
+        existen en las distintas regiones del país.`
+
+    },
+
+
+    lengua: {
+
+        titulo: "🗣️ Lengua francesa",
+
+        texto: `El francés es la lengua oficial de Francia y pertenece a las
+        lenguas romances, al igual que el español, el italiano y el portugués.
+
+        El idioma francés se desarrolló a partir del latín utilizado en
+        la antigua Galia y evolucionó durante la Edad Media.
+
+        Actualmente es uno de los idiomas más estudiados y utilizados
+        internacionalmente.
+
+        Además de Francia, el francés es lengua oficial en diferentes países
+        y organizaciones internacionales.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE CULTURA
+===================================================== */
+
+function mostrarCulturaInfo(categoria) {
+
+    document.getElementById("tituloCultura").textContent =
+        informacionCultura[categoria].titulo;
+
+    document.getElementById("textoCultura").textContent =
+        informacionCultura[categoria].texto;
+
+    document.getElementById("informacionCultura").style.display = "block";
+
+}
+
+
+/* =====================================================
+   AL CARGAR LA PÁGINA
+===================================================== */
+
+document.getElementById("historia").style.display = "none";
+
+document.getElementById("cultura").style.display = "none";
+
+</script>
+
+</body>
+</html>
+```

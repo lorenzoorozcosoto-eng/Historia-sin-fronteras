@@ -1,0 +1,803 @@
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f8ff;
+    color: #17184b;
+}
+
+.app {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 270px 1fr 300px;
+}
+
+
+/* =========================================================
+   SIDEBAR IZQUIERDO
+========================================================= */
+
+.sidebar {
+    background: white;
+    border-right: 1px solid #e4e4f5;
+    padding: 22px 18px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    padding-left: 8px;
+}
+
+.logo-icon {
+    font-size: 42px;
+}
+
+.logo h1 {
+    font-size: 21px;
+    line-height: 20px;
+}
+
+.logo h1:last-child {
+    color: #6246d8;
+}
+
+
+/* =========================================================
+   MENÚ
+========================================================= */
+
+.menu-seccion {
+    margin-bottom: 25px;
+}
+
+.menu-seccion h2 {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #202052;
+}
+
+.menu-seccion button {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 11px 10px;
+    border-radius: 13px;
+    text-align: left;
+    font-size: 14px;
+    color: #202052;
+    cursor: pointer;
+    margin-bottom: 3px;
+    transition: 0.25s;
+}
+
+.menu-seccion button:hover {
+    background: #eef0ff;
+    color: #5d3fd3;
+}
+
+.menu-seccion button.activo {
+    background: linear-gradient(
+        90deg,
+        #6746e8,
+        #795cf0
+    );
+    color: white;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   TARJETA MÉXICO
+========================================================= */
+
+.mexico-card {
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f0edff;
+    text-align: center;
+}
+
+.mexico-imagen {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+
+    background: linear-gradient(
+        135deg,
+        #dfe7ff,
+        #eee8ff
+    );
+}
+
+.mexico-card p {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.mexico-card strong {
+    color: #6246d8;
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+========================================================= */
+
+.contenido {
+    background: white;
+    padding: 28px 35px;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   CABECERA
+========================================================= */
+
+.cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+
+/* TÍTULO */
+
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.titulo-icono {
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+
+    background: linear-gradient(
+        135deg,
+        #6246d8,
+        #437bea
+    );
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+}
+
+.titulo h1 {
+    font-size: 35px;
+}
+
+.titulo p {
+    color: #6246d8;
+    font-size: 18px;
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   PUNTOS Y VIDAS
+========================================================= */
+
+.estadisticas {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.estadistica {
+    min-width: 110px;
+    padding: 10px 15px;
+
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: white;
+    border: 1px solid #e1e3f4;
+
+    box-shadow: 0 4px 12px rgba(
+        80,
+        70,
+        150,
+        0.10
+    );
+}
+
+.estadistica > span {
+    font-size: 23px;
+}
+
+.estadistica div {
+    display: flex;
+    flex-direction: column;
+}
+
+.estadistica div span {
+    font-size: 11px;
+    color: #77779a;
+}
+
+.estadistica strong {
+    font-size: 18px;
+    color: #4934a5;
+}
+
+
+/* PUNTOS */
+
+.puntos {
+    border-left: 4px solid #6246d8;
+}
+
+
+/* VIDAS */
+
+.vidas {
+    border-left: 4px solid #3978e8;
+}
+
+
+/* =========================================================
+   MENSAJE DEL ROBOT
+========================================================= */
+
+.robot-mensaje {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background: linear-gradient(
+        90deg,
+        #eef2ff,
+        #f8f7ff
+    );
+
+    border: 1px solid #dce2ff;
+    border-radius: 18px;
+
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.robot {
+    width: 60px;
+    height: 60px;
+
+    background: #e5ebff;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 32px;
+}
+
+.robot-mensaje p {
+    font-size: 15px;
+    line-height: 23px;
+}
+
+
+/* =========================================================
+   INFORMACIÓN PRINCIPAL
+========================================================= */
+
+.informacion {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(240px, 1fr);
+
+    gap: 18px;
+}
+
+
+/* IMAGEN */
+
+.imagen-contenedor {
+    position: relative;
+    height: 350px;
+
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.imagen-contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* BOTÓN AUDIO */
+
+.audio-btn {
+    position: absolute;
+
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+
+    height: 55px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: linear-gradient(
+        90deg,
+        #6246d8,
+        #3978e8
+    );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 22px;
+}
+
+.audio-btn:hover {
+    transform: scale(1.01);
+}
+
+
+/* =========================================================
+   DATO CURIOSO
+========================================================= */
+
+.dato {
+    border: 1px solid #e0e3f7;
+    border-radius: 22px;
+
+    padding: 24px;
+
+    background: #fcfcff;
+}
+
+.dato h2 {
+    color: #5038bf;
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.dato p {
+    line-height: 25px;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.dato h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+
+/* REGIONES */
+
+.regiones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.regiones span {
+    background: #eeecff;
+    color: #5940ca;
+
+    padding: 8px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MINI RETO
+========================================================= */
+
+.reto {
+    margin-top: 20px;
+
+    border: 1px solid #e1e3f2;
+    border-radius: 22px;
+
+    padding: 22px;
+}
+
+.reto-titulo {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.reto-titulo > span {
+    font-size: 30px;
+}
+
+.reto-titulo h2 {
+    font-size: 20px;
+}
+
+.reto-titulo p {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   OPCIONES DEL RETO
+========================================================= */
+
+.opciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.opcion {
+    min-height: 60px;
+
+    border: 2px solid #dce1f2;
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    font-size: 15px;
+    color: #1c1d4f;
+
+    transition: 0.2s;
+}
+
+.opcion:hover {
+    border-color: #6c52df;
+    background: #f8f6ff;
+}
+
+.opcion.correcta {
+    border-color: #3aaa72;
+    background: #edf9f2;
+}
+
+.opcion.incorrecta {
+    border-color: #e46a7c;
+    background: #fff0f3;
+}
+
+
+/* CÍRCULO DE OPCIÓN */
+
+.circulo-opcion {
+    width: 20px;
+    height: 20px;
+
+    border: 3px solid #b9bfd2;
+    border-radius: 50%;
+}
+
+.correcta .circulo-opcion {
+    border-color: #32a66a;
+    background: #32a66a;
+}
+
+.incorrecta .circulo-opcion {
+    border-color: #e05e73;
+}
+
+
+/* =========================================================
+   RESULTADO
+========================================================= */
+
+.resultado {
+    min-height: 30px;
+
+    margin-top: 14px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.resultado.correcto {
+    color: #23935b;
+}
+
+.resultado.incorrecto {
+    color: #df5367;
+}
+
+
+/* =========================================================
+   BOTÓN SIGUIENTE
+========================================================= */
+
+.boton-final {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 10px;
+}
+
+#botonSiguiente {
+    border: none;
+    border-radius: 28px;
+
+    padding: 14px 30px;
+
+    background: #bcb9ef;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: not-allowed;
+}
+
+#botonSiguiente:not(:disabled) {
+    background: linear-gradient(
+        90deg,
+        #6246d8,
+        #3978e8
+    );
+
+    cursor: pointer;
+}
+
+#botonSiguiente:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   PANEL DERECHO
+========================================================= */
+
+.derecha {
+    background: #fafaff;
+
+    padding: 25px 20px;
+
+    border-left: 1px solid #e5e5f3;
+}
+
+.progreso,
+.sobre {
+    background: white;
+
+    border: 1px solid #e0e3f4;
+    border-radius: 22px;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+}
+
+.progreso h2,
+.sobre h2 {
+    font-size: 18px;
+    color: #27265b;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   CÍRCULO DE PROGRESO
+========================================================= */
+
+.circulo-progreso {
+    width: 145px;
+    height: 145px;
+
+    margin: auto;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circulo-progreso svg {
+    width: 145px;
+    height: 145px;
+
+    transform: rotate(-90deg);
+}
+
+.circulo-fondo {
+    fill: none;
+
+    stroke: #e5e4fa;
+    stroke-width: 10;
+}
+
+.circulo-avance {
+    fill: none;
+
+    stroke: #6246d8;
+    stroke-width: 10;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 314;
+    stroke-dashoffset: 314;
+
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.circulo-progreso strong {
+    position: absolute;
+
+    font-size: 28px;
+
+    color: #29275c;
+}
+
+
+/* =========================================================
+   DATOS DEL PROGRESO
+========================================================= */
+
+.datos-progreso {
+    display: flex;
+
+    justify-content: space-around;
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    gap: 10px;
+}
+
+.datos-progreso div {
+    display: flex;
+    flex-direction: column;
+}
+
+.datos-progreso strong {
+    font-size: 20px;
+    color: #6246d8;
+}
+
+.datos-progreso span {
+    font-size: 11px;
+    color: #77779a;
+
+    margin-top: 4px;
+}
+
+.progreso > p {
+    text-align: center;
+
+    color: #6246d8;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    line-height: 20px;
+
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   SOBRE ESTE TEMA
+========================================================= */
+
+.sobre {
+    min-height: 340px;
+}
+
+.sobre p {
+    line-height: 25px;
+    font-size: 15px;
+}
+
+.comida {
+    text-align: center;
+
+    font-size: 90px;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .app {
+        grid-template-columns: 230px 1fr;
+    }
+
+    .derecha {
+        display: none;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .app {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .contenido {
+        padding: 20px;
+    }
+
+    .cabecera {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .estadisticas {
+        width: 100%;
+    }
+
+    .estadistica {
+        flex: 1;
+    }
+
+    .informacion {
+        grid-template-columns: 1fr;
+    }
+
+    .opciones {
+        grid-template-columns: 1fr;
+    }
+}

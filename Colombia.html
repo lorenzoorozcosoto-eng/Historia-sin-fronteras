@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Historia Sin Fronteras</title>
+
+<link rel="stylesheet" href="Colombia.css">
+```
+
+</head>  
+
+<body>
+
+<div class="pagina">
+
+```
+<!-- ================================
+     ENCABEZADO
+================================= -->
+
+<header class="encabezado">
+
+    <div class="marca">
+
+        <div class="logo">
+            🌎
+        </div>
+
+        <div>
+            <h1>
+                Historia<br>
+                Sin Fronteras
+            </h1>
+
+            <p>
+                Explora el mundo, aprende historia
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="informacion-jugador">
+
+        <div class="jugador">
+
+            <div class="avatar-jugador">
+                👩🏻
+            </div>
+
+            <div>
+                <strong>Hola, Explorador</strong>
+                <span>🌎 ¡Comencemos!</span>
+            </div>
+
+        </div>
+
+        <div class="dato">
+            ⭐
+            <strong id="puntos">0</strong>
+            <small>Puntos</small>
+        </div>
+
+        <div class="racha">
+            <span>🔥</span>
+            <strong id="racha">0</strong>
+        </div>
+
+        <div class="dato">
+            ❤️
+            <strong id="vidas">3</strong>
+            <small>Vidas</small>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================================
+     CONTENIDO
+================================= -->
+
+<main class="contenido">
+
+
+    <!-- ================================
+         MENÚ
+    ================================= -->
+
+    <aside class="menu">
+
+        <!-- HISTORIA -->
+
+        <div class="menu-seccion">
+
+            <div class="titulo-menu">
+
+                <span>📖</span>
+
+                <strong>Historia</strong>
+
+                <span class="flecha">⌄</span>
+
+            </div>
+
+            <button onclick="cambiarTema('primeras-civilizaciones')">
+                🏛️ Primeras civilizaciones
+            </button>
+
+            <button onclick="cambiarTema('conquista')">
+                ⚔️ Conquista
+            </button>
+
+            <button onclick="cambiarTema('epoca-colonial')">
+                🚢 Época colonial
+            </button>
+
+            <button onclick="cambiarTema('independencia')">
+                🚩 Independencia
+            </button>
+
+            <button onclick="cambiarTema('personajes-historicos')">
+                👤 Personajes históricos
+            </button>
+
+            <button onclick="cambiarTema('conflictos-importantes')">
+                💥 Conflictos importantes
+            </button>
+
+        </div>
+
+
+        <!-- CULTURA -->
+
+        <div class="menu-seccion">
+
+            <div class="titulo-menu">
+
+                <span>🎭</span>
+
+                <strong>Cultura</strong>
+
+                <span class="flecha">⌃</span>
+
+            </div>
+
+            <button onclick="cambiarTema('gastronomia')">
+                🍴 Gastronomía
+            </button>
+
+            <button onclick="cambiarTema('musica-y-bailes')">
+                🎵 Música y bailes
+            </button>
+
+            <button onclick="cambiarTema('tradiciones')">
+                🌸 Tradiciones
+            </button>
+
+            <button onclick="cambiarTema('religiones')">
+                🪷 Religiones
+            </button>
+
+            <button onclick="cambiarTema('vestimenta-tipica')">
+                👕 Vestimenta típica
+            </button>
+
+            <button onclick="cambiarTema('arte-y-literatura')">
+                🎨 Arte y literatura
+            </button>
+
+            <button onclick="cambiarTema('monumentos')">
+                🏛️ Monumentos
+            </button>
+
+            <button onclick="cambiarTema('fiestas')">
+                🎉 Fiestas
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================================
+         CONTENIDO CENTRAL
+    ================================= -->
+
+    <section class="contenido-central">
+
+        <button class="volver" onclick="volverInicio()">
+            ← Volver a Cultura
+        </button>
+
+
+        <!-- TÍTULO -->
+
+        <div class="titulo-tema">
+
+            <div class="icono-tema">
+                🍴
+            </div>
+
+            <div>
+
+                <h2>
+                    Gastronomía
+                </h2>
+
+                <p>
+                    Sabores que cuentan historias
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHATBOT -->
+
+        <div class="mensaje-bot">
+
+            <div class="bot">
+                🤖
+            </div>
+
+            <div class="burbuja-bot">
+
+                <p id="mensajeBot">
+                    ¡Hola! Hoy vamos a descubrir
+                    la gastronomía de Colombia.
+                    Escucha la explicación y
+                    después responde el mini reto.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMACIÓN -->
+
+        <div class="informacion-tema">
+
+            <div class="imagen-contenedor">
+
+                <img
+                    src="https://s3.amazonaws.com/rtvc-assets-senalcolombia.gov.co/s3fs-public/styles/imagen_noticia/public/field/image/Sin%20ti%CC%81tulo-1_10.jpg?itok=NTFf8IdV"
+                    alt="Gastronomía de Colombia"
+                >
+
+                <button
+                    class="boton-audio"
+                    id="botonAudio"
+                    onclick="reproducirAudio()"
+                >
+
+                    <span>
+                        🔊 Escuchar explicación
+                    </span>
+
+                    <small id="estadoAudio">
+                        ▶
+                    </small>
+
+                </button>
+
+            </div>
+
+
+            <!-- DATO CURIOSO -->
+
+            <div class="dato-curioso">
+
+                <h3>
+                    💡 Dato curioso
+                </h3>
+
+                <p>
+                    La gastronomía colombiana tiene
+                    una gran diversidad regional.
+                    Cada región posee platos y
+                    preparaciones que reflejan
+                    sus tradiciones.
+                </p>
+
+                <h4>
+                    🌎 Regiones destacadas
+                </h4>
+
+                <div class="regiones">
+
+                    <span>Caribe</span>
+                    <span>Andina</span>
+                    <span>Pacífica</span>
+                    <span>Orinoquía</span>
+                    <span>Amazonía</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="reto">
+
+    <div class="titulo-reto">
+        <span>🎮</span>
+        <div>
+            <h3>Mini reto</h3>
+            <p></p>
+        </div>
+    </div>
+
+    <div class="opciones"></div>
+
+    <div id="resultado" class="resultado"></div>
+
+    <button id="botonSiguiente" class="siguiente-reto" disabled>
+    Siguiente →
+</button>
+
+</div>
+        <!-- SIGUIENTE -->
+
+        <button
+            class="siguiente"
+            id="botonSiguiente"
+            onclick="siguientePregunta()"
+            disabled
+        >
+            Siguiente →
+        </button>
+
+    </section>
+
+
+    <!-- ================================
+         PANEL DERECHO
+    ================================= -->
+
+    <aside class="panel-derecho">
+
+        <div class="tarjeta explorar">
+
+            <div class="planeta">
+                🌎
+            </div>
+
+            <h3>
+                ¡Sigue explorando!
+            </h3>
+
+            <p>
+                Descubre nuevas historias,
+                culturas y tradiciones
+                alrededor del mundo.
+            </p>
+
+            <div class="decoracion">
+                ✦
+            </div>
+
+        </div>
+
+    </aside>
+
+</main>
+```
+
+</div>
+
+<script src="Colombia.js"></script>
+
+</body>
+</html>

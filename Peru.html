@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perú | Historia Sin Fronteras</title>
+
+    <link rel="stylesheet" href="Estilo.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="fondo"></div>
+
+<main class="contenedor">
+
+    <h1>🇵🇪 PERÚ</h1>
+
+    <div class="imagen-pais">
+        <img 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8yvSPgpq92F0wZdWM7AV2Jr-NHI9fsNiNDYCWKqB6mW9gwIQZR7QgBAY&s=10" 
+            alt="Perú">
+    </div>
+
+    <h2>Explora su historia y cultura</h2>
+
+
+    <!-- ================= CATEGORÍAS ================= -->
+
+    <div class="categorias">
+
+        <button class="categoria" onclick="mostrarHistoria()">
+            <span>📜</span>
+            HISTORIA
+        </button>
+
+        <button class="categoria" onclick="mostrarCultura()">
+            <span>🎭</span>
+            CULTURA
+        </button>
+
+    </div>
+
+
+    <!-- ================= HISTORIA ================= -->
+
+    <section id="historia" class="subcategorias">
+
+        <h3>📜 Historia del Perú</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarInfo('civilizaciones')">
+                🗿 Primeras civilizaciones
+            </button>
+
+            <button onclick="mostrarInfo('prehispanicas')">
+                🏺 Culturas prehispánicas
+            </button>
+
+            <button onclick="mostrarInfo('inca')">
+                🏔️ Imperio Inca
+            </button>
+
+            <button onclick="mostrarInfo('conquista')">
+                ⚔️ Conquista del Perú
+            </button>
+
+            <button onclick="mostrarInfo('colonial')">
+                👑 Época colonial
+            </button>
+
+            <button onclick="mostrarInfo('independencia')">
+                🇵🇪 Independencia del Perú
+            </button>
+
+            <button onclick="mostrarInfo('personajes')">
+                👤 Personajes históricos
+            </button>
+
+        </div>
+
+
+        <div id="informacionHistoria" class="informacion">
+
+            <h4 id="tituloInfo"></h4>
+
+            <p id="textoInfo"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CULTURA ================= -->
+
+    <section id="cultura" class="subcategorias">
+
+        <h3>🎭 Cultura del Perú</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarCulturaInfo('danzas')">
+                💃 Danzas tradicionales
+            </button>
+
+            <button onclick="mostrarCulturaInfo('musica')">
+                🎶 Música peruana
+            </button>
+
+            <button onclick="mostrarCulturaInfo('gastronomia')">
+                🍲 Gastronomía
+            </button>
+
+            <button onclick="mostrarCulturaInfo('arte')">
+                🎨 Arte y artesanías
+            </button>
+
+            <button onclick="mostrarCulturaInfo('fiestas')">
+                🎉 Fiestas y celebraciones
+            </button>
+
+            <button onclick="mostrarCulturaInfo('vestimenta')">
+                👗 Vestimenta tradicional
+            </button>
+
+            <button onclick="mostrarCulturaInfo('lenguas')">
+                🗣️ Lenguas y diversidad cultural
+            </button>
+
+        </div>
+
+
+        <div id="informacionCultura" class="informacion">
+
+            <h4 id="tituloCultura"></h4>
+
+            <p id="textoCultura"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   MOSTRAR HISTORIA
+===================================================== */
+
+function mostrarHistoria() {
+
+    document.getElementById("historia").style.display = "block";
+
+    document.getElementById("cultura").style.display = "none";
+
+}
+
+
+/* =====================================================
+   MOSTRAR CULTURA
+===================================================== */
+
+function mostrarCultura() {
+
+    document.getElementById("cultura").style.display = "block";
+
+    document.getElementById("historia").style.display = "none";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE HISTORIA
+===================================================== */
+
+const informacion = {
+
+    civilizaciones: {
+
+        titulo: "🗿 Primeras civilizaciones",
+
+        texto: `El territorio del actual Perú fue uno de los lugares donde
+        surgieron algunas de las civilizaciones más antiguas de América.
+
+        Entre las primeras sociedades destacaron Caral, considerada una
+        de las civilizaciones más antiguas de América, y otras culturas
+        que desarrollaron agricultura, pesca, arquitectura y comercio.
+
+        Estas sociedades construyeron centros ceremoniales y desarrollaron
+        diferentes formas de organización social.`
+
+    },
+
+
+    prehispanicas: {
+
+        titulo: "🏺 Culturas prehispánicas",
+
+        texto: `Antes de la llegada de los españoles existieron numerosas
+        culturas en el territorio peruano.
+
+        Entre ellas se encuentran la cultura Nazca, conocida por sus
+        famosas líneas y cerámicas; la cultura Moche, destacada por su
+        cerámica y arquitectura; y la cultura Chimú, que desarrolló
+        importantes construcciones y sistemas de agricultura.
+
+        Estas culturas dejaron un importante patrimonio arqueológico
+        que todavía puede estudiarse en la actualidad.`
+
+    },
+
+
+    inca: {
+
+        titulo: "🏔️ Imperio Inca",
+
+        texto: `El Imperio Inca fue uno de los Estados más grandes y
+        organizados de la América precolombina.
+
+        Su centro político se encontraba en Cusco y llegó a controlar
+        territorios de varios países actuales de Sudamérica.
+
+        Los incas desarrollaron sistemas de agricultura, caminos,
+        construcción y administración.
+
+        Machu Picchu es uno de los lugares más conocidos relacionados
+        con la civilización inca.`
+
+    },
+
+
+    conquista: {
+
+        titulo: "⚔️ Conquista del Perú",
+
+        texto: `La conquista española del Perú comenzó en el siglo XVI.
+        Francisco Pizarro y sus expedicionarios llegaron al territorio
+        del Imperio Inca.
+
+        En 1532 capturaron al gobernante inca Atahualpa en Cajamarca.
+        Posteriormente los españoles avanzaron hacia Cusco.
+
+        La conquista produjo grandes cambios políticos, sociales,
+        económicos y culturales y significó el fin del poder político
+        del Imperio Inca.`
+
+    },
+
+
+    colonial: {
+
+        titulo: "👑 Época colonial",
+
+        texto: `Durante la época colonial, el territorio peruano formó parte
+        del Imperio español y fue conocido principalmente como el
+        Virreinato del Perú.
+
+        Lima se convirtió en un importante centro político y económico
+        de la administración española en Sudamérica.
+
+        Durante este período se mezclaron elementos de las culturas
+        indígenas, españolas y africanas, dando origen a nuevas
+        expresiones culturales y sociales.`
+
+    },
+
+
+    independencia: {
+
+        titulo: "🇵🇪 Independencia del Perú",
+
+        texto: `El proceso de independencia del Perú ocurrió durante las
+        primeras décadas del siglo XIX.
+
+        José de San Martín proclamó la independencia en Lima el
+        28 de julio de 1821.
+
+        Sin embargo, la lucha militar continuó durante varios años.
+        En 1824, las batallas de Junín y Ayacucho fueron decisivas
+        para terminar con el dominio militar español en gran parte
+        de Sudamérica.
+
+        El Perú comenzó entonces su etapa como república independiente.`
+
+    },
+
+
+    personajes: {
+
+        titulo: "👤 Personajes históricos",
+
+        texto: `La historia del Perú cuenta con numerosos personajes
+        importantes.
+
+        Pachacútec fue uno de los gobernantes incas más destacados y
+        tuvo un papel importante en la expansión del Imperio Inca.
+
+        Túpac Amaru II lideró una importante rebelión contra las
+        autoridades coloniales en el siglo XVIII.
+
+        José de San Martín participó en las campañas de independencia
+        de varios países sudamericanos y proclamó la independencia
+        del Perú en 1821.
+
+        También destacó Micaela Bastidas por su participación en la
+        rebelión encabezada junto a Túpac Amaru II.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE HISTORIA
+===================================================== */
+
+function mostrarInfo(categoria) {
+
+    document.getElementById("tituloInfo").textContent =
+        informacion[categoria].titulo;
+
+    document.getElementById("textoInfo").textContent =
+        informacion[categoria].texto;
+
+    document.getElementById("informacionHistoria").style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE CULTURA
+===================================================== */
+
+const informacionCultura = {
+
+    danzas: {
+
+        titulo: "💃 Danzas tradicionales",
+
+        texto: `El Perú posee una gran variedad de danzas tradicionales
+        relacionadas con sus diferentes regiones y comunidades.
+
+        Algunas de las más conocidas son la marinera, el huayno,
+        la danza de tijeras y el festejo.
+
+        Las danzas pueden representar historias, celebraciones,
+        actividades tradicionales y expresiones religiosas.`
+
+    },
+
+
+    musica: {
+
+        titulo: "🎶 Música peruana",
+
+        texto: `La música peruana combina influencias indígenas, españolas
+        y africanas.
+
+        Entre los instrumentos tradicionales se encuentran la quena,
+        la zampoña, el charango y diferentes tipos de tambores.
+
+        Existen estilos musicales propios de la costa, los Andes y
+        la Amazonía, además de géneros modernos que continúan
+        evolucionando.`
+
+    },
+
+
+    gastronomia: {
+
+        titulo: "🍲 Gastronomía",
+
+        texto: `La gastronomía peruana es conocida por su gran variedad
+        de ingredientes y preparaciones.
+
+        Algunos platos representativos son el ceviche, el ají de gallina,
+        la causa y el lomo saltado.
+
+        La cocina peruana combina ingredientes y técnicas de diferentes
+        tradiciones culturales, incluyendo influencias indígenas,
+        españolas, africanas, asiáticas y de otras comunidades.`
+
+    },
+
+
+    arte: {
+
+        titulo: "🎨 Arte y artesanías",
+
+        texto: `El arte peruano tiene una larga tradición que se remonta
+        a las culturas prehispánicas.
+
+        La cerámica, los tejidos, la orfebrería y la elaboración de
+        objetos decorativos han sido importantes en diferentes regiones.
+
+        En la actualidad, muchas comunidades continúan elaborando
+        artesanías que representan sus tradiciones y conocimientos.`
+
+    },
+
+
+    fiestas: {
+
+        titulo: "🎉 Fiestas y celebraciones",
+
+        texto: `El Perú celebra numerosas fiestas tradicionales durante
+        todo el año.
+
+        Muchas de ellas combinan elementos indígenas y cristianos
+        desarrollados durante la época colonial.
+
+        Entre las celebraciones conocidas se encuentran el Inti Raymi
+        en Cusco, la Fiesta de la Candelaria en Puno y diferentes
+        festividades patronales en todo el país.`
+
+    },
+
+
+    vestimenta: {
+
+        titulo: "👗 Vestimenta tradicional",
+
+        texto: `La vestimenta tradicional peruana varía según la región.
+
+        En las comunidades andinas son comunes prendas como las polleras,
+        los ponchos, los chullos y diferentes tipos de tejidos.
+
+        Los diseños, colores y materiales pueden representar la identidad
+        y las tradiciones de cada comunidad.
+
+        En otras regiones del país existen diferentes formas de vestir
+        relacionadas con las costumbres locales.`
+
+    },
+
+
+    lenguas: {
+
+        titulo: "🗣️ Lenguas y diversidad cultural",
+
+        texto: `El Perú es un país con una gran diversidad cultural y
+        lingüística.
+
+        El español es una de las principales lenguas utilizadas,
+        pero también tienen reconocimiento oficial el quechua,
+        el aimara y otras lenguas indígenas en las zonas donde
+        predominan.
+
+        Esta diversidad refleja la existencia de numerosos pueblos
+        y comunidades con diferentes historias, costumbres y formas
+        de entender el mundo.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE CULTURA
+===================================================== */
+
+function mostrarCulturaInfo(categoria) {
+
+    document.getElementById("tituloCultura").textContent =
+        informacionCultura[categoria].titulo;
+
+    document.getElementById("textoCultura").textContent =
+        informacionCultura[categoria].texto;
+
+    document.getElementById("informacionCultura").style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   AL CARGAR LA PÁGINA
+===================================================== */
+
+document.getElementById("historia").style.display = "none";
+
+document.getElementById("cultura").style.display = "none";
+
+</script>
+
+</body>
+
+

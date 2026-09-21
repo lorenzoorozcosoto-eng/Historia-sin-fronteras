@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Italia | Historia Sin Fronteras</title>
+
+    <link rel="stylesheet" href="Estilo.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="fondo"></div>
+
+<main class="contenedor">
+
+    <h1>🇮🇹 ITALIA</h1>
+
+    <div class="imagen-pais">
+        <img 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcAFaVlc9x26TsE854GNvzKfwZ6wCLbP_HgHKTac1qhNyGrQoL2pOBeKE&s=10" 
+            alt="Italia">
+    </div>
+
+    <h2>Explora su historia y cultura</h2>
+
+
+    <!-- ================= CATEGORÍAS ================= -->
+
+    <div class="categorias">
+
+        <button class="categoria" onclick="mostrarHistoria()">
+            <span>📜</span>
+            HISTORIA
+        </button>
+
+        <button class="categoria" onclick="mostrarCultura()">
+            <span>🎭</span>
+            CULTURA
+        </button>
+
+    </div>
+
+
+    <!-- ================= HISTORIA ================= -->
+
+    <section id="historia" class="subcategorias">
+
+        <h3>📜 Historia de Italia</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarInfo('roma')">
+                🏛️ Antigua Roma
+            </button>
+
+            <button onclick="mostrarInfo('edadMedia')">
+                🏰 Edad Media
+            </button>
+
+            <button onclick="mostrarInfo('renacimiento')">
+                🎨 Renacimiento
+            </button>
+
+            <button onclick="mostrarInfo('estados')">
+                👑 Estados italianos
+            </button>
+
+            <button onclick="mostrarInfo('unificacion')">
+                🇮🇹 Unificación de Italia
+            </button>
+
+            <button onclick="mostrarInfo('contemporanea')">
+                🌎 Italia contemporánea
+            </button>
+
+            <button onclick="mostrarInfo('personajes')">
+                👤 Personajes históricos
+            </button>
+
+        </div>
+
+
+        <div id="informacionHistoria" class="informacion">
+
+            <h4 id="tituloInfo"></h4>
+
+            <p id="textoInfo"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CULTURA ================= -->
+
+    <section id="cultura" class="subcategorias">
+
+        <h3>🎭 Cultura de Italia</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarCulturaInfo('arte')">
+                🎨 Arte
+            </button>
+
+            <button onclick="mostrarCulturaInfo('musica')">
+                🎼 Música y ópera
+            </button>
+
+            <button onclick="mostrarCulturaInfo('gastronomia')">
+                🍕 Gastronomía
+            </button>
+
+            <button onclick="mostrarCulturaInfo('arquitectura')">
+                🏛️ Arquitectura
+            </button>
+
+            <button onclick="mostrarCulturaInfo('moda')">
+                👗 Moda
+            </button>
+
+            <button onclick="mostrarCulturaInfo('fiestas')">
+                🎉 Fiestas y tradiciones
+            </button>
+
+            <button onclick="mostrarCulturaInfo('lengua')">
+                🗣️ Lengua italiana
+            </button>
+
+        </div>
+
+
+        <div id="informacionCultura" class="informacion">
+
+            <h4 id="tituloCultura"></h4>
+
+            <p id="textoCultura"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   MOSTRAR HISTORIA
+===================================================== */
+
+function mostrarHistoria() {
+
+    document.getElementById("historia").style.display = "block";
+    document.getElementById("cultura").style.display = "none";
+
+}
+
+
+/* =====================================================
+   MOSTRAR CULTURA
+===================================================== */
+
+function mostrarCultura() {
+
+    document.getElementById("cultura").style.display = "block";
+    document.getElementById("historia").style.display = "none";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE HISTORIA
+===================================================== */
+
+const informacion = {
+
+    roma: {
+
+        titulo: "🏛️ Antigua Roma",
+
+        texto: `La Antigua Roma fue una de las civilizaciones más importantes
+        de la historia. Se desarrolló en la península italiana y llegó a
+        controlar grandes territorios de Europa, África y Asia.
+
+        Roma pasó por diferentes etapas: monarquía, república e imperio.
+
+        Los romanos realizaron importantes aportes al derecho, la ingeniería,
+        la arquitectura, las carreteras y la organización política.
+
+        El Imperio romano de Occidente cayó en el año 476 d.C., aunque
+        muchas de sus ideas y construcciones continuaron influyendo en
+        Europa.`
+
+    },
+
+
+    edadMedia: {
+
+        titulo: "🏰 Edad Media",
+
+        texto: `Después de la caída del Imperio romano de Occidente, la
+        península italiana quedó dividida entre diferentes territorios.
+
+        Durante la Edad Media surgieron ciudades y Estados con diferentes
+        gobiernos y formas de organización.
+
+        Algunas ciudades italianas, como Venecia, Génova y Florencia,
+        desarrollaron importantes actividades comerciales.
+
+        La Iglesia católica también tuvo una gran influencia política y
+        cultural, especialmente desde Roma.`
+
+    },
+
+
+    renacimiento: {
+
+        titulo: "🎨 Renacimiento",
+
+        texto: `El Renacimiento fue un importante movimiento cultural y artístico
+        que comenzó en las ciudades italianas durante los siglos XIV y XV.
+
+        Florencia fue uno de los principales centros de este movimiento.
+
+        Los artistas y pensadores recuperaron ideas de la Antigüedad clásica
+        y desarrollaron nuevas formas de estudiar el arte, la ciencia y
+        el ser humano.
+
+        Leonardo da Vinci, Miguel Ángel y Rafael fueron algunos de los
+        artistas más destacados del Renacimiento italiano.`
+
+    },
+
+
+    estados: {
+
+        titulo: "👑 Estados italianos",
+
+        texto: `Durante varios siglos, Italia no fue un país unificado.
+        La península estaba dividida en diferentes Estados.
+
+        Entre ellos se encontraban el Reino de Piamonte-Cerdeña,
+        el Reino de las Dos Sicilias, los Estados Pontificios y diferentes
+        repúblicas y ducados.
+
+        Estos Estados tenían sus propios gobiernos y mantenían relaciones
+        políticas y comerciales entre ellos.
+
+        La división política continuó hasta el proceso de unificación
+        italiana durante el siglo XIX.`
+
+    },
+
+
+    unificacion: {
+
+        titulo: "🇮🇹 Unificación de Italia",
+
+        texto: `La unificación italiana fue un proceso político y militar
+        desarrollado principalmente durante el siglo XIX.
+
+        Figuras como Giuseppe Garibaldi, Giuseppe Mazzini y el rey Víctor
+        Manuel II tuvieron un papel importante.
+
+        El Reino de Italia fue proclamado en 1861 y posteriormente se
+        incorporaron otros territorios.
+
+        Roma se convirtió en la capital del Reino de Italia en 1871,
+        completando una etapa fundamental del proceso de unificación.`
+
+    },
+
+
+    contemporanea: {
+
+        titulo: "🌎 Italia contemporánea",
+
+        texto: `Italia participó en importantes acontecimientos del siglo XX,
+        incluyendo las dos guerras mundiales.
+
+        Después de la Segunda Guerra Mundial, en 1946, se realizó un
+        referéndum en el que los italianos eligieron una república en lugar
+        de la monarquía.
+
+        En 1948 entró en vigor la Constitución de la República Italiana.
+
+        Italia también participó en el proceso de integración europea y
+        actualmente es miembro de la Unión Europea.`
+
+    },
+
+
+    personajes: {
+
+        titulo: "👤 Personajes históricos",
+
+        texto: `Italia ha tenido numerosos personajes importantes en la
+        historia mundial.
+
+        Julio César fue una figura fundamental de la República romana y
+        tuvo una gran influencia en la política de Roma.
+
+        Leonardo da Vinci fue un artista, inventor y estudioso destacado
+        del Renacimiento.
+
+        Miguel Ángel fue uno de los grandes artistas del Renacimiento y
+        realizó obras importantes en pintura y escultura.
+
+        Galileo Galilei realizó importantes aportes a la astronomía y
+        la ciencia.
+
+        Giuseppe Garibaldi fue uno de los principales protagonistas de
+        la unificación italiana.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE HISTORIA
+===================================================== */
+
+function mostrarInfo(categoria) {
+
+    document.getElementById("tituloInfo").textContent =
+        informacion[categoria].titulo;
+
+    document.getElementById("textoInfo").textContent =
+        informacion[categoria].texto;
+
+    document.getElementById("informacionHistoria").style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE CULTURA
+===================================================== */
+
+const informacionCultura = {
+
+    arte: {
+
+        titulo: "🎨 Arte",
+
+        texto: `Italia ha tenido una enorme influencia en la historia del
+        arte mundial.
+
+        Durante el Renacimiento destacaron artistas como Leonardo da Vinci,
+        Miguel Ángel y Rafael.
+
+        También existen importantes obras de arte de épocas romana,
+        medieval, barroca y moderna.
+
+        Museos, iglesias, plazas y edificios históricos de diferentes
+        ciudades italianas conservan una gran cantidad de obras artísticas.`
+
+    },
+
+
+    musica: {
+
+        titulo: "🎼 Música y ópera",
+
+        texto: `Italia tiene una importante tradición musical y es considerada
+        uno de los lugares fundamentales en la historia de la ópera.
+
+        Compositores como Giuseppe Verdi y Giacomo Puccini crearon algunas
+        de las óperas italianas más conocidas.
+
+        La música tradicional también cambia según las diferentes regiones
+        del país.
+
+        La ópera continúa siendo una parte importante de la cultura
+        italiana.`
+
+    },
+
+
+    gastronomia: {
+
+        titulo: "🍕 Gastronomía",
+
+        texto: `La gastronomía italiana es conocida en todo el mundo por su
+        variedad y por sus diferentes tradiciones regionales.
+
+        Algunos alimentos y preparaciones conocidos son la pizza, la pasta,
+        el risotto, el queso y el gelato.
+
+        Los ingredientes y recetas pueden variar bastante entre las
+        regiones del norte, centro y sur.
+
+        La comida ocupa un lugar importante en las reuniones familiares
+        y en las tradiciones italianas.`
+
+    },
+
+
+    arquitectura: {
+
+        titulo: "🏛️ Arquitectura",
+
+        texto: `Italia conserva una gran cantidad de construcciones
+        históricas de diferentes épocas.
+
+        La arquitectura romana dejó monumentos como el Coliseo y numerosos
+        caminos, puentes y edificios.
+
+        Durante el Renacimiento se desarrollaron nuevas formas de
+        arquitectura en ciudades como Florencia y Roma.
+
+        También existen importantes ejemplos de arquitectura medieval,
+        barroca y moderna.`
+
+    },
+
+
+    moda: {
+
+        titulo: "👗 Moda",
+
+        texto: `Italia es uno de los principales centros internacionales
+        de la moda.
+
+        Ciudades como Milán tienen gran importancia en el diseño de ropa,
+        calzado y accesorios.
+
+        Diseñadores y marcas italianas han tenido influencia internacional
+        durante décadas.
+
+        La moda italiana se relaciona con el diseño, la creatividad y
+        la industria textil.`
+
+    },
+
+
+    fiestas: {
+
+        titulo: "🎉 Fiestas y tradiciones",
+
+        texto: `Italia posee numerosas fiestas y tradiciones que varían
+        según la región.
+
+        Algunas celebraciones importantes están relacionadas con la
+        Navidad, la Pascua y diferentes festividades religiosas.
+
+        También existen carnavales conocidos, como el Carnaval de Venecia,
+        caracterizado por sus máscaras y disfraces.
+
+        Las fiestas locales permiten conservar tradiciones históricas
+        y culturales de diferentes comunidades.`
+
+    },
+
+
+    lengua: {
+
+        titulo: "🗣️ Lengua italiana",
+
+        texto: `El italiano es la lengua oficial de Italia y pertenece a
+        las lenguas romances.
+
+        Se desarrolló principalmente a partir del latín utilizado en la
+        península italiana.
+
+        El idioma posee diferentes variedades regionales y dialectos.
+
+        El italiano también es una lengua oficial en San Marino y tiene
+        importancia cultural en otros lugares debido a la migración italiana
+        y a su influencia artística y musical.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE CULTURA
+===================================================== */
+
+function mostrarCulturaInfo(categoria) {
+
+    document.getElementById("tituloCultura").textContent =
+        informacionCultura[categoria].titulo;
+
+    document.getElementById("textoCultura").textContent =
+        informacionCultura[categoria].texto;
+
+    document.getElementById("informacionCultura").style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   AL CARGAR LA PÁGINA
+===================================================== */
+
+document.getElementById("historia").style.display = "none";
+
+document.getElementById("cultura").style.display = "none";
+
+</script>
+
+</body>
+
+

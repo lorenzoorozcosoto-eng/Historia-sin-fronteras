@@ -1,0 +1,1111 @@
+/* =====================================================
+   HISTORIA SIN FRONTERAS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    min-height: 100vh;
+
+    padding: 25px;
+
+    color: #263f55;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edfaff,
+            #f4f1ff,
+            #effcf7
+        );
+}
+
+
+.pagina {
+
+    width: 100%;
+
+    max-width: 1450px;
+
+    margin: auto;
+}
+
+
+/* =====================================================
+   ENCABEZADO
+===================================================== */
+
+.encabezado {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+
+.marca {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.logo {
+
+    width: 80px;
+
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: white;
+
+    font-size: 46px;
+
+    box-shadow:
+        0 7px 25px rgba(60, 90, 120, 0.12);
+}
+
+
+.marca h1 {
+
+    color: #174d7c;
+
+    font-size: 30px;
+
+    line-height: .95;
+}
+
+
+.marca p {
+
+    margin-top: 8px;
+
+    color: #687f90;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   JUGADOR
+===================================================== */
+
+.informacion-jugador {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.jugador {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 17px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 5px 20px rgba(50, 80, 110, .08);
+}
+
+
+.avatar-jugador {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e6f2ff;
+
+    font-size: 24px;
+}
+
+
+.jugador strong {
+
+    display: block;
+
+    font-size: 14px;
+}
+
+
+.jugador span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #718492;
+
+    font-size: 11px;
+}
+
+
+.dato {
+
+    min-width: 70px;
+
+    padding: 10px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 5px 20px rgba(50, 80, 110, .08);
+}
+
+
+.dato strong {
+
+    font-size: 16px;
+}
+
+
+.dato small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #718492;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   CONTENIDO
+===================================================== */
+
+.contenido {
+
+    display: grid;
+
+    grid-template-columns:
+        240px
+        minmax(500px, 1fr)
+        260px;
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+
+/* =====================================================
+   MENÚ
+===================================================== */
+
+.menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+.menu-seccion {
+
+    padding: 18px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 7px 25px rgba(50, 80, 110, .08);
+}
+
+
+.titulo-menu {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 13px;
+
+    font-size: 15px;
+}
+
+
+.titulo-menu .flecha {
+
+    margin-left: auto;
+}
+
+
+.menu button {
+
+    width: 100%;
+
+    border: none;
+
+    padding: 10px 8px;
+
+    margin-bottom: 3px;
+
+    text-align: left;
+
+    color: #35556e;
+
+    background: transparent;
+
+    border-radius: 11px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.menu button:hover {
+
+    background: #f0f5fa;
+
+    transform: translateX(3px);
+}
+
+
+.menu button.activo {
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6565ed,
+            #7967d7
+        );
+}
+
+
+/* =====================================================
+   CENTRO
+===================================================== */
+
+.contenido-central {
+
+    padding: 22px;
+
+    background: white;
+
+    border-radius: 23px;
+
+    box-shadow:
+        0 8px 30px rgba(50, 80, 110, .08);
+}
+
+
+/* =====================================================
+   VOLVER
+===================================================== */
+
+.volver {
+
+    border: none;
+
+    padding: 9px 15px;
+
+    margin-bottom: 15px;
+
+    color: #47657b;
+
+    background: #f1f6fa;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.titulo-tema {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 16px;
+}
+
+
+.icono-tema {
+
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6364ef,
+            #7768d6
+        );
+
+    border-radius: 17px;
+
+    font-size: 29px;
+}
+
+
+.titulo-tema h2 {
+
+    color: #5657d9;
+
+    font-size: 25px;
+}
+
+
+.titulo-tema p {
+
+    margin-top: 4px;
+
+    color: #748592;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   CHATBOT
+===================================================== */
+
+.mensaje-bot {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+
+.bot {
+
+    width: 53px;
+
+    height: 53px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e8f3ff;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+}
+
+
+.burbuja-bot {
+
+    max-width: 470px;
+
+    padding: 12px 16px;
+
+    color: #3e566b;
+
+    background: #f4f8fc;
+
+    border: 1px solid #e1eaf1;
+
+    border-radius: 17px;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   INFORMACIÓN
+===================================================== */
+
+.informacion-tema {
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr .8fr;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+.imagen-contenedor {
+
+    position: relative;
+
+    height: 285px;
+
+    overflow: hidden;
+
+    background: #e8edf1;
+
+    border-radius: 18px;
+}
+
+
+.imagen-contenedor img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =====================================================
+   AUDIO
+===================================================== */
+
+.boton-audio {
+
+    position: absolute;
+
+    left: 15px;
+
+    right: 15px;
+
+    bottom: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 13px 17px;
+
+    border: none;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3479e8,
+            #5967ef
+        );
+
+    border-radius: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.boton-audio:hover {
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   DATO CURIOSO
+===================================================== */
+
+.dato-curioso {
+
+    padding: 20px;
+
+    background: #f7faff;
+
+    border: 1px solid #e4edf5;
+
+    border-radius: 18px;
+}
+
+
+.dato-curioso h3 {
+
+    margin-bottom: 12px;
+
+    color: #42617a;
+
+    font-size: 16px;
+}
+
+
+.dato-curioso p {
+
+    color: #536a7b;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.dato-curioso h4 {
+
+    margin-top: 17px;
+
+    margin-bottom: 10px;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   REGIONES
+===================================================== */
+
+.regiones {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+
+.regiones span {
+
+    padding: 6px 10px;
+
+    color: #526d90;
+
+    background: #e9f0ff;
+
+    border-radius: 15px;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   MINI RETO
+===================================================== */
+
+.mini-reto {
+
+    padding: 18px;
+
+    background: white;
+
+    border: 1px solid #e2eaf0;
+
+    border-radius: 18px;
+}
+
+
+.titulo-reto {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 16px;
+}
+
+
+.icono-reto {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eef0ff;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+}
+
+
+.titulo-reto h2 {
+
+    color: #34526c;
+
+    font-size: 17px;
+}
+
+
+.titulo-reto p {
+
+    margin-top: 4px;
+
+    color: #596d7b;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   OPCIONES
+===================================================== */
+
+.opciones {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+}
+
+
+.opcion {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 2px solid #e1e8ee;
+
+    color: #3e5a70;
+
+    background: white;
+
+    border-radius: 14px;
+
+    text-align: left;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.opcion:hover {
+
+    background: #f7faff;
+
+    border-color: #858fa0;
+}
+
+
+/* RESPUESTA SELECCIONADA */
+
+.opcion.seleccionada {
+
+    border-color: #6970e8;
+
+    background: #f1f1ff;
+}
+
+
+/* RESPUESTA CORRECTA */
+
+.opcion.correcta {
+
+    border-color: #55a879;
+
+    background: #eaf8f0;
+
+    color: #24724a;
+}
+
+
+/* RESPUESTA INCORRECTA */
+
+.opcion.incorrecta {
+
+    border-color: #d97878;
+
+    background: #fff0f0;
+
+    color: #a33d3d;
+}
+
+
+.imagen-opcion {
+
+    font-size: 24px;
+}
+
+
+.circulo {
+
+    width: 18px;
+
+    height: 18px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    border: 2px solid #a8b5bf;
+
+    border-radius: 50%;
+}
+
+
+/* CÍRCULO SELECCIONADO */
+
+.opcion.seleccionada .circulo {
+
+    border: 5px solid #6667e8;
+}
+
+
+/* CÍRCULO CORRECTO */
+
+.opcion.correcta .circulo {
+
+    border: 5px solid #55a879;
+}
+
+
+/* CÍRCULO INCORRECTO */
+
+.opcion.incorrecta .circulo {
+
+    border: 5px solid #d97878;
+}
+
+
+/* =====================================================
+   RESULTADO
+===================================================== */
+
+.siguiente-reto {
+    display: block;
+    margin: 18px 0 0 auto;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    background: #b8b5f5;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.siguiente-reto:hover:not(:disabled) {
+    background: #6c63df;
+    transform: translateY(-2px);
+}
+
+.siguiente-reto:disabled {
+    background: #d8d6f7;
+    color: white;
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   SIGUIENTE
+===================================================== */
+
+.siguiente {
+
+    display: block;
+
+    margin: 18px 0 0 auto;
+
+    padding: 13px 25px;
+
+    border: none;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5c61ec,
+            #7565d6
+        );
+
+    border-radius: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.siguiente:disabled {
+
+    opacity: .45;
+
+    cursor: not-allowed;
+}
+
+
+.siguiente:not(:disabled):hover {
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   PANEL DERECHO
+===================================================== */
+
+.panel-derecho {
+
+    min-height: 650px;
+}
+
+
+.tarjeta.explorar {
+
+    width: 100%;
+
+    min-height: 650px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            160deg,
+            #f7fbff,
+            #f0f3ff
+        );
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 7px 25px rgba(50, 80, 110, .06);
+}
+
+
+.planeta {
+
+    font-size: 75px;
+
+    opacity: .8;
+}
+
+
+.explorar h3 {
+
+    margin-top: 15px;
+
+    color: #174d7c;
+
+    font-size: 18px;
+}
+
+
+.explorar p {
+
+    max-width: 190px;
+
+    margin-top: 10px;
+
+    color: #62798c;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.decoracion {
+
+    margin-top: 20px;
+
+    color: #9eaff0;
+
+    font-size: 30px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .contenido {
+
+        grid-template-columns:
+            210px 1fr;
+    }
+
+    .panel-derecho {
+
+        grid-column: 1 / -1;
+
+        min-height: 250px;
+    }
+
+    .tarjeta.explorar {
+
+        min-height: 250px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .encabezado {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 18px;
+    }
+
+    .contenido {
+
+        grid-template-columns: 1fr;
+    }
+
+    .informacion-tema {
+
+        grid-template-columns: 1fr;
+    }
+
+    .opciones {
+
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================
+AUDIO REPRODUCIENDO
+===================================================== */
+
+.boton-audio.reproduciendo {
+background:
+linear-gradient(
+90deg,
+#43a878,
+#4d8eea
+);
+
+
+transform: translateY(-2px);
+
+
+}
+
+/* =====================================================
+ANIMACIÓN DEL AUDIO
+===================================================== */
+
+.boton-audio.reproduciendo small {
+animation: pulsarAudio 1s infinite;
+}
+
+@keyframes pulsarAudio {
+
+
+0% {
+    transform: scale(1);
+}
+
+50% {
+    transform: scale(1.25);
+}
+
+100% {
+    transform: scale(1);
+}
+
+
+}

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Historia Sin Fronteras - Alemania</title>
+
+    <link rel="stylesheet" href="Alemania.css">
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =================================================
+         BARRA LATERAL
+    ================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo-area">
+
+            <div class="logo"><i><a href="explorarmapa.html"><img src="celstatecontenido-s-removebg-preview.png" width="60" height="60" alt=""></a></i></div>
+
+            <div>
+                <h2>Historia</h2>
+                <h2>Sin Fronteras</h2>
+            </div>
+
+        </div>
+
+
+        <p class="menu-titulo">
+            EXPLORA
+        </p>
+
+
+        <nav class="menu">
+
+            <button
+                class="activo"
+                onclick="cambiarTema('gastronomia', this)">
+                🥨 Gastronomía
+            </button>
+
+            <button
+                onclick="cambiarTema('musica', this)">
+                🎼 Música
+            </button>
+
+            <button
+                onclick="cambiarTema('tradiciones', this)">
+                🎊 Tradiciones
+            </button>
+
+            <button
+                onclick="cambiarTema('fiestas', this)">
+                🎉 Fiestas
+            </button>
+
+            <button
+                onclick="cambiarTema('vestimenta', this)">
+                👗 Vestimenta
+            </button>
+
+            <button
+                onclick="cambiarTema('arte', this)">
+                🎨 Arte
+            </button>
+
+            <button
+                onclick="cambiarTema('monumentos', this)">
+                🏰 Monumentos
+            </button>
+
+
+            <p class="menu-separador">
+                HISTORIA
+            </p>
+
+
+            <button
+                onclick="cambiarTema('imperio', this)">
+                👑 Imperio alemán
+            </button>
+
+            <button
+                onclick="cambiarTema('primeraGuerra', this)">
+                🌍 Primera Guerra Mundial
+            </button>
+
+            <button
+                onclick="cambiarTema('segundaGuerra', this)">
+                🌍 Segunda Guerra Mundial
+            </button>
+
+            <button
+                onclick="cambiarTema('berlin', this)">
+                🧱 Muro de Berlín
+            </button>
+
+            <button
+                onclick="cambiarTema('reunificacion', this)">
+                 Reunificación
+            </button>
+
+            <button
+                onclick="cambiarTema('personajes', this)">
+                👤 Personajes
+            </button>
+
+            <button
+                onclick="cambiarTema('estados', this)">
+                🗺️ Estados federados
+            </button>
+
+        </nav>
+
+
+        <!-- TARJETA ALEMANIA -->
+
+        <div class="pais-card">
+
+            <div class="bandera">
+                🇩🇪
+            </div>
+
+            <div>
+                <strong>Alemania</strong>
+
+                <span>
+                    Europa
+                </span>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         CONTENIDO PRINCIPAL
+    ================================================== -->
+
+    <main class="contenido">
+
+
+        <!-- HEADER -->
+
+        <header class="cabecera">
+
+            <div class="titulo">
+
+                <div
+                    class="titulo-icono"
+                    id="iconoTema">
+                    🥨
+                </div>
+
+                <div>
+
+                    <h1 id="tituloTema">
+                        Gastronomía
+                    </h1>
+
+                    <p id="subtituloTema">
+                        Sabores tradicionales de Alemania
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PUNTOS Y VIDAS -->
+
+            <div class="estadisticas">
+
+
+                <div class="estadistica puntos">
+
+                    <span>⭐</span>
+
+                    <div>
+
+                        <span>
+                            Puntos
+                        </span>
+
+                        <strong id="puntos">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="estadistica vidas">
+
+                    <span>❤️</span>
+
+                    <div>
+
+                        <span>
+                            Vidas
+                        </span>
+
+                        <strong id="vidas">
+                            3
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             MENSAJE DEL ROBOT
+        ================================================== -->
+
+        <section class="mensaje-robot">
+
+            <div class="robot">
+                🤖
+            </div>
+
+            <div class="burbuja">
+
+                <p id="mensajeRobot">
+                    ¡Descubre los sabores tradicionales
+                    de Alemania!
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INFORMACIÓN
+        ================================================== -->
+
+        <section class="informacion">
+
+
+            <div class="imagen-container">
+
+                <img
+                    id="imagenTema"
+                    src="https://images.unsplash.com/photo-1555507036-ab1f4038808a"
+                    alt="Alemania">
+
+                <button
+                    class="audio"
+                    onclick="escuchar()">
+
+                    🔊 Escuchar
+
+                </button>
+
+            </div>
+
+
+
+            <div class="datos">
+
+
+                <div class="dato-box">
+
+                    <span class="dato-icono">
+                        💡
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Dato interesante
+                        </h3>
+
+                        <p id="datoTema">
+                            La gastronomía alemana
+                            incluye platos regionales
+                            y productos tradicionales.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="regiones-box">
+
+                    <h3>
+                        📍 Regiones relacionadas
+                    </h3>
+
+                    <p id="regionesTema">
+                        Baviera • Berlín • Sajonia
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RETO
+        ================================================== -->
+
+        <section class="reto">
+
+
+            <div class="reto-titulo">
+
+                <span>
+                    🧠
+                </span>
+
+                <div>
+
+                    <small>
+                        MINI RETO
+                    </small>
+
+                    <h2>
+                        ¡Pon a prueba lo aprendido!
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="pregunta">
+
+                <p id="pregunta">
+                    ¿Cuál de estos alimentos es
+                    muy representativo de Alemania?
+                </p>
+
+            </div>
+
+
+
+            <div
+                id="opciones"
+                class="opciones">
+
+                <!-- Las respuestas aparecen
+                     automáticamente desde JS -->
+
+            </div>
+
+
+
+            <div
+                id="resultado"
+                class="resultado">
+
+            </div>
+
+
+
+            <button
+                id="botonSiguiente"
+                class="boton-siguiente"
+                onclick="siguienteTema()"
+                disabled>
+
+                Siguiente →
+                
+            </button>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =================================================
+         PANEL DERECHO
+    ================================================== -->
+
+    <aside class="panel-derecho">
+
+
+        <!-- PROGRESO -->
+
+        <div class="progreso-card">
+
+            <h2>
+                📊 Tu progreso
+            </h2>
+
+
+            <div class="circulo-container">
+
+                <svg
+                    class="circulo-progreso"
+                    width="150"
+                    height="150"
+                    viewBox="0 0 120 120">
+
+                    <circle
+                        class="circulo-fondo"
+                        cx="60"
+                        cy="60"
+                        r="50">
+                    </circle>
+
+                    <circle
+                        id="circuloProgreso"
+                        class="circulo-avance"
+                        cx="60"
+                        cy="60"
+                        r="50">
+                    </circle>
+
+                </svg>
+
+
+                <div class="porcentaje-centro">
+
+                    <strong id="porcentaje">
+                        0%
+                    </strong>
+
+                    <span>
+                        completado
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="estadisticas-progreso">
+
+                <div>
+
+                    <strong id="retosCompletados">
+                        0
+                    </strong>
+
+                    <span>
+                        Retos
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="respuestasCorrectas">
+                        0
+                    </strong>
+
+                    <span>
+                        Correctas
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p
+                id="mensajeProgreso"
+                class="mensaje-progreso">
+
+                ¡Comienza tu aventura por Alemania! 🇩🇪
+
+            </p>
+
+        </div>
+
+
+
+        <!-- SOBRE EL TEMA -->
+
+        <div class="sobre-card">
+
+            <h2>
+                📚 Sobre este tema
+            </h2>
+
+            <p id="sobreTexto">
+
+                La gastronomía alemana cambia
+                según la región y forma parte
+                importante de sus tradiciones
+                culturales.
+
+            </p>
+
+        </div>
+
+
+    </aside>
+
+</div>
+
+
+<!-- =================================================
+     JAVASCRIPT
+================================================== -->
+
+<script src="Alemania.js"></script>
+
+</body>
+
+</html>

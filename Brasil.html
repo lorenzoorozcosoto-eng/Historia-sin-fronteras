@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Brasil | Historia Sin Fronteras</title>
+
+    <link rel="stylesheet" href="Estilo.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="fondo"></div>
+
+<main class="contenedor">
+
+    <h1>🇧🇷 BRASIL</h1>
+
+    <div class="imagen-pais">
+        <img 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyBBtbjEMKOnd4ctKYY3Li6toCsh6VxNcYSLcpZtPtMwl2QQTLgx6d4ztr&s=10" 
+            alt="Brasil">
+    </div>
+
+    <h2>Explora su historia y cultura</h2>
+
+
+    <!-- ================= CATEGORÍAS ================= -->
+
+    <div class="categorias">
+
+        <button class="categoria" onclick="mostrarHistoria()">
+            <span>📜</span>
+            HISTORIA
+        </button>
+
+        <button class="categoria" onclick="mostrarCultura()">
+            <span>🎭</span>
+            CULTURA
+        </button>
+
+    </div>
+
+
+    <!-- ================= HISTORIA ================= -->
+
+    <section id="historia" class="subcategorias">
+
+        <h3>📜 Historia de Brasil</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarInfo('pueblos')">
+                🗿 Pueblos originarios
+            </button>
+
+            <button onclick="mostrarInfo('portugueses')">
+                ⛵ Llegada de los portugueses
+            </button>
+
+            <button onclick="mostrarInfo('colonial')">
+                👑 Época colonial
+            </button>
+
+            <button onclick="mostrarInfo('independencia')">
+                🇧🇷 Independencia de Brasil
+            </button>
+
+            <button onclick="mostrarInfo('imperio')">
+                🏛️ Imperio de Brasil
+            </button>
+
+            <button onclick="mostrarInfo('republica')">
+                🏛️ República de Brasil
+            </button>
+
+            <button onclick="mostrarInfo('personajes')">
+                👤 Personajes históricos
+            </button>
+
+        </div>
+
+
+        <!-- INFORMACIÓN DE HISTORIA -->
+
+        <div id="informacionHistoria" class="informacion">
+
+            <h4 id="tituloInfo"></h4>
+
+            <p id="textoInfo"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CULTURA ================= -->
+
+    <section id="cultura" class="subcategorias">
+
+        <h3>🎭 Cultura de Brasil</h3>
+
+        <div class="opciones">
+
+            <button onclick="mostrarCulturaInfo('carnaval')">
+                💃 Carnaval
+            </button>
+
+            <button onclick="mostrarCulturaInfo('musica')">
+                🎶 Música brasileña
+            </button>
+
+            <button onclick="mostrarCulturaInfo('futbol')">
+                ⚽ Fútbol
+            </button>
+
+            <button onclick="mostrarCulturaInfo('gastronomia')">
+                🍛 Gastronomía
+            </button>
+
+            <button onclick="mostrarCulturaInfo('arte')">
+                🎨 Arte y artesanías
+            </button>
+
+            <button onclick="mostrarCulturaInfo('fiestas')">
+                🎉 Fiestas y celebraciones
+            </button>
+
+            <button onclick="mostrarCulturaInfo('diversidad')">
+                🗣️ Diversidad cultural
+            </button>
+
+        </div>
+
+
+        <!-- INFORMACIÓN DE CULTURA -->
+
+        <div id="informacionCultura" class="informacion">
+
+            <h4 id="tituloCultura"></h4>
+
+            <p id="textoCultura"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   MOSTRAR HISTORIA
+===================================================== */
+
+function mostrarHistoria() {
+
+    document.getElementById("historia").style.display = "block";
+
+    document.getElementById("cultura").style.display = "none";
+
+}
+
+
+/* =====================================================
+   MOSTRAR CULTURA
+===================================================== */
+
+function mostrarCultura() {
+
+    document.getElementById("cultura").style.display = "block";
+
+    document.getElementById("historia").style.display = "none";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE HISTORIA DE BRASIL
+===================================================== */
+
+const informacion = {
+
+    pueblos: {
+
+        titulo: "🗿 Pueblos originarios",
+
+        texto: `Antes de la llegada de los portugueses, el territorio que hoy conocemos
+        como Brasil estaba habitado por numerosos pueblos indígenas.
+
+        Estos pueblos tenían diferentes lenguas, costumbres y formas de organización.
+        Muchos practicaban la agricultura, la pesca, la caza y la recolección.
+
+        Entre los grupos indígenas se encontraban pueblos como los tupí-guaraní,
+        los yanomami y los guaraníes. Sus conocimientos sobre la naturaleza y sus
+        tradiciones forman parte de la diversidad cultural de Brasil.`
+
+    },
+
+
+    portugueses: {
+
+        titulo: "⛵ Llegada de los portugueses",
+
+        texto: `La llegada de los portugueses a las costas de Brasil ocurrió en 1500,
+        cuando la expedición dirigida por Pedro Álvares Cabral llegó al territorio.
+
+        Portugal comenzó posteriormente a establecer asentamientos y a organizar
+        la explotación de recursos. Uno de los primeros productos importantes fue
+        el palo brasil, un árbol utilizado para obtener un tinte rojizo.
+
+        La llegada de los portugueses produjo grandes cambios para los pueblos
+        indígenas y dio inicio a un largo período de colonización.`
+
+    },
+
+
+    colonial: {
+
+        titulo: "👑 Época colonial",
+
+        texto: `Brasil fue una colonia portuguesa durante más de tres siglos.
+        Durante este período, la economía se basó en actividades como la producción
+        de azúcar, la minería y posteriormente el cultivo del café.
+
+        La sociedad colonial estuvo marcada por la presencia de pueblos indígenas,
+        colonos portugueses y millones de africanos que fueron trasladados
+        forzosamente como parte del sistema de esclavitud.
+
+        Las ciudades y regiones brasileñas fueron creciendo y desarrollando
+        características culturales propias.`
+
+    },
+
+
+    independencia: {
+
+        titulo: "🇧🇷 Independencia de Brasil",
+
+        texto: `La independencia de Brasil fue proclamada el 7 de septiembre de 1822
+        por Pedro de Alcântara, conocido como Pedro I de Brasil.
+
+        El proceso estuvo relacionado con los cambios políticos ocurridos en
+        Portugal y con la permanencia de la corte portuguesa en Brasil desde 1808.
+
+        A diferencia de varios territorios de Hispanoamérica, Brasil mantuvo
+        inicialmente una monarquía después de independizarse.
+
+        La independencia permitió que Brasil se convirtiera en un país separado
+        políticamente de Portugal.`
+
+    },
+
+
+    imperio: {
+
+        titulo: "🏛️ Imperio de Brasil",
+
+        texto: `Después de la independencia, Brasil se convirtió en una monarquía.
+        El período conocido como Imperio de Brasil comenzó en 1822 y terminó
+        en 1889.
+
+        Pedro I fue el primer emperador de Brasil y posteriormente su hijo,
+        Pedro II, gobernó durante gran parte del período imperial.
+
+        Durante el siglo XIX, Brasil tuvo importantes cambios económicos y
+        políticos. También aumentaron los movimientos que defendían el fin
+        de la esclavitud.
+
+        La esclavitud fue abolida oficialmente en Brasil en 1888.`
+
+    },
+
+
+    republica: {
+
+        titulo: "🏛️ República de Brasil",
+
+        texto: `Brasil se convirtió en una república el 15 de noviembre de 1889,
+        cuando terminó la monarquía y se estableció un nuevo sistema de gobierno.
+
+        Durante el siglo XX, Brasil atravesó diferentes etapas políticas,
+        incluyendo períodos democráticos y una dictadura militar que comenzó
+        en 1964 y terminó en 1985.
+
+        En 1988 fue aprobada una nueva Constitución que estableció las bases
+        de la actual República Federativa de Brasil y amplió los derechos
+        de los ciudadanos.`
+
+    },
+
+
+    personajes: {
+
+        titulo: "👤 Personajes históricos",
+
+        texto: `La historia de Brasil cuenta con numerosos personajes importantes.
+
+        Pedro I fue quien proclamó la independencia de Brasil en 1822 y se
+        convirtió en el primer emperador del país.
+
+        Pedro II fue el segundo y último emperador de Brasil y gobernó durante
+        gran parte del siglo XIX.
+
+        Tiradentes fue una figura relacionada con la Inconfidência Mineira,
+        un movimiento que cuestionó el dominio portugués en el siglo XVIII.
+
+        También destacó Zumbi dos Palmares, símbolo de la resistencia de las
+        comunidades formadas por personas esclavizadas que habían escapado
+        y se habían establecido en el Quilombo dos Palmares.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE HISTORIA
+===================================================== */
+
+function mostrarInfo(categoria) {
+
+    document.getElementById("tituloInfo").textContent =
+        informacion[categoria].titulo;
+
+    document.getElementById("textoInfo").textContent =
+        informacion[categoria].texto;
+
+    document.getElementById("informacionHistoria").style.display = "block";
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE CULTURA DE BRASIL
+===================================================== */
+
+const informacionCultura = {
+
+    carnaval: {
+
+        titulo: "💃 Carnaval",
+
+        texto: `El Carnaval es una de las celebraciones culturales más conocidas
+        de Brasil. Se realiza antes de la Cuaresma y tiene diferentes formas
+        de celebración según la región.
+
+        El Carnaval de Río de Janeiro es famoso por sus desfiles de escuelas
+        de samba, sus carrozas y sus presentaciones.
+
+        También existen celebraciones importantes en ciudades como Salvador
+        de Bahía y Recife, donde se destacan diferentes estilos musicales
+        y tradiciones.`
+
+    },
+
+
+    musica: {
+
+        titulo: "🎶 Música brasileña",
+
+        texto: `Brasil tiene una gran diversidad musical debido a la mezcla de
+        diferentes tradiciones culturales.
+
+        Algunos géneros importantes son la samba, la bossa nova, el forró,
+        el choro y el sertanejo.
+
+        La samba está especialmente relacionada con el Carnaval y se convirtió
+        en uno de los símbolos culturales más conocidos de Brasil.
+
+        La bossa nova también alcanzó reconocimiento internacional durante
+        el siglo XX.`
+
+    },
+
+
+    futbol: {
+
+        titulo: "⚽ Fútbol",
+
+        texto: `El fútbol es uno de los deportes más populares de Brasil y tiene
+        una gran importancia cultural.
+
+        La selección masculina brasileña ha ganado la Copa Mundial de la FIFA
+        en cinco ocasiones: 1958, 1962, 1970, 1994 y 2002.
+
+        Brasil también ha producido jugadores reconocidos internacionalmente,
+        y muchos niños y jóvenes practican este deporte en diferentes regiones
+        del país.`
+
+    },
+
+
+    gastronomia: {
+
+        titulo: "🍛 Gastronomía",
+
+        texto: `La gastronomía brasileña combina influencias indígenas, africanas
+        y europeas.
+
+        Entre sus platos tradicionales se encuentra la feijoada, preparada
+        principalmente con frijoles negros y diferentes carnes.
+
+        También son conocidos el pão de queijo, la moqueca, el acarajé y
+        diferentes preparaciones hechas con mandioca, arroz, frijoles y pescado.
+
+        La gastronomía cambia bastante según la región del país.`
+
+    },
+
+
+    arte: {
+
+        titulo: "🎨 Arte y artesanías",
+
+        texto: `El arte brasileño refleja la diversidad cultural del país y las
+        influencias indígenas, africanas y europeas.
+
+        La pintura, la escultura, la arquitectura y las artesanías han tenido
+        un importante desarrollo en Brasil.
+
+        Las artesanías indígenas utilizan materiales naturales y representan
+        diferentes tradiciones. También existen expresiones artísticas
+        relacionadas con las fiestas populares y las culturas regionales.`
+
+    },
+
+
+    fiestas: {
+
+        titulo: "🎉 Fiestas y celebraciones",
+
+        texto: `Brasil tiene muchas fiestas y celebraciones tradicionales.
+
+        Además del Carnaval, son importantes las Festas Juninas, que se
+        celebran principalmente durante el mes de junio y están relacionadas
+        con tradiciones rurales y religiosas.
+
+        Durante estas fiestas se realizan bailes, comidas tradicionales,
+        música y actividades comunitarias.
+
+        Las celebraciones pueden variar dependiendo de la región del país.`
+
+    },
+
+
+    diversidad: {
+
+        titulo: "🗣️ Diversidad cultural",
+
+        texto: `Brasil es un país con una gran diversidad cultural. Su población
+        y sus tradiciones han recibido influencias indígenas, africanas,
+        portuguesas y de diferentes grupos de inmigrantes.
+
+        El portugués es el idioma oficial del país, pero existen también
+        numerosas lenguas indígenas.
+
+        La diversidad se puede observar en la música, la gastronomía,
+        las fiestas, las creencias, las artes y las costumbres de las
+        diferentes regiones brasileñas.`
+
+    }
+
+};
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE CULTURA
+===================================================== */
+
+function mostrarCulturaInfo(categoria) {
+
+    document.getElementById("tituloCultura").textContent =
+        informacionCultura[categoria].titulo;
+
+    document.getElementById("textoCultura").textContent =
+        informacionCultura[categoria].texto;
+
+    document.getElementById("informacionCultura").style.display = "block";
+
+}
+
+
+/* =====================================================
+   AL CARGAR LA PÁGINA
+===================================================== */
+
+document.getElementById("historia").style.display = "none";
+
+document.getElementById("cultura").style.display = "none";
+
+</script>
+
+</body>
+</html>
