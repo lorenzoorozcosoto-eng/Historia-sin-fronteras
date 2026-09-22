@@ -4,7 +4,9 @@
 ===================================================== */
 
 
-/* ================= TEMAS ================= */
+/* =====================================================
+   TEMAS
+===================================================== */
 
 const temas = {
 
@@ -553,7 +555,7 @@ let temaActual = "gastronomia";
 
 let puntos = 0;
 
-let vidas = 3;
+let vidas = 5;
 
 let respuestaContestada = false;
 
@@ -565,16 +567,54 @@ const totalRetos = Object.keys(temas).length;
 
 
 /* =====================================================
+   VARIABLES DEL RETO DE RECUPERACIÓN
+===================================================== */
+
+let respuestaRecuperacion = null;
+
+let recuperacionContestada = false;
+
+const preguntaRecuperacion = {
+
+    pregunta:
+        "¿Cuál de estos elementos es representativo de la cultura marroquí?",
+
+    opciones: [
+        "🍵 Té de menta",
+        "🍕 Pizza",
+        "🍣 Sushi",
+        "🌮 Tacos"
+    ],
+
+    correcta:
+        "🍵 Té de menta"
+
+};
+
+
+/* =====================================================
    CAMBIAR TEMA
 ===================================================== */
 
 function cambiarTema(nombre, boton = null) {
 
+    if (vidas <= 0) {
+
+        mostrarModalRecuperacion();
+
+        return;
+
+    }
+
+
     const tema = temas[nombre];
 
     if (!tema) {
+
         return;
+
     }
+
 
     temaActual = nombre;
 
@@ -636,7 +676,9 @@ function cambiarTema(nombre, boton = null) {
     /* MENÚ */
 
     document.querySelectorAll(".menu button").forEach(btn => {
+
         btn.classList.remove("activo");
+
     });
 
 
@@ -644,27 +686,18 @@ function cambiarTema(nombre, boton = null) {
 
         boton.classList.add("activo");
 
-    } else {
-
-        document.querySelectorAll(".menu button").forEach(btn => {
-
-            if (btn.textContent.trim().includes(tema.titulo)) {
-                btn.classList.add("activo");
-            }
-
-        });
-
     }
 
 
     /* CREAR OPCIONES */
 
     crearOpciones(tema);
+
 }
 
 
 /* =====================================================
-   CREAR OPCIONES EN ORDEN ALEATORIO
+   CREAR OPCIONES
 ===================================================== */
 
 function crearOpciones(tema) {
@@ -672,46 +705,63 @@ function crearOpciones(tema) {
     const contenedor =
         document.getElementById("opciones");
 
+    if (!contenedor) {
+
+        return;
+
+    }
+
+
     contenedor.innerHTML = "";
 
-
-    /* COPIAMOS LAS RESPUESTAS */
 
     const opcionesMezcladas =
         [...tema.opciones];
 
 
-    /* MEZCLAMOS */
+    opcionesMezcladas.sort(
+        () => Math.random() - 0.5
+    );
 
-    opcionesMezcladas.sort(() => Math.random() - 0.5);
-
-
-    /* CREAMOS BOTONES */
 
     opcionesMezcladas.forEach(opcion => {
 
         const boton =
             document.createElement("button");
 
+
         boton.className = "opcion";
+
+        boton.type = "button";
 
         boton.textContent = opcion;
 
 
-        boton.addEventListener("click", function () {
+        if (vidas <= 0) {
 
-            comprobarRespuesta(
-                opcion,
-                boton,
-                tema
-            );
+            boton.disabled = true;
 
-        });
+        }
+
+
+        boton.addEventListener(
+            "click",
+            function () {
+
+                comprobarRespuesta(
+                    opcion,
+                    boton,
+                    tema
+                );
+
+            }
+        );
 
 
         contenedor.appendChild(boton);
 
     });
+
 }
 
 
@@ -725,9 +775,21 @@ function comprobarRespuesta(
     tema
 ) {
 
-    if (respuestaContestada) {
+    if (vidas <= 0) {
+
+        mostrarModalRecuperacion();
+
         return;
+
     }
+
+
+    if (respuestaContestada) {
+
+        return;
+
+    }
+
 
     respuestaContestada = true;
 
@@ -737,7 +799,9 @@ function comprobarRespuesta(
 
 
     botones.forEach(btn => {
+
         btn.disabled = true;
+
     });
 
 
@@ -766,6 +830,7 @@ function comprobarRespuesta(
         resultado.textContent =
             "✅ ¡Correcto! +10 puntos 🎉";
 
+
         resultado.style.background =
             "#edf9f1";
 
@@ -775,21 +840,35 @@ function comprobarRespuesta(
         resultado.classList.add("mostrar");
 
 
-        /* ANIMACIÓN DE PUNTOS */
-
         const puntosElemento =
             document.querySelector(".puntos");
 
-        puntosElemento.animate(
-            [
-                { transform: "scale(1)" },
-                { transform: "scale(1.08)" },
-                { transform: "scale(1)" }
-            ],
-            {
-                duration: 400
-            }
-        );
+
+        if (puntosElemento) {
+
+            puntosElemento.animate(
+
+                [
+                    {
+                        transform: "scale(1)"
+                    },
+
+                    {
+                        transform: "scale(1.08)"
+                    },
+
+                    {
+                        transform: "scale(1)"
+                    }
+                ],
+
+                {
+                    duration: 400
+                }
+
+            );
+
+        }
 
 
     } else {
@@ -801,8 +880,11 @@ function comprobarRespuesta(
 
         vidas--;
 
+
         if (vidas < 0) {
+
             vidas = 0;
+
         }
 
 
@@ -827,15 +909,53 @@ function comprobarRespuesta(
         resultado.classList.add("mostrar");
 
 
-        /* MARCAR RESPUESTA CORRECTA */
-
         botones.forEach(btn => {
 
-            if (btn.textContent === tema.correcta) {
+            if (
+                btn.textContent ===
+                tema.correcta
+            ) {
+
                 btn.classList.add("correcta");
+
             }
 
         });
+
+
+        /* ================= VIDAS EN 0 ================= */
+
+        if (vidas === 0) {
+
+            document.getElementById(
+                "botonSiguiente"
+            ).disabled = true;
+
+
+            /*
+               Bloquear inmediatamente
+               los mini retos.
+            */
+
+            botones.forEach(btn => {
+
+                btn.disabled = true;
+
+            });
+
+
+            /*
+               Mostrar pantalla de recuperación
+               después de un pequeño momento.
+            */
+
+            setTimeout(() => {
+
+                mostrarModalRecuperacion();
+
+            }, 700);
+
+        }
 
     }
 
@@ -843,8 +963,19 @@ function comprobarRespuesta(
     actualizarProgreso();
 
 
-    document.getElementById("botonSiguiente").disabled =
-        false;
+    /*
+       Solo activar siguiente si
+       todavía tiene vidas.
+    */
+
+    if (vidas > 0) {
+
+        document.getElementById(
+            "botonSiguiente"
+        ).disabled = false;
+
+    }
+
 }
 
 
@@ -861,7 +992,9 @@ function actualizarProgreso() {
 
 
     if (porcentaje > 100) {
+
         porcentaje = 100;
+
     }
 
 
@@ -869,35 +1002,55 @@ function actualizarProgreso() {
         porcentaje + "%";
 
 
-    document.getElementById("retosCompletados").textContent =
+    document.getElementById(
+        "retosCompletados"
+    ).textContent =
         retosCompletados;
 
 
-    document.getElementById("respuestasCorrectas").textContent =
+    document.getElementById(
+        "respuestasCorrectas"
+    ).textContent =
         respuestasCorrectas;
 
 
-    /* CÍRCULO */
-
     const circulo =
-        document.getElementById("circuloProgreso");
+        document.getElementById(
+            "circuloProgreso"
+        );
 
 
-    const circunferencia = 314;
+    if (circulo) {
 
-    const desplazamiento =
-        circunferencia -
-        (circunferencia * porcentaje / 100);
+        const circunferencia = 314;
 
 
-    circulo.style.strokeDashoffset =
-        desplazamiento;
+        const desplazamiento =
+            circunferencia -
+            (
+                circunferencia *
+                porcentaje /
+                100
+            );
 
 
-    /* MENSAJE */
+        circulo.style.strokeDashoffset =
+            desplazamiento;
+
+    }
+
 
     const mensaje =
-        document.getElementById("mensajeProgreso");
+        document.getElementById(
+            "mensajeProgreso"
+        );
+
+
+    if (!mensaje) {
+
+        return;
+
+    }
 
 
     if (porcentaje === 0) {
@@ -947,6 +1100,7 @@ function escuchar() {
         );
 
         return;
+
     }
 
 
@@ -959,8 +1113,6 @@ function escuchar() {
         );
 
 
-    /* El contenido está en español */
-
     voz.lang = "es-ES";
 
     voz.rate = 0.9;
@@ -969,6 +1121,7 @@ function escuchar() {
 
 
     window.speechSynthesis.speak(voz);
+
 }
 
 
@@ -977,6 +1130,15 @@ function escuchar() {
 ===================================================== */
 
 function siguienteTema() {
+
+    if (vidas <= 0) {
+
+        mostrarModalRecuperacion();
+
+        return;
+
+    }
+
 
     const nombres =
         Object.keys(temas);
@@ -996,18 +1158,1068 @@ function siguienteTema() {
     }
 
 
-    cambiarTema(nombres[indice]);
+    cambiarTema(
+        nombres[indice]
+    );
+
 }
 
 
 /* =====================================================
+   MOSTRAR MODAL DE VIDAS AGOTADAS
+===================================================== */
+
+function mostrarModalRecuperacion() {
+
+    const modal =
+        document.getElementById(
+            "modalRecuperacion"
+        );
+
+
+    if (!modal) {
+
+        console.error(
+            "No se encontró #modalRecuperacion."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       BLOQUEAR TODA LA PANTALLA
+    */
+
+    modal.style.display = "flex";
+
+    document.body.style.overflow = "hidden";
+
+
+    /*
+       Asegurar que el reto anterior
+       no quede visible por encima.
+    */
+
+    const modalReto =
+        document.getElementById(
+            "modalRetoRecuperacion"
+        );
+
+
+    if (modalReto) {
+
+        modalReto.style.display = "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   INICIAR RETO DE RECUPERACIÓN
+===================================================== */
+
+function iniciarRecuperacion() {
+
+    const modalAviso =
+        document.getElementById(
+            "modalRecuperacion"
+        );
+
+
+    const modalReto =
+        document.getElementById(
+            "modalRetoRecuperacion"
+        );
+
+
+    if (modalAviso) {
+
+        modalAviso.style.display =
+            "none";
+
+    }
+
+
+    if (!modalReto) {
+
+        console.error(
+            "No se encontró #modalRetoRecuperacion."
+        );
+
+        return;
+
+    }
+
+
+    modalReto.style.display =
+        "flex";
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    crearRetoRecuperacion();
+
+}
+
+
+/* =====================================================
+   CREAR RETO DE RECUPERACIÓN
+===================================================== */
+
+function crearRetoRecuperacion() {
+
+    const pregunta =
+        document.getElementById(
+            "preguntaRecuperacion"
+        );
+
+
+    const contenedor =
+        document.getElementById(
+            "opcionesRecuperacion"
+        );
+
+
+    const resultado =
+        document.getElementById(
+            "resultadoRecuperacion"
+        );
+
+
+    const botonResponder =
+        document.getElementById(
+            "btnResponderRecuperacion"
+        );
+
+
+    /*
+       COMPROBAR HTML
+    */
+
+    if (
+        !pregunta ||
+        !contenedor ||
+        !resultado ||
+        !botonResponder
+    ) {
+
+        console.error(
+            "Faltan elementos del reto de recuperación en el HTML."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       REINICIAR
+    */
+
+    recuperacionContestada =
+        false;
+
+    respuestaRecuperacion =
+        null;
+
+
+    /*
+       MOSTRAR PREGUNTA
+    */
+
+    pregunta.textContent =
+        preguntaRecuperacion.pregunta;
+
+
+    /*
+       LIMPIAR OPCIONES
+    */
+
+    contenedor.innerHTML = "";
+
+
+    /*
+       LIMPIAR RESULTADO
+    */
+
+    resultado.textContent = "";
+
+    resultado.className =
+        "resultado-recuperacion";
+
+
+    /*
+       DESACTIVAR RESPONDER
+    */
+
+    botonResponder.disabled =
+        true;
+
+
+    /*
+       MEZCLAR OPCIONES
+    */
+
+    const opciones =
+        [...preguntaRecuperacion.opciones];
+
+
+    opciones.sort(
+        () => Math.random() - 0.5
+    );
+
+
+    /*
+       CREAR OPCIONES
+    */
+
+    opciones.forEach(opcion => {
+
+        const boton =
+            document.createElement(
+                "button"
+            );
+
+
+        boton.type =
+            "button";
+
+
+        boton.className =
+            "opcion-recuperacion";
+
+
+        boton.textContent =
+            opcion;
+
+
+        /*
+           SELECCIONAR OPCIÓN
+        */
+
+        boton.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    recuperacionContestada
+                ) {
+
+                    return;
+
+                }
+
+
+                /*
+                   Quitar selección
+                */
+
+                document
+                    .querySelectorAll(
+                        ".opcion-recuperacion"
+                    )
+                    .forEach(btn => {
+
+                        btn.classList.remove(
+                            "seleccionada"
+                        );
+
+                    });
+
+
+                /*
+                   Seleccionar actual
+                */
+
+                boton.classList.add(
+                    "seleccionada"
+                );
+
+
+                /*
+                   Guardar respuesta
+                */
+
+                respuestaRecuperacion =
+                    opcion;
+
+
+                /*
+                   Activar responder
+                */
+
+                botonResponder.disabled =
+                    false;
+
+            }
+        );
+
+
+        /*
+           AGREGAR BOTÓN
+        */
+
+        contenedor.appendChild(
+            boton
+        );
+
+    });
+
+
+    /*
+       CONFIGURAR RESPONDER
+    */
+
+    botonResponder.onclick =
+        responderRecuperacion;
+
+}
+
+
+function responderRecuperacion() {
+
+    if (!respuestaRecuperacion || recuperacionContestada) {
+        return;
+    }
+
+    recuperacionContestada = true;
+
+    const botones = document.querySelectorAll(".opcion-recuperacion");
+    const botonResponder = document.getElementById("btnResponderRecuperacion");
+    const resultado = document.getElementById("resultadoRecuperacion");
+
+    // Bloquear las opciones mientras se revisa
+    botones.forEach(function(boton) {
+        boton.disabled = true;
+    });
+
+    if (botonResponder) {
+        botonResponder.disabled = true;
+    }
+
+    // ==========================================
+    // RESPUESTA CORRECTA
+    // ==========================================
+
+    if (respuestaRecuperacion === preguntaRecuperacion.correcta) {
+
+        // RECUPERA LAS 5 VIDAS
+        vidas = 5;
+
+        // Actualizar contador de vidas
+        const vidasElemento = document.getElementById("vidas");
+
+        if (vidasElemento) {
+            vidasElemento.textContent = vidas;
+        }
+
+        // Marcar respuesta correcta
+        botones.forEach(function(boton) {
+            if (boton.textContent === preguntaRecuperacion.correcta) {
+                boton.classList.add("correcta");
+            }
+        });
+
+        // Mostrar mensaje
+        if (resultado) {
+            resultado.textContent =
+                "🎉 ¡Correcto! Recuperaste tus 5 vidas. ¡Puedes continuar jugando!";
+            
+            resultado.className =
+                "resultado-recuperacion mostrar correcta";
+        }
+
+        // Esperar un momento y cerrar
+        setTimeout(function() {
+
+            const modal = document.getElementById("modalRetoRecuperacion");
+
+            if (modal) {
+                modal.style.display = "none";
+            }
+
+            // Volver a permitir el desplazamiento
+            document.body.style.overflow = "";
+
+            // Preparar nuevamente el mini reto actual
+            respuestaContestada = false;
+
+            crearOpciones(temas[temaActual]);
+
+            const resultadoNormal =
+                document.getElementById("resultado");
+
+            if (resultadoNormal) {
+                resultadoNormal.textContent = "";
+            }
+
+            // Activar botón siguiente si corresponde
+            const botonSiguiente =
+                document.getElementById("botonSiguiente");
+
+            if (botonSiguiente) {
+                botonSiguiente.disabled = true;
+            }
+
+            // También por si tu HTML usa btnSiguiente
+            const btnSiguiente =
+                document.getElementById("btnSiguiente");
+
+            if (btnSiguiente) {
+                btnSiguiente.disabled = true;
+            }
+
+        }, 1500);
+
+    }
+
+    // ==========================================
+    // RESPUESTA INCORRECTA
+    // ==========================================
+
+    else {
+
+        // Sigue teniendo 0 vidas
+        vidas = 0;
+
+        const vidasElemento = document.getElementById("vidas");
+
+        if (vidasElemento) {
+            vidasElemento.textContent = vidas;
+        }
+
+        // Marcar respuesta correcta
+        botones.forEach(function(boton) {
+
+            if (boton.textContent === preguntaRecuperacion.correcta) {
+                boton.classList.add("correcta");
+            }
+
+            if (boton.textContent === respuestaRecuperacion) {
+                boton.classList.add("incorrecta");
+            }
+
+        });
+
+        // Mostrar mensaje
+        if (resultado) {
+            resultado.textContent =
+                "❌ Incorrecto. Inténtalo nuevamente.";
+            
+            resultado.className =
+                "resultado-recuperacion mostrar incorrecta";
+        }
+
+        // Después de un momento, crear nuevamente el reto
+        setTimeout(function() {
+            crearRetoRecuperacion();
+        }, 1500);
+    }
+}
+
+/* =====================================================
+   CREAR RETO DE RECUPERACIÓN
+===================================================== */
+
+function crearRetoRecuperacion() {
+
+    const pregunta =
+        document.getElementById("preguntaRecuperacion");
+
+    const contenedor =
+        document.getElementById("opcionesRecuperacion");
+
+    const resultado =
+        document.getElementById("resultadoRecuperacion");
+
+    const botonResponder =
+        document.getElementById("btnResponderRecuperacion");
+
+
+    /* COMPROBAR ELEMENTOS */
+
+    if (!pregunta) {
+        console.error("No existe #preguntaRecuperacion");
+        return;
+    }
+
+    if (!contenedor) {
+        console.error("No existe #opcionesRecuperacion");
+        return;
+    }
+
+    if (!resultado) {
+        console.error("No existe #resultadoRecuperacion");
+        return;
+    }
+
+    if (!botonResponder) {
+        console.error("No existe #btnResponderRecuperacion");
+        return;
+    }
+
+
+    /* REINICIAR */
+
+    respuestaRecuperacion = null;
+    recuperacionContestada = false;
+
+
+    /* MOSTRAR PREGUNTA */
+
+    pregunta.textContent =
+        preguntaRecuperacion.pregunta;
+
+
+    /* LIMPIAR OPCIONES */
+
+    contenedor.innerHTML = "";
+
+
+    /* LIMPIAR RESULTADO */
+
+    resultado.textContent = "";
+    resultado.className = "resultado-recuperacion";
+
+
+    /* BLOQUEAR RESPONDER */
+
+    botonResponder.disabled = true;
+
+
+    /* =================================================
+       CREAR LAS 4 OPCIONES
+    ================================================= */
+
+    preguntaRecuperacion.opciones.forEach(function(opcion) {
+
+        const boton = document.createElement("button");
+
+        boton.type = "button";
+
+        boton.className = "opcion-recuperacion";
+
+        boton.textContent = opcion;
+
+
+        /* SELECCIONAR OPCIÓN */
+
+        boton.addEventListener("click", function() {
+
+            if (recuperacionContestada) {
+                return;
+            }
+
+
+            /* Quitar selección */
+
+            const todasLasOpciones =
+                contenedor.querySelectorAll(
+                    ".opcion-recuperacion"
+                );
+
+            todasLasOpciones.forEach(function(btn) {
+
+                btn.classList.remove("seleccionada");
+
+            });
+
+
+            /* Seleccionar actual */
+
+            boton.classList.add("seleccionada");
+
+
+            /* Guardar respuesta */
+
+            respuestaRecuperacion = opcion;
+
+
+            /* Activar responder */
+
+            botonResponder.disabled = false;
+
+        });
+
+
+        /* AGREGAR AL CONTENEDOR */
+
+        contenedor.appendChild(boton);
+
+    });
+
+
+    /* BOTÓN RESPONDER */
+
+    botonResponder.onclick =
+        responderRecuperacion;
+
+}
+
+/* =====================================================
+   CREAR RETO DE RECUPERACIÓN
+===================================================== */
+
+function crearRetoRecuperacion() {
+
+    const pregunta =
+        document.getElementById("preguntaRecuperacion");
+
+    const contenedor =
+        document.getElementById("opcionesRecuperacion");
+
+    const resultado =
+        document.getElementById("resultadoRecuperacion");
+
+    const botonResponder =
+        document.getElementById("btnResponderRecuperacion");
+
+
+    /* COMPROBAR ELEMENTOS */
+
+    if (!pregunta) {
+        console.error("No existe #preguntaRecuperacion");
+        return;
+    }
+
+    if (!contenedor) {
+        console.error("No existe #opcionesRecuperacion");
+        return;
+    }
+
+    if (!resultado) {
+        console.error("No existe #resultadoRecuperacion");
+        return;
+    }
+
+    if (!botonResponder) {
+        console.error("No existe #btnResponderRecuperacion");
+        return;
+    }
+
+
+    /* REINICIAR */
+
+    respuestaRecuperacion = null;
+    recuperacionContestada = false;
+
+
+    /* MOSTRAR PREGUNTA */
+
+    pregunta.textContent =
+        preguntaRecuperacion.pregunta;
+
+
+    /* LIMPIAR OPCIONES */
+
+    contenedor.innerHTML = "";
+
+
+    /* LIMPIAR RESULTADO */
+
+    resultado.textContent = "";
+    resultado.className = "resultado-recuperacion";
+
+
+    /* BLOQUEAR RESPONDER */
+
+    botonResponder.disabled = true;
+
+
+    /* =================================================
+       CREAR LAS 4 OPCIONES
+    ================================================= */
+
+    preguntaRecuperacion.opciones.forEach(function(opcion) {
+
+        const boton = document.createElement("button");
+
+        boton.type = "button";
+
+        boton.className = "opcion-recuperacion";
+
+        boton.textContent = opcion;
+
+
+        /* SELECCIONAR OPCIÓN */
+
+        boton.addEventListener("click", function() {
+
+            if (recuperacionContestada) {
+                return;
+            }
+
+
+            /* Quitar selección */
+
+            const todasLasOpciones =
+                contenedor.querySelectorAll(
+                    ".opcion-recuperacion"
+                );
+
+            todasLasOpciones.forEach(function(btn) {
+
+                btn.classList.remove("seleccionada");
+
+            });
+
+
+            /* Seleccionar actual */
+
+            boton.classList.add("seleccionada");
+
+
+            /* Guardar respuesta */
+
+            respuestaRecuperacion = opcion;
+
+
+            /* Activar responder */
+
+            botonResponder.disabled = false;
+
+        });
+
+
+        /* AGREGAR AL CONTENEDOR */
+
+        contenedor.appendChild(boton);
+
+    });
+
+
+    /* BOTÓN RESPONDER */
+
+    botonResponder.onclick =
+        responderRecuperacion;
+
+}
+
+/* =====================================================
+   CREAR RETO DE RECUPERACIÓN
+===================================================== */
+
+function crearRetoRecuperacion() {
+
+    const pregunta =
+        document.getElementById("preguntaRecuperacion");
+
+    const contenedor =
+        document.getElementById("opcionesRecuperacion");
+
+    const resultado =
+        document.getElementById("resultadoRecuperacion");
+
+    const botonResponder =
+        document.getElementById("btnResponderRecuperacion");
+
+
+    /* COMPROBAR ELEMENTOS */
+
+    if (!pregunta) {
+        console.error("No existe #preguntaRecuperacion");
+        return;
+    }
+
+    if (!contenedor) {
+        console.error("No existe #opcionesRecuperacion");
+        return;
+    }
+
+    if (!resultado) {
+        console.error("No existe #resultadoRecuperacion");
+        return;
+    }
+
+    if (!botonResponder) {
+        console.error("No existe #btnResponderRecuperacion");
+        return;
+    }
+
+
+    /* REINICIAR */
+
+    respuestaRecuperacion = null;
+    recuperacionContestada = false;
+
+
+    /* MOSTRAR PREGUNTA */
+
+    pregunta.textContent =
+        preguntaRecuperacion.pregunta;
+
+
+    /* LIMPIAR OPCIONES */
+
+    contenedor.innerHTML = "";
+
+
+    /* LIMPIAR RESULTADO */
+
+    resultado.textContent = "";
+    resultado.className = "resultado-recuperacion";
+
+
+    /* BLOQUEAR RESPONDER */
+
+    botonResponder.disabled = true;
+
+
+    /* =================================================
+       CREAR LAS 4 OPCIONES
+    ================================================= */
+
+    preguntaRecuperacion.opciones.forEach(function(opcion) {
+
+        const boton = document.createElement("button");
+
+        boton.type = "button";
+
+        boton.className = "opcion-recuperacion";
+
+        boton.textContent = opcion;
+
+
+        /* SELECCIONAR OPCIÓN */
+
+        boton.addEventListener("click", function() {
+
+            if (recuperacionContestada) {
+                return;
+            }
+
+
+            /* Quitar selección */
+
+            const todasLasOpciones =
+                contenedor.querySelectorAll(
+                    ".opcion-recuperacion"
+                );
+
+            todasLasOpciones.forEach(function(btn) {
+
+                btn.classList.remove("seleccionada");
+
+            });
+
+
+            /* Seleccionar actual */
+
+            boton.classList.add("seleccionada");
+
+
+            /* Guardar respuesta */
+
+            respuestaRecuperacion = opcion;
+
+
+            /* Activar responder */
+
+            botonResponder.disabled = false;
+
+        });
+
+
+        /* AGREGAR AL CONTENEDOR */
+
+        contenedor.appendChild(boton);
+
+    });
+
+
+    /* BOTÓN RESPONDER */
+
+    botonResponder.onclick =
+        responderRecuperacion;
+
+}
+
+/* =====================================================
+   CREAR RETO DE RECUPERACIÓN
+===================================================== */
+
+function crearRetoRecuperacion() {
+
+    const pregunta =
+        document.getElementById("preguntaRecuperacion");
+
+    const contenedor =
+        document.getElementById("opcionesRecuperacion");
+
+    const resultado =
+        document.getElementById("resultadoRecuperacion");
+
+    const botonResponder =
+        document.getElementById("btnResponderRecuperacion");
+
+
+    /* COMPROBAR ELEMENTOS */
+
+    if (!pregunta) {
+        console.error("No existe #preguntaRecuperacion");
+        return;
+    }
+
+    if (!contenedor) {
+        console.error("No existe #opcionesRecuperacion");
+        return;
+    }
+
+    if (!resultado) {
+        console.error("No existe #resultadoRecuperacion");
+        return;
+    }
+
+    if (!botonResponder) {
+        console.error("No existe #btnResponderRecuperacion");
+        return;
+    }
+
+
+    /* REINICIAR */
+
+    respuestaRecuperacion = null;
+    recuperacionContestada = false;
+
+
+    /* MOSTRAR PREGUNTA */
+
+    pregunta.textContent =
+        preguntaRecuperacion.pregunta;
+
+
+    /* LIMPIAR OPCIONES */
+
+    contenedor.innerHTML = "";
+
+
+    /* LIMPIAR RESULTADO */
+
+    resultado.textContent = "";
+    resultado.className = "resultado-recuperacion";
+
+
+    /* BLOQUEAR RESPONDER */
+
+    botonResponder.disabled = true;
+
+
+    /* =================================================
+       CREAR LAS 4 OPCIONES
+    ================================================= */
+
+    preguntaRecuperacion.opciones.forEach(function(opcion) {
+
+        const boton = document.createElement("button");
+
+        boton.type = "button";
+
+        boton.className = "opcion-recuperacion";
+
+        boton.textContent = opcion;
+
+
+        /* SELECCIONAR OPCIÓN */
+
+        boton.addEventListener("click", function() {
+
+            if (recuperacionContestada) {
+                return;
+            }
+
+
+            /* Quitar selección */
+
+            const todasLasOpciones =
+                contenedor.querySelectorAll(
+                    ".opcion-recuperacion"
+                );
+
+            todasLasOpciones.forEach(function(btn) {
+
+                btn.classList.remove("seleccionada");
+
+            });
+
+
+            /* Seleccionar actual */
+
+            boton.classList.add("seleccionada");
+
+
+            /* Guardar respuesta */
+
+            respuestaRecuperacion = opcion;
+
+
+            /* Activar responder */
+
+            botonResponder.disabled = false;
+
+        });
+
+
+        /* AGREGAR AL CONTENEDOR */
+
+        contenedor.appendChild(boton);
+
+    });
+
+
+    /* BOTÓN RESPONDER */
+
+    botonResponder.onclick =
+        responderRecuperacion;
+
+}
+/* =====================================================
    INICIO
 ===================================================== */
 
-window.addEventListener("load", function () {
+window.addEventListener(
+    "load",
+    function () {
 
-    cambiarTema("gastronomia");
+        /*
+           SIEMPRE EMPIEZA CON 5 VIDAS
+        */
 
-    actualizarProgreso();
+        vidas = 5;
 
-});
+
+        const elementoVidas =
+            document.getElementById(
+                "vidas"
+            );
+
+
+        if (elementoVidas) {
+
+            elementoVidas.textContent =
+                vidas;
+
+        }
+
+
+        /*
+           CARGAR PRIMER TEMA
+        */
+
+        cambiarTema(
+            "gastronomia"
+        );
+
+
+        /*
+           ACTUALIZAR PROGRESO
+        */
+
+        actualizarProgreso();
+
+    }
+);

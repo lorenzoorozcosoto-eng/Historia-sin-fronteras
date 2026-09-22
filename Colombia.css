@@ -1,6 +1,11 @@
-/* =====================================================
-   HISTORIA SIN FRONTERAS
-===================================================== */
+/* =========================================================
+   HISTORIA SIN FRONTERAS - COLOMBIA
+   DISEÑO PRINCIPAL
+========================================================= */
+
+/* =========================================================
+   1. RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -8,519 +13,568 @@
     box-sizing: border-box;
 }
 
+:root {
+    --morado: #6657c8;
+    --morado-oscuro: #4d419f;
+    --morado-claro: #eeeaff;
+
+    --azul: #5c8de8;
+    --azul-claro: #eef5ff;
+
+    --verde: #61b98a;
+    --verde-claro: #eaf8f0;
+
+    --amarillo: #f5c85b;
+    --amarillo-claro: #fff8df;
+
+    --rojo: #e66b6b;
+    --rojo-claro: #fff0f0;
+
+    --texto: #17184b;
+    --texto-secundario: #686b89;
+
+    --fondo: #f7f8ff;
+    --blanco: #ffffff;
+
+    --borde: #e7e8f3;
+
+    --sombra: 0 8px 25px rgba(74, 67, 140, 0.08);
+    --sombra-hover: 0 12px 30px rgba(74, 67, 140, 0.13);
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-
     font-family: Arial, Helvetica, sans-serif;
-
+    background: var(--fondo);
+    color: var(--texto);
     min-height: 100vh;
-
-    padding: 25px;
-
-    color: #263f55;
-
-    background:
-        linear-gradient(
-            135deg,
-            #edfaff,
-            #f4f1ff,
-            #effcf7
-        );
 }
 
+
+/* =========================================================
+   2. PÁGINA
+========================================================= */
 
 .pagina {
-
+    min-height: 100vh;
     width: 100%;
-
-    max-width: 1450px;
-
-    margin: auto;
 }
 
 
-/* =====================================================
-   ENCABEZADO
-===================================================== */
+/* =========================================================
+   3. ENCABEZADO
+========================================================= */
 
 .encabezado {
+    min-height: 88px;
+    background: var(--blanco);
+    border-bottom: 1px solid var(--borde);
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
+    padding: 15px 32px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    box-shadow: 0 3px 15px rgba(50, 50, 100, 0.04);
+}
+
+
+/* =========================================================
+   MARCA
+========================================================= */
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #7162d5,
+        #6798e8
+    );
+
+    font-size: 25px;
+
+    box-shadow: 0 7px 18px rgba(102, 87, 200, 0.20);
+}
+
+.marca h1 {
+    font-size: 21px;
+    line-height: 1.05;
+    font-weight: 800;
+    color: var(--texto);
+}
+
+.marca p {
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   4. INFORMACIÓN DEL JUGADOR
+========================================================= */
+
+.informacion-jugador {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+
+/* =========================================================
+   JUGADOR
+========================================================= */
+
+.jugador {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 7px 12px;
+
+    background: #fafaff;
+    border: 1px solid var(--borde);
+
+    border-radius: 15px;
+}
+
+.avatar-jugador {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--morado-claro);
+
+    border-radius: 50%;
+
+    font-size: 21px;
+}
+
+.jugador strong {
+    display: block;
+    font-size: 12px;
+    color: var(--texto);
+}
+
+.jugador span {
+    display: block;
+    margin-top: 3px;
+
+    font-size: 10px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   ESTADÍSTICAS SUPERIORES
+========================================================= */
+
+.dato,
+.racha,
+.vidas-contenedor {
+    min-width: 75px;
+    min-height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    border-radius: 15px;
+
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+
+    box-shadow: 0 3px 12px rgba(50, 50, 100, 0.04);
+}
+
+.dato span,
+.racha span,
+.vidas-contenedor .corazon {
+    font-size: 20px;
+}
+
+.dato strong,
+.racha strong,
+.vidas-contenedor strong {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.dato small {
+    display: none;
+}
+
+
+/* =========================================================
+   COLORES DE ESTADÍSTICAS
+========================================================= */
+
+.dato {
+    background: #fffdf4;
+    border-color: #f3e6b6;
+}
+
+.racha {
+    background: #fff6ee;
+    border-color: #f4d8bf;
+}
+
+.vidas-contenedor {
+    background: #fff2f4;
+    border-color: #f2d4da;
+}
+
+
+/* =========================================================
+   5. CONTENIDO PRINCIPAL
+========================================================= */
+
+.contenido {
+    display: grid;
+
+    grid-template-columns: 270px minmax(0, 1fr) 285px;
+
+    min-height: calc(100vh - 88px);
+}
+
+
+/* =========================================================
+   6. MENÚ IZQUIERDO
+========================================================= */
+
+.menu {
+    background: var(--blanco);
+
+    border-right: 1px solid var(--borde);
+
+    padding: 23px 17px;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   SECCIONES DEL MENÚ
+========================================================= */
+
+.menu-seccion {
     margin-bottom: 25px;
 }
 
-
-.marca {
-
+.titulo-menu {
     display: flex;
-
     align-items: center;
+    gap: 8px;
 
-    gap: 15px;
+    padding: 0 9px;
+    margin-bottom: 8px;
+
+    color: var(--texto);
+}
+
+.titulo-menu > span:first-child {
+    font-size: 18px;
+}
+
+.titulo-menu strong {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.flecha {
+    margin-left: auto;
+    font-size: 17px;
+    color: #8c8ea8;
 }
 
 
-.logo {
+/* =========================================================
+   BOTONES DEL MENÚ
+========================================================= */
 
-    width: 80px;
+.menu-seccion button {
+    width: 100%;
 
-    height: 80px;
+    border: none;
+    outline: none;
 
-    display: flex;
+    background: transparent;
 
-    align-items: center;
+    color: #555875;
 
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: white;
-
-    font-size: 46px;
-
-    box-shadow:
-        0 7px 25px rgba(60, 90, 120, 0.12);
-}
-
-
-.marca h1 {
-
-    color: #174d7c;
-
-    font-size: 30px;
-
-    line-height: .95;
-}
-
-
-.marca p {
-
-    margin-top: 8px;
-
-    color: #687f90;
+    text-align: left;
 
     font-size: 13px;
+    font-weight: 600;
+
+    padding: 10px 11px;
+
+    margin-bottom: 3px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.menu-seccion button:hover {
+    background: #f2f1ff;
+    color: var(--morado);
+    transform: translateX(2px);
 }
 
 
-/* =====================================================
-   JUGADOR
-===================================================== */
+/* =========================================================
+   BOTÓN ACTIVO
+========================================================= */
 
-.informacion-jugador {
+.menu-seccion button.activo,
+.menu-seccion button.active,
+.menu-seccion button.seleccionado {
+    background: linear-gradient(
+        135deg,
+        #6d5ed0,
+        #728ee5
+    );
 
-    display: flex;
+    color: white;
 
-    align-items: center;
-
-    gap: 10px;
+    box-shadow: 0 7px 15px rgba(102, 87, 200, 0.20);
 }
 
 
-.jugador {
+/* =========================================================
+   BOTONES BLOQUEADOS POR VIDAS
+========================================================= */
 
-    display: flex;
+.menu-seccion button.bloqueado-vidas,
+.menu-seccion button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
 
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 9px 17px;
-
-    background: white;
-
-    border-radius: 25px;
-
-    box-shadow:
-        0 5px 20px rgba(50, 80, 110, .08);
+.menu-seccion button.bloqueado-vidas:hover,
+.menu-seccion button:disabled:hover {
+    background: transparent;
+    color: #555875;
+    transform: none;
 }
 
 
-.avatar-jugador {
+/* =========================================================
+   7. CENTRO
+========================================================= */
 
-    width: 45px;
+.contenido-central {
+    background: var(--blanco);
 
-    height: 45px;
+    padding: 27px 34px 40px;
 
+    min-width: 0;
+}
+
+
+/* =========================================================
+   BOTÓN VOLVER
+========================================================= */
+
+.volver {
+    border: none;
+    background: transparent;
+
+    color: var(--morado);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    padding: 5px 0;
+
+    margin-bottom: 17px;
+
+    transition: 0.2s ease;
+}
+
+.volver:hover {
+    color: var(--morado-oscuro);
+    transform: translateX(-3px);
+}
+
+
+/* =========================================================
+   TÍTULO DEL TEMA
+========================================================= */
+
+.titulo-tema {
     display: flex;
-
     align-items: center;
 
+    gap: 16px;
+
+    margin-bottom: 23px;
+}
+
+.icono-tema {
+    width: 68px;
+    height: 68px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
     justify-content: center;
 
-    border-radius: 50%;
+    border-radius: 20px;
 
-    background: #e6f2ff;
+    background: linear-gradient(
+        135deg,
+        #eeeaff,
+        #eaf4ff
+    );
 
-    font-size: 24px;
+    font-size: 34px;
 }
 
+.titulo-tema h2 {
+    font-size: 32px;
+    line-height: 1.1;
 
-.jugador strong {
+    color: var(--texto);
 
-    display: block;
+    margin-bottom: 5px;
+}
 
+.titulo-tema p {
+    color: var(--texto-secundario);
     font-size: 14px;
 }
 
 
-.jugador span {
+/* =========================================================
+   8. MENSAJE DEL ROBOT
+========================================================= */
 
-    display: block;
-
-    margin-top: 4px;
-
-    color: #718492;
-
-    font-size: 11px;
-}
-
-
-.dato {
-
-    min-width: 70px;
-
-    padding: 10px;
-
-    text-align: center;
-
-    background: white;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 5px 20px rgba(50, 80, 110, .08);
-}
-
-
-.dato strong {
-
-    font-size: 16px;
-}
-
-
-.dato small {
-
-    display: block;
-
-    margin-top: 3px;
-
-    color: #718492;
-
-    font-size: 10px;
-}
-
-
-/* =====================================================
-   CONTENIDO
-===================================================== */
-
-.contenido {
-
-    display: grid;
-
-    grid-template-columns:
-        240px
-        minmax(500px, 1fr)
-        260px;
-
-    gap: 18px;
-
-    align-items: start;
-}
-
-
-/* =====================================================
-   MENÚ
-===================================================== */
-
-.menu {
-
+.mensaje-bot {
     display: flex;
-
-    flex-direction: column;
-
-    gap: 15px;
-}
-
-
-.menu-seccion {
-
-    padding: 18px;
-
-    background: white;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 7px 25px rgba(50, 80, 110, .08);
-}
-
-
-.titulo-menu {
-
-    display: flex;
-
     align-items: center;
 
-    gap: 9px;
+    gap: 13px;
 
-    margin-bottom: 13px;
-
-    font-size: 15px;
+    margin-bottom: 22px;
 }
 
+.bot {
+    width: 55px;
+    height: 55px;
 
-.titulo-menu .flecha {
-
-    margin-left: auto;
-}
-
-
-.menu button {
-
-    width: 100%;
-
-    border: none;
-
-    padding: 10px 8px;
-
-    margin-bottom: 3px;
-
-    text-align: left;
-
-    color: #35556e;
-
-    background: transparent;
-
-    border-radius: 11px;
-
-    font-size: 11px;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-
-.menu button:hover {
-
-    background: #f0f5fa;
-
-    transform: translateX(3px);
-}
-
-
-.menu button.activo {
-
-    color: white;
-
-    background:
-        linear-gradient(
-            90deg,
-            #6565ed,
-            #7967d7
-        );
-}
-
-
-/* =====================================================
-   CENTRO
-===================================================== */
-
-.contenido-central {
-
-    padding: 22px;
-
-    background: white;
-
-    border-radius: 23px;
-
-    box-shadow:
-        0 8px 30px rgba(50, 80, 110, .08);
-}
-
-
-/* =====================================================
-   VOLVER
-===================================================== */
-
-.volver {
-
-    border: none;
-
-    padding: 9px 15px;
-
-    margin-bottom: 15px;
-
-    color: #47657b;
-
-    background: #f1f6fa;
-
-    border-radius: 15px;
-
-    cursor: pointer;
-}
-
-
-/* =====================================================
-   TÍTULO
-===================================================== */
-
-.titulo-tema {
+    flex-shrink: 0;
 
     display: flex;
-
     align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 16px;
-}
-
-
-.icono-tema {
-
-    width: 58px;
-
-    height: 58px;
-
-    display: flex;
-
-    align-items: center;
-
     justify-content: center;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6364ef,
-            #7768d6
-        );
 
     border-radius: 17px;
 
-    font-size: 29px;
-}
-
-
-.titulo-tema h2 {
-
-    color: #5657d9;
-
-    font-size: 25px;
-}
-
-
-.titulo-tema p {
-
-    margin-top: 4px;
-
-    color: #748592;
-
-    font-size: 12px;
-}
-
-
-/* =====================================================
-   CHATBOT
-===================================================== */
-
-.mensaje-bot {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 16px;
-}
-
-
-.bot {
-
-    width: 53px;
-
-    height: 53px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #e8f3ff;
-
-    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        #e9e6ff,
+        #e8f2ff
+    );
 
     font-size: 28px;
 }
 
-
 .burbuja-bot {
+    flex: 1;
 
-    max-width: 470px;
-
-    padding: 12px 16px;
-
-    color: #3e566b;
-
-    background: #f4f8fc;
-
-    border: 1px solid #e1eaf1;
+    padding: 14px 18px;
 
     border-radius: 17px;
 
-    font-size: 12px;
+    background: linear-gradient(
+        135deg,
+        #f2f0ff,
+        #eef6ff
+    );
 
-    line-height: 1.5;
+    border: 1px solid #e6e5f5;
+}
+
+.burbuja-bot p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4e5273;
 }
 
 
-/* =====================================================
-   INFORMACIÓN
-===================================================== */
+/* =========================================================
+   9. INFORMACIÓN DEL TEMA
+========================================================= */
 
 .informacion-tema {
-
     display: grid;
 
-    grid-template-columns:
-        1.2fr .8fr;
+    grid-template-columns: minmax(0, 2fr) minmax(250px, 1fr);
 
-    gap: 15px;
+    gap: 18px;
 
-    margin-bottom: 18px;
+    margin-bottom: 22px;
 }
 
 
+/* =========================================================
+   IMAGEN
+========================================================= */
+
 .imagen-contenedor {
-
     position: relative;
-
-    height: 285px;
 
     overflow: hidden;
 
-    background: #e8edf1;
+    border-radius: 21px;
 
-    border-radius: 18px;
+    background: #f1f2f8;
+
+    min-height: 340px;
 }
 
-
 .imagen-contenedor img {
-
     width: 100%;
-
-    height: 100%;
+    height: 340px;
 
     display: block;
 
@@ -528,584 +582,918 @@ body {
 }
 
 
-/* =====================================================
-   AUDIO
-===================================================== */
+/* =========================================================
+   BOTÓN AUDIO
+========================================================= */
 
 .boton-audio {
-
     position: absolute;
 
-    left: 15px;
+    left: 18px;
+    bottom: 18px;
 
-    right: 15px;
+    height: 48px;
 
-    bottom: 15px;
+    padding: 0 17px;
 
     display: flex;
-
     align-items: center;
-
-    justify-content: space-between;
-
-    padding: 13px 17px;
+    gap: 10px;
 
     border: none;
+    border-radius: 25px;
+
+    background: linear-gradient(
+        135deg,
+        #6556c8,
+        #658be1
+    );
 
     color: white;
 
-    background:
-        linear-gradient(
-            90deg,
-            #3479e8,
-            #5967ef
-        );
-
-    border-radius: 20px;
-
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 700;
 
     cursor: pointer;
 
-    transition: .2s;
-}
+    box-shadow: 0 7px 18px rgba(68, 64, 150, 0.22);
 
+    transition: 0.2s ease;
+}
 
 .boton-audio:hover {
-
     transform: translateY(-2px);
+    box-shadow: 0 10px 23px rgba(68, 64, 150, 0.28);
+}
+
+.boton-audio small {
+    font-size: 11px;
+    opacity: 0.9;
 }
 
 
-/* =====================================================
-   DATO CURIOSO
-===================================================== */
+/* =========================================================
+   10. DATO CURIOSO
+========================================================= */
 
 .dato-curioso {
+    padding: 22px;
 
-    padding: 20px;
+    border-radius: 21px;
 
-    background: #f7faff;
+    background: #fbfbff;
 
-    border: 1px solid #e4edf5;
-
-    border-radius: 18px;
+    border: 1px solid var(--borde);
 }
-
 
 .dato-curioso h3 {
-
-    margin-bottom: 12px;
-
-    color: #42617a;
-
-    font-size: 16px;
+    font-size: 18px;
+    margin-bottom: 13px;
 }
-
 
 .dato-curioso p {
+    color: #5d607e;
 
-    color: #536a7b;
+    font-size: 14px;
+    line-height: 1.65;
 
-    font-size: 12px;
-
-    line-height: 1.7;
+    margin-bottom: 20px;
 }
-
 
 .dato-curioso h4 {
-
-    margin-top: 17px;
-
-    margin-bottom: 10px;
-
-    font-size: 12px;
+    font-size: 14px;
+    margin-bottom: 11px;
 }
 
 
-/* =====================================================
+/* =========================================================
    REGIONES
-===================================================== */
+========================================================= */
 
 .regiones {
-
     display: flex;
-
     flex-wrap: wrap;
-
-    gap: 6px;
+    gap: 7px;
 }
-
 
 .regiones span {
+    padding: 7px 10px;
 
-    padding: 6px 10px;
+    border-radius: 20px;
 
-    color: #526d90;
+    background: var(--verde-claro);
 
-    background: #e9f0ff;
+    color: #438060;
 
-    border-radius: 15px;
-
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 700;
 }
 
 
-/* =====================================================
-   MINI RETO
-===================================================== */
+/* =========================================================
+   11. MINI RETO
+========================================================= */
 
-.mini-reto {
+.reto {
+    padding: 22px;
 
-    padding: 18px;
+    border-radius: 22px;
 
-    background: white;
+    background: #fbfbff;
 
-    border: 1px solid #e2eaf0;
-
-    border-radius: 18px;
+    border: 1px solid var(--borde);
 }
-
 
 .titulo-reto {
-
     display: flex;
-
     align-items: center;
 
-    gap: 10px;
+    gap: 11px;
+
+    margin-bottom: 17px;
+}
+
+.titulo-reto > span {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: var(--morado-claro);
+
+    font-size: 21px;
+}
+
+.titulo-reto h3 {
+    font-size: 19px;
+    margin-bottom: 3px;
+}
+
+.titulo-reto p {
+    font-size: 12px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   PREGUNTA
+========================================================= */
+
+.pregunta-reto {
+    font-size: 15px;
+    font-weight: 700;
+
+    line-height: 1.6;
+
+    color: var(--texto);
 
     margin-bottom: 16px;
 }
 
 
-.icono-reto {
-
-    width: 38px;
-
-    height: 38px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #eef0ff;
-
-    border-radius: 12px;
-
-    font-size: 20px;
-}
-
-
-.titulo-reto h2 {
-
-    color: #34526c;
-
-    font-size: 17px;
-}
-
-
-.titulo-reto p {
-
-    margin-top: 4px;
-
-    color: #596d7b;
-
-    font-size: 12px;
-}
-
-
-/* =====================================================
+/* =========================================================
    OPCIONES
-===================================================== */
+========================================================= */
 
 .opciones {
-
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 10px;
 }
 
-
 .opcion {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
     width: 100%;
+    min-height: 58px;
 
-    padding: 13px;
+    padding: 11px 14px;
 
-    border: 2px solid #e1e8ee;
-
-    color: #3e5a70;
-
-    background: white;
+    border: 1px solid #e2e3ef;
 
     border-radius: 14px;
 
+    background: white;
+
+    color: #50536f;
+
     text-align: left;
 
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 600;
 
     cursor: pointer;
 
-    transition: .2s;
+    transition: 0.2s ease;
 }
 
+.opcion:hover:not(:disabled) {
+    border-color: var(--morado);
+    background: #f8f6ff;
 
-.opcion:hover {
-
-    background: #f7faff;
-
-    border-color: #858fa0;
+    transform: translateY(-1px);
 }
-
-
-/* RESPUESTA SELECCIONADA */
 
 .opcion.seleccionada {
-
-    border-color: #6970e8;
-
-    background: #f1f1ff;
+    border-color: var(--morado);
+    background: var(--morado-claro);
+    color: var(--morado-oscuro);
 }
-
-
-/* RESPUESTA CORRECTA */
 
 .opcion.correcta {
-
-    border-color: #55a879;
-
-    background: #eaf8f0;
-
-    color: #24724a;
+    background: var(--verde-claro);
+    border-color: #82c79d;
+    color: #32704d;
 }
-
-
-/* RESPUESTA INCORRECTA */
 
 .opcion.incorrecta {
+    background: var(--rojo-claro);
+    border-color: #edaaaa;
+    color: #a94848;
+}
 
-    border-color: #d97878;
-
-    background: #fff0f0;
-
-    color: #a33d3d;
+.opcion:disabled {
+    cursor: default;
 }
 
 
-.imagen-opcion {
-
-    font-size: 24px;
-}
-
-
-.circulo {
-
-    width: 18px;
-
-    height: 18px;
-
-    margin-left: auto;
-
-    flex-shrink: 0;
-
-    border: 2px solid #a8b5bf;
-
-    border-radius: 50%;
-}
-
-
-/* CÍRCULO SELECCIONADO */
-
-.opcion.seleccionada .circulo {
-
-    border: 5px solid #6667e8;
-}
-
-
-/* CÍRCULO CORRECTO */
-
-.opcion.correcta .circulo {
-
-    border: 5px solid #55a879;
-}
-
-
-/* CÍRCULO INCORRECTO */
-
-.opcion.incorrecta .circulo {
-
-    border: 5px solid #d97878;
-}
-
-
-/* =====================================================
+/* =========================================================
    RESULTADO
-===================================================== */
+========================================================= */
 
-.siguiente-reto {
+.resultado {
+    min-height: 25px;
+
+    margin-top: 12px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.resultado.correcta {
+    color: #37805a;
+}
+
+.resultado.incorrecta {
+    color: #b14c4c;
+}
+
+.resultado.mostrar {
     display: block;
-    margin: 18px 0 0 auto;
-    padding: 12px 28px;
-    border: none;
-    border-radius: 25px;
-    background: #b8b5f5;
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.siguiente-reto:hover:not(:disabled) {
-    background: #6c63df;
-    transform: translateY(-2px);
-}
-
-.siguiente-reto:disabled {
-    background: #d8d6f7;
-    color: white;
-    cursor: not-allowed;
 }
 
 
-/* =====================================================
+/* =========================================================
    SIGUIENTE
-===================================================== */
+========================================================= */
 
-.siguiente {
-
+#botonSiguiente {
     display: block;
 
-    margin: 18px 0 0 auto;
+    margin: 15px 0 0 auto;
+
+    border: none;
 
     padding: 13px 25px;
 
-    border: none;
+    border-radius: 27px;
+
+    background: linear-gradient(
+        135deg,
+        #6657c8,
+        #668ce2
+    );
 
     color: white;
 
-    background:
-        linear-gradient(
-            90deg,
-            #5c61ec,
-            #7565d6
-        );
-
-    border-radius: 20px;
-
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 700;
 
     cursor: pointer;
 
-    transition: .2s;
+    box-shadow: 0 7px 17px rgba(88, 77, 170, 0.18);
+
+    transition: 0.2s ease;
 }
 
-
-.siguiente:disabled {
-
-    opacity: .45;
-
-    cursor: not-allowed;
-}
-
-
-.siguiente:not(:disabled):hover {
-
+#botonSiguiente:hover:not(:disabled) {
     transform: translateY(-2px);
 }
 
+#botonSiguiente:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+}
 
-/* =====================================================
-   PANEL DERECHO
-===================================================== */
+
+/* =========================================================
+   12. PANEL DERECHO
+========================================================= */
 
 .panel-derecho {
+    background: #fafaff;
 
-    min-height: 650px;
+    border-left: 1px solid var(--borde);
+
+    padding: 25px 20px;
 }
 
 
-.tarjeta.explorar {
+/* =========================================================
+   TARJETA DERECHA
+========================================================= */
 
-    width: 100%;
+.panel-derecho .tarjeta {
+    background: white;
 
-    min-height: 650px;
+    border: 1px solid var(--borde);
 
-    display: flex;
+    border-radius: 22px;
 
-    flex-direction: column;
+    padding: 25px 20px;
 
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 25px;
+    box-shadow: var(--sombra);
 
     text-align: center;
-
-    background:
-        linear-gradient(
-            160deg,
-            #f7fbff,
-            #f0f3ff
-        );
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 7px 25px rgba(50, 80, 110, .06);
 }
 
+
+/* =========================================================
+   TARJETA ACTUAL
+========================================================= */
+
+.panel-derecho .explorar {
+    min-height: 250px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   PLANETA
+========================================================= */
 
 .planeta {
+    width: 85px;
+    height: 85px;
 
-    font-size: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    opacity: .8;
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #eef3ff,
+        #f0edff
+    );
+
+    font-size: 42px;
 }
 
 
-.explorar h3 {
+/* =========================================================
+   TEXTO TARJETA
+========================================================= */
 
-    margin-top: 15px;
-
-    color: #174d7c;
-
+.panel-derecho h3 {
     font-size: 18px;
+
+    margin-bottom: 9px;
 }
 
+.panel-derecho p {
+    color: var(--texto-secundario);
 
-.explorar p {
-
-    max-width: 190px;
-
-    margin-top: 10px;
-
-    color: #62798c;
-
-    font-size: 12px;
+    font-size: 13px;
 
     line-height: 1.6;
 }
 
-
 .decoracion {
+    margin-top: 17px;
 
-    margin-top: 20px;
+    color: var(--morado);
 
-    color: #9eaff0;
-
-    font-size: 30px;
+    font-size: 22px;
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* =========================================================
+   13. MODALES DE RECUPERACIÓN
+========================================================= */
 
-@media (max-width: 1100px) {
+.modal-recuperacion-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(35, 32, 70, 0.58);
+
+    backdrop-filter: blur(4px);
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-recuperacion {
+    width: min(430px, 100%);
+
+    padding: 32px 28px;
+
+    border-radius: 25px;
+
+    background: white;
+
+    text-align: center;
+
+    box-shadow: 0 20px 60px rgba(30, 28, 70, 0.25);
+
+    animation: aparecerModal 0.25s ease;
+}
+
+@keyframes aparecerModal {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   ICONO MODAL
+========================================================= */
+
+.icono-modal {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 16px;
+
+    border-radius: 20px;
+
+    background: var(--rojo-claro);
+
+    font-size: 34px;
+}
+
+.modal-recuperacion h2 {
+    font-size: 23px;
+
+    margin-bottom: 13px;
+
+    color: var(--texto);
+}
+
+.modal-recuperacion p {
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 9px;
+}
+
+
+/* =========================================================
+   BOTÓN RECUPERAR
+========================================================= */
+
+.boton-recuperar {
+    border: none;
+
+    margin-top: 17px;
+
+    padding: 13px 24px;
+
+    border-radius: 27px;
+
+    background: linear-gradient(
+        135deg,
+        #6657c8,
+        #668ce2
+    );
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 18px rgba(88, 77, 170, 0.18);
+
+    transition: 0.2s ease;
+}
+
+.boton-recuperar:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.boton-recuperar:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   14. RETO DE RECUPERACIÓN
+========================================================= */
+
+.reto-recuperacion {
+    width: min(460px, 100%);
+}
+
+.pregunta-recuperacion {
+    margin-top: 17px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background: #f7f7ff;
+
+    color: var(--texto) !important;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   OPCIONES RECUPERACIÓN
+========================================================= */
+
+.opciones-recuperacion {
+    display: grid;
+
+    gap: 9px;
+
+    margin-top: 16px;
+}
+
+.opcion-recuperacion {
+    width: 100%;
+
+    min-height: 50px;
+
+    padding: 10px 14px;
+
+    border: 1px solid #e2e3ef;
+
+    border-radius: 14px;
+
+    background: white;
+
+    color: #50536f;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.opcion-recuperacion:hover:not(:disabled) {
+    border-color: var(--morado);
+
+    background: var(--morado-claro);
+}
+
+.opcion-recuperacion.seleccionada {
+    border-color: var(--morado);
+
+    background: var(--morado-claro);
+
+    color: var(--morado-oscuro);
+}
+
+.opcion-recuperacion.correcta {
+    border-color: #82c79d;
+
+    background: var(--verde-claro);
+
+    color: #32704d;
+}
+
+.opcion-recuperacion.incorrecta {
+    border-color: #edaaaa;
+
+    background: var(--rojo-claro);
+
+    color: #a94848;
+}
+
+.opcion-recuperacion:disabled {
+    cursor: default;
+}
+
+
+/* =========================================================
+   RESULTADO RECUPERACIÓN
+========================================================= */
+
+.resultado-recuperacion {
+    min-height: 24px;
+
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.resultado-recuperacion.correcta {
+    color: #37805a;
+}
+
+.resultado-recuperacion.incorrecta {
+    color: #b14c4c;
+}
+
+
+/* =========================================================
+   15. SCROLL
+========================================================= */
+
+.menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background: #d8d7eb;
+    border-radius: 10px;
+}
+
+.menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+/* =========================================================
+   16. TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
 
     .contenido {
+        grid-template-columns: 230px minmax(0, 1fr) 250px;
+    }
 
-        grid-template-columns:
-            210px 1fr;
+    .contenido-central {
+        padding: 25px 25px 35px;
+    }
+
+    .encabezado {
+        padding: 14px 22px;
+    }
+
+    .jugador {
+        display: none;
+    }
+
+    .dato,
+    .racha,
+    .vidas-contenedor {
+        min-width: 65px;
+    }
+
+}
+
+
+/* =========================================================
+   17. TABLET PEQUEÑA
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .contenido {
+        grid-template-columns: 220px minmax(0, 1fr);
     }
 
     .panel-derecho {
-
-        grid-column: 1 / -1;
-
-        min-height: 250px;
+        display: none;
     }
 
-    .tarjeta.explorar {
-
-        min-height: 250px;
+    .informacion-tema {
+        grid-template-columns: 1fr;
     }
+
+    .dato-curioso {
+        min-height: auto;
+    }
+
 }
 
+
+/* =========================================================
+   18. CELULAR / PANTALLA PEQUEÑA
+========================================================= */
 
 @media (max-width: 800px) {
 
     .encabezado {
+        min-height: auto;
 
-        flex-direction: column;
+        padding: 12px 15px;
 
-        align-items: flex-start;
+        flex-wrap: wrap;
 
-        gap: 18px;
+        gap: 12px;
+    }
+
+    .marca {
+        flex: 1;
+    }
+
+    .marca h1 {
+        font-size: 17px;
+    }
+
+    .marca p {
+        font-size: 10px;
+    }
+
+    .logo {
+        width: 42px;
+        height: 42px;
+
+        font-size: 21px;
+    }
+
+    .informacion-jugador {
+        width: 100%;
+
+        justify-content: flex-end;
+    }
+
+    .dato,
+    .racha,
+    .vidas-contenedor {
+        min-width: 62px;
+        min-height: 47px;
+    }
+
+    .dato strong,
+    .racha strong,
+    .vidas-contenedor strong {
+        font-size: 15px;
+    }
+
+    .dato span,
+    .racha span,
+    .vidas-contenedor .corazon {
+        font-size: 17px;
     }
 
     .contenido {
-
-        grid-template-columns: 1fr;
+        display: block;
     }
 
-    .informacion-tema {
+    .menu {
+        display: none;
+    }
 
-        grid-template-columns: 1fr;
+    .contenido-central {
+        padding: 20px 15px 30px;
+    }
+
+    .titulo-tema h2 {
+        font-size: 26px;
+    }
+
+    .icono-tema {
+        width: 58px;
+        height: 58px;
+
+        font-size: 29px;
+    }
+
+    .mensaje-bot {
+        align-items: flex-start;
+    }
+
+    .bot {
+        width: 47px;
+        height: 47px;
+
+        font-size: 23px;
+    }
+
+    .imagen-contenedor,
+    .imagen-contenedor img {
+        height: 260px;
+        min-height: 260px;
     }
 
     .opciones {
-
         grid-template-columns: 1fr;
     }
-}
-
-/* =====================================================
-AUDIO REPRODUCIENDO
-===================================================== */
-
-.boton-audio.reproduciendo {
-background:
-linear-gradient(
-90deg,
-#43a878,
-#4d8eea
-);
-
-
-transform: translateY(-2px);
-
 
 }
 
-/* =====================================================
-ANIMACIÓN DEL AUDIO
-===================================================== */
 
-.boton-audio.reproduciendo small {
-animation: pulsarAudio 1s infinite;
-}
+/* =========================================================
+   19. CELULAR PEQUEÑO
+========================================================= */
 
-@keyframes pulsarAudio {
+@media (max-width: 480px) {
 
+    .encabezado {
+        padding: 10px 12px;
+    }
 
-0% {
-    transform: scale(1);
-}
+    .informacion-jugador {
+        gap: 7px;
+    }
 
-50% {
-    transform: scale(1.25);
-}
+    .dato,
+    .racha,
+    .vidas-contenedor {
+        min-width: 55px;
+        min-height: 43px;
+    }
 
-100% {
-    transform: scale(1);
-}
+    .dato span,
+    .racha span,
+    .vidas-contenedor .corazon {
+        font-size: 15px;
+    }
 
+    .dato strong,
+    .racha strong,
+    .vidas-contenedor strong {
+        font-size: 14px;
+    }
+
+    .contenido-central {
+        padding: 18px 12px 25px;
+    }
+
+    .titulo-tema {
+        gap: 11px;
+    }
+
+    .titulo-tema h2 {
+        font-size: 23px;
+    }
+
+    .titulo-tema p {
+        font-size: 12px;
+    }
+
+    .burbuja-bot {
+        padding: 12px 14px;
+    }
+
+    .burbuja-bot p {
+        font-size: 12px;
+    }
+
+    .reto {
+        padding: 17px;
+    }
+
+    .modal-recuperacion {
+        padding: 27px 20px;
+    }
 
 }

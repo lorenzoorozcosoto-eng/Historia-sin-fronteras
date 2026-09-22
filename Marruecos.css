@@ -617,6 +617,324 @@ button {
     margin-top: 12px;
 }
 
+/* =====================================================
+   BLOQUEO DE PANTALLA - RECUPERACIÓN DE VIDAS
+===================================================== */
+
+.modal-recuperacion-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(30, 27, 55, 0.72);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99999;
+
+    padding: 20px;
+
+}
+
+
+/* =====================================================
+   VENTANA DEL MODAL
+===================================================== */
+
+.modal-recuperacion {
+
+    width: min(430px, 100%);
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 35px 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+
+    animation: aparecerModal 0.3s ease;
+
+}
+
+
+/* =====================================================
+   ANIMACIÓN
+===================================================== */
+
+@keyframes aparecerModal {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(0.85);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   ICONO
+===================================================== */
+
+.icono-modal {
+
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #f5f1ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 38px;
+
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.modal-recuperacion h2 {
+
+    margin: 0 0 15px;
+
+    color: #4d419f;
+
+    font-size: 25px;
+
+}
+
+
+/* =====================================================
+   TEXTOS
+===================================================== */
+
+.modal-recuperacion p {
+
+    color: #666;
+
+    line-height: 1.6;
+
+    margin: 8px 0;
+
+}
+
+
+/* =====================================================
+   BOTÓN RECUPERAR
+===================================================== */
+
+.boton-recuperar {
+
+    width: 100%;
+
+    border: none;
+
+    border-radius: 14px;
+
+    padding: 14px 20px;
+
+    margin-top: 20px;
+
+    background: #6657c8;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+.boton-recuperar:hover {
+
+    background: #4d419f;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =====================================================
+   PREGUNTA DE RECUPERACIÓN
+===================================================== */
+
+.pregunta-recuperacion {
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: #333 !important;
+
+    margin: 20px 0 !important;
+
+}
+
+
+/* =====================================================
+   OPCIONES DE RECUPERACIÓN
+===================================================== */
+
+.opciones-recuperacion {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+}
+
+
+.opcion-recuperacion {
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border-radius: 12px;
+
+    border: 2px solid #e3e0f4;
+
+    background: #faf9ff;
+
+    color: #333;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+.opcion-recuperacion:hover {
+
+    border-color: #6657c8;
+
+    background: #f2efff;
+
+}
+
+
+.opcion-recuperacion.seleccionada {
+
+    border-color: #6657c8;
+
+    background: #ebe7ff;
+
+    font-weight: 600;
+
+}
+
+
+.opcion-recuperacion:disabled {
+
+    cursor: default;
+
+}
+
+
+/* =====================================================
+   RESULTADO
+===================================================== */
+
+.resultado-recuperacion {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+}
+
+
+.resultado-recuperacion.mostrar {
+
+    display: block;
+
+}
+
+
+/* =====================================================
+   CORRECTA
+===================================================== */
+
+.opcion-recuperacion.correcta {
+
+    border-color: #45a968;
+
+    background: #edf9f1;
+
+    color: #287746;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .modal-recuperacion {
+
+        padding: 28px 20px;
+
+        border-radius: 20px;
+
+    }
+
+    .modal-recuperacion h2 {
+
+        font-size: 22px;
+
+    }
+
+}
 
 /* ================= RESPONSIVE ================= */
 

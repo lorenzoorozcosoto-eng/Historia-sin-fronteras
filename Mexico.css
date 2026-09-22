@@ -749,6 +749,261 @@ body {
     margin-top: 25px;
 }
 
+/* =====================================================
+   MODAL DE VIDAS AGOTADAS
+===================================================== */
+
+.modal-recuperacion-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    background: rgba(20, 18, 40, 0.75);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 999999 !important;
+}
+
+.modal-recuperacion {
+    width: min(430px, 100%);
+
+    background: #ffffff;
+
+    border-radius: 25px;
+
+    padding: 32px 28px;
+
+    text-align: center;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.30);
+
+    position: relative;
+
+    z-index: 1000000;
+
+    animation: aparecerModal 0.3s ease;
+}
+
+@keyframes aparecerModal {
+
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+.icono-modal {
+
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #f3efff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 38px;
+}
+
+.modal-recuperacion h2 {
+
+    margin: 0 0 15px;
+
+    color: #4d419f;
+
+    font-size: 25px;
+}
+
+.modal-recuperacion p {
+
+    color: #666;
+
+    line-height: 1.5;
+
+    margin: 8px 0;
+}
+
+.boton-recuperar {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #6657c8;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.boton-recuperar:hover {
+
+    background: #4d419f;
+
+}
+
+
+/* =====================================================
+   RETO DE RECUPERACIÓN
+===================================================== */
+
+.reto-recuperacion {
+
+    max-width: 460px;
+}
+
+.pregunta-recuperacion {
+
+    font-size: 17px !important;
+
+    font-weight: 600;
+
+    color: #333 !important;
+
+    margin: 20px 0 !important;
+}
+
+.opciones-recuperacion {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.opcion-recuperacion {
+
+    width: 100%;
+
+    min-height: 50px;
+
+    padding: 13px 16px;
+
+    border: 2px solid #e3e0f4;
+
+    border-radius: 12px;
+
+    background: #faf9ff;
+
+    color: #333;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    transition: 0.2s;
+}
+
+.opcion-recuperacion:hover {
+
+    border-color: #6657c8;
+
+    background: #f2efff;
+}
+
+.opcion-recuperacion.seleccionada {
+
+    border-color: #6657c8;
+
+    background: #ebe7ff;
+
+    color: #4d419f;
+
+    font-weight: 700;
+}
+
+.resultado-recuperacion {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+}
+
+.resultado-recuperacion.mostrar {
+
+    display: block;
+}
+
+.resultado-recuperacion.correcta {
+
+    background: #edf9f1;
+
+    color: #287746;
+}
+
+.resultado-recuperacion.incorrecta {
+
+    background: #fff0f0;
+
+    color: #b33a3a;
+}
+
+.opcion-recuperacion.correcta {
+
+    border-color: #4caf50;
+
+    background: #edf9f1;
+
+    color: #287746;
+}
+
+.opcion-recuperacion.incorrecta {
+
+    border-color: #e05252;
+
+    background: #fff0f0;
+
+    color: #b33a3a;
+}
+
 
 /* =========================================================
    RESPONSIVE

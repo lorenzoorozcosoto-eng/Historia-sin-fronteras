@@ -1,575 +1,2011 @@
-// ======================================================
-// HISTORIA SIN FRONTERAS - ALEMANIA
-// JavaScript organizado
-// ======================================================
+ /* ============================================================
+   HISTORIA SIN FRONTERAS - ALEMANIA
+   JAVASCRIPT COMPLETO Y CORREGIDO
+
+   14 CATEGORÍAS
+   5 PREGUNTAS POR CATEGORÍA
+   70 PREGUNTAS EN TOTAL
+============================================================ */
 
 
-// ======================================================
-// 1. TEMAS
-// ======================================================
+/* ============================================================
+   1. CONFIGURACIÓN
+============================================================ */
+
+const CLAVE_GUARDADO =
+    "historiaSinFronterasAlemania_v3";
+
+const MAX_VIDAS = 5;
+
+
+/* ============================================================
+   2. TEMAS Y PREGUNTAS
+============================================================ */
 
 const temas = {
 
-    // ==================================================
-    // CULTURA
-    // ==================================================
+
+    /* ========================================================
+       CULTURA - GASTRONOMÍA
+    ======================================================== */
 
     gastronomia: {
+
         titulo: "Gastronomía",
-        subtitulo: "Sabores tradicionales de Alemania",
-        icono: "🥨",
+        subtitulo: "Sabores que cuentan historias",
+        icono: "🍽️",
 
-        mensaje: "¡Descubre los sabores tradicionales de Alemania!",
+        imagen: "🥨",
 
-        imagen: "https://images.unsplash.com/photo-1555507036-ab1f4038808a",
+        dato:
+            "La gastronomía alemana es diversa y cambia según la región. Algunos alimentos tradicionales son el pretzel, las salchichas y diferentes preparaciones con papa.",
 
-        dato: "La gastronomía alemana incluye platos regionales y productos tradicionales como panes, salchichas y pretzels.",
-
-        regiones: "Baviera • Berlín • Sajonia • Renania",
-
-        sobre: "La gastronomía alemana cambia según la región y forma parte importante de sus tradiciones culturales.",
-
-        pregunta: "¿Cuál de estos alimentos es muy representativo de Alemania?",
-
-        opciones: [
-            "🥨 Pretzel",
-            "🌮 Taco",
-            "🍣 Sushi",
-            "🥐 Croissant"
+        regiones: [
+            "Baviera",
+            "Berlín",
+            "Sajonia",
+            "Renania"
         ],
 
-        correcta: "🥨 Pretzel",
+        preguntas: [
 
-        audio: "El pretzel es uno de los alimentos tradicionales más conocidos de Alemania."
+            {
+                pregunta:
+                    "¿Cuál de estos alimentos es muy representativo de la gastronomía alemana?",
+
+                opciones: [
+                    "Pretzel",
+                    "Sushi",
+                    "Tacos",
+                    "Paella"
+                ],
+
+                correcta: "Pretzel"
+            },
+
+            {
+                pregunta:
+                    "¿Cómo se conoce en Alemania a muchas de sus salchichas tradicionales?",
+
+                opciones: [
+                    "Bratwurst",
+                    "Croissant",
+                    "Tortilla",
+                    "Ravioli"
+                ],
+
+                correcta: "Bratwurst"
+            },
+
+            {
+                pregunta:
+                    "¿Qué alimento aparece con frecuencia en diferentes platos tradicionales alemanes?",
+
+                opciones: [
+                    "Papa",
+                    "Coco",
+                    "Mango",
+                    "Yuca"
+                ],
+
+                correcta: "Papa"
+            },
+
+            {
+                pregunta:
+                    "¿Qué alimento alemán tiene una forma característica retorcida?",
+
+                opciones: [
+                    "Pretzel",
+                    "Bratwurst",
+                    "Sopa",
+                    "Strudel"
+                ],
+
+                correcta: "Pretzel"
+            },
+
+            {
+                pregunta:
+                    "¿Por qué la gastronomía alemana presenta diferencias entre regiones?",
+
+                opciones: [
+                    "Por las tradiciones y productos locales",
+                    "Porque todos los platos son iguales",
+                    "Porque no existen comidas regionales",
+                    "Porque solo se consume comida extranjera"
+                ],
+
+                correcta:
+                    "Por las tradiciones y productos locales"
+            }
+
+        ]
     },
 
+
+    /* ========================================================
+       CULTURA - MÚSICA
+    ======================================================== */
 
     musica: {
+
         titulo: "Música",
-        subtitulo: "Grandes compositores y tradiciones musicales",
-        icono: "🎼",
+        subtitulo: "Melodías que forman parte de su historia",
+        icono: "🎵",
 
-        mensaje: "¡Descubre la importancia de la música en la cultura alemana!",
+        imagen: "🎼",
 
-        imagen: "https://images.unsplash.com/photo-1507838153414-b4b713384a76",
+        dato:
+            "Alemania ha tenido una importante influencia en la música clásica europea gracias a compositores como Johann Sebastian Bach y Ludwig van Beethoven.",
 
-        dato: "Alemania tiene una importante tradición musical relacionada con compositores como Johann Sebastian Bach y Ludwig van Beethoven.",
-
-        regiones: "Leipzig • Bonn • Berlín • Múnich",
-
-        sobre: "La música clásica ocupa un lugar importante en la cultura alemana y cuenta con grandes compositores reconocidos internacionalmente.",
-
-        pregunta: "¿Cuál de estos compositores está relacionado con la tradición musical alemana?",
-
-        opciones: [
-            "🎼 Johann Sebastian Bach",
-            "🎸 Bob Marley",
-            "🎤 Elvis Presley",
-            "🎹 Astor Piazzolla"
+        regiones: [
+            "Leipzig",
+            "Bonn",
+            "Berlín",
+            "Weimar"
         ],
 
-        correcta: "🎼 Johann Sebastian Bach",
+        preguntas: [
 
-        audio: "Johann Sebastian Bach es uno de los compositores más importantes de la tradición musical alemana."
+            {
+                pregunta:
+                    "¿Quién fue Johann Sebastian Bach?",
+
+                opciones: [
+                    "Un compositor",
+                    "Un rey",
+                    "Un explorador",
+                    "Un pintor"
+                ],
+
+                correcta: "Un compositor"
+            },
+
+            {
+                pregunta:
+                    "¿En qué ciudad alemana nació Ludwig van Beethoven?",
+
+                opciones: [
+                    "Bonn",
+                    "Múnich",
+                    "Hamburgo",
+                    "Dresde"
+                ],
+
+                correcta: "Bonn"
+            },
+
+            {
+                pregunta:
+                    "¿En qué ciudad desarrolló Bach una parte importante de su carrera?",
+
+                opciones: [
+                    "Leipzig",
+                    "Madrid",
+                    "Roma",
+                    "París"
+                ],
+
+                correcta: "Leipzig"
+            },
+
+            {
+                pregunta:
+                    "¿Qué tipo de música está muy relacionada con Bach y Beethoven?",
+
+                opciones: [
+                    "Música clásica",
+                    "Reguetón",
+                    "Salsa",
+                    "Rock moderno"
+                ],
+
+                correcta: "Música clásica"
+            },
+
+            {
+                pregunta:
+                    "¿Cuál de estos compositores fue alemán?",
+
+                opciones: [
+                    "Beethoven",
+                    "Mozart",
+                    "Vivaldi",
+                    "Chopin"
+                ],
+
+                correcta: "Beethoven"
+            }
+
+        ]
     },
 
+
+    /* ========================================================
+       CULTURA - TRADICIONES
+    ======================================================== */
 
     tradiciones: {
+
         titulo: "Tradiciones",
-        subtitulo: "Costumbres que forman parte de la cultura",
-        icono: "🎊",
+        subtitulo: "Costumbres que pasan de generación en generación",
+        icono: "🥨",
 
-        mensaje: "¡Conoce algunas tradiciones de Alemania!",
+        imagen: "🎭",
 
-        imagen: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5",
+        dato:
+            "Las tradiciones alemanas varían según la región y suelen estar relacionadas con la música, la gastronomía, las celebraciones y las costumbres locales.",
 
-        dato: "Alemania cuenta con numerosas tradiciones regionales y celebraciones populares.",
-
-        regiones: "Baviera • Colonia • Berlín • Renania",
-
-        sobre: "Las tradiciones alemanas varían entre regiones y están relacionadas con fiestas, música, gastronomía y costumbres locales.",
-
-        pregunta: "¿Cuál de estas celebraciones es tradicionalmente asociada con Alemania?",
-
-        opciones: [
-            "🎉 Oktoberfest",
-            "🎎 Hanami",
-            "🪅 Día de Muertos",
-            "🎭 Carnaval de Río"
+        regiones: [
+            "Baviera",
+            "Sajonia",
+            "Renania",
+            "Berlín"
         ],
 
-        correcta: "🎉 Oktoberfest",
+        preguntas: [
 
-        audio: "El Oktoberfest es una de las celebraciones más conocidas asociadas con Alemania."
+            {
+                pregunta:
+                    "¿Qué celebración tradicional alemana es conocida internacionalmente?",
+
+                opciones: [
+                    "Oktoberfest",
+                    "Carnaval de Río",
+                    "Día de Muertos",
+                    "Hanami"
+                ],
+
+                correcta: "Oktoberfest"
+            },
+
+            {
+                pregunta:
+                    "¿Qué elemento suele estar presente en muchas celebraciones tradicionales alemanas?",
+
+                opciones: [
+                    "Música",
+                    "Solo deportes",
+                    "Solo videojuegos",
+                    "Solo películas"
+                ],
+
+                correcta: "Música"
+            },
+
+            {
+                pregunta:
+                    "¿Por qué las tradiciones pueden variar entre regiones alemanas?",
+
+                opciones: [
+                    "Por la diversidad cultural regional",
+                    "Porque Alemania no tiene regiones",
+                    "Porque todas las ciudades tienen la misma historia",
+                    "Porque las tradiciones son recientes"
+                ],
+
+                correcta:
+                    "Por la diversidad cultural regional"
+            },
+
+            {
+                pregunta:
+                    "¿Qué región alemana es especialmente conocida por sus tradiciones folclóricas?",
+
+                opciones: [
+                    "Baviera",
+                    "Sicilia",
+                    "Cataluña",
+                    "Escocia"
+                ],
+
+                correcta: "Baviera"
+            },
+
+            {
+                pregunta:
+                    "¿Qué combinación aparece con frecuencia en celebraciones tradicionales alemanas?",
+
+                opciones: [
+                    "Música y gastronomía",
+                    "Videojuegos y tecnología",
+                    "Cine y fotografía",
+                    "Deportes acuáticos"
+                ],
+
+                correcta: "Música y gastronomía"
+            }
+
+        ]
     },
 
+
+    /* ========================================================
+       CULTURA - FIESTAS
+    ======================================================== */
 
     fiestas: {
+
         titulo: "Fiestas",
-        subtitulo: "Celebraciones llenas de tradición",
+        subtitulo: "Celebraciones llenas de cultura y tradición",
         icono: "🎉",
 
-        mensaje: "¡Descubre las fiestas tradicionales alemanas!",
+        imagen: "🎊",
 
-        imagen: "https://images.unsplash.com/photo-1508854710579-5cecc3a2c2b1",
+        dato:
+            "El Oktoberfest es una de las celebraciones alemanas más conocidas y se realiza tradicionalmente en la ciudad de Múnich.",
 
-        dato: "Alemania celebra numerosas fiestas tradicionales durante todo el año.",
-
-        regiones: "Múnich • Colonia • Berlín • Baviera",
-
-        sobre: "Las fiestas alemanas reúnen música, comida, actividades culturales y tradiciones regionales.",
-
-        pregunta: "¿En qué ciudad se celebra tradicionalmente el Oktoberfest?",
-
-        opciones: [
-            "🏙️ Múnich",
-            "🏙️ Berlín",
-            "🏙️ Hamburgo",
-            "🏙️ Frankfurt"
+        regiones: [
+            "Múnich",
+            "Baviera",
+            "Berlín",
+            "Colonia"
         ],
 
-        correcta: "🏙️ Múnich",
+        preguntas: [
 
-        audio: "El Oktoberfest se celebra tradicionalmente en Múnich."
+            {
+                pregunta:
+                    "¿En qué ciudad se celebra tradicionalmente el Oktoberfest?",
+
+                opciones: [
+                    "Múnich",
+                    "Bonn",
+                    "Hamburgo",
+                    "Dresde"
+                ],
+
+                correcta: "Múnich"
+            },
+
+            {
+                pregunta:
+                    "¿Cuál es una de las fiestas alemanas más conocidas internacionalmente?",
+
+                opciones: [
+                    "Oktoberfest",
+                    "Carnaval de Venecia",
+                    "Diwali",
+                    "Hanami"
+                ],
+
+                correcta: "Oktoberfest"
+            },
+
+            {
+                pregunta:
+                    "¿Qué elemento cultural es frecuente durante muchas fiestas tradicionales?",
+
+                opciones: [
+                    "Música",
+                    "Solo silencio",
+                    "Solo lectura",
+                    "Solo pintura"
+                ],
+
+                correcta: "Música"
+            },
+
+            {
+                pregunta:
+                    "¿En qué región se encuentra Múnich?",
+
+                opciones: [
+                    "Baviera",
+                    "Sajonia",
+                    "Brandeburgo",
+                    "Hesse"
+                ],
+
+                correcta: "Baviera"
+            },
+
+            {
+                pregunta:
+                    "¿Qué elementos caracterizan muchas celebraciones tradicionales alemanas?",
+
+                opciones: [
+                    "Música, gastronomía y tradiciones",
+                    "Solo videojuegos",
+                    "Solo actividades escolares",
+                    "Solo deportes"
+                ],
+
+                correcta:
+                    "Música, gastronomía y tradiciones"
+            }
+
+        ]
     },
 
 
-    vestimenta: {
-        titulo: "Vestimenta típica",
-        subtitulo: "Ropa tradicional de diferentes regiones",
+    /* ========================================================
+       CULTURA - VESTIMENTAS
+    ======================================================== */
+
+    vestimentas: {
+
+        titulo: "Vestimentas",
+        subtitulo: "Ropa tradicional e identidad regional",
         icono: "👗",
 
-        mensaje: "¡Conoce la vestimenta tradicional alemana!",
+        imagen: "👒",
 
-        imagen: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d",
+        dato:
+            "El Dirndl y los Lederhosen son prendas tradicionales asociadas especialmente con Baviera y con algunas celebraciones culturales.",
 
-        dato: "Algunas regiones de Alemania conservan prendas tradicionales como el Dirndl y el Lederhosen.",
-
-        regiones: "Baviera • Tirol bávaro • Regiones alpinas",
-
-        sobre: "La vestimenta tradicional puede variar según la región y se utiliza especialmente durante algunas celebraciones.",
-
-        pregunta: "¿Cuál de estas prendas está asociada con la vestimenta tradicional bávara?",
-
-        opciones: [
-            "👗 Dirndl",
-            "🥋 Kimono",
-            "👘 Sari",
-            "🧥 Poncho"
+        regiones: [
+            "Baviera",
+            "Alpes",
+            "Múnich"
         ],
 
-        correcta: "👗 Dirndl",
+        preguntas: [
 
-        audio: "El Dirndl es una prenda tradicional asociada especialmente con Baviera."
+            {
+                pregunta:
+                    "¿Cómo se llama una vestimenta tradicional femenina asociada con Baviera?",
+
+                opciones: [
+                    "Dirndl",
+                    "Kimono",
+                    "Sari",
+                    "Poncho"
+                ],
+
+                correcta: "Dirndl"
+            },
+
+            {
+                pregunta:
+                    "¿Qué son los Lederhosen?",
+
+                opciones: [
+                    "Pantalones tradicionales",
+                    "Un tipo de sombrero",
+                    "Un instrumento musical",
+                    "Un plato"
+                ],
+
+                correcta: "Pantalones tradicionales"
+            },
+
+            {
+                pregunta:
+                    "¿Con qué región alemana se relacionan especialmente el Dirndl y los Lederhosen?",
+
+                opciones: [
+                    "Baviera",
+                    "Berlín",
+                    "Hamburgo",
+                    "Sajonia"
+                ],
+
+                correcta: "Baviera"
+            },
+
+            {
+                pregunta:
+                    "¿En qué tipo de ocasiones pueden utilizarse estas prendas tradicionales?",
+
+                opciones: [
+                    "Celebraciones y festividades",
+                    "Solo en oficinas",
+                    "Solo en hospitales",
+                    "Solo en escuelas"
+                ],
+
+                correcta:
+                    "Celebraciones y festividades"
+            },
+
+            {
+                pregunta:
+                    "¿Qué representan las vestimentas tradicionales?",
+
+                opciones: [
+                    "Parte de la identidad y cultura regional",
+                    "Una obligación para todos los alemanes",
+                    "Un uniforme militar moderno",
+                    "Una moda exclusivamente extranjera"
+                ],
+
+                correcta:
+                    "Parte de la identidad y cultura regional"
+            }
+
+        ]
     },
 
+
+    /* ========================================================
+       CULTURA - ARTE
+    ======================================================== */
 
     arte: {
-        titulo: "Arte y literatura",
-        subtitulo: "Poetas, escritores y artistas",
+
+        titulo: "Arte",
+        subtitulo: "Literatura y creatividad alemana",
         icono: "🎨",
 
-        mensaje: "¡Descubre el arte y la literatura alemana!",
+        imagen: "📚",
 
-        imagen: "https://images.unsplash.com/photo-1549490349-8643362247b5",
+        dato:
+            "Alemania ha aportado importantes figuras a la literatura y al arte europeo, entre ellas Johann Wolfgang von Goethe y los hermanos Grimm.",
 
-        dato: "Alemania tiene una larga tradición literaria y artística, con figuras como Goethe y los hermanos Grimm.",
-
-        regiones: "Weimar • Berlín • Frankfurt • Kassel",
-
-        sobre: "La literatura alemana ha producido importantes escritores, poetas y recopiladores de historias que han influido en la cultura mundial.",
-
-        pregunta: "¿Quién fue un importante escritor y poeta alemán?",
-
-        opciones: [
-            "📖 Johann Wolfgang von Goethe",
-            "📖 William Shakespeare",
-            "📖 Miguel de Cervantes",
-            "📖 Gabriel García Márquez"
+        regiones: [
+            "Weimar",
+            "Berlín",
+            "Leipzig",
+            "Dresde"
         ],
 
-        correcta: "📖 Johann Wolfgang von Goethe",
+        preguntas: [
 
-        audio: "Johann Wolfgang von Goethe fue uno de los escritores y poetas más importantes de Alemania."
+            {
+                pregunta:
+                    "¿Quién fue Johann Wolfgang von Goethe?",
+
+                opciones: [
+                    "Escritor",
+                    "Astronauta",
+                    "Futbolista",
+                    "Rey"
+                ],
+
+                correcta: "Escritor"
+            },
+
+            {
+                pregunta:
+                    "¿Quiénes recopilaron muchos cuentos tradicionales conocidos?",
+
+                opciones: [
+                    "Los hermanos Grimm",
+                    "Los hermanos Wright",
+                    "Los hermanos Lumière",
+                    "Los hermanos Marx"
+                ],
+
+                correcta: "Los hermanos Grimm"
+            },
+
+            {
+                pregunta:
+                    "¿Qué ciudad alemana está muy relacionada con Goethe y la literatura?",
+
+                opciones: [
+                    "Weimar",
+                    "Múnich",
+                    "Bremen",
+                    "Colonia"
+                ],
+
+                correcta: "Weimar"
+            },
+
+            {
+                pregunta:
+                    "¿A qué área pertenece principalmente la obra de Goethe?",
+
+                opciones: [
+                    "Literatura",
+                    "Astronomía",
+                    "Medicina",
+                    "Ingeniería"
+                ],
+
+                correcta: "Literatura"
+            },
+
+            {
+                pregunta:
+                    "¿Qué tipo de historias recopilaron los hermanos Grimm?",
+
+                opciones: [
+                    "Cuentos tradicionales",
+                    "Informes científicos",
+                    "Manuales militares",
+                    "Noticias deportivas"
+                ],
+
+                correcta: "Cuentos tradicionales"
+            }
+
+        ]
     },
 
+
+    /* ========================================================
+       CULTURA - MONUMENTOS
+    ======================================================== */
 
     monumentos: {
+
         titulo: "Monumentos",
-        subtitulo: "Lugares que cuentan historias",
-        icono: "🏰",
+        subtitulo: "Lugares que conservan la memoria",
+        icono: "🏛️",
 
-        mensaje: "¡Conoce algunos monumentos importantes de Alemania!",
+        imagen: "🏰",
 
-        imagen: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b",
+        dato:
+            "Alemania cuenta con monumentos históricos y culturales que permiten conocer diferentes etapas de su historia.",
 
-        dato: "Alemania posee numerosos edificios y lugares históricos reconocidos por su valor cultural.",
-
-        regiones: "Berlín • Baviera • Colonia • Sajonia",
-
-        sobre: "Los monumentos alemanes reflejan diferentes periodos de su historia y forman parte de su patrimonio cultural.",
-
-        pregunta: "¿Cuál de estos monumentos se encuentra en Alemania?",
-
-        opciones: [
-            "🏰 Puerta de Brandeburgo",
-            "🗼 Torre Eiffel",
-            "🏛️ Coliseo Romano",
-            "🗿 Moái"
+        regiones: [
+            "Berlín",
+            "Colonia",
+            "Múnich",
+            "Dresde"
         ],
 
-        correcta: "🏰 Puerta de Brandeburgo",
+        preguntas: [
 
-        audio: "La Puerta de Brandeburgo se encuentra en Berlín, Alemania."
+            {
+                pregunta:
+                    "¿Cuál es uno de los monumentos más conocidos de Berlín?",
+
+                opciones: [
+                    "Puerta de Brandeburgo",
+                    "Coliseo",
+                    "Torre Eiffel",
+                    "Big Ben"
+                ],
+
+                correcta: "Puerta de Brandeburgo"
+            },
+
+            {
+                pregunta:
+                    "¿En qué ciudad se encuentra la Puerta de Brandeburgo?",
+
+                opciones: [
+                    "Berlín",
+                    "Bonn",
+                    "Leipzig",
+                    "Hamburgo"
+                ],
+
+                correcta: "Berlín"
+            },
+
+            {
+                pregunta:
+                    "¿Qué importancia pueden tener los monumentos históricos?",
+
+                opciones: [
+                    "Conservar la memoria histórica",
+                    "Servir solamente como decoración",
+                    "No tienen relación con la historia",
+                    "Solo funcionan como viviendas"
+                ],
+
+                correcta:
+                    "Conservar la memoria histórica"
+            },
+
+            {
+                pregunta:
+                    "¿En qué ciudad se encuentra la famosa catedral de Colonia?",
+
+                opciones: [
+                    "Colonia",
+                    "Berlín",
+                    "Múnich",
+                    "Bremen"
+                ],
+
+                correcta: "Colonia"
+            },
+
+            {
+                pregunta:
+                    "¿Qué pueden representar los monumentos de Alemania?",
+
+                opciones: [
+                    "Historia y cultura",
+                    "Solo deportes",
+                    "Solo tecnología",
+                    "Solo gastronomía"
+                ],
+
+                correcta: "Historia y cultura"
+            }
+
+        ]
     },
 
 
-    // ==================================================
-    // HISTORIA
-    // ==================================================
+    /* ========================================================
+       HISTORIA - IMPERIO ALEMÁN
+    ======================================================== */
 
-    imperio: {
+    "imperio-aleman": {
+
         titulo: "Imperio alemán",
-        subtitulo: "La formación de un Estado alemán",
+        subtitulo: "La unificación de Alemania",
         icono: "👑",
 
-        mensaje: "¡Descubre una etapa importante de la historia alemana!",
+        imagen: "👑",
 
-        imagen: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b",
+        dato:
+            "El Imperio alemán fue proclamado en 1871 después del proceso de unificación de varios Estados alemanes.",
 
-        dato: "El Imperio alemán fue proclamado en 1871.",
-
-        regiones: "Berlín • Prusia • Alemania",
-
-        sobre: "La unificación alemana del siglo XIX llevó a la creación del Imperio alemán en 1871.",
-
-        pregunta: "¿En qué año fue proclamado el Imperio alemán?",
-
-        opciones: [
-            "📅 1871",
-            "📅 1648",
-            "📅 1914",
-            "📅 1945"
+        regiones: [
+            "Prusia",
+            "Baviera",
+            "Sajonia",
+            "Brandeburgo"
         ],
 
-        correcta: "📅 1871",
+        preguntas: [
 
-        audio: "El Imperio alemán fue proclamado en mil ochocientos setenta y uno."
+            {
+                pregunta:
+                    "¿En qué año fue proclamado el Imperio alemán?",
+
+                opciones: [
+                    "1871",
+                    "1815",
+                    "1914",
+                    "1945"
+                ],
+
+                correcta: "1871"
+            },
+
+            {
+                pregunta:
+                    "¿Qué proceso estuvo relacionado con la creación del Imperio alemán?",
+
+                opciones: [
+                    "La unificación alemana",
+                    "La Revolución Industrial inglesa",
+                    "La independencia de Estados Unidos",
+                    "La Revolución francesa"
+                ],
+
+                correcta:
+                    "La unificación alemana"
+            },
+
+            {
+                pregunta:
+                    "¿Qué Estado tuvo un papel importante en la unificación alemana?",
+
+                opciones: [
+                    "Prusia",
+                    "Portugal",
+                    "Grecia",
+                    "Noruega"
+                ],
+
+                correcta: "Prusia"
+            },
+
+            {
+                pregunta:
+                    "¿En qué siglo se proclamó el Imperio alemán?",
+
+                opciones: [
+                    "Siglo XIX",
+                    "Siglo XVII",
+                    "Siglo XX",
+                    "Siglo XVI"
+                ],
+
+                correcta: "Siglo XIX"
+            },
+
+            {
+                pregunta:
+                    "¿Qué ocurrió en 1871?",
+
+                opciones: [
+                    "Se proclamó el Imperio alemán",
+                    "Cayó el Muro de Berlín",
+                    "Terminó la Segunda Guerra Mundial",
+                    "Se produjo la reunificación alemana"
+                ],
+
+                correcta:
+                    "Se proclamó el Imperio alemán"
+            }
+
+        ]
     },
 
 
-    primeraGuerra: {
+    /* ========================================================
+       HISTORIA - PRIMERA GUERRA MUNDIAL
+    ======================================================== */
+
+    "primera-guerra": {
+
         titulo: "Primera Guerra Mundial",
-        subtitulo: "Alemania en un conflicto mundial",
-        icono: "🌍",
+        subtitulo: "Alemania en el conflicto de 1914-1918",
+        icono: "⚔️",
 
-        mensaje: "¡Conoce el papel de Alemania durante la Primera Guerra Mundial!",
+        imagen: "⚔️",
 
-        imagen: "https://images.unsplash.com/photo-1461360228754-6e81c478b882",
+        dato:
+            "La Primera Guerra Mundial se desarrolló entre 1914 y 1918 y Alemania participó como una de las Potencias Centrales.",
 
-        dato: "La Primera Guerra Mundial comenzó en 1914 y terminó en 1918.",
-
-        regiones: "Europa",
-
-        sobre: "Alemania participó en la Primera Guerra Mundial como una de las principales potencias de las Potencias Centrales.",
-
-        pregunta: "¿En qué año comenzó la Primera Guerra Mundial?",
-
-        opciones: [
-            "📅 1914",
-            "📅 1939",
-            "📅 1871",
-            "📅 1945"
+        regiones: [
+            "Europa",
+            "Francia",
+            "Bélgica",
+            "Alemania"
         ],
 
-        correcta: "📅 1914",
+        preguntas: [
 
-        audio: "La Primera Guerra Mundial comenzó en mil novecientos catorce."
+            {
+                pregunta:
+                    "¿En qué año comenzó la Primera Guerra Mundial?",
+
+                opciones: [
+                    "1914",
+                    "1918",
+                    "1939",
+                    "1945"
+                ],
+
+                correcta: "1914"
+            },
+
+            {
+                pregunta:
+                    "¿En qué año terminó la Primera Guerra Mundial?",
+
+                opciones: [
+                    "1918",
+                    "1914",
+                    "1933",
+                    "1945"
+                ],
+
+                correcta: "1918"
+            },
+
+            {
+                pregunta:
+                    "¿En qué continente se desarrolló gran parte de la Primera Guerra Mundial?",
+
+                opciones: [
+                    "Europa",
+                    "América",
+                    "Oceanía",
+                    "África"
+                ],
+
+                correcta: "Europa"
+            },
+
+            {
+                pregunta:
+                    "¿Qué país participó en la Primera Guerra Mundial?",
+
+                opciones: [
+                    "Alemania",
+                    "Canadá solamente",
+                    "Brasil solamente",
+                    "Japón solamente"
+                ],
+
+                correcta: "Alemania"
+            },
+
+            {
+                pregunta:
+                    "¿Cuál fue el periodo general de la Primera Guerra Mundial?",
+
+                opciones: [
+                    "1914-1918",
+                    "1939-1945",
+                    "1961-1989",
+                    "1871-1910"
+                ],
+
+                correcta: "1914-1918"
+            }
+
+        ]
     },
 
 
-    segundaGuerra: {
+    /* ========================================================
+       HISTORIA - SEGUNDA GUERRA MUNDIAL
+    ======================================================== */
+
+    "segunda-guerra": {
+
         titulo: "Segunda Guerra Mundial",
-        subtitulo: "Un periodo decisivo de la historia",
-        icono: "🌍",
+        subtitulo: "Alemania y el conflicto de 1939-1945",
+        icono: "🕊️",
 
-        mensaje: "¡Aprende sobre este importante acontecimiento histórico!",
+        imagen: "🌍",
 
-        imagen: "https://images.unsplash.com/photo-1500534623283-312aade485b7",
+        dato:
+            "La Segunda Guerra Mundial comenzó en 1939 y terminó en 1945. Fue un conflicto de gran escala que afectó a numerosos países.",
 
-        dato: "La Segunda Guerra Mundial comenzó en 1939 y terminó en 1945.",
-
-        regiones: "Europa • Alemania",
-
-        sobre: "La Segunda Guerra Mundial tuvo enormes consecuencias políticas, sociales y económicas para Alemania y Europa.",
-
-        pregunta: "¿En qué año terminó la Segunda Guerra Mundial?",
-
-        opciones: [
-            "📅 1945",
-            "📅 1918",
-            "📅 1933",
-            "📅 1950"
+        regiones: [
+            "Europa",
+            "Alemania",
+            "Polonia",
+            "Francia"
         ],
 
-        correcta: "📅 1945",
+        preguntas: [
 
-        audio: "La Segunda Guerra Mundial terminó en mil novecientos cuarenta y cinco."
+            {
+                pregunta:
+                    "¿En qué año comenzó la Segunda Guerra Mundial?",
+
+                opciones: [
+                    "1939",
+                    "1914",
+                    "1945",
+                    "1961"
+                ],
+
+                correcta: "1939"
+            },
+
+            {
+                pregunta:
+                    "¿En qué año terminó la Segunda Guerra Mundial?",
+
+                opciones: [
+                    "1945",
+                    "1939",
+                    "1949",
+                    "1989"
+                ],
+
+                correcta: "1945"
+            },
+
+            {
+                pregunta:
+                    "¿En qué continente se desarrollaron importantes acontecimientos de la guerra?",
+
+                opciones: [
+                    "Europa",
+                    "Oceanía",
+                    "Antártida",
+                    "América del Sur únicamente"
+                ],
+
+                correcta: "Europa"
+            },
+
+            {
+                pregunta:
+                    "¿Cuánto duró aproximadamente la Segunda Guerra Mundial?",
+
+                opciones: [
+                    "6 años",
+                    "2 años",
+                    "15 años",
+                    "20 años"
+                ],
+
+                correcta: "6 años"
+            },
+
+            {
+                pregunta:
+                    "¿Cuál fue el periodo de la Segunda Guerra Mundial?",
+
+                opciones: [
+                    "1939-1945",
+                    "1914-1918",
+                    "1945-1961",
+                    "1961-1989"
+                ],
+
+                correcta: "1939-1945"
+            }
+
+        ]
     },
 
 
-    berlin: {
+    /* ========================================================
+       HISTORIA - MURO DE BERLÍN
+    ======================================================== */
+
+    "muro-berlin": {
+
         titulo: "Muro de Berlín",
-        subtitulo: "Una ciudad dividida",
+        subtitulo: "Un símbolo de la división alemana",
         icono: "🧱",
 
-        mensaje: "¡Conoce la historia del Muro de Berlín!",
+        imagen: "🧱",
 
-        imagen: "https://images.unsplash.com/photo-1560969184-10fe8719e047",
+        dato:
+            "El Muro de Berlín comenzó a construirse en 1961 y cayó en 1989, convirtiéndose en uno de los símbolos más conocidos de la Guerra Fría.",
 
-        dato: "El Muro de Berlín fue construido en 1961 y cayó en 1989.",
-
-        regiones: "Berlín",
-
-        sobre: "El Muro de Berlín se convirtió en uno de los símbolos más importantes de la división de Alemania durante la Guerra Fría.",
-
-        pregunta: "¿En qué año cayó el Muro de Berlín?",
-
-        opciones: [
-            "📅 1989",
-            "📅 1961",
-            "📅 1945",
-            "📅 1990"
+        regiones: [
+            "Berlín",
+            "Alemania Oriental",
+            "Alemania Occidental"
         ],
 
-        correcta: "📅 1989",
+        preguntas: [
 
-        audio: "El Muro de Berlín cayó en mil novecientos ochenta y nueve."
+            {
+                pregunta:
+                    "¿En qué año comenzó la construcción del Muro de Berlín?",
+
+                opciones: [
+                    "1961",
+                    "1945",
+                    "1989",
+                    "1990"
+                ],
+
+                correcta: "1961"
+            },
+
+            {
+                pregunta:
+                    "¿En qué año cayó el Muro de Berlín?",
+
+                opciones: [
+                    "1989",
+                    "1961",
+                    "1975",
+                    "1990"
+                ],
+
+                correcta: "1989"
+            },
+
+            {
+                pregunta:
+                    "¿En qué ciudad estaba ubicado el famoso muro?",
+
+                opciones: [
+                    "Berlín",
+                    "Múnich",
+                    "Bonn",
+                    "Hamburgo"
+                ],
+
+                correcta: "Berlín"
+            },
+
+            {
+                pregunta:
+                    "¿Qué representaba principalmente el Muro de Berlín?",
+
+                opciones: [
+                    "La división de Alemania",
+                    "La unión de Europa",
+                    "La independencia de Francia",
+                    "La creación del Imperio alemán"
+                ],
+
+                correcta:
+                    "La división de Alemania"
+            },
+
+            {
+                pregunta:
+                    "¿Durante aproximadamente cuánto tiempo existió el Muro de Berlín?",
+
+                opciones: [
+                    "28 años",
+                    "5 años",
+                    "60 años",
+                    "100 años"
+                ],
+
+                correcta: "28 años"
+            }
+
+        ]
     },
 
+
+    /* ========================================================
+       HISTORIA - REUNIFICACIÓN
+    ======================================================== */
 
     reunificacion: {
-        titulo: "Reunificación alemana",
-        subtitulo: "Alemania vuelve a estar unida",
-        icono: "🇩🇪",
 
-        mensaje: "¡Descubre cómo Alemania volvió a estar unida!",
+        titulo: "Reunificación",
+        subtitulo: "El camino hacia una Alemania unida",
+        icono: "🤝",
 
-        imagen: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b",
+        imagen: "🇩🇪",
 
-        dato: "La reunificación alemana ocurrió el 3 de octubre de 1990.",
+        dato:
+            "La reunificación alemana se produjo en 1990, después de décadas de división entre Alemania Oriental y Alemania Occidental.",
 
-        regiones: "Berlín • Alemania Oriental • Alemania Occidental",
-
-        sobre: "La reunificación unió nuevamente a Alemania Oriental y Alemania Occidental.",
-
-        pregunta: "¿En qué año ocurrió la reunificación alemana?",
-
-        opciones: [
-            "🇩🇪 1990",
-            "🇩🇪 1989",
-            "🇩🇪 1949",
-            "🇩🇪 1918"
+        regiones: [
+            "Alemania Oriental",
+            "Alemania Occidental",
+            "Berlín",
+            "Europa"
         ],
 
-        correcta: "🇩🇪 1990",
+        preguntas: [
 
-        audio: "La reunificación alemana ocurrió en mil novecientos noventa."
+            {
+                pregunta:
+                    "¿En qué año ocurrió la reunificación alemana?",
+
+                opciones: [
+                    "1990",
+                    "1989",
+                    "1961",
+                    "1945"
+                ],
+
+                correcta: "1990"
+            },
+
+            {
+                pregunta:
+                    "¿Qué día se celebra actualmente como el Día de la Unidad Alemana?",
+
+                opciones: [
+                    "3 de octubre",
+                    "9 de noviembre",
+                    "1 de enero",
+                    "25 de diciembre"
+                ],
+
+                correcta: "3 de octubre"
+            },
+
+            {
+                pregunta:
+                    "¿Qué dos partes se reunificaron?",
+
+                opciones: [
+                    "Alemania Oriental y Alemania Occidental",
+                    "Baviera y Prusia",
+                    "Berlín y Múnich",
+                    "Francia y Alemania"
+                ],
+
+                correcta:
+                    "Alemania Oriental y Alemania Occidental"
+            },
+
+            {
+                pregunta:
+                    "¿Qué acontecimiento ocurrió antes de la reunificación alemana?",
+
+                opciones: [
+                    "La caída del Muro de Berlín",
+                    "La Primera Guerra Mundial",
+                    "La proclamación del Imperio alemán",
+                    "La fundación de Roma"
+                ],
+
+                correcta:
+                    "La caída del Muro de Berlín"
+            },
+
+            {
+                pregunta:
+                    "¿Qué ocurrió con Alemania en 1990?",
+
+                opciones: [
+                    "Se reunificó",
+                    "Se dividió nuevamente",
+                    "Se convirtió en un imperio",
+                    "Dejó de existir"
+                ],
+
+                correcta: "Se reunificó"
+            }
+
+        ]
     },
 
+
+    /* ========================================================
+       HISTORIA - PERSONAJES
+    ======================================================== */
 
     personajes: {
-        titulo: "Personajes históricos",
-        subtitulo: "Personas que dejaron huella",
+
+        titulo: "Personajes",
+        subtitulo: "Personas que dejaron huella en Alemania",
         icono: "👤",
 
-        mensaje: "¡Conoce algunos personajes importantes de Alemania!",
+        imagen: "👥",
 
-        imagen: "https://images.unsplash.com/photo-1505664194779-8beaceb93744",
+        dato:
+            "Alemania ha sido el lugar de origen o desarrollo de importantes figuras de la música, la literatura y otras áreas culturales.",
 
-        dato: "Alemania ha sido hogar de importantes escritores, científicos, músicos y pensadores.",
-
-        regiones: "Bonn • Weimar • Leipzig • Berlín",
-
-        sobre: "Personajes como Goethe, Bach, Beethoven y otros han dejado una importante huella en la cultura europea.",
-
-        pregunta: "¿Cuál de estos personajes fue un famoso compositor alemán?",
-
-        opciones: [
-            "🎼 Ludwig van Beethoven",
-            "🎨 Pablo Picasso",
-            "📖 Miguel de Cervantes",
-            "🎭 William Shakespeare"
+        regiones: [
+            "Bonn",
+            "Leipzig",
+            "Weimar",
+            "Berlín"
         ],
 
-        correcta: "🎼 Ludwig van Beethoven",
+        preguntas: [
 
-        audio: "Ludwig van Beethoven fue uno de los compositores más importantes relacionados con Alemania."
+            {
+                pregunta:
+                    "¿Cuál de estos personajes fue un famoso compositor alemán?",
+
+                opciones: [
+                    "Beethoven",
+                    "Cervantes",
+                    "Shakespeare",
+                    "Dante"
+                ],
+
+                correcta: "Beethoven"
+            },
+
+            {
+                pregunta:
+                    "¿Quién escribió importantes obras literarias como Fausto?",
+
+                opciones: [
+                    "Goethe",
+                    "Bach",
+                    "Beethoven",
+                    "Einstein"
+                ],
+
+                correcta: "Goethe"
+            },
+
+            {
+                pregunta:
+                    "¿Quién fue Johann Sebastian Bach?",
+
+                opciones: [
+                    "Compositor",
+                    "Pintor",
+                    "Rey",
+                    "Explorador"
+                ],
+
+                correcta: "Compositor"
+            },
+
+            {
+                pregunta:
+                    "¿En qué área destacó Goethe principalmente?",
+
+                opciones: [
+                    "Literatura",
+                    "Fútbol",
+                    "Astronomía",
+                    "Arquitectura"
+                ],
+
+                correcta: "Literatura"
+            },
+
+            {
+                pregunta:
+                    "¿Qué pareja está relacionada con la música clásica alemana?",
+
+                opciones: [
+                    "Bach y Beethoven",
+                    "Goethe y Grimm",
+                    "Lutero y Goethe",
+                    "Einstein y Grimm"
+                ],
+
+                correcta: "Bach y Beethoven"
+            }
+
+        ]
     },
 
 
-    estados: {
+    /* ========================================================
+       HISTORIA - ESTADOS FEDERADOS
+    ======================================================== */
+
+    "estados-federados": {
+
         titulo: "Estados federados",
         subtitulo: "La organización territorial de Alemania",
         icono: "🗺️",
 
-        mensaje: "¡Descubre cómo está organizada Alemania!",
+        imagen: "🇩🇪",
 
-        imagen: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b",
+        dato:
+            "Alemania es una república federal formada por 16 estados federados, conocidos en alemán como Länder.",
 
-        dato: "Alemania está formada por 16 estados federados.",
-
-        regiones: "Baviera • Sajonia • Berlín • Hamburgo",
-
-        sobre: "Alemania es un Estado federal compuesto por 16 estados federados, cada uno con características y tradiciones propias.",
-
-        pregunta: "¿Cuántos estados federados tiene Alemania?",
-
-        opciones: [
-            "🗺️ 16",
-            "🗺️ 10",
-            "🗺️ 20",
-            "🗺️ 25"
+        regiones: [
+            "Baviera",
+            "Sajonia",
+            "Berlín",
+            "Hesse"
         ],
 
-        correcta: "🗺️ 16",
+        preguntas: [
 
-        audio: "Alemania está formada por dieciséis estados federados."
+            {
+                pregunta:
+                    "¿Cuántos estados federados tiene Alemania?",
+
+                opciones: [
+                    "16",
+                    "10",
+                    "20",
+                    "25"
+                ],
+
+                correcta: "16"
+            },
+
+            {
+                pregunta:
+                    "¿Cuál de estos es un estado federado de Alemania?",
+
+                opciones: [
+                    "Baviera",
+                    "Cataluña",
+                    "Lombardía",
+                    "Escocia"
+                ],
+
+                correcta: "Baviera"
+            },
+
+            {
+                pregunta:
+                    "¿Cuál de estos también es un estado federado alemán?",
+
+                opciones: [
+                    "Sajonia",
+                    "Andalucía",
+                    "Normandía",
+                    "Toscana"
+                ],
+
+                correcta: "Sajonia"
+            },
+
+            {
+                pregunta:
+                    "¿Berlín es un estado federado de Alemania?",
+
+                opciones: [
+                    "Sí",
+                    "No",
+                    "Solo durante el verano",
+                    "Solo históricamente"
+                ],
+
+                correcta: "Sí"
+            },
+
+            {
+                pregunta:
+                    "¿Qué significa que Alemania sea un Estado federal?",
+
+                opciones: [
+                    "Que está formada por estados federados",
+                    "Que solo tiene una ciudad",
+                    "Que no tiene regiones",
+                    "Que no tiene gobierno nacional"
+                ],
+
+                correcta:
+                    "Que está formada por estados federados"
+            }
+
+        ]
     }
+
 };
 
 
-// ======================================================
-// 2. VARIABLES DEL JUEGO
-// ======================================================
+/* ============================================================
+   3. ESTADO DEL JUEGO
+============================================================ */
 
 let temaActual = "gastronomia";
 
 let puntos = 0;
 
-let vidas = 3;
-
-let respuestaContestada = false;
-
-let retosCompletados = 0;
+let vidas = MAX_VIDAS;
 
 let respuestasCorrectas = 0;
 
-const totalRetos = Object.keys(temas).length;
+let retosCompletados = 0;
+
+let respuestaContestada = false;
+
+let juegoBloqueadoPorVidas = false;
+
+let preguntaActual = null;
+
+let indicePregunta = 0;
+
+let estadoPreguntas = {};
+
+let retoRecuperacionActivo = false;
+
+let retoRecuperacionSuperado = false;
 
 
-// ======================================================
-// 3. CAMBIAR DE TEMA
-// ======================================================
+/* ============================================================
+   4. TOTAL DE PREGUNTAS
+============================================================ */
 
-function cambiarTema(nombre, boton = null) {
+const TOTAL_PREGUNTAS =
+    Object.values(temas)
+        .reduce(
+            (total, tema) =>
+                total + tema.preguntas.length,
+            0
+        );
+
+
+/* ============================================================
+   5. CREAR ESTADO INICIAL
+============================================================ */
+
+function crearEstadoInicial() {
+
+    const estado = {};
+
+    Object.keys(temas).forEach(nombre => {
+
+        estado[nombre] = {
+
+            respondidas: [],
+
+            completada: false,
+
+            preguntaActual: 0
+
+        };
+
+    });
+
+    return estado;
+}
+
+
+/* ============================================================
+   6. GUARDAR PROGRESO
+============================================================ */
+
+function guardarProgreso() {
+
+    try {
+
+        const datos = {
+
+            temaActual,
+
+            puntos,
+
+            vidas,
+
+            respuestasCorrectas,
+
+            retosCompletados,
+
+            estadoPreguntas
+
+        };
+
+        localStorage.setItem(
+            CLAVE_GUARDADO,
+            JSON.stringify(datos)
+        );
+
+    } catch (error) {
+
+        console.warn(
+            "No fue posible guardar el progreso.",
+            error
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   7. CARGAR PROGRESO
+============================================================ */
+
+function cargarProgreso() {
+
+    try {
+
+        const guardado =
+            localStorage.getItem(CLAVE_GUARDADO);
+
+        if (!guardado) {
+
+            estadoPreguntas =
+                crearEstadoInicial();
+
+            vidas = MAX_VIDAS;
+
+            return;
+
+        }
+
+
+        const datos =
+            JSON.parse(guardado);
+
+
+        if (
+            datos.estadoPreguntas &&
+            typeof datos.estadoPreguntas === "object"
+        ) {
+
+            estadoPreguntas =
+                crearEstadoInicial();
+
+
+            Object.keys(temas).forEach(nombre => {
+
+                if (
+                    datos.estadoPreguntas[nombre]
+                ) {
+
+                    estadoPreguntas[nombre] = {
+
+                        respondidas:
+                            Array.isArray(
+                                datos.estadoPreguntas[nombre].respondidas
+                            )
+                                ? datos.estadoPreguntas[nombre].respondidas
+                                : [],
+
+                        completada:
+                            Boolean(
+                                datos.estadoPreguntas[nombre].completada
+                            ),
+
+                        preguntaActual:
+                            Number.isInteger(
+                                datos.estadoPreguntas[nombre].preguntaActual
+                            )
+                                ? datos.estadoPreguntas[nombre].preguntaActual
+                                : 0
+
+                    };
+
+                }
+
+            });
+
+        } else {
+
+            estadoPreguntas =
+                crearEstadoInicial();
+
+        }
+
+
+        temaActual =
+            temas[datos.temaActual]
+                ? datos.temaActual
+                : "gastronomia";
+
+
+        puntos =
+            Number.isFinite(datos.puntos)
+                ? Math.max(0, datos.puntos)
+                : 0;
+
+
+        vidas =
+            Number.isFinite(datos.vidas)
+                ? Math.max(
+                    0,
+                    Math.min(MAX_VIDAS, datos.vidas)
+                )
+                : MAX_VIDAS;
+
+
+        respuestasCorrectas =
+            Number.isFinite(
+                datos.respuestasCorrectas
+            )
+                ? Math.max(
+                    0,
+                    datos.respuestasCorrectas
+                )
+                : 0;
+
+
+        retosCompletados =
+            Number.isFinite(
+                datos.retosCompletados
+            )
+                ? Math.max(
+                    0,
+                    datos.retosCompletados
+                )
+                : 0;
+
+
+    } catch (error) {
+
+        console.warn(
+            "El progreso guardado estaba dañado. Se iniciará una partida nueva."
+        );
+
+        localStorage.removeItem(
+            CLAVE_GUARDADO
+        );
+
+        estadoPreguntas =
+            crearEstadoInicial();
+
+        vidas = MAX_VIDAS;
+
+    }
+
+}
+
+
+/* ============================================================
+   8. ELEMENTOS DEL DOM
+============================================================ */
+
+function obtenerElemento(id) {
+
+    return document.getElementById(id);
+
+}
+
+
+/* ============================================================
+   9. CAMBIAR DE TEMA
+============================================================ */
+
+function cambiarTema(nombre, boton) {
 
     if (!temas[nombre]) {
+
+        console.error(
+            "No existe la categoría:",
+            nombre
+        );
+
         return;
+
     }
+
+
+    /* --------------------------------------------
+       SI NO HAY VIDAS
+    -------------------------------------------- */
+
+    if (vidas <= 0) {
+
+        juegoBloqueadoPorVidas = true;
+
+        mostrarAvisoSinVidas();
+
+        return;
+
+    }
+
 
     temaActual = nombre;
 
-    const tema = temas[nombre];
 
-    respuestaContestada = false;
-
-
-    // TÍTULO
-
-    document.getElementById("iconoTema").textContent =
-        tema.icono;
-
-    document.getElementById("tituloTema").textContent =
-        tema.titulo;
-
-    document.getElementById("subtituloTema").textContent =
-        tema.subtitulo;
+    marcarTemaActivo(boton);
 
 
-    // MENSAJE
+    cargarTema();
 
-    const mensaje =
-        document.getElementById("mensajeRobot");
 
-    if (mensaje) {
-        mensaje.textContent =
-            tema.mensaje;
+    guardarProgreso();
+
+}
+
+
+/* ============================================================
+   10. MARCAR BOTÓN ACTIVO
+============================================================ */
+
+function marcarTemaActivo(boton) {
+
+    const botones =
+        document.querySelectorAll(
+            ".menu-btn"
+        );
+
+
+    botones.forEach(btn => {
+
+        btn.classList.remove("activo");
+
+    });
+
+
+    if (boton) {
+
+        boton.classList.add("activo");
+
+        return;
+
     }
 
 
-    // IMAGEN
+    const botonTema =
+        document.querySelector(
+            `.menu-btn[data-tema="${temaActual}"]`
+        );
+
+
+    if (botonTema) {
+
+        botonTema.classList.add("activo");
+
+    }
+
+}
+
+
+/* ============================================================
+   11. CARGAR TEMA
+============================================================ */
+
+function cargarTema() {
+
+    const tema =
+        temas[temaActual];
+
+
+    if (!tema) {
+
+        return;
+
+    }
+
+
+    const titulo =
+        obtenerElemento("tituloTema");
+
+    const subtitulo =
+        obtenerElemento("subtituloTema");
+
+    const icono =
+        obtenerElemento("iconoTema");
 
     const imagen =
-        document.getElementById("imagenTema");
+        obtenerElemento("imagenTema");
+
+    const dato =
+        obtenerElemento("datoCurioso");
+
+    const regiones =
+        obtenerElemento("regiones");
+
+    const sobreTexto =
+        obtenerElemento("sobreTexto");
+
+
+    if (titulo) {
+
+        titulo.textContent =
+            tema.titulo;
+
+    }
+
+
+    if (subtitulo) {
+
+        subtitulo.textContent =
+            tema.subtitulo;
+
+    }
+
+
+    if (icono) {
+
+        icono.textContent =
+            tema.icono;
+
+    }
+
 
     if (imagen) {
 
-        imagen.src =
+        imagen.textContent =
             tema.imagen;
 
-        imagen.alt =
-            tema.titulo;
     }
 
-
-    // DATO
-
-    const dato =
-        document.getElementById("datoTema");
 
     if (dato) {
 
         dato.textContent =
             tema.dato;
+
     }
 
 
-    // REGIONES
+    if (sobreTexto) {
 
-    const regiones =
-        document.getElementById("regionesTema");
+        sobreTexto.textContent =
+            `Explora ${tema.titulo.toLowerCase()} y descubre datos importantes de Alemania.`;
+
+    }
+
 
     if (regiones) {
 
-        regiones.textContent =
-            tema.regiones;
+        regiones.innerHTML = "";
+
+        tema.regiones.forEach(region => {
+
+            const span =
+                document.createElement("span");
+
+            span.className =
+                "region-tag";
+
+            span.textContent =
+                region;
+
+            regiones.appendChild(span);
+
+        });
+
     }
 
 
-    // SOBRE EL TEMA
+    cargarPregunta();
 
-    const sobre =
-        document.getElementById("sobreTexto");
+}
 
-    if (sobre) {
 
-        sobre.textContent =
-            tema.sobre;
+/* ============================================================
+   12. OBTENER SIGUIENTE PREGUNTA DISPONIBLE
+============================================================ */
+
+function obtenerIndicePreguntaDisponible(nombre) {
+
+    const tema =
+        temas[nombre];
+
+    const estado =
+        estadoPreguntas[nombre];
+
+
+    if (!tema || !estado) {
+
+        return -1;
+
     }
 
 
-    // PREGUNTA
+    for (
+        let i = 0;
+        i < tema.preguntas.length;
+        i++
+    ) {
+
+        if (
+            !estado.respondidas.includes(i)
+        ) {
+
+            return i;
+
+        }
+
+    }
+
+
+    return -1;
+}
+
+
+/* ============================================================
+   13. CARGAR PREGUNTA
+============================================================ */
+
+function cargarPregunta() {
+
+    const tema =
+        temas[temaActual];
+
+    const estado =
+        estadoPreguntas[temaActual];
+
+
+    if (!tema || !estado) {
+
+        return;
+
+    }
+
+
+    respuestaContestada = false;
+
+
+    const indice =
+        obtenerIndicePreguntaDisponible(
+            temaActual
+        );
+
+
+    /* --------------------------------------------
+       CATEGORÍA COMPLETADA
+    -------------------------------------------- */
+
+    if (indice === -1) {
+
+        estado.completada = true;
+
+        indicePregunta =
+            tema.preguntas.length - 1;
+
+
+        mostrarCategoriaCompletada();
+
+        actualizarMarcadores();
+
+        guardarProgreso();
+
+        return;
+
+    }
+
+
+    indicePregunta = indice;
+
+    estado.preguntaActual = indice;
+
+
+    preguntaActual =
+        tema.preguntas[indice];
+
 
     const pregunta =
-        document.getElementById("pregunta");
+        obtenerElemento("preguntaReto");
+
+    const opciones =
+        obtenerElemento("opcionesReto");
+
+    const resultado =
+        obtenerElemento("resultado");
+
+    const botonSiguiente =
+        obtenerElemento("botonSiguiente");
+
+    const numero =
+        obtenerElemento("numeroPregunta");
+
 
     if (pregunta) {
 
         pregunta.textContent =
-            tema.pregunta;
+            preguntaActual.pregunta;
+
     }
 
 
-    // CREAR RESPUESTAS
+    if (numero) {
 
-    crearOpciones(tema);
+        numero.textContent =
+            `Pregunta ${indice + 1} de ${tema.preguntas.length}`;
 
+    }
 
-    // LIMPIAR RESULTADO
-
-    const resultado =
-        document.getElementById("resultado");
 
     if (resultado) {
 
@@ -577,96 +2013,53 @@ function cambiarTema(nombre, boton = null) {
 
         resultado.className =
             "resultado";
+
+    }
+
+
+    if (botonSiguiente) {
+
+        botonSiguiente.disabled = true;
+
     }
 
 
-    // DESACTIVAR SIGUIENTE
+    if (opciones) {
 
-    const siguiente =
-        document.getElementById("botonSiguiente");
+        opciones.innerHTML = "";
 
-    if (siguiente) {
-
-        siguiente.disabled = true;
-    }
-
-
-    // MENÚ ACTIVO
-
-    document
-        .querySelectorAll(".menu button")
-        .forEach(btn =>
-            btn.classList.remove("activo")
-        );
-
-
-    if (boton) {
-
-        boton.classList.add("activo");
-
-    } else {
-
-        document
-            .querySelectorAll(".menu button")
-            .forEach(btn => {
-
-                if (
-                    btn.textContent
-                        .toLowerCase()
-                        .includes(
-                            tema.titulo.toLowerCase()
-                        )
-                ) {
-
-                    btn.classList.add("activo");
-
-                }
-
-            });
+        crearOpciones(preguntaActual);
 
     }
+
+
+    actualizarMensajeBot();
+
 }
 
 
-// ======================================================
-// 4. CREAR OPCIONES
-// ======================================================
+/* ============================================================
+   14. CREAR OPCIONES
+============================================================ */
 
-function crearOpciones(tema) {
+function crearOpciones(pregunta) {
 
     const contenedor =
-        document.getElementById("opciones");
+        obtenerElemento("opcionesReto");
+
 
     if (!contenedor) {
+
         return;
+
     }
 
-    contenedor.innerHTML = "";
 
-
-    // COPIAR RESPUESTAS
-
-    const opcionesMezcladas =
-        [...tema.opciones];
-
-
-    // ==================================================
-    // MEZCLAR RESPUESTAS
-    // ==================================================
-
-    opcionesMezcladas.sort(
-        () => Math.random() - 0.5
-    );
-
-
-    // ==================================================
-    // CREAR BOTONES
-    // ==================================================
-
-    opcionesMezcladas.forEach(opcion => {
+    pregunta.opciones.forEach(opcionTexto => {
 
         const boton =
             document.createElement("button");
+
 
         boton.type = "button";
 
@@ -674,17 +2067,16 @@ function crearOpciones(tema) {
             "opcion";
 
         boton.textContent =
-            opcion;
+            opcionTexto;
 
 
         boton.addEventListener(
             "click",
-            function () {
+            () => {
 
                 comprobarRespuesta(
-                    opcion,
-                    boton,
-                    tema
+                    opcionTexto,
+                    boton
                 );
 
             }
@@ -694,60 +2086,85 @@ function crearOpciones(tema) {
         contenedor.appendChild(boton);
 
     });
+
 }
 
 
-// ======================================================
-// 5. COMPROBAR RESPUESTA
-// ======================================================
+/* ============================================================
+   15. COMPROBAR RESPUESTA
+============================================================ */
 
 function comprobarRespuesta(
     respuesta,
-    boton,
-    tema
+    botonSeleccionado
 ) {
 
-    // Evitar doble respuesta
-
     if (respuestaContestada) {
+
         return;
+
     }
+
+
+    if (vidas <= 0) {
+
+        mostrarAvisoSinVidas();
+
+        return;
+
+    }
+
+
+    if (!preguntaActual) {
+
+        return;
+
+    }
+
 
     respuestaContestada = true;
 
 
-    // Desactivar botones
+    const esCorrecta =
+        respuesta ===
+        preguntaActual.correcta;
+
 
     const botones =
         document.querySelectorAll(
-            "#opciones button"
+            "#opcionesReto .opcion"
         );
 
-    botones.forEach(btn => {
 
-        btn.disabled = true;
+    botones.forEach(boton => {
+
+        boton.disabled = true;
+
+
+        if (
+            boton.textContent ===
+            preguntaActual.correcta
+        ) {
+
+            boton.classList.add(
+                "correcta"
+            );
+
+        }
 
     });
 
 
     const resultado =
-        document.getElementById(
-            "resultado"
-        );
+        obtenerElemento("resultado");
 
 
-    // ==================================================
-    // CORRECTA
-    // ==================================================
+    if (esCorrecta) {
 
-    if (respuesta === tema.correcta) {
-
-        boton.classList.add(
+        botonSeleccionado.classList.add(
             "correcta"
         );
 
-
-        // +10 PUNTOS
 
         puntos += 10;
 
@@ -756,205 +2173,525 @@ function comprobarRespuesta(
         retosCompletados++;
 
 
-        // ACTUALIZAR PUNTOS
-
-        const puntosElemento =
-            document.getElementById(
-                "puntos"
-            );
-
-        if (puntosElemento) {
-
-            puntosElemento.textContent =
-                puntos;
-
-        }
-
-
-        // MENSAJE
-
         if (resultado) {
-
-            resultado.textContent =
-                "✅ ¡Correcto! +10 puntos 🎉";
 
             resultado.className =
                 "resultado correcto";
-        }
 
-
-        // ANIMACIÓN
-
-        const tarjetaPuntos =
-            document.querySelector(
-                ".puntos"
-            );
-
-        if (tarjetaPuntos) {
-
-            tarjetaPuntos.classList.add(
-                "animar"
-            );
-
-
-            setTimeout(() => {
-
-                tarjetaPuntos.classList.remove(
-                    "animar"
-                );
-
-            }, 500);
+            resultado.textContent =
+                "✅ ¡Correcto! Has ganado 10 puntos.";
 
         }
 
-    }
 
+    } else {
 
-    // ==================================================
-    // INCORRECTA
-    // ==================================================
-
-    else {
-
-        boton.classList.add(
+        botonSeleccionado.classList.add(
             "incorrecta"
         );
 
 
-        // QUITAR VIDA
+        perderVida();
 
-        vidas--;
-
-        if (vidas < 0) {
-
-            vidas = 0;
-
-        }
-
-
-        retosCompletados++;
-
-
-        // ACTUALIZAR VIDAS
-
-        const vidasElemento =
-            document.getElementById(
-                "vidas"
-            );
-
-        if (vidasElemento) {
-
-            vidasElemento.textContent =
-                vidas;
-
-        }
-
-
-        // MENSAJE
 
         if (resultado) {
-
-            resultado.innerHTML =
-                `❌ Respuesta incorrecta.<br>
-                La respuesta correcta era:
-                <strong>${tema.correcta}</strong>`;
 
             resultado.className =
                 "resultado incorrecto";
 
+            resultado.textContent =
+                `❌ Respuesta incorrecta. La respuesta era: ${preguntaActual.correcta}.`;
         }
-
-
-        // MARCAR RESPUESTA CORRECTA
-
-        botones.forEach(btn => {
-
-            if (
-                btn.textContent ===
-                tema.correcta
-            ) {
-
-                btn.classList.add(
-                    "correcta"
-                );
-
-            }
-
-        });
 
     }
 
 
-    // ACTUALIZAR PROGRESO
+    /* --------------------------------------------
+       MARCAR PREGUNTA COMO RESPONDIDA
+    -------------------------------------------- */
+
+    const estado =
+        estadoPreguntas[temaActual];
+
+
+    if (
+        estado &&
+        !estado.respondidas.includes(
+            indicePregunta
+        )
+    ) {
+
+        estado.respondidas.push(
+            indicePregunta
+        );
+
+    }
+
+
+    if (
+        estado &&
+        estado.respondidas.length >=
+        temas[temaActual].preguntas.length
+    ) {
+
+        estado.completada = true;
+
+    }
+
+
+    actualizarMarcadores();
+
+    guardarProgreso();
+
+
+    /* --------------------------------------------
+       SI TODAVÍA TIENE VIDAS
+    -------------------------------------------- */
+
+    if (vidas > 0) {
+
+        activarSiguiente();
+
+    }
+
+}
+
+
+/* ============================================================
+   16. PERDER VIDA
+============================================================ */
+
+function perderVida() {
+
+    vidas--;
+
+    if (vidas < 0) {
+
+        vidas = 0;
+
+    }
+
+
+    actualizarMarcadores();
+
+
+    if (vidas === 0) {
+
+        juegoBloqueadoPorVidas = true;
+
+        const botonSiguiente =
+            obtenerElemento(
+                "botonSiguiente"
+            );
+
+
+        if (botonSiguiente) {
+
+            botonSiguiente.disabled = true;
+
+        }
+
+
+        guardarProgreso();
+
+
+        setTimeout(() => {
+
+            mostrarAvisoSinVidas();
+
+        }, 450);
+
+    }
+
+}
+
+
+/* ============================================================
+   17. ACTIVAR SIGUIENTE
+============================================================ */
+
+function activarSiguiente() {
+
+    const boton =
+        obtenerElemento(
+            "botonSiguiente"
+        );
+
+
+    if (!boton) {
+
+        return;
+
+    }
+
+
+    boton.disabled = false;
+
+}
+
+
+/* ============================================================
+   18. SIGUIENTE PREGUNTA
+============================================================ */
+
+function siguientePregunta() {
+
+    if (!respuestaContestada) {
+
+        return;
+
+    }
+
+
+    if (vidas <= 0) {
+
+        mostrarAvisoSinVidas();
+
+        return;
+
+    }
+
+
+    const tema =
+        temas[temaActual];
+
+    const estado =
+        estadoPreguntas[temaActual];
+
+
+    if (!tema || !estado) {
+
+        return;
+
+    }
+
+
+    const siguiente =
+        obtenerIndicePreguntaDisponible(
+            temaActual
+        );
+
+
+    if (siguiente === -1) {
+
+        estado.completada = true;
+
+        mostrarCategoriaCompletada();
+
+        actualizarMarcadores();
+
+        guardarProgreso();
+
+        return;
+
+    }
+
+
+    cargarPregunta();
+
+}
+
+
+/* ============================================================
+   19. CATEGORÍA COMPLETADA
+============================================================ */
+
+function mostrarCategoriaCompletada() {
+
+    const tema =
+        temas[temaActual];
+
+
+    const pregunta =
+        obtenerElemento(
+            "preguntaReto"
+        );
+
+    const opciones =
+        obtenerElemento(
+            "opcionesReto"
+        );
+
+    const resultado =
+        obtenerElemento(
+            "resultado"
+        );
+
+    const botonSiguiente =
+        obtenerElemento(
+            "botonSiguiente"
+        );
+
+    const numero =
+        obtenerElemento(
+            "numeroPregunta"
+        );
+
+
+    if (pregunta) {
+
+        pregunta.innerHTML =
+            `
+            <div class="categoria-completada">
+                <div class="icono-completado">🎉</div>
+                <h3>¡Categoría completada!</h3>
+                <p>
+                    Has terminado las 5 preguntas de
+                    ${tema.titulo}.
+                    <br>
+                    Puedes elegir otra categoría del menú.
+                </p>
+            </div>
+            `;
+
+    }
+
+
+    if (opciones) {
+
+        opciones.innerHTML = "";
+
+    }
+
+
+    if (resultado) {
+
+        resultado.textContent = "";
+
+    }
+
+
+    if (numero) {
+
+        numero.textContent =
+            "5 de 5 completadas";
+
+    }
+
+
+    if (botonSiguiente) {
+
+        botonSiguiente.disabled = true;
+
+    }
+
+
+    actualizarMensajeBot(
+        `¡Excelente! Terminaste ${tema.titulo}. Elige otra categoría para continuar.`
+    );
+
+}
+
+
+/* ============================================================
+   20. ACTUALIZAR MENSAJE DEL ROBOT
+============================================================ */
+
+function actualizarMensajeBot(
+    mensajePersonalizado = null
+) {
+
+    const mensaje =
+        obtenerElemento(
+            "mensajeBot"
+        );
+
+
+    if (!mensaje) {
+
+        return;
+
+    }
+
+
+    if (mensajePersonalizado) {
+
+        mensaje.textContent =
+            mensajePersonalizado;
+
+        return;
+
+    }
+
+
+    const estado =
+        estadoPreguntas[temaActual];
+
+    const total =
+        temas[temaActual].preguntas.length;
+
+    const respondidas =
+        estado
+            ? estado.respondidas.length
+            : 0;
+
+
+    mensaje.textContent =
+        `Responde las preguntas de esta categoría. Has completado ${respondidas} de ${total}.`;
+
+}
+
+
+/* ============================================================
+   21. ACTUALIZAR MARCADORES
+============================================================ */
+
+function actualizarMarcadores() {
+
+    const puntosElemento =
+        obtenerElemento("puntos");
+
+    const vidasElemento =
+        obtenerElemento("vidas");
+
+
+    if (puntosElemento) {
+
+        puntosElemento.textContent =
+            puntos;
+
+    }
+
+
+    if (vidasElemento) {
+
+        vidasElemento.textContent =
+            vidas;
+
+    }
+
 
     actualizarProgreso();
 
 
-    // ACTIVAR SIGUIENTE
+    /* --------------------------------------------
+       COLOR DE VIDAS
+    -------------------------------------------- */
 
-    const siguiente =
-        document.getElementById(
-            "botonSiguiente"
+    const vidasStat =
+        document.querySelector(
+            ".vidas-stat"
         );
 
-    if (siguiente) {
 
-        siguiente.disabled = false;
+    if (vidasStat) {
+
+        vidasStat.classList.remove(
+            "vidas-bajas",
+            "vidas-cero"
+        );
+
+
+        if (vidas <= 2 && vidas > 0) {
+
+            vidasStat.classList.add(
+                "vidas-bajas"
+            );
+
+        }
+
+
+        if (vidas === 0) {
+
+            vidasStat.classList.add(
+                "vidas-cero"
+            );
+
+        }
 
     }
+
 }
 
 
-// ======================================================
-// 6. ACTUALIZAR PROGRESO
-// ======================================================
+/* ============================================================
+   22. ACTUALIZAR PROGRESO
+============================================================ */
 
 function actualizarProgreso() {
 
+    let totalRespondidas = 0;
+
+
+    Object.keys(temas).forEach(nombre => {
+
+        const estado =
+            estadoPreguntas[nombre];
+
+
+        if (estado) {
+
+            totalRespondidas +=
+                estado.respondidas.length;
+
+        }
+
+    });
+
+
     const porcentaje =
         Math.round(
-            (retosCompletados /
-                totalRetos) *
+            (totalRespondidas /
+                TOTAL_PREGUNTAS) *
             100
         );
 
 
-    // PORCENTAJE
+    const porcentajeSeguro =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                porcentaje
+            )
+        );
+
 
     const porcentajeElemento =
-        document.getElementById(
+        obtenerElemento(
             "porcentaje"
         );
+
+
+    const retosElemento =
+        obtenerElemento(
+            "retosCompletados"
+        );
+
+
+    const correctasElemento =
+        obtenerElemento(
+            "respuestasCorrectas"
+        );
+
+
+    const circulo =
+        obtenerElemento(
+            "circuloProgreso"
+        );
+
+
+    const mensaje =
+        obtenerElemento(
+            "mensajeProgreso"
+        );
+
 
     if (porcentajeElemento) {
 
         porcentajeElemento.textContent =
-            porcentaje + "%";
+            `${porcentajeSeguro}%`;
 
     }
 
-
-    // RETOS
-
-    const retosElemento =
-        document.getElementById(
-            "retosCompletados"
-        );
 
     if (retosElemento) {
 
         retosElemento.textContent =
-            retosCompletados;
+            totalRespondidas;
 
     }
 
-
-    // CORRECTAS
-
-    const correctasElemento =
-        document.getElementById(
-            "respuestasCorrectas"
-        );
 
     if (correctasElemento) {
 
@@ -964,112 +2701,727 @@ function actualizarProgreso() {
     }
 
 
-    // ==================================================
-    // CÍRCULO
-    // ==================================================
-
-    const circulo =
-        document.getElementById(
-            "circuloProgreso"
-        );
-
     if (circulo) {
 
-        const longitud = 314;
+        const radio = 50;
 
-        const avance =
-            longitud -
-            (
-                longitud *
-                porcentaje /
-                100
-            );
+        const circunferencia =
+            2 *
+            Math.PI *
+            radio;
+
+
+        circulo.style.strokeDasharray =
+            circunferencia;
+
 
         circulo.style.strokeDashoffset =
-            avance;
+            circunferencia *
+            (
+                1 -
+                porcentajeSeguro / 100
+            );
 
     }
 
-
-    // ==================================================
-    // MENSAJE DE PROGRESO
-    // ==================================================
-
-    const mensaje =
-        document.getElementById(
-            "mensajeProgreso"
-        );
 
     if (mensaje) {
 
-        if (porcentaje === 0) {
+        if (porcentajeSeguro === 0) {
 
             mensaje.textContent =
-                "¡Comienza tu aventura por Alemania! 🇩🇪";
+                "¡Comienza tu aventura!";
 
-        }
-
-        else if (porcentaje < 50) {
-
-            mensaje.textContent =
-                "¡Vas muy bien! Sigue aprendiendo 📚";
-
-        }
-
-        else if (porcentaje < 100) {
+        } else if (
+            porcentajeSeguro < 25
+        ) {
 
             mensaje.textContent =
-                "¡Ya casi completas todos los retos! 🚀";
+                "¡Buen comienzo! Sigue explorando.";
 
-        }
-
-        else {
+        } else if (
+            porcentajeSeguro < 50
+        ) {
 
             mensaje.textContent =
-                "¡Felicitaciones! Completaste todos los retos 🏆";
+                "¡Vas avanzando muy bien!";
+
+        } else if (
+            porcentajeSeguro < 75
+        ) {
+
+            mensaje.textContent =
+                "¡Ya conoces bastante de Alemania!";
+
+        } else if (
+            porcentajeSeguro < 100
+        ) {
+
+            mensaje.textContent =
+                "¡Estás muy cerca de completar la aventura!";
+
+        } else {
+
+            mensaje.textContent =
+                "🏆 ¡Completaste toda la aventura de Alemania!";
 
         }
 
     }
+
 }
 
 
-// ======================================================
-// 7. ESCUCHAR
-// ======================================================
+/* ============================================================
+   23. BLOQUEAR JUEGO
+============================================================ */
 
-function escuchar() {
+function bloquearJuegoPorVidas() {
 
-    const tema =
-        temas[temaActual];
+    juegoBloqueadoPorVidas = true;
 
-    if (!tema) {
-        return;
+
+    const botonesMenu =
+        document.querySelectorAll(
+            ".menu-btn"
+        );
+
+
+    botonesMenu.forEach(boton => {
+
+        boton.classList.add(
+            "bloqueado-vidas"
+        );
+
+    });
+
+
+    const opciones =
+        document.querySelectorAll(
+            "#opcionesReto .opcion"
+        );
+
+
+    opciones.forEach(opcion => {
+
+        opcion.disabled = true;
+
+    });
+
+
+    const siguiente =
+        obtenerElemento(
+            "botonSiguiente"
+        );
+
+
+    if (siguiente) {
+
+        siguiente.disabled = true;
+
     }
 
+}
+
+
+/* ============================================================
+   24. MOSTRAR AVISO SIN VIDAS
+============================================================ */
+
+function mostrarAvisoSinVidas() {
+
+    if (vidas > 0) {
+
+        return;
+
+    }
+
+
+    bloquearJuegoPorVidas();
+
+
+    const modal =
+        obtenerElemento(
+            "modalRecuperacion"
+        );
+
+
+    if (!modal) {
+
+        console.error(
+            "No se encontró el modal de recuperación."
+        );
+
+        return;
+
+    }
+
+
+    const inicio =
+        obtenerElemento(
+            "inicioRecuperacion"
+        );
+
+
+    const preguntaBox =
+        obtenerElemento(
+            "preguntaRecuperacionBox"
+        );
+
+
+    const resultado =
+        obtenerElemento(
+            "resultadoRecuperacion"
+        );
+
+
+    const btnContinuar =
+        obtenerElemento(
+            "btnContinuarRecuperacion"
+        );
+
+
+    if (inicio) {
+
+        inicio.style.display =
+            "block";
+
+    }
+
+
+    if (preguntaBox) {
+
+        preguntaBox.classList.remove(
+            "activa"
+        );
+
+        preguntaBox.style.display =
+            "none";
+
+    }
+
+
+    if (resultado) {
+
+        resultado.textContent = "";
+
+        resultado.className =
+            "resultado-recuperacion";
+
+    }
+
+
+    if (btnContinuar) {
+
+        btnContinuar.style.display =
+            "none";
+
+    }
+
+
+    retoRecuperacionActivo = false;
+
+    retoRecuperacionSuperado = false;
+
+
+    modal.classList.add(
+        "visible"
+    );
+
+}
+
+
+/* ============================================================
+   25. CERRAR MODAL
+============================================================ */
+
+function cerrarModalRecuperacion() {
+
+    const modal =
+        obtenerElemento(
+            "modalRecuperacion"
+        );
+
+
+    if (!modal) {
+
+        return;
+
+    }
+
+
+    modal.classList.remove(
+        "visible"
+    );
+
+
+    /* --------------------------------------------
+       SI SIGUE EN 0, CONTINÚA BLOQUEADO
+    -------------------------------------------- */
+
+    if (vidas <= 0) {
+
+        juegoBloqueadoPorVidas = true;
+
+    }
+
+}
+
+
+/* ============================================================
+   26. COMENZAR RETO DE RECUPERACIÓN
+============================================================ */
+
+function comenzarRetoRecuperacion() {
+
+    if (vidas > 0) {
+
+        cerrarModalRecuperacion();
+
+        return;
+
+    }
+
+
+    retoRecuperacionActivo = true;
+
+    retoRecuperacionSuperado = false;
+
+
+    const inicio =
+        obtenerElemento(
+            "inicioRecuperacion"
+        );
+
+
+    const preguntaBox =
+        obtenerElemento(
+            "preguntaRecuperacionBox"
+        );
+
+
+    if (inicio) {
+
+        inicio.style.display =
+            "none";
+
+    }
+
+
+    if (preguntaBox) {
+
+        preguntaBox.style.display =
+            "block";
+
+        preguntaBox.classList.add(
+            "activa"
+        );
+
+    }
+
+
+    cargarPreguntaRecuperacion();
+
+}
+
+
+/* ============================================================
+   27. PREGUNTA DE RECUPERACIÓN
+============================================================ */
+
+function cargarPreguntaRecuperacion() {
+
+    const preguntasRecuperacion = [
+
+        {
+            pregunta:
+                "¿En qué año cayó el Muro de Berlín?",
+
+            opciones: [
+                "1961",
+                "1989",
+                "1990",
+                "1945"
+            ],
+
+            correcta: "1989"
+        },
+
+        {
+            pregunta:
+                "¿Cuántos estados federados tiene Alemania?",
+
+            opciones: [
+                "10",
+                "12",
+                "16",
+                "20"
+            ],
+
+            correcta: "16"
+        },
+
+        {
+            pregunta:
+                "¿En qué año se produjo la reunificación alemana?",
+
+            opciones: [
+                "1989",
+                "1990",
+                "1945",
+                "1961"
+            ],
+
+            correcta: "1990"
+        }
+
+    ];
+
+
+    const pregunta =
+        preguntasRecuperacion[
+            Math.floor(
+                Math.random() *
+                preguntasRecuperacion.length
+            )
+        ];
+
+
+    const preguntaElemento =
+        obtenerElemento(
+            "preguntaRecuperacion"
+        );
+
+
+    const opcionesElemento =
+        obtenerElemento(
+            "opcionesRecuperacion"
+        );
+
+
+    const resultado =
+        obtenerElemento(
+            "resultadoRecuperacion"
+        );
+
+
+    const btnContinuar =
+        obtenerElemento(
+            "btnContinuarRecuperacion"
+        );
+
+
+    if (preguntaElemento) {
+
+        preguntaElemento.textContent =
+            pregunta.pregunta;
+
+    }
+
+
+    if (opcionesElemento) {
+
+        opcionesElemento.innerHTML = "";
+
+    }
+
+
+    if (resultado) {
+
+        resultado.textContent = "";
+
+        resultado.className =
+            "resultado-recuperacion";
+
+    }
+
+
+    if (btnContinuar) {
+
+        btnContinuar.style.display =
+            "none";
+
+    }
+
+
+    pregunta.opciones.forEach(
+        opcionTexto => {
+
+            const boton =
+                document.createElement(
+                    "button"
+                );
+
+
+            boton.type = "button";
+
+            boton.className =
+                "opcion-recuperacion";
+
+            boton.textContent =
+                opcionTexto;
+
+
+            boton.addEventListener(
+                "click",
+                () => {
+
+                    comprobarRecuperacion(
+                        opcionTexto,
+                        pregunta,
+                        boton
+                    );
+
+                }
+            );
+
+
+            opcionesElemento.appendChild(
+                boton
+            );
+
+        }
+    );
+
+}
+
+
+/* ============================================================
+   28. COMPROBAR RECUPERACIÓN
+============================================================ */
+
+function comprobarRecuperacion(
+    respuesta,
+    pregunta,
+    botonSeleccionado
+) {
+
+    if (
+        !retoRecuperacionActivo ||
+        retoRecuperacionSuperado
+    ) {
+
+        return;
+
+    }
+
+
+    const botones =
+        document.querySelectorAll(
+            "#opcionesRecuperacion .opcion-recuperacion"
+        );
+
+
+    if (
+        botonSeleccionado.disabled
+    ) {
+
+        return;
+
+    }
+
+
+    const esCorrecta =
+        respuesta ===
+        pregunta.correcta;
+
+
+    if (esCorrecta) {
+
+        retoRecuperacionSuperado =
+            true;
+
+
+        botones.forEach(
+            boton => {
+
+                boton.disabled =
+                    true;
+
+
+                if (
+                    boton.textContent ===
+                    pregunta.correcta
+                ) {
+
+                    boton.classList.add(
+                        "correcta"
+                    );
+
+                }
+
+            }
+        );
+
+
+        botonSeleccionado.classList.add(
+            "correcta"
+        );
+
+
+        const resultado =
+            obtenerElemento(
+                "resultadoRecuperacion"
+            );
+
+
+        if (resultado) {
+
+            resultado.className =
+                "resultado-recuperacion correcto";
+
+            resultado.textContent =
+                "🎉 ¡Excelente! Has recuperado 5 vidas.";
+
+        }
+
+
+        const btnContinuar =
+            obtenerElemento(
+                "btnContinuarRecuperacion"
+            );
+
+
+        if (btnContinuar) {
+
+            btnContinuar.style.display =
+                "block";
+
+        }
+
+
+        return;
+
+    }
+
+
+    /* --------------------------------------------
+       RESPUESTA INCORRECTA
+       NO QUITA VIDA
+    -------------------------------------------- */
+
+    botonSeleccionado.disabled = true;
+
+    botonSeleccionado.classList.add(
+        "incorrecta"
+    );
+
+
+    const resultado =
+        obtenerElemento(
+            "resultadoRecuperacion"
+        );
+
+
+    if (resultado) {
+
+        resultado.className =
+            "resultado-recuperacion incorrecto";
+
+        resultado.textContent =
+            "❌ Esa no es la respuesta. Intenta con otra opción.";
+
+    }
+
+}
+
+
+/* ============================================================
+   29. CONTINUAR DESPUÉS DE RECUPERACIÓN
+============================================================ */
+
+function continuarDespuesRecuperacion() {
+
+    if (!retoRecuperacionSuperado) {
+
+        return;
+
+    }
+
+
+    vidas = MAX_VIDAS;
+
+    juegoBloqueadoPorVidas = false;
+
+    retoRecuperacionActivo = false;
+
+    retoRecuperacionSuperado = false;
+
+
+    actualizarMarcadores();
+
+
+    cerrarModalRecuperacion();
+
+
+    const botonTema =
+        document.querySelector(
+            `.menu-btn[data-tema="${temaActual}"]`
+        );
+
+
+    marcarTemaActivo(
+        botonTema
+    );
+
+
+    cargarPregunta();
+
+
+    guardarProgreso();
+
+
+    actualizarMensajeBot(
+        "❤️‍🩹 ¡Vidas recuperadas! Puedes continuar tu aventura."
+    );
+
+}
+
+
+/* ============================================================
+   30. AUDIO
+============================================================ */
+
+function reproducirAudio() {
 
     if (
         !("speechSynthesis" in window)
     ) {
 
         alert(
-            "Tu navegador no permite reproducir el audio."
+            "Tu navegador no permite reproducir audio automáticamente."
         );
 
         return;
+
+    }
+
+
+    const tema =
+        temas[temaActual];
+
+
+    if (!tema) {
+
+        return;
+
     }
 
 
     window.speechSynthesis.cancel();
 
 
+    const texto =
+        `${tema.titulo}. ${tema.dato}`;
+
+
     const voz =
         new SpeechSynthesisUtterance(
-            tema.audio
+            texto
         );
 
 
-    voz.lang = "de-DE";
+    voz.lang = "es-ES";
 
     voz.rate = 0.9;
 
@@ -1079,58 +3431,168 @@ function escuchar() {
     window.speechSynthesis.speak(
         voz
     );
+
 }
 
 
-// ======================================================
-// 8. SIGUIENTE TEMA
-// ======================================================
+/* ============================================================
+   31. FUNCIÓN ESCUCHAR
+============================================================ */
 
-function siguienteTema() {
+function escuchar() {
 
-    const nombres =
-        Object.keys(temas);
+    reproducirAudio();
 
-
-    const posicion =
-        nombres.indexOf(
-            temaActual
-        );
+}
 
 
-    let siguiente =
-        posicion + 1;
+/* ============================================================
+   32. REINICIAR PARTIDA
+   ÚTIL PARA HACER PRUEBAS
+============================================================ */
 
+function reiniciarAlemania() {
 
-    if (
-        siguiente >=
-        nombres.length
-    ) {
-
-        siguiente = 0;
-
-    }
-
-
-    cambiarTema(
-        nombres[siguiente]
+    localStorage.removeItem(
+        CLAVE_GUARDADO
     );
+
+    location.reload();
+
 }
 
 
-// ======================================================
-// 9. INICIAR PÁGINA
-// ======================================================
+/* ============================================================
+   33. HACER FUNCIONES VISIBLES PARA EL HTML
+============================================================ */
 
-window.addEventListener(
+window.cambiarTema =
+    cambiarTema;
+
+window.siguientePregunta =
+    siguientePregunta;
+
+window.reproducirAudio =
+    reproducirAudio;
+
+window.escuchar =
+    escuchar;
+
+window.cerrarModalRecuperacion =
+    cerrarModalRecuperacion;
+
+window.comenzarRetoRecuperacion =
+    comenzarRetoRecuperacion;
+
+window.continuarDespuesRecuperacion =
+    continuarDespuesRecuperacion;
+
+window.reiniciarAlemania =
+    reiniciarAlemania;
+
+
+/* ============================================================
+   34. INICIAR JUEGO
+============================================================ */
+
+document.addEventListener(
     "DOMContentLoaded",
     () => {
 
-        cambiarTema(
-            "gastronomia"
-        );
+        /* ----------------------------------------
+           CARGAR PROGRESO
+        ----------------------------------------- */
 
-        actualizarProgreso();
+        cargarProgreso();
+
+
+        /* ----------------------------------------
+           GARANTIZAR VALORES VÁLIDOS
+        ----------------------------------------- */
+
+        if (!Number.isFinite(vidas)) {
+
+            vidas = MAX_VIDAS;
+
+        }
+
+
+        vidas =
+            Math.max(
+                0,
+                Math.min(
+                    MAX_VIDAS,
+                    vidas
+                )
+            );
+
+
+        /* ----------------------------------------
+           MARCAR CATEGORÍA
+        ----------------------------------------- */
+
+        marcarTemaActivo();
+
+
+        /* ----------------------------------------
+           ACTUALIZAR MARCADORES
+        ----------------------------------------- */
+
+        actualizarMarcadores();
+
+
+        /* ----------------------------------------
+           CARGAR TEMA
+        ----------------------------------------- */
+
+        cargarTema();
+
+
+        /* ----------------------------------------
+           SI ESTÁ EN 0 VIDAS
+        ----------------------------------------- */
+
+        if (vidas <= 0) {
+
+            juegoBloqueadoPorVidas =
+                true;
+
+
+            bloquearJuegoPorVidas();
+
+
+            setTimeout(
+                () => {
+
+                    mostrarAvisoSinVidas();
+
+                },
+                500
+            );
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   35. GUARDAR ANTES DE SALIR
+============================================================ */
+
+window.addEventListener(
+    "beforeunload",
+    () => {
+
+        guardarProgreso();
+
+        if (
+            "speechSynthesis" in window
+        ) {
+
+            window.speechSynthesis.cancel();
+
+        }
 
     }
 );

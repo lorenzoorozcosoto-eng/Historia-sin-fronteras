@@ -19,7 +19,7 @@
 
             <!-- LOGO -->
             <div class="logo-area">
-                <div class="logo"><i><a href="explorarmapa.html"><img src="celstatecontenido-s-removebg-preview.png" width="60" height="60" alt=""></a></i></div>
+                <div class="logo">🌎</div>
 
                 <h2>
                     Historia<br>
@@ -178,7 +178,7 @@
 
                         <div>
                             <span>Vidas</span>
-                            <strong id="vidas">3</strong>
+                            <strong id="vidas">5</strong>
                         </div>
 
                     </div>
@@ -432,6 +432,91 @@
                     Conoce datos interesantes sobre la
                     cultura, historia y patrimonio de Marruecos.
                 </p>
+               <!-- =====================================================
+     AVISO DE VIDAS AGOTADAS
+===================================================== -->
+
+<div id="modalRecuperacion" class="modal-recuperacion-overlay">
+
+    <div class="modal-recuperacion">
+
+        <div class="icono-modal">
+            ❤️
+        </div>
+
+        <h2>¡Te quedaste sin vidas!</h2>
+
+        <p>
+            No puedes continuar con los mini retos por ahora.
+        </p>
+
+        <p>
+            Completa un reto de recuperación para ganar una vida.
+        </p>
+
+        <button
+            type="button"
+            id="btnIniciarRecuperacion"
+            class="boton-recuperar"
+            onclick="iniciarRecuperacion()">
+
+            🎯 Recuperar una vida
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     RETO DE RECUPERACIÓN
+===================================================== -->
+
+<div id="modalRetoRecuperacion" class="modal-recuperacion-overlay">
+
+    <div class="modal-recuperacion reto-recuperacion">
+
+        <div class="icono-modal">
+            🎯
+        </div>
+
+        <h2>Reto de recuperación</h2>
+
+        <p
+            id="preguntaRecuperacion"
+            class="pregunta-recuperacion">
+        </p>
+
+        <!-- AQUÍ APARECERÁN LAS 4 OPCIONES -->
+
+        <div
+            id="opcionesRecuperacion"
+            class="opciones-recuperacion">
+        </div>
+
+        <!-- RESULTADO -->
+
+        <div
+            id="resultadoRecuperacion"
+            class="resultado-recuperacion">
+        </div>
+
+        <!-- BOTÓN RESPONDER -->
+
+        <button
+            type="button"
+            id="btnResponderRecuperacion"
+            class="boton-recuperar"
+            disabled>
+
+            Responder
+
+        </button>
+
+    </div>
+
+</div>
 
             </section>
 

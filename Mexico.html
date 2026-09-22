@@ -16,7 +16,7 @@
     <aside class="sidebar">
 
         <div class="logo">
-            <div class="logo-icon"><i><a href="explorarmapa.html"><img src="celstatecontenido-s-removebg-preview.png" width="60" height="60" alt=""></a></i></div>
+            <div class="logo-icon">🌎</div>
 
             <div>
                 <h1>Historia</h1>
@@ -373,7 +373,87 @@
             <div class="comida">
                 🌮
             </div>
+<!-- =====================================================
+     AVISO DE VIDAS AGOTADAS
+===================================================== -->
 
+<div id="modalRecuperacion" class="modal-recuperacion-overlay">
+
+    <div class="modal-recuperacion">
+
+        <div class="icono-modal">
+            ❤️
+        </div>
+
+        <h2>¡Te quedaste sin vidas!</h2>
+
+        <p>
+            No puedes continuar con los mini retos por ahora.
+        </p>
+
+        <p>
+            Completa un reto de recuperación para recuperar tus vidas.
+        </p>
+
+        <button
+            type="button"
+            id="btnIniciarRecuperacion"
+            class="boton-recuperar">
+
+            🎯 Recuperar vidas
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     RETO DE RECUPERACIÓN
+===================================================== -->
+
+<div id="modalRetoRecuperacion" class="modal-recuperacion-overlay">
+
+    <div class="modal-recuperacion reto-recuperacion">
+
+        <div class="icono-modal">
+            🎯
+        </div>
+
+        <h2>Reto de recuperación</h2>
+
+        <p
+            id="preguntaRecuperacion"
+            class="pregunta-recuperacion">
+        </p>
+
+        <div
+            id="opcionesRecuperacion"
+            class="opciones-recuperacion">
+        </div>
+
+        <div
+            id="resultadoRecuperacion"
+            class="resultado-recuperacion">
+        </div>
+
+        <button
+            type="button"
+            id="btnResponderRecuperacion"
+            class="boton-recuperar"
+            disabled>
+
+            Responder
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="Mexico.js"></script>
         </div>
 
     </aside>
