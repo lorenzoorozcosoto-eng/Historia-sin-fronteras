@@ -1,14 +1,12 @@
-/* =====================================================
-   HISTORIA SIN FRONTERAS
-   BRASIL - Código completo corregido
-   ===================================================== */
+/* =========================================================
+   HISTORIA SIN FRONTERAS - BRASIL
+   JAVASCRIPT COMPLETO Y CORREGIDO
+========================================================= */
 
 const CLAVE = "historiaSinFronterasBrasil";
-
 const TOTAL_CATEGORIAS = 14;
 const PREGUNTAS_POR_CATEGORIA = 5;
 
-/* Orden oficial de las categorías (para el botón Siguiente) */
 const ORDEN_CATEGORIAS = [
     "Gastronomía",
     "Música",
@@ -26,10 +24,9 @@ const ORDEN_CATEGORIAS = [
     "Brasil contemporáneo"
 ];
 
-
-/* =====================================================
-   DATOS DE BRASIL
-   ===================================================== */
+/* =========================================================
+   PREGUNTAS DE LAS 14 CATEGORÍAS
+========================================================= */
 
 const categorias = {
 
@@ -40,10 +37,10 @@ const categorias = {
         dato: "La feijoada es uno de los platos más conocidos de Brasil.",
         preguntas: [
             ["¿Cuál es un plato tradicional brasileño?", ["Feijoada", "Paella", "Sushi", "Tacos"], 0],
-            ["¿Qué alimento es muy utilizado en la cocina brasileña?", ["Yuca", "Oliva", "Cebada", "Trigo sarraceno"], 0],
-            ["¿Qué bebida se prepara tradicionalmente con café en Brasil?", ["Café brasileño", "Té verde", "Chicha", "Mate"], 0],
+            ["¿Qué alimento es muy utilizado en la cocina brasileña?", ["Yuca", "Oliva", "Cebada", "Trigo"], 0],
+            ["¿Qué bebida se relaciona con la producción agrícola de Brasil?", ["Café", "Té verde", "Chicha", "Mate"], 0],
             ["¿Qué plato se prepara principalmente con frijoles negros y carne?", ["Feijoada", "Ceviche", "Arepa", "Ramen"], 0],
-            ["¿Cuál es un postre brasileño conocido?", ["Brigadeiro", "Baklava", "Mochi", "Croissant"], 0]
+            ["¿Cuál es un dulce brasileño conocido?", ["Brigadeiro", "Baklava", "Mochi", "Croissant"], 0]
         ]
     },
 
@@ -56,8 +53,8 @@ const categorias = {
             ["¿Qué ritmo musical es muy representativo de Brasil?", ["Samba", "Tango", "Flamenco", "Polka"], 0],
             ["¿Qué género brasileño combina elementos de samba y jazz?", ["Bossa nova", "Reggae", "Country", "Rock"], 0],
             ["¿Qué instrumento de percusión aparece frecuentemente en la samba?", ["Tambor", "Violín", "Arpa", "Oboe"], 0],
-            ["¿En qué celebración destaca especialmente la música de samba?", ["Carnaval", "Halloween", "Oktoberfest", "Diwali"], 0],
-            ["¿La música brasileña refleja principalmente qué característica?", ["Diversidad cultural", "Uniformidad cultural", "Aislamiento", "Ausencia de tradiciones"], 0]
+            ["¿En qué celebración destaca especialmente la samba?", ["Carnaval", "Halloween", "Oktoberfest", "Diwali"], 0],
+            ["¿Qué característica representa la música brasileña?", ["Diversidad cultural", "Uniformidad", "Aislamiento", "Ausencia de tradiciones"], 0]
         ]
     },
 
@@ -65,27 +62,27 @@ const categorias = {
         titulo: "Tradiciones de Brasil",
         subtitulo: "Costumbres y expresiones culturales",
         descripcion: "Las tradiciones brasileñas reflejan la mezcla de culturas indígenas, africanas y europeas.",
-        dato: "La capoeira combina elementos de lucha, música, movimiento y tradición.",
+        dato: "La capoeira combina elementos de lucha, música y tradición.",
         preguntas: [
             ["¿Qué expresión cultural combina lucha y música?", ["Capoeira", "Karate", "Sumo", "Esgrima"], 0],
-            ["¿Qué celebración es muy importante en Brasil?", ["Carnaval", "Navidad nórdica", "Oktoberfest", "Hanami"], 0],
-            ["¿Qué elemento acompaña tradicionalmente la capoeira?", ["Música", "Nieve", "Ópera italiana", "Gaitas escocesas"], 0],
+            ["¿Qué celebración es muy importante en Brasil?", ["Carnaval", "Oktoberfest", "Hanami", "Diwali"], 0],
+            ["¿Qué acompaña tradicionalmente la capoeira?", ["Música", "Nieve", "Ópera italiana", "Gaitas escocesas"], 0],
             ["¿Qué culturas han influido en las tradiciones brasileñas?", ["Indígena, africana y europea", "Solo asiática", "Solo europea", "Solo africana"], 0],
-            ["¿La capoeira nació principalmente en qué país?", ["Brasil", "Portugal", "España", "Argentina"], 0]
+            ["¿En qué país se desarrolló la capoeira?", ["Brasil", "Portugal", "España", "Argentina"], 0]
         ]
     },
 
     "Fiestas": {
         titulo: "Fiestas brasileñas",
         subtitulo: "Celebraciones llenas de música y color",
-        descripcion: "Brasil es conocido internacionalmente por sus grandes celebraciones y festividades.",
-        dato: "El Carnaval brasileño atrae a millones de personas cada año.",
+        descripcion: "Brasil es conocido por sus grandes celebraciones y festividades.",
+        dato: "El Carnaval brasileño es una de las celebraciones más conocidas del país.",
         preguntas: [
             ["¿Cuál es una de las fiestas más famosas de Brasil?", ["Carnaval", "Oktoberfest", "San Fermín", "Diwali"], 0],
             ["¿Qué ciudad es famosa por su Carnaval?", ["Río de Janeiro", "Madrid", "Roma", "Tokio"], 0],
-            ["¿Qué desfiles son característicos del Carnaval de Río?", ["Escuelas de samba", "Desfiles militares", "Carreras de caballos", "Desfiles de hielo"], 0],
-            ["¿Qué elemento destaca durante el Carnaval?", ["Música y disfraces", "Nieve", "Silencio", "Trajes medievales europeos"], 0],
-            ["¿El Carnaval brasileño es principalmente una celebración de qué?", ["Cultura y música", "Invierno", "Cosecha europea", "Año nuevo chino"], 0]
+            ["¿Qué desfiles son característicos del Carnaval de Río?", ["Escuelas de samba", "Desfiles militares", "Carreras", "Desfiles de hielo"], 0],
+            ["¿Qué elemento destaca durante el Carnaval?", ["Música y disfraces", "Nieve", "Silencio", "Trajes medievales"], 0],
+            ["¿Qué caracteriza principalmente al Carnaval brasileño?", ["Cultura y música", "Invierno", "Cosecha europea", "Año nuevo chino"], 0]
         ]
     },
 
@@ -95,11 +92,11 @@ const categorias = {
         descripcion: "La vestimenta tradicional y festiva de Brasil cambia según la región y la celebración.",
         dato: "En las celebraciones brasileñas son comunes los trajes coloridos y decorados.",
         preguntas: [
-            ["¿Cómo suelen ser muchos trajes del Carnaval?", ["Coloridos y llamativos", "Completamente negros", "Solo blancos", "Uniformes militares"], 0],
-            ["¿La vestimenta brasileña puede variar según qué aspecto?", ["La región", "La edad del planeta", "La estación lunar", "La longitud del río"], 0],
-            ["¿Qué aparece frecuentemente en los trajes de Carnaval?", ["Adornos", "Armaduras medievales", "Abrigos de nieve", "Kimonos japoneses"], 0],
-            ["¿La vestimenta forma parte de qué?", ["La identidad cultural", "La economía mundial", "La astronomía", "La geología"], 0],
-            ["¿Qué característica puede tener la vestimenta festiva brasileña?", ["Colores vivos", "Solo gris", "Solo marrón", "Ausencia de decoración"], 0]
+            ["¿Cómo suelen ser muchos trajes del Carnaval?", ["Coloridos y llamativos", "Completamente negros", "Solo blancos", "Militares"], 0],
+            ["¿Según qué puede variar la vestimenta brasileña?", ["La región", "La estación lunar", "La longitud del río", "El planeta"], 0],
+            ["¿Qué aparece frecuentemente en los trajes de Carnaval?", ["Adornos", "Armaduras", "Abrigos de nieve", "Kimonos"], 0],
+            ["¿La vestimenta forma parte de qué?", ["La identidad cultural", "La astronomía", "La geología", "La química"], 0],
+            ["¿Qué característica puede tener la vestimenta festiva?", ["Colores vivos", "Solo gris", "Solo marrón", "Sin decoración"], 0]
         ]
     },
 
@@ -107,9 +104,9 @@ const categorias = {
         titulo: "Arte brasileño",
         subtitulo: "Arte, literatura y expresiones creativas",
         descripcion: "El arte brasileño refleja la diversidad cultural y las diferentes etapas históricas del país.",
-        dato: "El modernismo brasileño tuvo una gran influencia en el arte y la literatura.",
+        dato: "El modernismo brasileño tuvo gran importancia durante el siglo XX.",
         preguntas: [
-            ["¿Qué movimiento tuvo importancia en el arte brasileño del siglo XX?", ["Modernismo", "Renacimiento italiano", "Impresionismo francés exclusivamente", "Barroco japonés"], 0],
+            ["¿Qué movimiento tuvo importancia en el arte brasileño del siglo XX?", ["Modernismo", "Renacimiento italiano", "Barroco japonés", "Arte medieval"], 0],
             ["¿Qué expresa frecuentemente el arte brasileño?", ["Diversidad cultural", "Una sola cultura", "Ausencia de historia", "Solo paisajes europeos"], 0],
             ["¿Qué área forma parte de las expresiones artísticas?", ["Literatura", "Astronomía", "Química", "Geología"], 0],
             ["¿Qué característica puede encontrarse en el arte brasileño?", ["Mezcla de influencias", "Ausencia de influencias", "Solo influencia asiática", "Solo influencia africana"], 0],
@@ -124,24 +121,24 @@ const categorias = {
         dato: "El Cristo Redentor se encuentra en Río de Janeiro.",
         preguntas: [
             ["¿Dónde se encuentra el Cristo Redentor?", ["Río de Janeiro", "Brasilia", "Salvador", "Recife"], 0],
-            ["¿Qué representa el Cristo Redentor?", ["Un monumento religioso", "Un castillo medieval", "Una estación de tren", "Un puerto"], 0],
+            ["¿Qué representa el Cristo Redentor?", ["Un monumento religioso", "Un castillo", "Una estación", "Un puerto"], 0],
             ["¿Cuál es la capital de Brasil?", ["Brasilia", "Río de Janeiro", "São Paulo", "Salvador"], 0],
             ["¿Qué ciudad es una de las más grandes de Brasil?", ["São Paulo", "Quito", "Lima", "Bogotá"], 0],
-            ["¿El Cristo Redentor está situado sobre qué montaña?", ["Corcovado", "Pan de Azúcar", "Everest", "Andes"], 0]
+            ["¿Sobre qué montaña se encuentra el Cristo Redentor?", ["Corcovado", "Pan de Azúcar", "Everest", "Andes"], 0]
         ]
     },
 
     "Pueblos originarios": {
         titulo: "Pueblos originarios",
         subtitulo: "Las culturas indígenas de Brasil",
-        descripcion: "Brasil posee una gran diversidad de pueblos indígenas con diferentes lenguas, tradiciones y formas de vida.",
-        dato: "Existen numerosos pueblos indígenas en diferentes regiones de Brasil.",
+        descripcion: "Brasil posee una gran diversidad de pueblos indígenas con diferentes lenguas y tradiciones.",
+        dato: "La Amazonía brasileña alberga numerosos pueblos indígenas.",
         preguntas: [
             ["¿Quiénes habitaban Brasil antes de la llegada portuguesa?", ["Pueblos indígenas", "Romanos", "Vikingos", "Persas"], 0],
-            ["¿Los pueblos indígenas poseen diferentes qué?", ["Lenguas y culturas", "Monedas europeas", "Castillos", "Imperios romanos"], 0],
+            ["¿Qué poseen los pueblos indígenas?", ["Lenguas y culturas", "Castillos", "Imperios romanos", "Monedas europeas"], 0],
             ["¿Qué región alberga numerosos pueblos indígenas?", ["Amazonía", "Sahara", "Alpes", "Siberia"], 0],
-            ["¿Qué elemento forma parte de las culturas indígenas?", ["Tradiciones", "Solo tecnología moderna", "Ferrocarriles", "Fábricas"], 0],
-            ["¿Por qué son importantes los pueblos indígenas?", ["Forman parte de la historia y diversidad cultural", "No tienen relación con Brasil", "Llegaron en el siglo XX", "Solo pertenecen a Europa"], 0]
+            ["¿Qué forma parte de las culturas indígenas?", ["Tradiciones", "Fábricas", "Ferrocarriles", "Tecnología moderna"], 0],
+            ["¿Por qué son importantes los pueblos indígenas?", ["Forman parte de la historia y diversidad cultural", "No tienen relación con Brasil", "Llegaron en el siglo XX", "Pertenecen a Europa"], 0]
         ]
     },
 
@@ -154,22 +151,22 @@ const categorias = {
             ["¿Qué país colonizó Brasil?", ["Portugal", "España", "Francia", "Italia"], 0],
             ["¿En qué siglo comenzó la colonización portuguesa?", ["Siglo XVI", "Siglo X", "Siglo XIX", "Siglo XX"], 0],
             ["¿Qué idioma se convirtió en predominante?", ["Portugués", "Español", "Francés", "Italiano"], 0],
-            ["¿Qué producto tuvo gran importancia durante la colonización?", ["Azúcar", "Petróleo", "Acero", "Algodón industrial moderno"], 0],
-            ["¿Qué ciudad fue importante durante la época colonial?", ["Salvador", "Londres", "París", "Berlín"], 0]
+            ["¿Qué actividad económica tuvo importancia durante la colonización?", ["Producción de azúcar", "Automóviles", "Industria espacial", "Computadoras"], 0],
+            ["¿Qué país mantuvo el control colonial de Brasil?", ["Portugal", "Inglaterra", "Alemania", "Italia"], 0]
         ]
     },
 
     "Imperio de Brasil": {
         titulo: "Imperio de Brasil",
-        subtitulo: "Brasil después de la independencia",
-        descripcion: "Brasil fue un imperio durante gran parte del siglo XIX, con dos emperadores principales.",
-        dato: "Pedro II fue el segundo y último emperador de Brasil.",
+        subtitulo: "Brasil durante el periodo imperial",
+        descripcion: "Brasil fue un imperio independiente desde 1822 hasta 1889.",
+        dato: "Pedro I fue el primer emperador de Brasil.",
         preguntas: [
-            ["¿Quién fue el primer emperador de Brasil?", ["Pedro I", "Pedro II", "Getúlio Vargas", "Juscelino Kubitschek"], 0],
-            ["¿Quién fue el segundo emperador?", ["Pedro II", "Pedro I", "Tiradentes", "Deodoro"], 0],
-            ["¿Durante qué siglo existió principalmente el Imperio de Brasil?", ["Siglo XIX", "Siglo XV", "Siglo XXI", "Siglo X"], 0],
-            ["¿Quién fue el último emperador de Brasil?", ["Pedro II", "Pedro I", "Napoleón", "Simón Bolívar"], 0],
-            ["¿Qué ocurrió con la monarquía brasileña en 1889?", ["Fue reemplazada por una república", "Se expandió", "Se trasladó a Portugal", "Se convirtió en colonia"], 0]
+            ["¿Cuándo comenzó el Imperio de Brasil?", ["1822", "1500", "1889", "1930"], 0],
+            ["¿Quién fue el primer emperador de Brasil?", ["Pedro I", "Pedro II", "Getúlio Vargas", "Tiradentes"], 0],
+            ["¿Quién fue el segundo emperador de Brasil?", ["Pedro II", "Pedro I", "Dom João VI", "José Bonifácio"], 0],
+            ["¿En qué año terminó el Imperio de Brasil?", ["1889", "1822", "1808", "1900"], 0],
+            ["¿Qué sistema político tuvo Brasil durante este periodo?", ["Monarquía", "República", "Colonia española", "Dictadura militar"], 0]
         ]
     },
 
@@ -177,231 +174,143 @@ const categorias = {
         titulo: "Independencia de Brasil",
         subtitulo: "El proceso de separación de Portugal",
         descripcion: "Brasil declaró su independencia de Portugal en 1822.",
-        dato: "Pedro proclamó la independencia de Brasil el 7 de septiembre de 1822.",
+        dato: "Pedro de Alcântara proclamó la independencia de Brasil.",
         preguntas: [
-            ["¿En qué año declaró Brasil su independencia?", ["1822", "1810", "1889", "1500"], 0],
+            ["¿En qué año declaró Brasil su independencia?", ["1822", "1889", "1500", "1939"], 0],
             ["¿De qué país se independizó Brasil?", ["Portugal", "España", "Francia", "Inglaterra"], 0],
-            ["¿Quién proclamó la independencia?", ["Pedro", "Pedro II", "Vargas", "Tiradentes"], 0],
-            ["¿Qué fecha se celebra como Día de la Independencia?", ["7 de septiembre", "20 de julio", "12 de octubre", "1 de mayo"], 0],
-            ["¿Qué ocurrió después de la independencia?", ["Brasil se convirtió en un imperio", "Brasil volvió a ser colonia", "Brasil se unió a España", "Brasil dejó de existir"], 0]
+            ["¿Quién proclamó la independencia de Brasil?", ["Pedro I", "Pedro II", "Tiradentes", "Getúlio Vargas"], 0],
+            ["¿Dónde se relaciona tradicionalmente el grito de independencia?", ["Río Ipiranga", "Río Amazonas", "Río Paraná", "Río de Janeiro"], 0],
+            ["¿Qué acontecimiento ocurrió en 1822?", ["La independencia de Brasil", "La abolición de la esclavitud", "El fin del Imperio", "La República"], 0]
         ]
     },
 
     "Personajes históricos": {
-        titulo: "Personajes históricos de Brasil",
-        subtitulo: "Personas importantes de la historia brasileña",
-        descripcion: "Brasil ha tenido numerosos personajes importantes en su historia política, social y cultural.",
-        dato: "Pedro I tuvo un papel fundamental en la independencia brasileña.",
+        titulo: "Personajes históricos",
+        subtitulo: "Personas importantes en la historia de Brasil",
+        descripcion: "Diversas figuras políticas y sociales han influido en la historia brasileña.",
+        dato: "Pedro I tuvo un papel importante en la independencia de Brasil.",
         preguntas: [
-            ["¿Quién proclamó la independencia de Brasil?", ["Pedro I", "Pedro II", "Vargas", "Colón"], 0],
-            ["¿Quién fue el segundo emperador?", ["Pedro II", "Pedro I", "Deodoro", "Bolívar"], 0],
-            ["¿Quién fue un importante presidente brasileño del siglo XX?", ["Getúlio Vargas", "Napoleón", "San Martín", "Hernán Cortés"], 0],
-            ["¿Qué personaje está relacionado con la independencia?", ["Pedro I", "Julio César", "Luis XIV", "George Washington"], 0],
-            ["¿Qué emperador gobernó Brasil durante gran parte del siglo XIX?", ["Pedro II", "Pedro I", "Vargas", "Deodoro"], 0]
+            ["¿Quién proclamó la independencia de Brasil?", ["Pedro I", "Pedro II", "Vargas", "Tiradentes"], 0],
+            ["¿Quién fue el segundo emperador de Brasil?", ["Pedro II", "Pedro I", "Dom João VI", "Juscelino Kubitschek"], 0],
+            ["¿Quién fue una figura importante de la historia brasileña relacionada con la independencia?", ["Tiradentes", "Napoleón", "Simón Bolívar", "George Washington"], 0],
+            ["¿Quién fue presidente durante parte de la Era Vargas?", ["Getúlio Vargas", "Pedro I", "Pedro II", "Tiradentes"], 0],
+            ["¿Qué son los personajes históricos?", ["Personas que influyeron en acontecimientos históricos", "Solo deportistas", "Solo músicos", "Solo científicos extranjeros"], 0]
         ]
     },
 
     "Conflictos importantes": {
         titulo: "Conflictos importantes",
-        subtitulo: "Conflictos que marcaron la historia de Brasil",
-        descripcion: "Brasil participó en diferentes conflictos que influyeron en su historia política y territorial.",
-        dato: "La Guerra de la Triple Alianza fue uno de los conflictos más importantes de Sudamérica durante el siglo XIX.",
+        subtitulo: "Conflictos y cambios políticos de Brasil",
+        descripcion: "Brasil ha vivido diferentes conflictos internos y externos a lo largo de su historia.",
+        dato: "La Guerra de la Triple Alianza fue uno de los conflictos internacionales importantes de Sudamérica en el siglo XIX.",
         preguntas: [
-            ["¿Qué guerra enfrentó a Paraguay contra una alianza formada por varios países?", ["Guerra de la Triple Alianza", "Guerra Fría", "Primera Guerra Mundial", "Guerra de Crimea"], 0],
-            ["¿Qué país fue derrotado en la Guerra de la Triple Alianza?", ["Paraguay", "España", "Portugal", "Francia"], 0],
+            ["¿Qué conflicto enfrentó a la Triple Alianza contra Paraguay?", ["Guerra de la Triple Alianza", "Guerra del Pacífico", "Guerra de Crimea", "Primera Guerra Mundial"], 0],
+            ["¿Contra qué país luchó la Triple Alianza?", ["Paraguay", "Chile", "Perú", "Bolivia"], 0],
             ["¿En qué siglo ocurrió la Guerra de la Triple Alianza?", ["Siglo XIX", "Siglo XV", "Siglo XX", "Siglo XXI"], 0],
-            ["¿Brasil participó en qué alianza durante ese conflicto?", ["Triple Alianza", "Triple Entente", "OTAN", "Pacto de Varsovia"], 0],
-            ["¿Los conflictos históricos pueden afectar qué aspecto?", ["Territorio y política", "Solo la gastronomía", "Solo la música", "Solo el clima"], 0]
+            ["¿Qué consecuencias pueden producir los conflictos históricos?", ["Cambios políticos y sociales", "Solo cambios deportivos", "Ninguna", "Solo cambios climáticos"], 0],
+            ["¿Por qué es importante estudiar los conflictos históricos?", ["Para comprender los cambios de una sociedad", "Para olvidar la historia", "Solo para aprender geografía", "Para evitar estudiar historia"], 0]
         ]
     },
 
     "Brasil contemporáneo": {
         titulo: "Brasil contemporáneo",
-        subtitulo: "Brasil en la época moderna",
-        descripcion: "Brasil es actualmente una república federal y uno de los países más grandes y poblados del mundo.",
+        subtitulo: "Brasil en la época actual",
+        descripcion: "Brasil es actualmente una república federal y una de las principales economías de América Latina.",
         dato: "Brasilia es la capital de Brasil desde 1960.",
         preguntas: [
-            ["¿Cuál es la capital actual de Brasil?", ["Brasilia", "Río de Janeiro", "São Paulo", "Salvador"], 0],
-            ["¿Qué forma de gobierno tiene Brasil actualmente?", ["República federal", "Monarquía absoluta", "Imperio", "Colonia"], 0],
-            ["¿Desde qué año Brasil tiene como capital a Brasilia?", ["1960", "1822", "1889", "1500"], 0],
-            ["¿Brasil pertenece a qué continente?", ["América del Sur", "Europa", "Asia", "África"], 0],
-            ["¿Cuál es una característica del Brasil actual?", ["Gran diversidad cultural", "Ausencia de ciudades", "Monarquía", "Ser una colonia"], 0]
+            ["¿Cuál es la capital de Brasil?", ["Brasilia", "Río de Janeiro", "São Paulo", "Salvador"], 0],
+            ["¿Qué sistema político tiene Brasil actualmente?", ["República federal", "Monarquía", "Imperio", "Colonia"], 0],
+            ["¿Desde qué año Brasilia es la capital?", ["1960", "1822", "1889", "1500"], 0],
+            ["¿Qué idioma predomina en Brasil?", ["Portugués", "Español", "Francés", "Italiano"], 0],
+            ["¿En qué continente se encuentra Brasil?", ["América del Sur", "Europa", "Asia", "África"], 0]
         ]
     }
 };
 
 
-/* =====================================================
-   30 PREGUNTAS DEL RETO FINAL
-   ===================================================== */
+/* =========================================================
+   RETO FINAL - 30 PREGUNTAS
+========================================================= */
 
 const preguntasRetoFinal = [
+    ["¿Cuál es la capital de Brasil?", ["Brasilia", "Río de Janeiro", "São Paulo", "Salvador"], 0],
+    ["¿Qué país colonizó Brasil?", ["Portugal", "España", "Francia", "Inglaterra"], 0],
+    ["¿En qué año se independizó Brasil?", ["1822", "1889", "1500", "1960"], 0],
+    ["¿Cuál es un plato tradicional brasileño?", ["Feijoada", "Paella", "Sushi", "Tacos"], 0],
+    ["¿Qué ritmo musical es representativo de Brasil?", ["Samba", "Tango", "Flamenco", "Polka"], 0],
+    ["¿Qué expresión cultural combina lucha y música?", ["Capoeira", "Karate", "Sumo", "Esgrima"], 0],
+    ["¿Dónde se encuentra el Cristo Redentor?", ["Río de Janeiro", "Brasilia", "Recife", "Salvador"], 0],
+    ["¿Cuántos años duró aproximadamente el Imperio de Brasil?", ["67 años", "20 años", "100 años", "150 años"], 0],
+    ["¿Quién fue el primer emperador de Brasil?", ["Pedro I", "Pedro II", "Vargas", "Tiradentes"], 0],
+    ["¿Quién fue el segundo emperador de Brasil?", ["Pedro II", "Pedro I", "Vargas", "José Bonifácio"], 0],
+    ["¿En qué año terminó el Imperio de Brasil?", ["1889", "1822", "1900", "1930"], 0],
+    ["¿Qué celebración es famosa en Brasil?", ["Carnaval", "Oktoberfest", "Hanami", "Diwali"], 0],
+    ["¿Qué ciudad es famosa por su Carnaval?", ["Río de Janeiro", "Brasilia", "São Paulo", "Recife"], 0],
+    ["¿Qué bebida se relaciona con la producción agrícola de Brasil?", ["Café", "Té verde", "Mate", "Chicha"], 0],
+    ["¿Qué región posee numerosos pueblos indígenas?", ["Amazonía", "Sahara", "Alpes", "Siberia"], 0],
+    ["¿Qué idioma predomina en Brasil?", ["Portugués", "Español", "Francés", "Italiano"], 0],
+    ["¿Qué movimiento artístico tuvo importancia en Brasil?", ["Modernismo", "Renacimiento", "Romanticismo alemán", "Barroco japonés"], 0],
+    ["¿Qué guerra enfrentó a la Triple Alianza contra Paraguay?", ["Guerra de la Triple Alianza", "Guerra del Pacífico", "Guerra de Crimea", "Guerra de los Cien Años"], 0],
+    ["¿En qué siglo ocurrió la Guerra de la Triple Alianza?", ["Siglo XIX", "Siglo XV", "Siglo XX", "Siglo XXI"], 0],
+    ["¿Qué representa la vestimenta tradicional?", ["Identidad cultural", "Astronomía", "Geología", "Economía mundial"], 0],
+    ["¿Desde qué año Brasilia es capital de Brasil?", ["1960", "1889", "1822", "1500"], 0],
+    ["¿En qué continente está Brasil?", ["América del Sur", "Europa", "Asia", "África"], 0],
+    ["¿Qué país está al norte de Brasil?", ["Venezuela", "España", "Italia", "Alemania"], 0],
+    ["¿Qué océano baña la costa brasileña?", ["Atlántico", "Pacífico", "Índico", "Ártico"], 0],
+    ["¿Qué monumento se encuentra en el monte Corcovado?", ["Cristo Redentor", "Torre Eiffel", "Big Ben", "Coliseo"], 0],
+    ["¿Qué culturas influyeron en la cultura brasileña?", ["Indígena, africana y europea", "Solo asiática", "Solo europea", "Solo africana"], 0],
+    ["¿Qué celebración destaca por sus escuelas de samba?", ["Carnaval", "Oktoberfest", "Hanami", "Diwali"], 0],
+    ["¿Quién proclamó la independencia de Brasil?", ["Pedro I", "Pedro II", "Vargas", "Tiradentes"], 0],
+    ["¿Qué sistema político tiene Brasil actualmente?", ["República federal", "Monarquía", "Imperio", "Colonia"], 0],
+    ["¿Qué río es uno de los más importantes de Brasil?", ["Amazonas", "Nilo", "Danubio", "Támesis"], 0]
+];
+
+
+/* =========================================================
+   PREGUNTAS DE RECUPERACIÓN
+========================================================= */
+
+const preguntasRecuperacion = [
     {
-        pregunta: "¿Cuál es el plato nacional más representativo de Brasil?",
-        opciones: ["Feijoada", "Ceviche", "Asado", "Empanadas"],
-        correcta: 0
+        pregunta: "¿Cuál es la capital de Brasil?",
+        opciones: ["Brasilia", "Río de Janeiro", "São Paulo", "Salvador"],
+        correcta: "Brasilia"
     },
     {
-        pregunta: "¿De qué región de Brasil es originario el açaí?",
-        opciones: ["Sur", "Nordeste", "Amazonas", "Centro-Oeste"],
-        correcta: 2
+        pregunta: "¿En qué año se independizó Brasil?",
+        opciones: ["1889", "1822", "1500", "1960"],
+        correcta: "1822"
     },
     {
-        pregunta: "¿Qué bebida típica brasileña se elabora con caña de azúcar?",
-        opciones: ["Tequila", "Cachaça", "Pisco", "Ron"],
-        correcta: 1
+        pregunta: "¿Qué país colonizó Brasil?",
+        opciones: ["Francia", "España", "Portugal", "Italia"],
+        correcta: "Portugal"
     },
     {
-        pregunta: "¿Cuál de estos platos es típico de Bahía y tiene fuerte influencia africana?",
-        opciones: ["Churrasco", "Moqueca", "Pão de queijo", "Brigadeiro"],
-        correcta: 1
+        pregunta: "¿Qué ritmo musical es representativo de Brasil?",
+        opciones: ["Polka", "Tango", "Flamenco", "Samba"],
+        correcta: "Samba"
     },
     {
-        pregunta: "El pão de queijo es originario principalmente de qué estado?",
-        opciones: ["São Paulo", "Minas Gerais", "Rio de Janeiro", "Bahia"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿Qué ritmo musical brasileño nació en las favelas de Río de Janeiro?",
-        opciones: ["Samba", "Tango", "Cumbia", "Merengue"],
-        correcta: 0
-    },
-    {
-        pregunta: "¿Quién es considerado el rey del bossa nova?",
-        opciones: ["Pelé", "Tom Jobim", "Ayrton Senna", "Oscar Niemeyer"],
-        correcta: 1
-    },
-    {
-        pregunta: "El Carnaval de Río de Janeiro es famoso por sus desfiles de:",
-        opciones: ["Comparsas de tango", "Escuelas de samba", "Bandas de mariachi", "Grupos de capoeira"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿En qué mes se celebra tradicionalmente el Carnaval en Brasil?",
-        opciones: ["Diciembre", "Febrero o marzo", "Julio", "Septiembre"],
-        correcta: 1
-    },
-    {
-        pregunta: "La capoeira es una mezcla de lucha, danza y música que surgió entre:",
-        opciones: ["Inmigrantes italianos", "Esclavos africanos", "Indígenas amazónicos", "Colonos portugueses"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿Qué instrumento de percusión es emblemático de la samba?",
-        opciones: ["Guitarra", "Surdo", "Violín", "Flauta"],
-        correcta: 1
-    },
-    {
-        pregunta: "El traje típico de las baianas (de Bahía) se caracteriza por:",
-        opciones: ["Sombrero de charro", "Faldas amplias y turbantes", "Poncho de lana", "Traje de torero"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿Quién fue el arquitecto brasileño más famoso del siglo XX, creador de Brasília?",
-        opciones: ["Lúcio Costa", "Oscar Niemeyer", "Roberto Burle Marx", "Paulo Mendes da Rocha"],
-        correcta: 1
-    },
-    {
-        pregunta: "El Cristo Redentor de Río de Janeiro fue inaugurado en:",
-        opciones: ["1900", "1931", "1960", "1985"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿Qué estilo artístico caracteriza muchas de las obras de Oscar Niemeyer?",
-        opciones: ["Gótico", "Modernismo con curvas", "Barroco colonial", "Art Nouveau"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿Cómo se llamaban los pueblos indígenas que habitaban la costa brasileña cuando llegaron los portugueses?",
-        opciones: ["Aztecas", "Tupí-guaraní", "Incas", "Mapuches"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿En qué año llegó Pedro Álvares Cabral a las costas de Brasil?",
-        opciones: ["1492", "1500", "1521", "1530"],
-        correcta: 1
-    },
-    {
-        pregunta: "El primer nombre que los portugueses dieron a la tierra que hoy es Brasil fue:",
-        opciones: ["Terra de Vera Cruz", "Nueva Lusitania", "América Portuguesa", "Indias Occidentales"],
-        correcta: 0
-    },
-    {
-        pregunta: "¿Qué producto natural dio origen al nombre “Brasil”?",
-        opciones: ["El café", "El palo-brasil (madera roja)", "El oro", "El azúcar"],
-        correcta: 1
-    },
-    {
-        pregunta: "Durante la colonia, la principal actividad económica del Nordeste brasileño fue:",
-        opciones: ["La minería de plata", "El cultivo de caña de azúcar", "La ganadería", "El cultivo de trigo"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿Quién proclamó la Independencia de Brasil el 7 de septiembre de 1822?",
-        opciones: ["Dom Pedro II", "Dom Pedro I", "Tiradentes", "Getúlio Vargas"],
-        correcta: 1
-    },
-    {
-        pregunta: "La frase célebre de la Independencia de Brasil fue:",
-        opciones: ["¡Libertad o muerte!", "¡Independencia o Muerte!", "¡Viva la República!", "¡Brasil libre!"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿Quién fue el último emperador de Brasil?",
-        opciones: ["Dom Pedro I", "Dom Pedro II", "Dom João VI", "Deodoro da Fonseca"],
-        correcta: 1
-    },
-    {
-        pregunta: "La Ley Áurea, que abolió la esclavitud en Brasil, fue firmada en 1888 por:",
-        opciones: ["Dom Pedro II", "La Princesa Isabel", "Getúlio Vargas", "José Bonifácio"],
-        correcta: 1
-    },
-    {
-        pregunta: "Tiradentes fue el líder más conocido de qué movimiento independentista?",
-        opciones: ["Inconfidência Mineira", "Revolución Farroupilha", "Cabanagem", "Balaiada"],
-        correcta: 0
-    },
-    {
-        pregunta: "¿En qué guerra luchó Brasil junto a Argentina y Uruguay contra Paraguay (1864-1870)?",
-        opciones: ["Guerra del Pacífico", "Guerra de la Triple Alianza", "Guerra de los Farrapos", "Guerra del Chaco"],
-        correcta: 1
-    },
-    {
-        pregunta: "Brasília se convirtió en la capital de Brasil en el año:",
-        opciones: ["1822", "1889", "1960", "1985"],
-        correcta: 2
-    },
-    {
-        pregunta: "El período de dictadura militar en Brasil se extendió aproximadamente entre:",
-        opciones: ["1930-1945", "1964-1985", "1985-2002", "1945-1964"],
-        correcta: 1
-    },
-    {
-        pregunta: "¿Quién fue el presidente brasileño que impulsó la construcción de Brasília?",
-        opciones: ["Getúlio Vargas", "Juscelino Kubitschek", "Fernando Henrique Cardoso", "Lula da Silva"],
-        correcta: 1
-    },
-    {
-        pregunta: "Brasil es el país más grande de América del Sur y el único de lengua oficial:",
-        opciones: ["Española", "Portuguesa", "Francesa", "Inglesa"],
-        correcta: 1
+        pregunta: "¿Qué monumento se encuentra en Río de Janeiro?",
+        opciones: ["Big Ben", "Torre Eiffel", "Cristo Redentor", "Coliseo"],
+        correcta: "Cristo Redentor"
     }
 ];
 
 
-/* =====================================================
+/* =========================================================
    ESTADO DEL JUEGO
-   ===================================================== */
+========================================================= */
 
 let estado = {
-    puntos: 0,
     vidas: 5,
+    puntos: 0,
     correctas: 0,
-    retos: 0,
-    categoriasCompletadas: [],
     categoriaActual: "Gastronomía",
     preguntaActual: 0,
     respondida: false,
+    categoriasCompletadas: [],
     mejorRetoFinal: {
         correctas: 0,
         puntos: 0,
@@ -409,480 +318,9 @@ let estado = {
     }
 };
 
-
-/* =====================================================
-   ELEMENTOS HTML
-   ===================================================== */
-
-const puntosHTML = document.getElementById("puntos");
-const corazonesHTML = document.getElementById("corazones");
-const numeroVidasHTML = document.getElementById("numeroVidas");
-
-const preguntaHTML = document.getElementById("pregunta");
-const opcionesHTML = document.getElementById("opciones");
-
-const contadorPreguntaHTML = document.getElementById("contadorPregunta");
-const mensajeRespuestaHTML = document.getElementById("mensajeRespuesta");
-const botonSiguiente = document.getElementById("botonSiguiente");
-
-const tituloCategoria = document.getElementById("tituloCategoria");
-const subtituloCategoria = document.getElementById("subtituloCategoria");
-const descripcionCategoria = document.getElementById("descripcionCategoria");
-const datoInteresante = document.getElementById("datoInteresante");
-
-const porcentajeHTML = document.getElementById("porcentaje");
-const retosCompletadosHTML = document.getElementById("retosCompletados");
-const correctasHTML = document.getElementById("correctas");
-const textoCategorias = document.getElementById("textoCategorias");
-const textoExplora = document.getElementById("textoExplora");
-
-const modalRecuperacion = document.getElementById("modalRecuperacion");
-const modalRetoFinal = document.getElementById("modalRetoFinal");
-
-
-/* =====================================================
-   UTILIDAD: MEZCLAR ARRAY (Fisher-Yates)
-   ===================================================== */
-
-function mezclarArray(array) {
-    const copia = [...array];
-    for (let i = copia.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [copia[i], copia[j]] = [copia[j], copia[i]];
-    }
-    return copia;
-}
-
-
-/* =====================================================
-   CARGAR PROGRESO
-   ===================================================== */
-
-function cargarProgreso() {
-    const guardado = localStorage.getItem(CLAVE);
-
-    if (guardado) {
-        try {
-            const datos = JSON.parse(guardado);
-            estado = { ...estado, ...datos };
-        } catch (error) {
-            console.log("No se pudo cargar el progreso.");
-        }
-    }
-
-    estado.vidas = Math.max(0, estado.vidas);
-    actualizarTodo();
-    actualizarBotonesCategorias();
-}
-
-
-/* =====================================================
-   GUARDAR PROGRESO
-   ===================================================== */
-
-function guardar() {
-    localStorage.setItem(CLAVE, JSON.stringify(estado));
-}
-
-
-/* =====================================================
-   CORAZONES
-   ===================================================== */
-
-function actualizarVidas() {
-    corazonesHTML.innerHTML = "";
-
-    for (let i = 0; i < 5; i++) {
-        const corazon = document.createElement("span");
-        corazon.className = "corazon";
-        corazon.textContent = i < estado.vidas ? "❤️" : "♡";
-        corazonesHTML.appendChild(corazon);
-    }
-
-    numeroVidasHTML.textContent = estado.vidas;
-}
-
-
-/* =====================================================
-   ACTUALIZAR PANEL DERECHO
-   ===================================================== */
-
-function actualizarPanel() {
-    puntosHTML.textContent = estado.puntos;
-    retosCompletadosHTML.textContent = estado.retos;
-    correctasHTML.textContent = estado.correctas;
-
-    const porcentaje = Math.round(
-        (estado.categoriasCompletadas.length / TOTAL_CATEGORIAS) * 100
-    );
-
-    porcentajeHTML.textContent = porcentaje + "%";
-
-    textoCategorias.textContent =
-        `Has completado ${estado.categoriasCompletadas.length} de ${TOTAL_CATEGORIAS} categorías.`;
-
-    const estadoProgresoEl = document.getElementById("estadoProgreso");
-    if (estadoProgresoEl) {
-        estadoProgresoEl.textContent =
-            porcentaje >= 100 ? "Aventura completada" : "Aventura en progreso";
-    }
-}
-
-
-/* =====================================================
-   ACTUALIZAR TODO
-   ===================================================== */
-
-function actualizarTodo() {
-    actualizarVidas();
-    actualizarPanel();
-    actualizarInformacion();
-}
-
-
-/* =====================================================
-   INFORMACIÓN DE CATEGORÍA
-   ===================================================== */
-
-function actualizarInformacion() {
-    const categoria = categorias[estado.categoriaActual];
-    if (!categoria) return;
-
-    tituloCategoria.textContent = categoria.titulo;
-    subtituloCategoria.textContent = categoria.subtitulo;
-    descripcionCategoria.textContent = categoria.descripcion;
-    datoInteresante.textContent = categoria.dato;
-
-    if (textoExplora) {
-        textoExplora.textContent =
-            `Descubre la historia y cultura de Brasil mediante ${estado.categoriaActual.toLowerCase()}.`;
-    }
-}
-
-
-/* =====================================================
-   CARGAR PREGUNTA  (con opciones mezcladas)
-   ===================================================== */
-
 let indiceCorrectoActual = 0;
-
-function cargarPregunta() {
-    const categoria = categorias[estado.categoriaActual];
-    if (!categoria) return;
-
-    const pregunta = categoria.preguntas[estado.preguntaActual];
-    if (!pregunta) return;
-
-    estado.respondida = false;
-
-    preguntaHTML.textContent = pregunta[0];
-    opcionesHTML.innerHTML = "";
-    mensajeRespuestaHTML.textContent = "";
-    mensajeRespuestaHTML.style.color = "";
-    botonSiguiente.disabled = true;
-    botonSiguiente.textContent = "Siguiente →";
-
-    contadorPreguntaHTML.textContent =
-        `${estado.preguntaActual + 1} / ${PREGUNTAS_POR_CATEGORIA}`;
-
-    // Mezclar las opciones
-    const opcionesOriginales = pregunta[1];
-    const indiceOriginalCorrecto = pregunta[2];
-    const opcionesMezcladas = mezclarArray(opcionesOriginales);
-
-    // Guardar el nuevo índice de la respuesta correcta
-    indiceCorrectoActual = opcionesMezcladas.indexOf(opcionesOriginales[indiceOriginalCorrecto]);
-
-    opcionesMezcladas.forEach((opcion, indice) => {
-        const boton = document.createElement("button");
-        boton.className = "opcion";
-        boton.textContent = opcion;
-        boton.addEventListener("click", () => responder(indice));
-        opcionesHTML.appendChild(boton);
-    });
-}
-
-
-/* =====================================================
-   RESPONDER
-   ===================================================== */
-
-function responder(indice) {
-    if (estado.respondida) return;
-
-    if (estado.vidas <= 0) {
-        abrirRecuperacion();
-        return;
-    }
-
-    estado.respondida = true;
-
-    const botones = document.querySelectorAll(".opcion");
-
-    botones.forEach((boton, i) => {
-        boton.disabled = true;
-        if (i === indiceCorrectoActual) boton.classList.add("correcta");
-        if (i === indice && i !== indiceCorrectoActual) boton.classList.add("incorrecta");
-    });
-
-    if (indice === indiceCorrectoActual) {
-        estado.puntos += 10;
-        estado.correctas++;
-        estado.retos++;
-        mensajeRespuestaHTML.textContent = "✅ ¡Respuesta correcta! +10 puntos";
-        mensajeRespuestaHTML.style.color = "#2d8a50";
-    } else {
-        estado.vidas--;
-        estado.retos++;
-        mensajeRespuestaHTML.textContent = "❌ Respuesta incorrecta. Perdiste 1 vida.";
-        mensajeRespuestaHTML.style.color = "#c84450";
-    }
-
-    actualizarTodo();
-    guardar();
-    botonSiguiente.disabled = false;
-
-    botonSiguiente.textContent =
-        estado.vidas <= 0 ? "Recuperar vida ❤️" : "Siguiente →";
-}
-
-
-/* =====================================================
-   SIGUIENTE PREGUNTA / SIGUIENTE CATEGORÍA
-   ===================================================== */
-
-function siguientePregunta() {
-    // Si estamos en la pantalla de "Categoría completada", pasar a la siguiente categoría
-    if (botonSiguiente.dataset.accion === "siguiente-categoria") {
-        irASiguienteCategoria();
-        return;
-    }
-
-    if (!estado.respondida) return;
-
-    if (estado.vidas <= 0) {
-        abrirRecuperacion();
-        return;
-    }
-
-    const categoria = categorias[estado.categoriaActual];
-    estado.preguntaActual++;
-
-    if (estado.preguntaActual >= categoria.preguntas.length) {
-        completarCategoria();
-        return;
-    }
-
-    cargarPregunta();
-}
-
-botonSiguiente.addEventListener("click", siguientePregunta);
-
-
-/* =====================================================
-   COMPLETAR CATEGORÍA
-   ===================================================== */
-
-function completarCategoria() {
-    if (!estado.categoriasCompletadas.includes(estado.categoriaActual)) {
-        estado.categoriasCompletadas.push(estado.categoriaActual);
-    }
-
-    guardar();
-    actualizarPanel();
-    mostrarCategoriaCompletada();
-}
-
-
-/* =====================================================
-   MOSTRAR CATEGORÍA COMPLETADA
-   (ahora el botón Siguiente lleva a la siguiente subcategoría)
-   ===================================================== */
-
-function mostrarCategoriaCompletada() {
-    preguntaHTML.textContent = "🎉 ¡Categoría completada!";
-
-    opcionesHTML.innerHTML = `
-        <div class="categoria-final">
-            Has completado todas las preguntas
-            de <strong>${estado.categoriaActual}</strong>.
-            <br><br>
-            ¡Excelente trabajo!
-        </div>
-    `;
-
-    contadorPreguntaHTML.textContent = "5 / 5";
-    mensajeRespuestaHTML.textContent = "Pulsa Siguiente para continuar con la siguiente categoría.";
-    mensajeRespuestaHTML.style.color = "#2d8a50";
-
-    // Activamos el botón Siguiente para ir a la siguiente categoría
-    botonSiguiente.disabled = false;
-    botonSiguiente.textContent = "Siguiente categoría →";
-    botonSiguiente.dataset.accion = "siguiente-categoria";
-
-    actualizarPanel();
-    actualizarBotonesCategorias();
-    comprobarFinal();
-}
-
-
-/* =====================================================
-   IR A LA SIGUIENTE CATEGORÍA
-   ===================================================== */
-
-function irASiguienteCategoria() {
-    // Quitar la marca de acción especial
-    delete botonSiguiente.dataset.accion;
-
-    const indiceActual = ORDEN_CATEGORIAS.indexOf(estado.categoriaActual);
-    let siguienteIndice = indiceActual + 1;
-
-    // Si ya es la última, no avanzamos (el reto final se abre solo)
-    if (siguienteIndice >= ORDEN_CATEGORIAS.length) {
-        mensajeRespuestaHTML.textContent = "¡Has terminado todas las categorías! Completa el Reto Final.";
-        botonSiguiente.disabled = true;
-        return;
-    }
-
-    const siguienteNombre = ORDEN_CATEGORIAS[siguienteIndice];
-    cambiarCategoria(siguienteNombre);
-}
-
-
-/* =====================================================
-   CAMBIAR CATEGORÍA
-   ===================================================== */
-
-document.querySelectorAll(".categoria").forEach(boton => {
-    boton.addEventListener("click", () => {
-        const nuevaCategoria = boton.dataset.categoria;
-        cambiarCategoria(nuevaCategoria);
-    });
-});
-
-function cambiarCategoria(nombre) {
-    if (!categorias[nombre]) return;
-
-    // Limpiar cualquier acción especial del botón
-    delete botonSiguiente.dataset.accion;
-
-    estado.categoriaActual = nombre;
-    estado.preguntaActual = 0;
-    estado.respondida = false;
-
-    document.querySelectorAll(".categoria").forEach(boton => {
-        boton.classList.remove("active");
-        if (boton.dataset.categoria === nombre) {
-            boton.classList.add("active");
-        }
-    });
-
-    actualizarInformacion();
-    cargarPregunta();
-}
-
-
-/* =====================================================
-   CATEGORÍAS COMPLETADAS (chulitos)
-   ===================================================== */
-
-function actualizarBotonesCategorias() {
-    document.querySelectorAll(".categoria").forEach(boton => {
-        const nombre = boton.dataset.categoria;
-        if (estado.categoriasCompletadas.includes(nombre)) {
-            boton.innerHTML = "✅ " + nombre;
-        } else {
-            boton.innerHTML = nombre;
-        }
-    });
-}
-
-
-/* =====================================================
-   RECUPERACIÓN DE VIDA
-   ===================================================== */
-
-const preguntaRecuperacion = document.getElementById("preguntaRecuperacion");
-const opcionesRecuperacion = document.getElementById("opcionesRecuperacion");
-const mensajeRecuperacion = document.getElementById("mensajeRecuperacion");
-const btnIniciarRecuperacion = document.getElementById("btnIniciarRecuperacion");
-
+let preguntaRecuperacionActual = null;
 let recuperacionRespondida = false;
-
-function abrirRecuperacion() {
-    modalRecuperacion.classList.add("mostrar");
-    recuperacionRespondida = false;
-    mensajeRecuperacion.textContent = "";
-    btnIniciarRecuperacion.style.display = "none";
-    cargarPreguntaRecuperacion();
-}
-
-function cargarPreguntaRecuperacion() {
-    const preguntas = [
-        {
-            pregunta: "¿Cuál es la capital de Brasil?",
-            opciones: ["Brasilia", "Río de Janeiro", "São Paulo", "Salvador"],
-            correcta: 0
-        },
-        {
-            pregunta: "¿En qué año se independizó Brasil?",
-            opciones: ["1822", "1810", "1889", "1500"],
-            correcta: 0
-        },
-        {
-            pregunta: "¿Qué idioma es oficial en Brasil?",
-            opciones: ["Portugués", "Español", "Francés", "Inglés"],
-            correcta: 0
-        }
-    ];
-
-    const pregunta = preguntas[Math.floor(Math.random() * preguntas.length)];
-
-    // Mezclar opciones de recuperación
-    const opcionesMezcladas = mezclarArray(pregunta.opciones);
-    const indiceCorrecto = opcionesMezcladas.indexOf(pregunta.opciones[pregunta.correcta]);
-
-    preguntaRecuperacion.textContent = pregunta.pregunta;
-    opcionesRecuperacion.innerHTML = "";
-
-    opcionesMezcladas.forEach((opcion, indice) => {
-        const boton = document.createElement("button");
-        boton.className = "recuperacion-opcion";
-        boton.textContent = opcion;
-
-        boton.addEventListener("click", () => {
-            if (recuperacionRespondida) return;
-            recuperacionRespondida = true;
-
-            if (indice === indiceCorrecto) {
-                mensajeRecuperacion.textContent = "✅ ¡Correcto! Has recuperado una vida.";
-                mensajeRecuperacion.style.color = "#2d8a50";
-                btnIniciarRecuperacion.style.display = "inline-block";
-            } else {
-                mensajeRecuperacion.textContent = "❌ No es correcto. Inténtalo nuevamente.";
-                mensajeRecuperacion.style.color = "#c84450";
-                recuperacionRespondida = false;
-            }
-        });
-
-        opcionesRecuperacion.appendChild(boton);
-    });
-}
-
-btnIniciarRecuperacion.addEventListener("click", () => {
-    estado.vidas = 1;
-    guardar();
-    actualizarVidas();
-    modalRecuperacion.classList.remove("mostrar");
-    botonSiguiente.textContent = "Siguiente →";
-    botonSiguiente.disabled = false;
-    cargarPregunta();
-});
-
-
-/* =====================================================
-   RETO FINAL
-   ===================================================== */
 
 let estadoFinal = {
     preguntaActual: 0,
@@ -893,18 +331,930 @@ let estadoFinal = {
 
 let indiceCorrectoFinal = 0;
 
-function comprobarFinal() {
-    if (estado.categoriasCompletadas.length === TOTAL_CATEGORIAS) {
-        modalRetoFinal.classList.add("mostrar");
+
+/* =========================================================
+   FUNCIONES AUXILIARES
+========================================================= */
+
+function mezclarArray(array) {
+    const copia = [...array];
+
+    for (let i = copia.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [copia[i], copia[j]] = [copia[j], copia[i]];
+    }
+
+    return copia;
+}
+
+
+/* =========================================================
+   CARGAR ELEMENTOS DEL HTML
+========================================================= */
+
+const tituloTema = document.getElementById("tituloCategoria");
+const subtituloTema = document.getElementById("subtituloCategoria");
+const datoCurioso = document.getElementById("datoInteresante");
+const descripcionElemento = document.getElementById("descripcionCategoria");
+
+const preguntaReto = document.getElementById("preguntaReto");
+const opcionesReto = document.getElementById("opcionesReto");
+const resultado = document.getElementById("mensajeRespuesta");
+const botonSiguiente = document.getElementById("botonSiguiente");
+const numeroPregunta = document.getElementById("contadorPregunta");
+
+const puntosElemento = document.getElementById("puntos");
+const vidasElemento = document.getElementById("numeroVidas");
+const porcentajeElemento = document.getElementById("porcentaje");
+const retosCompletadosElemento = document.getElementById("retosCompletados");
+const respuestasCorrectasElemento = document.getElementById("correctas");
+
+const modalRecuperacion = document.getElementById("modalRecuperacion");
+const preguntaRecuperacion = document.getElementById("preguntaRecuperacion");
+const opcionesRecuperacion = document.getElementById("opcionesRecuperacion");
+const mensajeRecuperacion = document.getElementById("mensajeRecuperacion");
+const btnIniciarRecuperacion = document.getElementById("btnIniciarRecuperacion");
+
+const modalRetoFinal = document.getElementById("modalRetoFinal");
+const btnRetoFinal = document.getElementById("btnRetoFinal");
+
+const btnEscuchar = document.getElementById("btnEscuchar");
+
+
+/* =========================================================
+   GUARDAR PROGRESO
+========================================================= */
+
+function guardar() {
+    localStorage.setItem(CLAVE, JSON.stringify(estado));
+}
+
+
+/* =========================================================
+   CARGAR PROGRESO
+========================================================= */
+
+function cargarProgreso() {
+
+    const guardado = localStorage.getItem(CLAVE);
+
+    if (!guardado) {
+        guardar();
+        return;
+    }
+
+    try {
+
+        const datos = JSON.parse(guardado);
+
+        estado = {
+            ...estado,
+            ...datos
+        };
+
+        if (!Array.isArray(estado.categoriasCompletadas)) {
+            estado.categoriasCompletadas = [];
+        }
+
+        if (!estado.mejorRetoFinal) {
+            estado.mejorRetoFinal = {
+                correctas: 0,
+                puntos: 0,
+                porcentaje: 0
+            };
+        }
+
+        if (!categorias[estado.categoriaActual]) {
+            estado.categoriaActual = "Gastronomía";
+        }
+
+        estado.vidas = Number(estado.vidas);
+
+        if (!Number.isFinite(estado.vidas)) {
+            estado.vidas = 5;
+        }
+
+        estado.vidas = Math.max(0, Math.min(5, estado.vidas));
+
+        estado.preguntaActual = Number(estado.preguntaActual) || 0;
+
+        if (
+            estado.preguntaActual >=
+            PREGUNTAS_POR_CATEGORIA
+        ) {
+            estado.preguntaActual = 0;
+        }
+
+    } catch (error) {
+
+        console.error("Error cargando progreso:", error);
+
+        estado = {
+            vidas: 5,
+            puntos: 0,
+            correctas: 0,
+            categoriaActual: "Gastronomía",
+            preguntaActual: 0,
+            respondida: false,
+            categoriasCompletadas: [],
+            mejorRetoFinal: {
+                correctas: 0,
+                puntos: 0,
+                porcentaje: 0
+            }
+        };
+
+        guardar();
     }
 }
 
-document.getElementById("btnRetoFinal").addEventListener("click", () => {
-    modalRetoFinal.classList.remove("mostrar");
-    iniciarRetoFinal();
-});
+
+/* =========================================================
+   VIDAS
+========================================================= */
+
+function actualizarVidas() {
+
+    if (vidasElemento) {
+        vidasElemento.textContent = estado.vidas;
+    }
+
+    const corazones = document.getElementById("corazones");
+
+    if (corazones) {
+
+        let texto = "";
+
+        for (let i = 0; i < 5; i++) {
+            texto += i < estado.vidas ? "❤️ " : "🖤 ";
+        }
+
+        corazones.textContent = texto;
+    }
+}
+
+
+/* =========================================================
+   PANEL DERECHO
+========================================================= */
+
+function actualizarPanel() {
+
+    if (puntosElemento) {
+        puntosElemento.textContent = estado.puntos;
+    }
+
+    if (vidasElemento) {
+        vidasElemento.textContent = estado.vidas;
+    }
+
+    if (respuestasCorrectasElemento) {
+        respuestasCorrectasElemento.textContent = estado.correctas;
+    }
+
+    const porcentaje = Math.round(
+        (estado.categoriasCompletadas.length /
+            TOTAL_CATEGORIAS) *
+        100
+    );
+
+    if (porcentajeElemento) {
+        porcentajeElemento.textContent = `${porcentaje}%`;
+    }
+
+    if (retosCompletadosElemento) {
+        retosCompletadosElemento.textContent =
+            estado.categoriasCompletadas.length;
+    }
+
+    const textoCategorias =
+        document.getElementById("textoCategorias");
+
+    if (textoCategorias) {
+        textoCategorias.textContent =
+            `Has completado ${estado.categoriasCompletadas.length} de ${TOTAL_CATEGORIAS} categorías.`;
+    }
+
+    const estadoProgreso =
+        document.getElementById("estadoProgreso");
+
+    if (estadoProgreso) {
+
+        if (porcentaje === 0) {
+            estadoProgreso.textContent =
+                "Aventura en progreso";
+        }
+
+        else if (porcentaje < 50) {
+            estadoProgreso.textContent =
+                "¡Buen comienzo!";
+        }
+
+        else if (porcentaje < 100) {
+            estadoProgreso.textContent =
+                "¡Vas muy bien!";
+        }
+
+        else {
+            estadoProgreso.textContent =
+                "🏆 ¡Aventura completada!";
+        }
+    }
+}
+
+
+/* =========================================================
+   INFORMACIÓN DE CATEGORÍA
+========================================================= */
+
+function actualizarInformacion() {
+
+    const categoria =
+        categorias[estado.categoriaActual];
+
+    if (!categoria) return;
+
+    if (tituloTema) {
+        tituloTema.textContent = categoria.titulo;
+    }
+
+    if (subtituloTema) {
+        subtituloTema.textContent =
+            categoria.subtitulo;
+    }
+
+    if (datoCurioso) {
+        datoCurioso.textContent =
+            categoria.dato;
+    }
+
+    if (descripcionElemento) {
+        descripcionElemento.textContent =
+            categoria.descripcion;
+    }
+}
+
+
+/* =========================================================
+   BOTONES DE CATEGORÍAS
+========================================================= */
+
+function actualizarBotonesCategorias() {
+
+    document
+        .querySelectorAll(".categoria")
+        .forEach(boton => {
+
+            const nombre =
+                boton.dataset.categoria;
+
+            boton.classList.toggle(
+                "active",
+                nombre === estado.categoriaActual
+            );
+
+            boton.classList.toggle(
+                "completada",
+                estado.categoriasCompletadas.includes(nombre)
+            );
+        });
+}
+
+
+/* =========================================================
+   CARGAR PREGUNTA
+========================================================= */
+
+function cargarPregunta() {
+
+    const categoria =
+        categorias[estado.categoriaActual];
+
+    if (!categoria) return;
+
+    if (estado.vidas <= 0) {
+        mostrarAvisoSinVidas();
+        return;
+    }
+
+    if (
+        estado.preguntaActual >=
+        categoria.preguntas.length
+    ) {
+        completarCategoria();
+        return;
+    }
+
+    estado.respondida = false;
+
+    const datos =
+        categoria.preguntas[estado.preguntaActual];
+
+    const textoPregunta = datos[0];
+    const opciones = datos[1];
+    const indiceOriginal = datos[2];
+
+    if (preguntaReto) {
+        preguntaReto.textContent =
+            textoPregunta;
+        preguntaReto.style.display =
+            "block";
+    }
+
+    if (numeroPregunta) {
+        numeroPregunta.textContent =
+            `${estado.preguntaActual + 1} / ${PREGUNTAS_POR_CATEGORIA}`;
+    }
+
+    if (resultado) {
+        resultado.textContent = "";
+        resultado.className =
+            "mensaje-respuesta";
+    }
+
+    if (botonSiguiente) {
+        botonSiguiente.disabled = true;
+        botonSiguiente.textContent =
+            "Siguiente →";
+    }
+
+    if (!opcionesReto) {
+        console.error(
+            "No existe #opcionesReto en el HTML."
+        );
+        return;
+    }
+
+    opcionesReto.innerHTML = "";
+
+    const respuestaCorrecta =
+        opciones[indiceOriginal];
+
+    const opcionesMezcladas =
+        mezclarArray(opciones);
+
+    indiceCorrectoActual =
+        opcionesMezcladas.indexOf(
+            respuestaCorrecta
+        );
+
+    opcionesMezcladas.forEach(
+        (opcion, indiceOpcion) => {
+
+            const boton =
+                document.createElement("button");
+
+            boton.type = "button";
+            boton.className = "opcion";
+            boton.textContent = opcion;
+
+            boton.addEventListener(
+                "click",
+                () => {
+                    comprobarRespuesta(
+                        indiceOpcion,
+                        boton
+                    );
+                }
+            );
+
+            opcionesReto.appendChild(boton);
+        }
+    );
+}
+
+
+/* =========================================================
+   COMPROBAR RESPUESTA
+========================================================= */
+
+function comprobarRespuesta(
+    indice,
+    botonSeleccionado
+) {
+
+    if (estado.respondida) return;
+
+    if (estado.vidas <= 0) {
+        mostrarAvisoSinVidas();
+        return;
+    }
+
+    estado.respondida = true;
+
+    const botones =
+        opcionesReto.querySelectorAll(".opcion");
+
+    botones.forEach(
+        (boton, i) => {
+
+            boton.disabled = true;
+
+            if (i === indiceCorrectoActual) {
+                boton.classList.add("correcta");
+            }
+
+            if (
+                i === indice &&
+                i !== indiceCorrectoActual
+            ) {
+                boton.classList.add("incorrecta");
+            }
+        }
+    );
+
+    if (indice === indiceCorrectoActual) {
+
+        estado.puntos += 10;
+        estado.correctas++;
+
+        if (resultado) {
+            resultado.className =
+                "mensaje-respuesta correcto";
+
+            resultado.textContent =
+                "✅ ¡Correcto! +10 puntos";
+        }
+
+    } else {
+
+        estado.vidas--;
+
+        const categoria =
+            categorias[estado.categoriaActual];
+
+        const pregunta =
+            categoria.preguntas[
+                estado.preguntaActual
+            ];
+
+        if (resultado) {
+
+            resultado.className =
+                "mensaje-respuesta incorrecto";
+
+            resultado.textContent =
+                `❌ Incorrecto. La respuesta correcta era: ${pregunta[1][pregunta[2]]}`;
+        }
+
+        actualizarVidas();
+    }
+
+    if (botonSiguiente) {
+        botonSiguiente.disabled = false;
+    }
+
+    actualizarPanel();
+    actualizarVidas();
+    guardar();
+
+    if (estado.vidas <= 0) {
+
+        if (botonSiguiente) {
+            botonSiguiente.disabled = true;
+        }
+
+        setTimeout(() => {
+            mostrarAvisoSinVidas();
+        }, 600);
+    }
+}
+
+
+/* =========================================================
+   SIGUIENTE PREGUNTA
+========================================================= */
+
+function siguientePregunta() {
+
+    if (!estado.respondida) return;
+
+    if (estado.vidas <= 0) {
+        mostrarAvisoSinVidas();
+        return;
+    }
+
+    estado.preguntaActual++;
+
+    const categoria =
+        categorias[estado.categoriaActual];
+
+    if (
+        estado.preguntaActual >=
+        categoria.preguntas.length
+    ) {
+
+        completarCategoria();
+        return;
+    }
+
+    guardar();
+    cargarPregunta();
+}
+
+
+/* =========================================================
+   COMPLETAR CATEGORÍA
+========================================================= */
+
+function completarCategoria() {
+
+    const nombre =
+        estado.categoriaActual;
+
+    if (
+        !estado.categoriasCompletadas.includes(
+            nombre
+        )
+    ) {
+
+        estado.categoriasCompletadas.push(
+            nombre
+        );
+    }
+
+    estado.preguntaActual = 0;
+    estado.respondida = false;
+
+    guardar();
+
+    actualizarPanel();
+    actualizarBotonesCategorias();
+
+    if (preguntaReto) {
+
+        preguntaReto.innerHTML = `
+            <div class="categoria-completada">
+                <div class="icono-completado">🎉</div>
+                <h3>¡Categoría completada!</h3>
+                <p>
+                    Has terminado las 5 preguntas de
+                    <strong>${nombre}</strong>.
+                </p>
+                <p>
+                    Selecciona otra categoría para continuar.
+                </p>
+            </div>
+        `;
+    }
+
+    if (opcionesReto) {
+        opcionesReto.innerHTML = "";
+    }
+
+    if (numeroPregunta) {
+        numeroPregunta.textContent = "5 / 5";
+    }
+
+    if (botonSiguiente) {
+        botonSiguiente.disabled = true;
+    }
+
+    comprobarFinal();
+}
+
+
+/* =========================================================
+   CAMBIAR CATEGORÍA
+========================================================= */
+
+function cambiarCategoria(nombre) {
+
+    if (!categorias[nombre]) return;
+
+    if (estado.vidas <= 0) {
+        mostrarAvisoSinVidas();
+        return;
+    }
+
+    estado.categoriaActual = nombre;
+    estado.preguntaActual = 0;
+    estado.respondida = false;
+
+    actualizarInformacion();
+    actualizarBotonesCategorias();
+    cargarPregunta();
+
+    guardar();
+}
+
+
+/* =========================================================
+   BLOQUEAR JUEGO
+========================================================= */
+
+function bloquearJuegoPorVidas() {
+
+    if (opcionesReto) {
+
+        opcionesReto
+            .querySelectorAll(".opcion")
+            .forEach(boton => {
+                boton.disabled = true;
+            });
+    }
+
+    if (botonSiguiente) {
+        botonSiguiente.disabled = true;
+    }
+}
+
+
+/* =========================================================
+   MOSTRAR RECUPERACIÓN
+========================================================= */
+
+function mostrarAvisoSinVidas() {
+
+    if (estado.vidas > 0) return;
+
+    bloquearJuegoPorVidas();
+
+    if (!modalRecuperacion) {
+        console.error(
+            "No existe #modalRecuperacion en el HTML."
+        );
+        return;
+    }
+
+    modalRecuperacion.classList.add("mostrar");
+
+    iniciarPreguntaRecuperacion();
+}
+
+
+/* =========================================================
+   INICIAR RECUPERACIÓN
+========================================================= */
+
+function iniciarPreguntaRecuperacion() {
+
+    recuperacionRespondida = false;
+
+    const pregunta =
+        preguntasRecuperacion[
+            Math.floor(
+                Math.random() *
+                preguntasRecuperacion.length
+            )
+        ];
+
+    preguntaRecuperacionActual =
+        pregunta;
+
+    if (preguntaRecuperacion) {
+        preguntaRecuperacion.textContent =
+            pregunta.pregunta;
+    }
+
+    if (mensajeRecuperacion) {
+        mensajeRecuperacion.textContent =
+            "Responde correctamente para recuperar tus 5 vidas.";
+
+        mensajeRecuperacion.style.color = "";
+    }
+
+    if (btnIniciarRecuperacion) {
+        btnIniciarRecuperacion.style.display =
+            "none";
+    }
+
+    if (!opcionesRecuperacion) return;
+
+    opcionesRecuperacion.innerHTML = "";
+
+    const opcionesMezcladas =
+        mezclarArray(pregunta.opciones);
+
+    const indiceCorrecto =
+        opcionesMezcladas.indexOf(
+            pregunta.correcta
+        );
+
+    opcionesMezcladas.forEach(
+        (opcion, indice) => {
+
+            const boton =
+                document.createElement("button");
+
+            boton.type = "button";
+            boton.className =
+                "recuperacion-opcion";
+
+            boton.textContent = opcion;
+
+            boton.addEventListener(
+                "click",
+                () => {
+
+                    comprobarRecuperacion(
+                        indice,
+                        indiceCorrecto,
+                        boton
+                    );
+                }
+            );
+
+            opcionesRecuperacion.appendChild(
+                boton
+            );
+        }
+    );
+}
+
+
+/* =========================================================
+   COMPROBAR RECUPERACIÓN
+========================================================= */
+
+function comprobarRecuperacion(
+    indice,
+    indiceCorrecto,
+    boton
+) {
+
+    if (recuperacionRespondida) return;
+
+    const botones =
+        opcionesRecuperacion.querySelectorAll(
+            ".recuperacion-opcion"
+        );
+
+    if (indice === indiceCorrecto) {
+
+        recuperacionRespondida = true;
+
+        botones.forEach(
+            (btn, i) => {
+
+                btn.disabled = true;
+
+                if (i === indiceCorrecto) {
+                    btn.classList.add("correcta");
+                }
+            }
+        );
+
+        estado.vidas = 5;
+
+        guardar();
+        actualizarVidas();
+        actualizarPanel();
+
+        if (mensajeRecuperacion) {
+
+            mensajeRecuperacion.textContent =
+                "🎉 ¡Correcto! Has recuperado tus 5 vidas.";
+
+            mensajeRecuperacion.style.color =
+                "#2d8a50";
+        }
+
+        if (btnIniciarRecuperacion) {
+
+            btnIniciarRecuperacion.style.display =
+                "inline-block";
+
+            btnIniciarRecuperacion.textContent =
+                "Continuar →";
+        }
+
+    } else {
+
+        boton.disabled = true;
+
+        boton.classList.add("incorrecta");
+
+        if (mensajeRecuperacion) {
+
+            mensajeRecuperacion.textContent =
+                "❌ Incorrecto. Intenta con otra opción.";
+
+            mensajeRecuperacion.style.color =
+                "#c84450";
+        }
+    }
+}
+
+
+/* =========================================================
+   CONTINUAR DESPUÉS DE RECUPERAR
+========================================================= */
+
+if (btnIniciarRecuperacion) {
+
+    btnIniciarRecuperacion.addEventListener(
+        "click",
+        () => {
+
+            if (estado.vidas !== 5) return;
+
+            if (modalRecuperacion) {
+                modalRecuperacion.classList.remove(
+                    "mostrar"
+                );
+            }
+
+            estado.respondida = false;
+
+            guardar();
+            actualizarVidas();
+            actualizarPanel();
+            cargarPregunta();
+        }
+    );
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+function reproducirAudio() {
+
+    if (!("speechSynthesis" in window)) {
+
+        alert(
+            "Tu navegador no permite reproducir audio."
+        );
+
+        return;
+    }
+
+    const categoria =
+        categorias[estado.categoriaActual];
+
+    if (!categoria) return;
+
+    window.speechSynthesis.cancel();
+
+    const texto =
+        `${categoria.titulo}. ${categoria.descripcion}. ${categoria.dato}`;
+
+    const voz =
+        new SpeechSynthesisUtterance(texto);
+
+    voz.lang = "es-ES";
+    voz.rate = 0.9;
+    voz.pitch = 1;
+
+    window.speechSynthesis.speak(voz);
+}
+
+
+if (btnEscuchar) {
+
+    btnEscuchar.addEventListener(
+        "click",
+        reproducirAudio
+    );
+}
+
+
+/* =========================================================
+   RETO FINAL
+========================================================= */
+
+function comprobarFinal() {
+
+    if (
+        estado.categoriasCompletadas.length !==
+        TOTAL_CATEGORIAS
+    ) {
+        return;
+    }
+
+    if (!modalRetoFinal) {
+        console.error(
+            "No existe #modalRetoFinal."
+        );
+        return;
+    }
+
+    modalRetoFinal.classList.add("mostrar");
+}
+
+
+/* =========================================================
+   BOTÓN PARA COMENZAR RETO FINAL
+========================================================= */
+
+if (btnRetoFinal) {
+
+    btnRetoFinal.addEventListener(
+        "click",
+        iniciarRetoFinal
+    );
+}
+
+
+/* =========================================================
+   INICIAR RETO FINAL
+========================================================= */
 
 function iniciarRetoFinal() {
+
     estadoFinal = {
         preguntaActual: 0,
         puntos: 0,
@@ -912,217 +1262,640 @@ function iniciarRetoFinal() {
         respondida: false
     };
 
+    if (!modalRetoFinal) return;
+
     modalRetoFinal.innerHTML = `
+
         <div class="modal-contenido reto-final-estilo">
-            <button class="cerrar-modal" id="cerrarRetoFinal">×</button>
 
-            <div class="codigo-pais">BR</div>
+            <button
+                class="cerrar-modal"
+                id="cerrarRetoFinal"
+                type="button"
+            >
+                ×
+            </button>
 
-            <h2 class="titulo-reto">Reto Final de Brasil</h2>
+            <div class="codigo-pais">
+                BR
+            </div>
+
+            <h2 class="titulo-reto">
+                Reto Final de Brasil
+            </h2>
 
             <p class="descripcion-reto">
-                ¡Has completado las 14 categorías! Ahora demuestra todo lo que aprendiste sobre la historia y cultura de Brasil.
+                ¡Has completado las 14 categorías!
+                Ahora demuestra todo lo que aprendiste
+                sobre la historia y cultura de Brasil.
             </p>
 
             <div class="badge-pregunta">
-                Pregunta <span id="numPreguntaFinal">1</span> / 30
+                Pregunta
+                <span id="numPreguntaFinal">1</span>
+                / 30
             </div>
 
             <div class="caja-pregunta">
-                <h3 id="preguntaFinal">Cargando pregunta...</h3>
+                <h3 id="preguntaFinal">
+                    Cargando pregunta...
+                </h3>
             </div>
 
-            <div id="opcionesFinal" class="grid-opciones"></div>
+            <div
+                id="opcionesFinal"
+                class="grid-opciones"
+            ></div>
 
             <div class="stats-reto">
+
                 <div class="stat-card">
-                    <div class="stat-icon">⭐</div>
-                    <strong id="puntosFinal">0</strong>
-                    <span>Puntos</span>
+
+                    <div class="stat-icon">
+                        ⭐
+                    </div>
+
+                    <strong id="puntosFinal">
+                        0
+                    </strong>
+
+                    <span>
+                        Puntos
+                    </span>
+
                 </div>
+
                 <div class="stat-card">
-                    <div class="stat-icon">🎯</div>
-                    <strong id="correctasFinal">0</strong>
-                    <span>Correctas</span>
+
+                    <div class="stat-icon">
+                        🎯
+                    </div>
+
+                    <strong id="correctasFinal">
+                        0
+                    </strong>
+
+                    <span>
+                        Correctas
+                    </span>
+
                 </div>
+
             </div>
 
             <div class="footer-reto">
-                <div id="mensajeFinal" class="mensaje-final"></div>
-                <button id="btnSiguienteFinal" class="btn-siguiente" disabled>
+
+                <div
+                    id="mensajeFinal"
+                    class="mensaje-final"
+                ></div>
+
+                <button
+                    id="btnSiguienteFinal"
+                    class="btn-siguiente"
+                    type="button"
+                    disabled
+                >
                     Siguiente →
                 </button>
+
             </div>
+
         </div>
     `;
 
     modalRetoFinal.classList.add("mostrar");
 
-    document.getElementById("cerrarRetoFinal").addEventListener("click", () => {
-        modalRetoFinal.classList.remove("mostrar");
-    });
+    const cerrar =
+        document.getElementById(
+            "cerrarRetoFinal"
+        );
 
-    document.getElementById("btnSiguienteFinal").addEventListener("click", siguientePreguntaFinal);
+    if (cerrar) {
 
-    mostrarPreguntaFinal();
+        cerrar.addEventListener(
+            "click",
+            () => {
+
+                modalRetoFinal.classList.remove(
+                    "mostrar"
+                );
+            }
+        );
+    }
+
+    cargarPreguntaFinal();
 }
 
-function mostrarPreguntaFinal() {
-    const p = preguntasRetoFinal[estadoFinal.preguntaActual];
 
-    document.getElementById("numPreguntaFinal").textContent = estadoFinal.preguntaActual + 1;
-    document.getElementById("preguntaFinal").textContent = p.pregunta;
-    document.getElementById("mensajeFinal").textContent = "";
-    document.getElementById("btnSiguienteFinal").disabled = true;
-    document.getElementById("btnSiguienteFinal").textContent = "Siguiente →";
+/* =========================================================
+   CARGAR PREGUNTA FINAL
+========================================================= */
 
-    const contenedor = document.getElementById("opcionesFinal");
-    contenedor.innerHTML = "";
+function cargarPreguntaFinal() {
 
-    // Mezclar opciones del reto final
-    const opcionesMezcladas = mezclarArray(p.opciones);
-    indiceCorrectoFinal = opcionesMezcladas.indexOf(p.opciones[p.correcta]);
+    const pregunta =
+        preguntasRetoFinal[
+            estadoFinal.preguntaActual
+        ];
 
-    opcionesMezcladas.forEach((opcion, i) => {
-        const btn = document.createElement("button");
-        btn.className = "opcion-reto";
-        btn.textContent = opcion;
-        btn.addEventListener("click", () => responderFinal(i));
-        contenedor.appendChild(btn);
-    });
+    if (!pregunta) {
+
+        terminarRetoFinal();
+        return;
+    }
 
     estadoFinal.respondida = false;
+
+    const preguntaElemento =
+        document.getElementById(
+            "preguntaFinal"
+        );
+
+    const opcionesElemento =
+        document.getElementById(
+            "opcionesFinal"
+        );
+
+    const numeroElemento =
+        document.getElementById(
+            "numPreguntaFinal"
+        );
+
+    const mensajeElemento =
+        document.getElementById(
+            "mensajeFinal"
+        );
+
+    const boton =
+        document.getElementById(
+            "btnSiguienteFinal"
+        );
+
+    if (preguntaElemento) {
+        preguntaElemento.textContent =
+            pregunta[0];
+    }
+
+    if (numeroElemento) {
+        numeroElemento.textContent =
+            estadoFinal.preguntaActual + 1;
+    }
+
+    if (mensajeElemento) {
+        mensajeElemento.textContent = "";
+        mensajeElemento.className =
+            "mensaje-final";
+    }
+
+    if (boton) {
+        boton.disabled = true;
+        boton.textContent =
+            "Siguiente →";
+    }
+
+    if (!opcionesElemento) return;
+
+    opcionesElemento.innerHTML = "";
+
+    const opciones =
+        pregunta[1];
+
+    const correcta =
+        opciones[pregunta[2]];
+
+    const mezcladas =
+        mezclarArray(opciones);
+
+    indiceCorrectoFinal =
+        mezcladas.indexOf(correcta);
+
+    mezcladas.forEach(
+        (opcion, indice) => {
+
+            const botonOpcion =
+                document.createElement(
+                    "button"
+                );
+
+            botonOpcion.type = "button";
+
+            botonOpcion.className =
+                "opcion-final";
+
+            botonOpcion.textContent =
+                opcion;
+
+            botonOpcion.addEventListener(
+                "click",
+                () => {
+
+                    comprobarRespuestaFinal(
+                        indice
+                    );
+                }
+            );
+
+            opcionesElemento.appendChild(
+                botonOpcion
+            );
+        }
+    );
 }
 
-function responderFinal(indice) {
+
+/* =========================================================
+   COMPROBAR RESPUESTA FINAL
+========================================================= */
+
+function comprobarRespuestaFinal(indice) {
+
     if (estadoFinal.respondida) return;
+
     estadoFinal.respondida = true;
 
-    const botones = document.querySelectorAll(".opcion-reto");
+    const opcionesElemento =
+        document.getElementById(
+            "opcionesFinal"
+        );
 
-    botones.forEach((btn, i) => {
-        btn.disabled = true;
-        if (i === indiceCorrectoFinal) btn.classList.add("correcta");
-        if (i === indice && i !== indiceCorrectoFinal) btn.classList.add("incorrecta");
-    });
+    const botones =
+        opcionesElemento.querySelectorAll(
+            ".opcion-final"
+        );
 
-    if (indice === indiceCorrectoFinal) {
-        estadoFinal.puntos += 10;
+    botones.forEach(
+        (boton, i) => {
+
+            boton.disabled = true;
+
+            if (
+                i ===
+                indiceCorrectoFinal
+            ) {
+
+                boton.classList.add(
+                    "correcta"
+                );
+            }
+
+            if (
+                i === indice &&
+                i !== indiceCorrectoFinal
+            ) {
+
+                boton.classList.add(
+                    "incorrecta"
+                );
+            }
+        }
+    );
+
+    const mensaje =
+        document.getElementById(
+            "mensajeFinal"
+        );
+
+    if (
+        indice ===
+        indiceCorrectoFinal
+    ) {
+
         estadoFinal.correctas++;
-        document.getElementById("mensajeFinal").textContent = "✅ ¡Correcto!";
-        document.getElementById("mensajeFinal").style.color = "#2d8a50";
+        estadoFinal.puntos += 10;
+
+        if (mensaje) {
+
+            mensaje.textContent =
+                "✅ ¡Correcto! +10 puntos";
+
+            mensaje.className =
+                "mensaje-final correcto";
+        }
+
     } else {
-        document.getElementById("mensajeFinal").textContent = "❌ Incorrecto";
-        document.getElementById("mensajeFinal").style.color = "#c84450";
+
+        const pregunta =
+            preguntasRetoFinal[
+                estadoFinal.preguntaActual
+            ];
+
+        if (mensaje) {
+
+            mensaje.textContent =
+                `❌ Incorrecto. La respuesta correcta era: ${pregunta[1][pregunta[2]]}`;
+
+            mensaje.className =
+                "mensaje-final incorrecto";
+        }
     }
 
-    document.getElementById("puntosFinal").textContent = estadoFinal.puntos;
-    document.getElementById("correctasFinal").textContent = estadoFinal.correctas;
-    document.getElementById("btnSiguienteFinal").disabled = false;
+    const puntosFinal =
+        document.getElementById(
+            "puntosFinal"
+        );
 
-    if (estadoFinal.preguntaActual === 29) {
-        document.getElementById("btnSiguienteFinal").textContent = "Ver resultados 🏆";
+    const correctasFinal =
+        document.getElementById(
+            "correctasFinal"
+        );
+
+    if (puntosFinal) {
+        puntosFinal.textContent =
+            estadoFinal.puntos;
+    }
+
+    if (correctasFinal) {
+        correctasFinal.textContent =
+            estadoFinal.correctas;
+    }
+
+    const boton =
+        document.getElementById(
+            "btnSiguienteFinal"
+        );
+
+    if (boton) {
+        boton.disabled = false;
     }
 }
 
+
+/* =========================================================
+   SIGUIENTE PREGUNTA FINAL
+========================================================= */
+
 function siguientePreguntaFinal() {
+
     if (!estadoFinal.respondida) return;
 
     estadoFinal.preguntaActual++;
 
-    if (estadoFinal.preguntaActual >= 30) {
-        mostrarResultadosFinal();
+    if (
+        estadoFinal.preguntaActual >=
+        preguntasRetoFinal.length
+    ) {
+
+        terminarRetoFinal();
         return;
     }
 
-    mostrarPreguntaFinal();
+    cargarPreguntaFinal();
 }
 
-function mostrarResultadosFinal() {
-    const porcentaje = Math.round((estadoFinal.correctas / 30) * 100);
 
-    // Guardar el mejor resultado del reto final
-    if (porcentaje > (estado.mejorRetoFinal?.porcentaje || 0)) {
+/* =========================================================
+   BOTÓN SIGUIENTE FINAL
+========================================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target &&
+            event.target.id ===
+            "btnSiguienteFinal"
+        ) {
+
+            siguientePreguntaFinal();
+        }
+    }
+);
+
+
+/* =========================================================
+   TERMINAR RETO FINAL
+========================================================= */
+
+function terminarRetoFinal() {
+
+    const porcentaje =
+        Math.round(
+            (estadoFinal.correctas /
+                preguntasRetoFinal.length) *
+            100
+        );
+
+    if (
+        porcentaje >
+        estado.mejorRetoFinal.porcentaje
+    ) {
+
         estado.mejorRetoFinal = {
-            correctas: estadoFinal.correctas,
-            puntos: estadoFinal.puntos,
-            porcentaje: porcentaje
+            correctas:
+                estadoFinal.correctas,
+
+            puntos:
+                estadoFinal.puntos,
+
+            porcentaje:
+                porcentaje
         };
     }
 
-    // Sumar puntos del reto final al total (se mantienen)
-    estado.puntos += estadoFinal.puntos;
-    estado.correctas += estadoFinal.correctas;
+    guardar();
 
-    let mensaje = "";
-    if (porcentaje >= 90) mensaje = "¡Increíble! Eres un experto en Brasil 🇧🇷";
-    else if (porcentaje >= 70) mensaje = "¡Muy bien! Conoces muy bien la historia y cultura de Brasil.";
-    else if (porcentaje >= 50) mensaje = "Buen trabajo. Sigue explorando para mejorar.";
-    else mensaje = "Sigue practicando. ¡La próxima vez lo harás mejor!";
+    if (!modalRetoFinal) return;
 
     modalRetoFinal.innerHTML = `
-        <div class="modal-contenido resultados-final">
-            <div class="codigo-pais">BR</div>
-            <h2 class="titulo-reto">¡Reto Final completado!</h2>
-            
-            <div class="resultado-numeros">
-                <div class="stat-card">
-                    <strong>${estadoFinal.correctas}</strong>
-                    <span>Correctas</span>
-                </div>
-                <div class="stat-card">
-                    <strong>${estadoFinal.puntos}</strong>
-                    <span>Puntos</span>
-                </div>
-                <div class="stat-card">
-                    <strong>${porcentaje}%</strong>
-                    <span>Aciertos</span>
-                </div>
+
+        <div class="modal-contenido reto-final-estilo">
+
+            <div class="codigo-pais">
+                🇧🇷
             </div>
 
-            <p class="mensaje-resultado">${mensaje}</p>
+            <h2 class="titulo-reto">
+                🎉 ¡Reto final completado!
+            </h2>
 
-            <p style="margin: 12px 0; font-size: 0.95rem; color: #555;">
-                Se ha guardado tu resultado. Las categorías se reiniciarán a 0 % para que puedas volver a practicar.
+            <p class="descripcion-reto">
+                Terminaste el reto final de Brasil.
             </p>
 
-            <button id="btnCerrarResultados" class="btn-siguiente">
-                Volver a empezar →
+            <div class="stats-reto">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⭐
+                    </div>
+
+                    <strong>
+                        ${estadoFinal.puntos}
+                    </strong>
+
+                    <span>
+                        Puntos
+                    </span>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🎯
+                    </div>
+
+                    <strong>
+                        ${estadoFinal.correctas}/30
+                    </strong>
+
+                    <span>
+                        Correctas
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="mensaje-final correcto">
+                Obtuviste ${porcentaje}% de respuestas correctas.
+            </div>
+
+            <button
+                id="btnTerminarBrasil"
+                class="btn-siguiente"
+                type="button"
+            >
+                Finalizar aventura
             </button>
+
         </div>
     `;
 
-    // ===== ESTE ES EL REINICIO QUE NECESITAS =====
-    document.getElementById("btnCerrarResultados").addEventListener("click", () => {
-        // Se mantienen: puntos, correctas, retos y el mejor resultado del reto
-        // Se reinician solo las categorías
-        estado.categoriasCompletadas = [];
-        estado.categoriaActual = "Gastronomía";
-        estado.preguntaActual = 0;
-        estado.respondida = false;
+    const btnTerminar =
+        document.getElementById(
+            "btnTerminarBrasil"
+        );
 
-        guardar();                       // Guarda el estado con categorías en 0
-        actualizarBotonesCategorias();   // Quita todos los ✅
-        actualizarPanel();               // Porcentaje vuelve a 0%
-        actualizarVidas();
-        actualizarInformacion();
-        cargarPregunta();
+    if (btnTerminar) {
 
-        // Marca Gastronomía como activa
-        document.querySelectorAll(".categoria").forEach(boton => {
-            boton.classList.remove("active");
-            if (boton.dataset.categoria === "Gastronomía") {
-                boton.classList.add("active");
-            }
-        });
-
-        modalRetoFinal.classList.remove("mostrar");
-    });
+        btnTerminar.addEventListener(
+            "click",
+            finalizarAventuraBrasil
+        );
+    }
 }
 
-/* =====================================================
-   INICIO
-   ===================================================== */
 
-cargarProgreso();
-cargarPregunta();
+/* =========================================================
+   FINALIZAR AVENTURA
+   VUELVE EL PROGRESO A CERO
+========================================================= */
+
+function finalizarAventuraBrasil() {
+
+    localStorage.removeItem(CLAVE);
+
+    estado = {
+        vidas: 5,
+        puntos: 0,
+        correctas: 0,
+        categoriaActual: "Gastronomía",
+        preguntaActual: 0,
+        respondida: false,
+        categoriasCompletadas: [],
+        mejorRetoFinal: {
+            correctas: 0,
+            puntos: 0,
+            porcentaje: 0
+        }
+    };
+
+    if (modalRetoFinal) {
+        modalRetoFinal.classList.remove(
+            "mostrar"
+        );
+    }
+
+    actualizarVidas();
+    actualizarPanel();
+    actualizarInformacion();
+    actualizarBotonesCategorias();
+    cargarPregunta();
+
+    guardar();
+}
+
+
+/* =========================================================
+   BOTÓN SIGUIENTE PRINCIPAL
+========================================================= */
+
+if (botonSiguiente) {
+
+    botonSiguiente.addEventListener(
+        "click",
+        siguientePregunta
+    );
+}
+
+
+/* =========================================================
+   BOTONES DE CATEGORÍAS
+========================================================= */
+
+document
+    .querySelectorAll(".categoria")
+    .forEach(boton => {
+
+        boton.addEventListener(
+            "click",
+            () => {
+
+                const categoria =
+                    boton.dataset.categoria;
+
+                cambiarCategoria(
+                    categoria
+                );
+            }
+        );
+    });
+
+
+/* =========================================================
+   INICIAR JUEGO
+========================================================= */
+
+function iniciarJuego() {
+
+    cargarProgreso();
+
+    actualizarVidas();
+    actualizarPanel();
+    actualizarInformacion();
+    actualizarBotonesCategorias();
+
+    cargarPregunta();
+
+    if (estado.vidas <= 0) {
+        setTimeout(
+            mostrarAvisoSinVidas,
+            300
+        );
+    }
+
+    if (
+        estado.categoriasCompletadas.length ===
+        TOTAL_CATEGORIAS
+    ) {
+
+        setTimeout(
+            comprobarFinal,
+            300
+        );
+    }
+}
+
+
+/* =========================================================
+   INICIO
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    iniciarJuego
+);

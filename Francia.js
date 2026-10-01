@@ -1,2744 +1,2469 @@
-/* ============================================================
+/* =========================================================
    HISTORIA SIN FRONTERAS - FRANCIA
-   14 CATEGORÍAS
-   5 PREGUNTAS POR CATEGORÍA = 70
-   RETO FINAL = 30 PREGUNTAS
-============================================================ */
-
-const CLAVE_GUARDADO = "historiaSinFronterasFrancia_v1";
-
-const MAX_VIDAS = 5;
-
-
-/* ============================================================
-   TEMAS
-============================================================ */
-
-const temas = {
-
-    gastronomia: {
-
-        titulo: "Gastronomía",
-        subtitulo: "Sabores y tradiciones de Francia",
-        icono: "🍽️",
-        imagen: "🥐",
-
-        dato:
-            "La gastronomía francesa es reconocida por su variedad regional y por preparaciones como el croissant, el queso, el pan y diferentes platos tradicionales.",
-
-        regiones: [
-            "París",
-            "Lyon",
-            "Provenza",
-            "Normandía"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Cuál de estos alimentos es muy representativo de Francia?",
-                opciones: ["Croissant", "Sushi", "Taco", "Ceviche"],
-                correcta: "Croissant"
-            },
-
-            {
-                pregunta: "¿Qué alimento tiene una gran importancia en la gastronomía francesa?",
-                opciones: ["Queso", "Mango", "Yuca", "Coco"],
-                correcta: "Queso"
-            },
-
-            {
-                pregunta: "¿Qué producto es tradicional en muchas panaderías francesas?",
-                opciones: ["Baguette", "Arepa", "Tortilla", "Naan"],
-                correcta: "Baguette"
-            },
-
-            {
-                pregunta: "¿Qué ciudad francesa es conocida por su importante tradición gastronómica?",
-                opciones: ["Lyon", "Oslo", "Lisboa", "Berlín"],
-                correcta: "Lyon"
-            },
-
-            {
-                pregunta: "¿Por qué la gastronomía francesa presenta diferencias regionales?",
-                opciones: [
-                    "Por los productos y tradiciones de cada región",
-                    "Porque todas las regiones tienen la misma comida",
-                    "Porque Francia no tiene productos locales",
-                    "Porque solo consume comida extranjera"
-                ],
-                correcta: "Por los productos y tradiciones de cada región"
-            }
-
-        ]
-    },
-
-
-    musica: {
-
-        titulo: "Música",
-        subtitulo: "La música francesa a través del tiempo",
-        icono: "🎵",
-        imagen: "🎼",
-
-        dato:
-            "Francia ha tenido una importante tradición musical y ha dado origen a numerosos compositores, intérpretes y estilos musicales.",
-
-        regiones: [
-            "París",
-            "Lyon",
-            "Marsella",
-            "Nantes"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Cuál de estos compositores fue francés?",
-                opciones: ["Claude Debussy", "Bach", "Mozart", "Beethoven"],
-                correcta: "Claude Debussy"
-            },
-
-            {
-                pregunta: "¿Qué tipo de música está relacionada con compositores como Debussy?",
-                opciones: ["Música clásica", "Reguetón", "Salsa", "Country"],
-                correcta: "Música clásica"
-            },
-
-            {
-                pregunta: "¿Qué ciudad ha sido un importante centro musical francés?",
-                opciones: ["París", "Oslo", "Berlín", "Roma"],
-                correcta: "París"
-            },
-
-            {
-                pregunta: "¿Cuál de estos es un instrumento musical?",
-                opciones: ["Piano", "Baguette", "Croissant", "Torre"],
-                correcta: "Piano"
-            },
-
-            {
-                pregunta: "¿La música forma parte de la cultura francesa?",
-                opciones: ["Sí", "No", "Solo históricamente", "Solo en París"],
-                correcta: "Sí"
-            }
-
-        ]
-    },
-
-
-    tradiciones: {
-
-        titulo: "Tradiciones",
-        subtitulo: "Costumbres francesas",
-        icono: "🎭",
-        imagen: "🎭",
-
-        dato:
-            "Las tradiciones francesas están relacionadas con la gastronomía, las celebraciones, la familia, el arte y las costumbres regionales.",
-
-        regiones: [
-            "París",
-            "Provenza",
-            "Bretaña",
-            "Normandía"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Qué producto forma parte de muchas tradiciones gastronómicas francesas?",
-                opciones: ["Pan", "Coco", "Yuca", "Plátano"],
-                correcta: "Pan"
-            },
-
-            {
-                pregunta: "¿Qué valor cultural puede estar presente en las tradiciones regionales?",
-                opciones: [
-                    "Identidad cultural",
-                    "Solo tecnología",
-                    "Solo deporte",
-                    "Solo comercio"
-                ],
-                correcta: "Identidad cultural"
-            },
-
-            {
-                pregunta: "¿Las tradiciones francesas son iguales en todas las regiones?",
-                opciones: [
-                    "No, existen diferencias regionales",
-                    "Sí, completamente",
-                    "Solo en verano",
-                    "Solo en París"
-                ],
-                correcta: "No, existen diferencias regionales"
-            },
-
-            {
-                pregunta: "¿Cuál es una región francesa?",
-                opciones: ["Provenza", "Baviera", "Cataluña", "Lombardía"],
-                correcta: "Provenza"
-            },
-
-            {
-                pregunta: "¿Qué elementos pueden formar parte de una tradición?",
-                opciones: [
-                    "Comida, música y celebraciones",
-                    "Solo videojuegos",
-                    "Solo tecnología",
-                    "Solo deportes"
-                ],
-                correcta: "Comida, música y celebraciones"
-            }
-
-        ]
-    },
-
-
-    fiestas: {
-
-        titulo: "Fiestas",
-        subtitulo: "Celebraciones francesas",
-        icono: "🎉",
-        imagen: "🎊",
-
-        dato:
-            "Francia celebra numerosas festividades nacionales y regionales relacionadas con su historia y cultura.",
-
-        regiones: [
-            "París",
-            "Niza",
-            "Marsella",
-            "Lyon"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Qué día se celebra la Fiesta Nacional de Francia?",
-                opciones: [
-                    "14 de julio",
-                    "3 de octubre",
-                    "4 de julio",
-                    "1 de mayo"
-                ],
-                correcta: "14 de julio"
-            },
-
-            {
-                pregunta: "¿Qué acontecimiento histórico está relacionado con el 14 de julio?",
-                opciones: [
-                    "La toma de la Bastilla",
-                    "La caída del Muro de Berlín",
-                    "La reunificación alemana",
-                    "La llegada a la Luna"
-                ],
-                correcta: "La toma de la Bastilla"
-            },
-
-            {
-                pregunta: "¿En qué ciudad se realizan grandes celebraciones del 14 de julio?",
-                opciones: ["París", "Berlín", "Roma", "Madrid"],
-                correcta: "París"
-            },
-
-            {
-                pregunta: "¿Qué elemento suele aparecer en las celebraciones nacionales?",
-                opciones: ["Fuegos artificiales", "Solo silencio", "Solo exámenes", "Solo deportes"],
-                correcta: "Fuegos artificiales"
-            },
-
-            {
-                pregunta: "¿El 14 de julio es una fecha importante para Francia?",
-                opciones: ["Sí", "No", "Solo históricamente", "Solo en París"],
-                correcta: "Sí"
-            }
-
-        ]
-    },
-
-
-    vestimenta: {
-
-        titulo: "Vestimenta",
-        subtitulo: "Moda e identidad francesa",
-        icono: "👗",
-        imagen: "👒",
-
-        dato:
-            "Francia, especialmente París, ha tenido una gran influencia internacional en la moda y el diseño.",
-
-        regiones: [
-            "París",
-            "Provenza",
-            "Bretaña",
-            "Alsacia"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Qué ciudad francesa es famosa mundialmente por la moda?",
-                opciones: ["París", "Berlín", "Roma", "Madrid"],
-                correcta: "París"
-            },
-
-            {
-                pregunta: "¿Qué actividad está relacionada con la moda?",
-                opciones: ["Diseño", "Astronomía", "Minería", "Agricultura"],
-                correcta: "Diseño"
-            },
-
-            {
-                pregunta: "¿Qué representa la vestimenta tradicional?",
-                opciones: [
-                    "Identidad cultural",
-                    "Solo tecnología",
-                    "Solo economía",
-                    "Solo política"
-                ],
-                correcta: "Identidad cultural"
-            },
-
-            {
-                pregunta: "¿Francia ha tenido influencia internacional en la moda?",
-                opciones: ["Sí", "No", "Solo en el siglo XVIII", "Solo en una región"],
-                correcta: "Sí"
-            },
-
-            {
-                pregunta: "¿Qué ciudad es considerada un importante centro mundial de la moda?",
-                opciones: ["París", "Marsella", "Lille", "Nantes"],
-                correcta: "París"
-            }
-
-        ]
-    },
-
-
-    arte: {
-
-        titulo: "Arte y literatura",
-        subtitulo: "Grandes obras y artistas franceses",
-        icono: "🎨",
-        imagen: "🖼️",
-
-        dato:
-            "Francia ha tenido una enorme influencia en el arte y la literatura europea. Entre sus figuras destacan Victor Hugo, Claude Monet y otros grandes artistas.",
-
-        regiones: [
-            "París",
-            "Giverny",
-            "Lyon",
-            "Marsella"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Quién escribió Los Miserables?",
-                opciones: ["Victor Hugo", "Molière", "Voltaire", "Descartes"],
-                correcta: "Victor Hugo"
-            },
-
-            {
-                pregunta: "¿Qué artista francés estuvo relacionado con el impresionismo?",
-                opciones: ["Claude Monet", "Picasso", "Van Gogh", "Dalí"],
-                correcta: "Claude Monet"
-            },
-
-            {
-                pregunta: "¿Qué movimiento artístico estuvo relacionado con Monet?",
-                opciones: ["Impresionismo", "Cubismo", "Surrealismo", "Pop art"],
-                correcta: "Impresionismo"
-            },
-
-            {
-                pregunta: "¿En qué área destacó Victor Hugo?",
-                opciones: ["Literatura", "Astronomía", "Medicina", "Física"],
-                correcta: "Literatura"
-            },
-
-            {
-                pregunta: "¿Qué puede transmitir una obra de arte?",
-                opciones: [
-                    "Ideas y emociones",
-                    "Solo números",
-                    "Solo fechas",
-                    "Solo leyes"
-                ],
-                correcta: "Ideas y emociones"
-            }
-
-        ]
-    },
-
-
-    monumentos: {
-
-        titulo: "Monumentos",
-        subtitulo: "Lugares que cuentan la historia de Francia",
-        icono: "🏛️",
-        imagen: "🗼",
-
-        dato:
-            "Francia posee numerosos monumentos históricos y culturales, entre ellos la Torre Eiffel, el Arco del Triunfo y el Palacio de Versalles.",
-
-        regiones: [
-            "París",
-            "Versalles",
-            "Normandía",
-            "Lyon"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿En qué ciudad se encuentra la Torre Eiffel?",
-                opciones: ["París", "Lyon", "Marsella", "Niza"],
-                correcta: "París"
-            },
-
-            {
-                pregunta: "¿Qué monumento es uno de los símbolos más conocidos de Francia?",
-                opciones: ["Torre Eiffel", "Big Ben", "Coliseo", "Puerta de Brandeburgo"],
-                correcta: "Torre Eiffel"
-            },
-
-            {
-                pregunta: "¿Dónde se encuentra el Palacio de Versalles?",
-                opciones: ["Versalles", "Roma", "Madrid", "Berlín"],
-                correcta: "Versalles"
-            },
-
-            {
-                pregunta: "¿Qué monumento se encuentra en París?",
-                opciones: ["Arco del Triunfo", "Coliseo", "Big Ben", "Sagrada Familia"],
-                correcta: "Arco del Triunfo"
-            },
-
-            {
-                pregunta: "¿Qué importancia tienen los monumentos históricos?",
-                opciones: [
-                    "Conservan parte de la memoria histórica",
-                    "Solo sirven como decoración",
-                    "No tienen importancia cultural",
-                    "Solo son edificios modernos"
-                ],
-                correcta: "Conservan parte de la memoria histórica"
-            }
-
-        ]
-    },
-
-
-    monarquia: {
-
-        titulo: "Monarquía francesa",
-        subtitulo: "Francia antes de la Revolución",
-        icono: "👑",
-        imagen: "👑",
-
-        dato:
-            "Francia tuvo durante siglos una monarquía. Antes de la Revolución Francesa, el rey tenía un papel central en el gobierno del país.",
-
-        regiones: [
-            "París",
-            "Versalles",
-            "Francia"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Qué sistema político tuvo Francia antes de la Revolución Francesa?",
-                opciones: ["Monarquía", "República moderna", "Federación", "Dictadura militar"],
-                correcta: "Monarquía"
-            },
-
-            {
-                pregunta: "¿Qué rey francés es conocido por el apodo de Rey Sol?",
-                opciones: ["Luis XIV", "Luis XVI", "Napoleón", "Carlos X"],
-                correcta: "Luis XIV"
-            },
-
-            {
-                pregunta: "¿Qué famoso palacio estuvo relacionado con la monarquía francesa?",
-                opciones: ["Versalles", "Buckingham", "Praga", "Sanssouci"],
-                correcta: "Versalles"
-            },
-
-            {
-                pregunta: "¿Qué rey estaba en el poder cuando comenzó la Revolución Francesa?",
-                opciones: ["Luis XVI", "Luis XIV", "Carlos Magno", "Napoleón"],
-                correcta: "Luis XVI"
-            },
-
-            {
-                pregunta: "¿Qué ocurrió con la monarquía durante la Revolución Francesa?",
-                opciones: [
-                    "Fue abolida",
-                    "Se fortaleció",
-                    "Se trasladó a Italia",
-                    "Se convirtió en imperio inmediatamente"
-                ],
-                correcta: "Fue abolida"
-            }
-
-        ]
-    },
-
-
-    revolucion: {
-
-        titulo: "Revolución Francesa",
-        subtitulo: "Un acontecimiento que transformó Francia",
-        icono: "⚔️",
-        imagen: "🇫🇷",
-
-        dato:
-            "La Revolución Francesa comenzó en 1789 y produjo grandes cambios políticos y sociales en Francia.",
-
-        regiones: [
-            "París",
-            "Versalles",
-            "Francia"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿En qué año comenzó la Revolución Francesa?",
-                opciones: ["1789", "1776", "1815", "1914"],
-                correcta: "1789"
-            },
-
-            {
-                pregunta: "¿Qué acontecimiento ocurrió el 14 de julio de 1789?",
-                opciones: [
-                    "La toma de la Bastilla",
-                    "La coronación de Napoleón",
-                    "La caída del Muro de Berlín",
-                    "La firma del Tratado de Versalles"
-                ],
-                correcta: "La toma de la Bastilla"
-            },
-
-            {
-                pregunta: "¿Qué lema se relaciona con la Revolución Francesa?",
-                opciones: [
-                    "Libertad, igualdad y fraternidad",
-                    "Paz, tierra y pan",
-                    "Orden y progreso",
-                    "Unidad y fuerza"
-                ],
-                correcta: "Libertad, igualdad y fraternidad"
-            },
-
-            {
-                pregunta: "¿Qué grupo social fue especialmente importante en los cambios revolucionarios?",
-                opciones: [
-                    "La burguesía",
-                    "Los astronautas",
-                    "Los navegantes",
-                    "Los emperadores extranjeros"
-                ],
-                correcta: "La burguesía"
-            },
-
-            {
-                pregunta: "¿Qué sistema fue cuestionado durante la Revolución Francesa?",
-                opciones: ["La monarquía", "La democracia moderna", "La Unión Europea", "La ONU"],
-                correcta: "La monarquía"
-            }
-
-        ]
-    },
-
-
-    napoleon: {
-
-        titulo: "Napoleón Bonaparte",
-        subtitulo: "Francia y el Imperio napoleónico",
-        icono: "🦅",
-        imagen: "👑",
-
-        dato:
-            "Napoleón Bonaparte fue un militar y gobernante francés que llegó a convertirse en emperador y tuvo una gran influencia en Europa.",
-
-        regiones: [
-            "Córcega",
-            "París",
-            "Francia",
-            "Europa"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Quién fue Napoleón Bonaparte?",
-                opciones: [
-                    "Militar y gobernante francés",
-                    "Pintor español",
-                    "Rey inglés",
-                    "Científico alemán"
-                ],
-                correcta: "Militar y gobernante francés"
-            },
-
-            {
-                pregunta: "¿Qué título asumió Napoleón en 1804?",
-                opciones: ["Emperador", "Presidente", "Papa", "Rey de Inglaterra"],
-                correcta: "Emperador"
-            },
-
-            {
-                pregunta: "¿Qué código legal está relacionado con Napoleón?",
-                opciones: [
-                    "Código Napoleónico",
-                    "Código Romano",
-                    "Código Industrial",
-                    "Código Atlántico"
-                ],
-                correcta: "Código Napoleónico"
-            },
-
-            {
-                pregunta: "¿En qué continente tuvo gran parte de sus campañas militares?",
-                opciones: ["Europa", "Oceanía", "América del Sur", "Antártida"],
-                correcta: "Europa"
-            },
-
-            {
-                pregunta: "¿En qué isla murió Napoleón?",
-                opciones: ["Santa Elena", "Córcega", "Sicilia", "Creta"],
-                correcta: "Santa Elena"
-            }
-
-        ]
-    },
-
-
-    "primera-guerra": {
-
-        titulo: "Primera Guerra Mundial",
-        subtitulo: "Francia durante la guerra de 1914-1918",
-        icono: "⚔️",
-        imagen: "🌍",
-
-        dato:
-            "La Primera Guerra Mundial se desarrolló entre 1914 y 1918. Francia fue uno de los principales países aliados.",
-
-        regiones: [
-            "Francia",
-            "Europa",
-            "Verdún",
-            "París"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿En qué año comenzó la Primera Guerra Mundial?",
-                opciones: ["1914", "1918", "1939", "1945"],
-                correcta: "1914"
-            },
-
-            {
-                pregunta: "¿En qué año terminó la Primera Guerra Mundial?",
-                opciones: ["1918", "1914", "1933", "1945"],
-                correcta: "1918"
-            },
-
-            {
-                pregunta: "¿Francia participó en la Primera Guerra Mundial?",
-                opciones: ["Sí", "No", "Solo al final", "Solo en 1918"],
-                correcta: "Sí"
-            },
-
-            {
-                pregunta: "¿Qué batalla fue una de las más importantes en territorio francés?",
-                opciones: ["Verdún", "Waterloo", "Stalingrado", "Hastings"],
-                correcta: "Verdún"
-            },
-
-            {
-                pregunta: "¿En qué continente ocurrió gran parte del conflicto?",
-                opciones: ["Europa", "Asia", "Oceanía", "América"],
-                correcta: "Europa"
-            }
-
-        ]
-    },
-
-
-    "segunda-guerra": {
-
-        titulo: "Segunda Guerra Mundial",
-        subtitulo: "Francia entre 1939 y 1945",
-        icono: "🕊️",
-        imagen: "🌍",
-
-        dato:
-            "Durante la Segunda Guerra Mundial Francia fue ocupada por Alemania y posteriormente liberada por las fuerzas aliadas y la Resistencia francesa.",
-
-        regiones: [
-            "Francia",
-            "París",
-            "Normandía",
-            "Europa"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿En qué año comenzó la Segunda Guerra Mundial?",
-                opciones: ["1939", "1914", "1945", "1961"],
-                correcta: "1939"
-            },
-
-            {
-                pregunta: "¿En qué año terminó la Segunda Guerra Mundial?",
-                opciones: ["1945", "1939", "1949", "1989"],
-                correcta: "1945"
-            },
-
-            {
-                pregunta: "¿Qué país ocupó gran parte de Francia durante la guerra?",
-                opciones: ["Alemania", "Italia", "España", "Portugal"],
-                correcta: "Alemania"
-            },
-
-            {
-                pregunta: "¿Qué desembarco de 1944 fue importante para la liberación de Francia?",
-                opciones: ["Normandía", "Sicilia", "Dunkerque", "Calais"],
-                correcta: "Normandía"
-            },
-
-            {
-                pregunta: "¿Qué movimiento participó en la lucha contra la ocupación?",
-                opciones: ["La Resistencia francesa", "La Liga Hanseática", "La OTAN", "La ONU"],
-                correcta: "La Resistencia francesa"
-            }
-
-        ]
-    },
-
-
-    "francia-posguerra": {
-
-        titulo: "Francia después de la guerra",
-        subtitulo: "Reconstrucción y cambios políticos",
-        icono: "🌍",
-        imagen: "🇫🇷",
-
-        dato:
-            "Después de la Segunda Guerra Mundial, Francia tuvo que reconstruirse y participó en el proceso de cooperación e integración europea.",
-
-        regiones: [
-            "París",
-            "Francia",
-            "Europa"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Qué necesitó Francia después de la Segunda Guerra Mundial?",
-                opciones: [
-                    "Reconstrucción",
-                    "Nueva colonización europea",
-                    "Construcción de un imperio romano",
-                    "Aislamiento total"
-                ],
-                correcta: "Reconstrucción"
-            },
-
-            {
-                pregunta: "¿Francia participó en la integración europea?",
-                opciones: ["Sí", "No", "Solo antes de 1900", "Solo durante la guerra"],
-                correcta: "Sí"
-            },
-
-            {
-                pregunta: "¿Qué organización nació en 1957 y estuvo relacionada con la integración europea?",
-                opciones: [
-                    "Comunidad Económica Europea",
-                    "ONU",
-                    "OTAN",
-                    "UNESCO"
-                ],
-                correcta: "Comunidad Económica Europea"
-            },
-
-            {
-                pregunta: "¿Qué país es vecino de Francia?",
-                opciones: ["España", "Japón", "Brasil", "Australia"],
-                correcta: "España"
-            },
-
-            {
-                pregunta: "¿Qué proceso ayudó a aumentar la cooperación entre países europeos?",
-                opciones: [
-                    "Integración europea",
-                    "Aislamiento",
-                    "Colonización",
-                    "Guerra permanente"
-                ],
-                correcta: "Integración europea"
-            }
-
-        ]
-    },
-
-
-    personajes: {
-
-        titulo: "Personajes históricos",
-        subtitulo: "Personas que dejaron huella en Francia",
-        icono: "👤",
-        imagen: "👥",
-
-        dato:
-            "Francia ha tenido numerosos personajes importantes en la política, la literatura, el arte y la historia.",
-
-        regiones: [
-            "París",
-            "Francia",
-            "Córcega",
-            "Normandía"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta: "¿Quién fue Napoleón Bonaparte?",
-                opciones: [
-                    "Militar y emperador francés",
-                    "Pintor",
-                    "Astronauta",
-                    "Rey inglés"
-                ],
-                correcta: "Militar y emperador francés"
-            },
-
-            {
-                pregunta: "¿Quién escribió Los Miserables?",
-                opciones: ["Victor Hugo", "Molière", "Monet", "Napoleón"],
-                correcta: "Victor Hugo"
-            },
-
-            {
-                pregunta: "¿Quién fue Juana de Arco?",
-                opciones: [
-                    "Una figura histórica francesa",
-                    "Una reina española",
-                    "Una científica alemana",
-                    "Una escritora italiana"
-                ],
-                correcta: "Una figura histórica francesa"
-            },
-
-            {
-                pregunta: "¿Quién fue Claude Monet?",
-                opciones: [
-                    "Pintor",
-                    "Militar",
-                    "Rey",
-                    "Filósofo"
-                ],
-                correcta: "Pintor"
-            },
-
-            {
-                pregunta: "¿Qué personaje estuvo relacionado con la Revolución Francesa?",
-                opciones: [
-                    "Luis XVI",
-                    "Bach",
-                    "Einstein",
-                    "Shakespeare"
-                ],
-                correcta: "Luis XVI"
-            }
-
-        ]
+   JAVASCRIPT COMPLETO Y CORREGIDO
+   14 CATEGORÍAS - 5 PREGUNTAS CADA UNA
+========================================================= */
+
+const CLAVE = "historiaSinFronterasFrancia";
+
+const PREGUNTAS_POR_CATEGORIA = 5;
+
+
+/* =========================================================
+   ESTADO DEL JUEGO
+========================================================= */
+
+let estado = {
+    vidas: 5,
+    puntos: 0,
+    correctas: 0,
+    categoriaActual: "civilizaciones",
+    preguntaActual: 0,
+    respondida: false,
+    categoriasCompletadas: [],
+    mejorRetoFinal: {
+        correctas: 0,
+        puntos: 0,
+        porcentaje: 0
     }
-
 };
 
 
-/* ============================================================
-   RETO FINAL - 30 PREGUNTAS
-============================================================ */
+/* =========================================================
+   DATOS DE LAS CATEGORÍAS
+========================================================= */
 
-const preguntasFinales = [
+const categorias = {
 
-    {
-        pregunta: "¿Cuál es la capital de Francia?",
-        opciones: ["París", "Lyon", "Marsella", "Niza"],
-        correcta: "París"
+    civilizaciones: {
+        titulo: "Civilizaciones antiguas",
+        icono: "🏛️",
+        subtitulo: "Conoce los pueblos que habitaron el territorio de Francia antes de las grandes dinastías.",
+        imagen: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80",
+        alt: "París, Francia",
+        lugares: "Galia · Lutetia · Provenza · Normandía · Alsacia",
+        audio: "Francia posee una historia milenaria. Antes de la llegada de los romanos, gran parte de su territorio estaba habitado por pueblos galos de origen celta.",
+        dato: "Los galos, de origen celta, habitaron gran parte del territorio de la actual Francia antes de la conquista romana.",
+        preguntas: [
+            [
+                "¿Qué pueblo habitó gran parte del territorio de la actual Francia antes de la conquista romana?",
+                ["Los galos", "Los vikingos", "Los incas", "Los egipcios"],
+                0
+            ],
+            [
+                "¿A qué cultura pertenecían principalmente los galos?",
+                ["Celta", "China", "Griega", "Persa"],
+                0
+            ],
+            [
+                "¿Cómo llamaron los romanos al territorio que incluía gran parte de la actual Francia?",
+                ["Galia", "Hispania", "Britania", "Germania"],
+                0
+            ],
+            [
+                "¿Qué ciudad romana se encontraba en el lugar donde actualmente está París?",
+                ["Lutetia", "Roma", "Atenas", "Cartago"],
+                0
+            ],
+            [
+                "¿Qué pueblo conquistó la Galia en el siglo I a. C.?",
+                ["Los romanos", "Los persas", "Los egipcios", "Los vikingos"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿En qué año comenzó la Revolución Francesa?",
-        opciones: ["1789", "1815", "1914", "1945"],
-        correcta: "1789"
+    dinastias: {
+        titulo: "Dinastías",
+        icono: "👑",
+        subtitulo: "Conoce las principales dinastías que gobernaron Francia.",
+        imagen: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=1200&q=80",
+        alt: "Palacio francés",
+        lugares: "París · Reims · Versalles · Île-de-France",
+        audio: "Francia fue gobernada durante siglos por distintas dinastías. Entre ellas estuvieron los Merovingios, Carolingios, Capetos, Valois y Borbones.",
+        dato: "Entre las principales dinastías francesas estuvieron los Merovingios, Carolingios, Capetos, Valois y Borbones.",
+        preguntas: [
+            [
+                "¿Cuál fue una de las primeras dinastías de los reyes francos?",
+                ["Merovingia", "Borbónica", "Tudor", "Habsburgo"],
+                0
+            ],
+            [
+                "¿Qué famoso gobernante perteneció a la dinastía carolingia?",
+                ["Carlomagno", "Luis XIV", "Napoleón", "Robespierre"],
+                0
+            ],
+            [
+                "¿Qué dinastía comenzó con Hugo Capeto?",
+                ["Capetos", "Merovingios", "Tudor", "Romanov"],
+                0
+            ],
+            [
+                "¿Qué dinastía gobernó Francia antes de los Borbones?",
+                ["Valois", "Tudor", "Habsburgo", "Plantagenet"],
+                0
+            ],
+            [
+                "¿Qué dinastía estuvo relacionada con Luis XIV?",
+                ["Borbones", "Merovingios", "Valois", "Carolingios"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Qué monumento es símbolo de París?",
-        opciones: ["Torre Eiffel", "Coliseo", "Big Ben", "Puerta de Brandeburgo"],
-        correcta: "Torre Eiffel"
+    imperio: {
+        titulo: "Francia y el Imperio",
+        icono: "⚔️",
+        subtitulo: "Descubre la expansión francesa y el Imperio napoleónico.",
+        imagen: "https://images.unsplash.com/photo-1547981609-4b6bf67a8305?w=1200&q=80",
+        alt: "Arquitectura histórica de Francia",
+        lugares: "París · Waterloo · Europa · Arco del Triunfo",
+        audio: "Durante comienzos del siglo XIX, Napoleón Bonaparte dirigió el Primer Imperio francés y extendió la influencia francesa por gran parte de Europa.",
+        dato: "Napoleón Bonaparte llegó a controlar gran parte de Europa durante comienzos del siglo XIX.",
+        preguntas: [
+            [
+                "¿Quién fue el principal líder del Primer Imperio francés?",
+                ["Napoleón Bonaparte", "Luis XVI", "Carlomagno", "Clodoveo I"],
+                0
+            ],
+            [
+                "¿En qué año fue coronado emperador Napoleón Bonaparte?",
+                ["1804", "1789", "1815", "1848"],
+                0
+            ],
+            [
+                "¿Dónde fue derrotado definitivamente Napoleón en 1815?",
+                ["Waterloo", "Versalles", "París", "Lyon"],
+                0
+            ],
+            [
+                "¿Qué código legal impulsó Napoleón?",
+                ["Código Napoleónico", "Código Romano", "Código Carolingio", "Código Feudal"],
+                0
+            ],
+            [
+                "¿Qué continente concentró gran parte de las campañas militares napoleónicas?",
+                ["Europa", "América", "Oceanía", "Antártida"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Qué día se celebra la Fiesta Nacional francesa?",
-        opciones: ["14 de julio", "3 de octubre", "4 de julio", "1 de enero"],
-        correcta: "14 de julio"
+    protectorado: {
+        titulo: "Protectorado",
+        icono: "🛡️",
+        subtitulo: "Conoce los protectorados establecidos por Francia durante su expansión colonial.",
+        imagen: "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1200&q=80",
+        alt: "Paisaje del norte de África",
+        lugares: "Marruecos · Túnez · Magreb · África del Norte",
+        audio: "Durante su expansión colonial, Francia estableció protectorados en diferentes territorios, especialmente durante los siglos XIX y XX.",
+        dato: "Francia estableció protectorados en diferentes territorios durante los siglos XIX y XX.",
+        preguntas: [
+            [
+                "¿Qué era un protectorado?",
+                [
+                    "Un territorio bajo protección y control político de otro Estado",
+                    "Una ciudad independiente",
+                    "Un reino medieval",
+                    "Una organización religiosa"
+                ],
+                0
+            ],
+            [
+                "¿Cuál de estos territorios estuvo bajo protectorado francés?",
+                ["Marruecos", "Japón", "Brasil", "Canadá"],
+                0
+            ],
+            [
+                "¿En qué continente estuvo ubicado el protectorado francés de Marruecos?",
+                ["África", "Europa", "Asia", "Oceanía"],
+                0
+            ],
+            [
+                "¿Qué región del norte de África estuvo vinculada al dominio francés?",
+                ["Magreb", "Escandinavia", "Balcánica", "Siberia"],
+                0
+            ],
+            [
+                "¿Qué proceso puso fin a muchos protectorados franceses?",
+                ["La descolonización", "La Revolución Industrial", "La Edad Media", "El Renacimiento"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Qué ocurrió el 14 de julio de 1789?",
-        opciones: ["Toma de la Bastilla", "Caída del Muro", "Reunificación", "Coronación de Napoleón"],
-        correcta: "Toma de la Bastilla"
+    independencia: {
+        titulo: "Independencia",
+        icono: "📜",
+        subtitulo: "Conoce los procesos de independencia y descolonización relacionados con Francia.",
+        imagen: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=1200&q=80",
+        alt: "Bandera de Francia",
+        lugares: "África · Asia · Vietnam · Senegal",
+        audio: "Durante el siglo XX, varios territorios que habían estado bajo dominio francés desarrollaron procesos de independencia y descolonización.",
+        dato: "Durante el siglo XX varios territorios bajo dominio francés alcanzaron su independencia.",
+        preguntas: [
+            [
+                "¿Qué proceso permitió a muchos territorios dejar el dominio colonial europeo?",
+                ["Descolonización", "Industrialización", "Feudalismo", "Renacimiento"],
+                0
+            ],
+            [
+                "¿En qué continente se produjeron varios procesos de independencia de colonias francesas?",
+                ["África", "Europa", "Antártida", "Oceanía"],
+                0
+            ],
+            [
+                "¿Qué país obtuvo su independencia de Francia en 1954?",
+                ["Vietnam", "Canadá", "Brasil", "Italia"],
+                0
+            ],
+            [
+                "¿Qué país africano fue colonia francesa y obtuvo su independencia en 1960?",
+                ["Senegal", "España", "Japón", "Portugal"],
+                0
+            ],
+            [
+                "¿Qué ocurrió con muchos territorios franceses después de la Segunda Guerra Mundial?",
+                [
+                    "Avanzaron procesos de descolonización",
+                    "Se convirtieron en provincias romanas",
+                    "Fueron gobernados por Napoleón",
+                    "Desaparecieron"
+                ],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Quién escribió Los Miserables?",
-        opciones: ["Victor Hugo", "Monet", "Napoleón", "Luis XIV"],
-        correcta: "Victor Hugo"
+    monarquia: {
+        titulo: "Monarquía",
+        icono: "🏰",
+        subtitulo: "Conoce las diferentes etapas de la monarquía francesa.",
+        imagen: "https://images.unsplash.com/photo-1592906209472-a36b1f3782ef?w=1200&q=80",
+        alt: "Palacio de Versalles",
+        lugares: "Versalles · París · Reims · Île-de-France",
+        audio: "La monarquía francesa tuvo una larga historia y diferentes dinastías. Uno de sus periodos más conocidos fue el de la monarquía absoluta.",
+        dato: "La monarquía francesa tuvo una larga historia antes de la instauración de la república.",
+        preguntas: [
+            [
+                "¿Qué sistema político gobernó Francia durante gran parte de su historia?",
+                ["Monarquía", "Democracia moderna", "República socialista", "Imperio romano"],
+                0
+            ],
+            [
+                "¿Qué rey francés fue conocido como el Rey Sol?",
+                ["Luis XIV", "Luis XVI", "Carlos X", "Enrique IV"],
+                0
+            ],
+            [
+                "¿Qué famoso palacio estuvo relacionado con la monarquía francesa?",
+                ["Versalles", "Louvre", "Notre Dame", "Bastilla"],
+                0
+            ],
+            [
+                "¿Quién fue el último rey de Francia antes de la Primera República?",
+                ["Luis XVI", "Luis XIV", "Carlos Magno", "Napoleón"],
+                0
+            ],
+            [
+                "¿Qué acontecimiento puso fin a la monarquía absoluta en el contexto de 1789?",
+                ["Revolución Francesa", "Revolución Industrial", "Primera Guerra Mundial", "Tratado de Versalles"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Qué pintor francés estuvo relacionado con el impresionismo?",
-        opciones: ["Claude Monet", "Picasso", "Dalí", "Van Gogh"],
-        correcta: "Claude Monet"
+    actual: {
+        titulo: "Francia actual",
+        icono: "📍",
+        subtitulo: "Conoce algunos aspectos de la Francia contemporánea.",
+        imagen: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80",
+        alt: "París actual",
+        lugares: "París · Lyon · Marsella · Francia metropolitana",
+        audio: "Actualmente, Francia es una república ubicada principalmente en Europa y forma parte de organizaciones europeas e internacionales.",
+        dato: "Francia es una república y forma parte de importantes organizaciones europeas e internacionales.",
+        preguntas: [
+            [
+                "¿Qué sistema político tiene Francia actualmente?",
+                ["República", "Monarquía absoluta", "Imperio", "Teocracia"],
+                0
+            ],
+            [
+                "¿Cuál es la capital de Francia?",
+                ["París", "Lyon", "Marsella", "Niza"],
+                0
+            ],
+            [
+                "¿A qué organización europea pertenece Francia?",
+                ["Unión Europea", "ASEAN", "MERCOSUR", "Unión Africana"],
+                0
+            ],
+            [
+                "¿Cuál es la moneda utilizada actualmente en Francia?",
+                ["Euro", "Franco francés", "Dólar", "Libra"],
+                0
+            ],
+            [
+                "¿En qué continente se encuentra la Francia metropolitana?",
+                ["Europa", "África", "Asia", "América"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Quién fue Napoleón Bonaparte?",
-        opciones: [
-            "Militar y gobernante francés",
-            "Pintor",
-            "Rey inglés",
-            "Científico"
-        ],
-        correcta: "Militar y gobernante francés"
+    gastronomia: {
+        titulo: "Gastronomía",
+        icono: "🍽️",
+        subtitulo: "Descubre algunos alimentos y preparaciones representativas de Francia.",
+        imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=80",
+        alt: "Panadería francesa",
+        lugares: "París · Lyon · Provenza · Burdeos",
+        audio: "La gastronomía francesa es conocida por sus panes, quesos, postres y preparaciones regionales. También tiene una importante tradición culinaria.",
+        dato: "La gastronomía francesa es reconocida por sus panes, quesos, postres y preparaciones regionales.",
+        preguntas: [
+            [
+                "¿Cuál de estos alimentos es tradicional de la gastronomía francesa?",
+                ["Croissant", "Sushi", "Taco", "Ceviche"],
+                0
+            ],
+            [
+                "¿Qué producto es muy representativo de Francia?",
+                ["Queso", "Arepa", "Tortilla de maíz", "Kimchi"],
+                0
+            ],
+            [
+                "¿Qué preparación francesa es conocida por llevar caracoles?",
+                ["Escargots", "Paella", "Sushi", "Ramen"],
+                0
+            ],
+            [
+                "¿Qué postre francés tiene forma de torre hecha tradicionalmente con profiteroles?",
+                ["Croquembouche", "Tiramisú", "Baklava", "Mochi"],
+                0
+            ],
+            [
+                "¿Qué bebida caliente es común en los desayunos franceses?",
+                ["Café", "Mate", "Chai", "Chocolate azteca"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿En qué año se proclamó Napoleón emperador?",
-        opciones: ["1804", "1789", "1815", "1871"],
-        correcta: "1804"
+    musica: {
+        titulo: "Música",
+        icono: "🎵",
+        subtitulo: "Conoce la diversidad de la música francesa.",
+        imagen: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=1200&q=80",
+        alt: "Instrumentos musicales",
+        lugares: "París · Lyon · Marsella · Toulouse",
+        audio: "Francia posee una amplia tradición musical que incluye música clásica, chanson francesa, ópera y estilos contemporáneos.",
+        dato: "La música francesa incluye tradición clásica, chanson y numerosos estilos contemporáneos.",
+        preguntas: [
+            [
+                "¿Qué género tradicional está asociado con la canción francesa?",
+                ["Chanson", "Reggae", "K-pop", "Samba"],
+                0
+            ],
+            [
+                "¿Qué compositor francés escribió Boléro?",
+                ["Maurice Ravel", "Beethoven", "Mozart", "Bach"],
+                0
+            ],
+            [
+                "¿Qué instrumento pertenece a la familia de cuerda?",
+                ["Violín", "Trompeta", "Flauta", "Trombón"],
+                0
+            ],
+            [
+                "¿Cuál es un elemento importante de la música francesa?",
+                ["La chanson", "El flamenco", "El tango argentino", "La samba"],
+                0
+            ],
+            [
+                "¿Qué ciudad francesa es conocida por su importante actividad cultural y musical?",
+                ["París", "Lyon", "Dijon", "Cannes"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Dónde murió Napoleón?",
-        opciones: ["Santa Elena", "Córcega", "París", "Roma"],
-        correcta: "Santa Elena"
+    tradiciones: {
+        titulo: "Tradiciones",
+        icono: "🎭",
+        subtitulo: "Descubre costumbres y tradiciones de diferentes regiones francesas.",
+        imagen: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200&q=80",
+        alt: "Tradiciones francesas",
+        lugares: "Provenza · Bretaña · Alsacia · Burdeos",
+        audio: "Las regiones francesas conservan diferentes costumbres, celebraciones, comidas y expresiones culturales que forman parte de su identidad.",
+        dato: "Las distintas regiones francesas conservan numerosas costumbres culturales.",
+        preguntas: [
+            [
+                "¿Qué tradición gastronómica francesa está relacionada con compartir pan?",
+                ["La cultura de la baguette", "La ceremonia del té", "El mate", "La parrillada"],
+                0
+            ],
+            [
+                "¿Qué idioma se habla principalmente en Francia?",
+                ["Francés", "Alemán", "Italiano", "Portugués"],
+                0
+            ],
+            [
+                "¿Qué región francesa es conocida por sus tradiciones relacionadas con el vino?",
+                ["Burdeos", "Siberia", "Andalucía", "Baviera"],
+                0
+            ],
+            [
+                "¿Qué prenda tradicional se relaciona con algunas regiones francesas?",
+                ["Trajes regionales", "Kimono", "Sari", "Hanbok"],
+                0
+            ],
+            [
+                "¿Qué elemento forma parte de muchas celebraciones tradicionales?",
+                ["Música y comida", "Solo deportes", "Solo comercio", "Solo política"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Cuándo comenzó la Primera Guerra Mundial?",
-        opciones: ["1914", "1918", "1939", "1945"],
-        correcta: "1914"
+    fiestas: {
+        titulo: "Fiestas",
+        icono: "🎉",
+        subtitulo: "Conoce algunas de las celebraciones más importantes de Francia.",
+        imagen: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80",
+        alt: "Celebración en Francia",
+        lugares: "París · Niza · Marsella · Lyon",
+        audio: "Francia celebra diferentes festividades nacionales y regionales. Una de las fechas más importantes es el 14 de julio.",
+        dato: "El Día de la Bastilla se celebra cada 14 de julio y es una de las fechas nacionales más importantes de Francia.",
+        preguntas: [
+            [
+                "¿Cuándo se celebra el Día de la Bastilla?",
+                ["14 de julio", "1 de enero", "25 de diciembre", "11 de noviembre"],
+                0
+            ],
+            [
+                "¿Qué acontecimiento recuerda principalmente el Día de la Bastilla?",
+                ["La Revolución Francesa", "La coronación de Napoleón", "La Segunda Guerra Mundial", "La creación de la Unión Europea"],
+                0
+            ],
+            [
+                "¿Qué celebración se realiza el 25 de diciembre?",
+                ["Navidad", "Bastilla", "Carnaval de Niza", "Fiesta de la Música"],
+                0
+            ],
+            [
+                "¿Qué ciudad es famosa por su carnaval?",
+                ["Niza", "Brest", "Lille", "Rouen"],
+                0
+            ],
+            [
+                "¿Qué fiesta francesa está relacionada con la música?",
+                ["Fiesta de la Música", "Fiesta del Queso", "Fiesta del Imperio", "Fiesta de Napoleón"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Cuándo terminó la Primera Guerra Mundial?",
-        opciones: ["1918", "1914", "1939", "1945"],
-        correcta: "1918"
+    vestimenta: {
+        titulo: "Vestimenta",
+        icono: "👕",
+        subtitulo: "Conoce la relación de Francia con la moda y las vestimentas regionales.",
+        imagen: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&q=80",
+        alt: "Moda francesa",
+        lugares: "París · Lyon · Provenza · Bretaña",
+        audio: "Francia es reconocida internacionalmente por su tradición en la moda. París es uno de los principales centros de la alta costura.",
+        dato: "París es considerada una de las principales capitales mundiales de la moda.",
+        preguntas: [
+            [
+                "¿Por qué es conocida internacionalmente Francia en relación con la vestimenta?",
+                ["Por su tradición de moda", "Por los kimonos", "Por los saris", "Por los ponchos"],
+                0
+            ],
+            [
+                "¿Cuál es una de las principales capitales de la moda?",
+                ["París", "Roma únicamente", "Tokio únicamente", "Lima"],
+                0
+            ],
+            [
+                "¿Qué tipo de vestimenta representa algunas costumbres regionales?",
+                ["Traje tradicional", "Uniforme espacial", "Kimono japonés", "Sari indio"],
+                0
+            ],
+            [
+                "¿Qué actividad está estrechamente relacionada con la moda francesa?",
+                ["Diseño de moda", "Agricultura", "Minería", "Pesca"],
+                0
+            ],
+            [
+                "¿Qué ciudad francesa es especialmente reconocida por la alta costura?",
+                ["París", "Marsella", "Nantes", "Toulouse"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Cuándo comenzó la Segunda Guerra Mundial?",
-        opciones: ["1939", "1914", "1945", "1961"],
-        correcta: "1939"
+    arte: {
+        titulo: "Arte y artesanía",
+        icono: "🎨",
+        subtitulo: "Explora la tradición artística francesa.",
+        imagen: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?w=1200&q=80",
+        alt: "Arte francés",
+        lugares: "París · Louvre · Montmartre · Provenza",
+        audio: "Francia ha sido escenario de importantes movimientos artísticos y literarios. También conserva una amplia tradición artesanal.",
+        dato: "Francia ha sido escenario de importantes movimientos artísticos y literarios.",
+        preguntas: [
+            [
+                "¿Cuál de estos museos se encuentra en París?",
+                ["Museo del Louvre", "Museo del Prado", "Museo Británico", "Museo del Hermitage"],
+                0
+            ],
+            [
+                "¿Qué famoso pintor francés fue representante del impresionismo?",
+                ["Claude Monet", "Pablo Picasso", "Diego Rivera", "Van Gogh"],
+                0
+            ],
+            [
+                "¿Qué movimiento artístico se desarrolló con fuerza en Francia durante el siglo XIX?",
+                ["Impresionismo", "Cubismo mexicano", "Renacimiento egipcio", "Arte maya"],
+                0
+            ],
+            [
+                "¿Qué escritor francés escribió Los miserables?",
+                ["Victor Hugo", "Miguel de Cervantes", "William Shakespeare", "Homero"],
+                0
+            ],
+            [
+                "¿Qué disciplina artística trabaja principalmente con materiales para crear objetos?",
+                ["Artesanía", "Astronomía", "Matemáticas", "Geografía"],
+                0
+            ]
+        ]
     },
 
-    {
-        pregunta: "¿Cuándo terminó la Segunda Guerra Mundial?",
-        opciones: ["1945", "1939", "1918", "1989"],
-        correcta: "1945"
-    },
-
-    {
-        pregunta: "¿Qué país ocupó Francia durante gran parte de la Segunda Guerra Mundial?",
-        opciones: ["Alemania", "España", "Italia", "Portugal"],
-        correcta: "Alemania"
-    },
-
-    {
-        pregunta: "¿Qué desembarco fue importante para la liberación de Francia?",
-        opciones: ["Normandía", "Sicilia", "Calais", "Brest"],
-        correcta: "Normandía"
-    },
-
-    {
-        pregunta: "¿Qué sistema político existía antes de la Revolución Francesa?",
-        opciones: ["Monarquía", "República moderna", "Federación", "Democracia directa"],
-        correcta: "Monarquía"
-    },
-
-    {
-        pregunta: "¿Qué rey fue conocido como el Rey Sol?",
-        opciones: ["Luis XIV", "Luis XVI", "Carlos X", "Napoleón"],
-        correcta: "Luis XIV"
-    },
-
-    {
-        pregunta: "¿Qué rey gobernaba cuando comenzó la Revolución Francesa?",
-        opciones: ["Luis XVI", "Luis XIV", "Carlos Magno", "Napoleón"],
-        correcta: "Luis XVI"
-    },
-
-    {
-        pregunta: "¿Cuál es uno de los lemas de la Revolución Francesa?",
-        opciones: [
-            "Libertad, igualdad y fraternidad",
-            "Orden y progreso",
-            "Paz y tierra",
-            "Unidad y fuerza"
-        ],
-        correcta: "Libertad, igualdad y fraternidad"
-    },
-
-    {
-        pregunta: "¿Qué alimento es muy representativo de Francia?",
-        opciones: ["Baguette", "Sushi", "Arepa", "Taco"],
-        correcta: "Baguette"
-    },
-
-    {
-        pregunta: "¿Qué alimento es muy conocido en la pastelería francesa?",
-        opciones: ["Croissant", "Arepa", "Empanada", "Tamal"],
-        correcta: "Croissant"
-    },
-
-    {
-        pregunta: "¿Qué ciudad es famosa por su influencia en la moda?",
-        opciones: ["París", "Marsella", "Lyon", "Nantes"],
-        correcta: "París"
-    },
-
-    {
-        pregunta: "¿Qué palacio está relacionado con la monarquía francesa?",
-        opciones: ["Versalles", "Buckingham", "El Escorial", "Praga"],
-        correcta: "Versalles"
-    },
-
-    {
-        pregunta: "¿Qué ciudad alberga la Torre Eiffel?",
-        opciones: ["París", "Lyon", "Niza", "Marsella"],
-        correcta: "París"
-    },
-
-    {
-        pregunta: "¿Qué artista fue uno de los representantes del impresionismo?",
-        opciones: ["Claude Monet", "Miguel Ángel", "Picasso", "Velázquez"],
-        correcta: "Claude Monet"
-    },
-
-    {
-        pregunta: "¿Qué escritor francés creó Los Miserables?",
-        opciones: ["Victor Hugo", "Goethe", "Dante", "Shakespeare"],
-        correcta: "Victor Hugo"
-    },
-
-    {
-        pregunta: "¿Francia participó en la integración europea después de la Segunda Guerra Mundial?",
-        opciones: ["Sí", "No", "Solo durante la guerra", "Solo antes de 1900"],
-        correcta: "Sí"
-    },
-
-    {
-        pregunta: "¿Qué representa un monumento histórico?",
-        opciones: [
-            "Parte de la memoria histórica y cultural",
-            "Solo decoración",
-            "Solo tecnología",
-            "Solo entretenimiento"
-        ],
-        correcta: "Parte de la memoria histórica y cultural"
-    },
-
-    {
-        pregunta: "¿Qué país pertenece a Europa y comparte frontera con Francia?",
-        opciones: ["España", "Japón", "Brasil", "Australia"],
-        correcta: "España"
+    monumentos: {
+        titulo: "Monumentos",
+        icono: "🏛️",
+        subtitulo: "Descubre algunos de los monumentos más representativos de Francia.",
+        imagen: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80",
+        alt: "Torre Eiffel en París",
+        lugares: "Torre Eiffel · Versalles · Louvre · Mont-Saint-Michel",
+        audio: "Francia posee numerosos monumentos históricos. Entre los más conocidos están la Torre Eiffel, el Palacio de Versalles y el Mont-Saint-Michel.",
+        dato: "La Torre Eiffel fue construida para la Exposición Universal de 1889.",
+        preguntas: [
+            [
+                "¿Cuál es uno de los monumentos más famosos de Francia?",
+                ["Torre Eiffel", "Coliseo", "Taj Mahal", "Big Ben"],
+                0
+            ],
+            [
+                "¿En qué ciudad se encuentra la Torre Eiffel?",
+                ["París", "Lyon", "Niza", "Marsella"],
+                0
+            ],
+            [
+                "¿Qué antiguo palacio fue residencia de los reyes franceses?",
+                ["Versalles", "Louvre", "Bastilla", "Mont-Saint-Michel"],
+                0
+            ],
+            [
+                "¿Qué famoso museo se encuentra en el antiguo palacio del Louvre?",
+                ["Museo del Louvre", "Museo del Prado", "Museo Británico", "Museo Nacional de China"],
+                0
+            ],
+            [
+                "¿Qué monumento medieval se encuentra sobre una isla rocosa?",
+                ["Mont-Saint-Michel", "Torre Eiffel", "Arco del Triunfo", "Panteón"],
+                0
+            ]
+        ]
     }
+};
 
+
+/* =========================================================
+   RETO FINAL
+========================================================= */
+
+const preguntasRetoFinal = [
+
+    [
+        "¿Cuál es la capital de Francia?",
+        ["París", "Lyon", "Marsella", "Niza"],
+        0
+    ],
+
+    [
+        "¿Qué pueblo habitó gran parte de la antigua Galia?",
+        ["Los galos", "Los incas", "Los egipcios", "Los aztecas"],
+        0
+    ],
+
+    [
+        "¿Quién fue el principal líder del Primer Imperio francés?",
+        ["Napoleón Bonaparte", "Luis XVI", "Carlomagno", "Clodoveo"],
+        0
+    ],
+
+    [
+        "¿Qué dinastía estuvo relacionada con Luis XIV?",
+        ["Borbones", "Valois", "Merovingios", "Carolingios"],
+        0
+    ],
+
+    [
+        "¿Qué acontecimiento comenzó en Francia en 1789?",
+        ["Revolución Francesa", "Revolución Industrial", "Primera Guerra Mundial", "Renacimiento"],
+        0
+    ],
+
+    [
+        "¿Qué monumento se encuentra en París?",
+        ["Torre Eiffel", "Coliseo", "Partenón", "Big Ben"],
+        0
+    ],
+
+    [
+        "¿Qué día se celebra la fiesta nacional francesa?",
+        ["14 de julio", "20 de julio", "5 de mayo", "1 de noviembre"],
+        0
+    ],
+
+    [
+        "¿Cuál es la moneda actual de Francia?",
+        ["Euro", "Franco", "Dólar", "Libra"],
+        0
+    ],
+
+    [
+        "¿Qué producto es representativo de la gastronomía francesa?",
+        ["Queso", "Sushi", "Arepa", "Taco"],
+        0
+    ],
+
+    [
+        "¿Qué famoso palacio está relacionado con la monarquía francesa?",
+        ["Versalles", "Buckingham", "El Escorial", "Alhambra"],
+        0
+    ]
 ];
 
 
-/* ============================================================
-   PREGUNTAS DE RECUPERACIÓN
-============================================================ */
+/* =========================================================
+   ELEMENTOS
+========================================================= */
 
-const preguntasRecuperacion = [
+let headerIcon;
+let headerTitle;
+let headerSubtitle;
 
-    {
-        pregunta: "¿En qué año comenzó la Revolución Francesa?",
-        opciones: ["1789", "1815", "1914", "1945"],
-        correcta: "1789"
-    },
+let points;
+let lives;
 
-    {
-        pregunta: "¿Cuál es la capital de Francia?",
-        opciones: ["París", "Lyon", "Niza", "Marsella"],
-        correcta: "París"
-    },
+let questionText;
+let options;
+let btnNext;
+let feedback;
+let qNumber;
 
-    {
-        pregunta: "¿En qué año comenzó la Segunda Guerra Mundial?",
-        opciones: ["1939", "1914", "1945", "1961"],
-        correcta: "1939"
-    },
+let correctCount;
+let btnGuardarProgreso;
+let btnRetoFinal;
 
-    {
-        pregunta: "¿Qué monumento se encuentra en París?",
-        opciones: ["Torre Eiffel", "Coliseo", "Big Ben", "Puerta de Brandeburgo"],
-        correcta: "Torre Eiffel"
+
+/* =========================================================
+   OBTENER ELEMENTOS
+========================================================= */
+
+function obtenerElementos() {
+
+    headerIcon = document.getElementById("headerIcon");
+    headerTitle = document.getElementById("headerTitle");
+    headerSubtitle = document.getElementById("headerSubtitle");
+
+    points = document.getElementById("points");
+    lives = document.getElementById("lives");
+
+    questionText = document.getElementById("questionText");
+    options = document.getElementById("options");
+    btnNext = document.getElementById("btnNext");
+    feedback = document.getElementById("feedback");
+    qNumber = document.getElementById("qNumber");
+
+    correctCount = document.getElementById("correctCount");
+    btnGuardarProgreso = document.getElementById("btnGuardarProgreso");
+    btnRetoFinal = document.getElementById("btnRetoFinal");
+}
+
+
+/* =========================================================
+   CREAR CONTENIDO COMPLETO PARA CADA CATEGORÍA
+========================================================= */
+
+function crearContenidoCategoria(nombreCategoria) {
+
+    const contenido = document.getElementById(nombreCategoria);
+
+    if (!contenido) return;
+
+    const categoria = categorias[nombreCategoria];
+
+    if (!categoria) return;
+
+    /*
+       Civilizaciones ya tiene la estructura completa
+       en el HTML. No la reemplazamos.
+    */
+    if (nombreCategoria === "civilizaciones") {
+
+        actualizarContenidoCivilizaciones(categoria);
+
+        return;
     }
 
-];
+    /*
+       Las demás categorías reciben automáticamente
+       la misma estructura.
+    */
+
+    contenido.innerHTML = `
+
+        <div class="card welcome-card">
+
+            <div class="welcome-icon">
+                ${categoria.icono}
+            </div>
+
+            <div>
+                <h3>${categoria.titulo}</h3>
+
+                <p>
+                    ${categoria.subtitulo}
+                </p>
+            </div>
+
+        </div>
 
 
-/* ============================================================
-   ESTADO
-============================================================ */
-
-let temaActual = "gastronomia";
-
-let puntos = 0;
-
-let vidas = MAX_VIDAS;
-
-let respuestasCorrectas = 0;
-
-let indicePregunta = 0;
-
-let preguntaActual = null;
-
-let respuestaContestada = false;
-
-let estadoPreguntas = {};
-
-let juegoBloqueadoPorVidas = false;
-
-let retoRecuperacionActivo = false;
-
-let retoRecuperacionSuperado = false;
-
-let indicePreguntaFinal = 0;
-
-let preguntaFinalActual = null;
-
-let respuestaFinalContestada = false;
+        <img
+            class="banner"
+            src="${categoria.imagen}"
+            alt="${categoria.alt}"
+        >
 
 
-/* ============================================================
-   TOTAL
-============================================================ */
+        <div class="audio-card">
 
-const TOTAL_PREGUNTAS =
-    Object.values(temas)
-        .reduce(
-            (total, tema) =>
-                total + tema.preguntas.length,
-            0
+            <button
+                type="button"
+                class="btn-audio"
+                data-audio="${nombreCategoria}">
+                🔊 Escuchar información
+            </button>
+
+            <p class="audio-text">
+                ${categoria.audio}
+            </p>
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <div class="label">
+                    💡 Dato interesante
+                </div>
+
+                <p>
+                    ${categoria.dato}
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="label">
+                    📍 Lugares relacionados
+                </div>
+
+                <p>
+                    ${categoria.lugares}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="reto-card">
+
+            <div class="reto-header">
+
+                <span class="left">
+                    🎯 Mini reto
+                </span>
+
+                <span class="right">
+                    Pregunta
+                    <span class="contadorCategoria">
+                        1
+                    </span>
+                    de 5
+                </span>
+
+            </div>
+
+
+            <div class="quizAreaCategoria">
+
+                <div
+                    class="question-text preguntaCategoria">
+                </div>
+
+
+                <div
+                    class="options opcionesCategoria">
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary botonSiguienteCategoria"
+                    disabled>
+                    Siguiente
+                </button>
+
+
+                <div class="feedback feedbackCategoria">
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+
+    configurarAudioCategoria(contenido);
+
+    configurarQuizCategoria(
+        nombreCategoria,
+        contenido
+    );
+}
+
+
+/* =========================================================
+   ACTUALIZAR CIVILIZACIONES
+========================================================= */
+
+function actualizarContenidoCivilizaciones(categoria) {
+
+    const contenido =
+        document.getElementById("civilizaciones");
+
+    if (!contenido) return;
+
+    const banner =
+        contenido.querySelector(".banner");
+
+    if (banner) {
+        banner.src = categoria.imagen;
+        banner.alt = categoria.alt;
+    }
+
+    const datos =
+        contenido.querySelectorAll(".info-card");
+
+    if (datos.length >= 2) {
+
+        datos[0].querySelector("p").textContent =
+            categoria.dato;
+
+        datos[1].querySelector("p").textContent =
+            categoria.lugares;
+    }
+
+    /*
+       Agregamos audio si no existe.
+    */
+
+    let audioCard =
+        contenido.querySelector(".audio-card");
+
+    if (!audioCard) {
+
+        const infoGrid =
+            contenido.querySelector(".info-grid");
+
+        if (infoGrid) {
+
+            audioCard =
+                document.createElement("div");
+
+            audioCard.className = "audio-card";
+
+            audioCard.innerHTML = `
+
+                <button
+                    type="button"
+                    class="btn-audio"
+                    data-audio="civilizaciones">
+                    🔊 Escuchar información
+                </button>
+
+                <p class="audio-text">
+                    ${categoria.audio}
+                </p>
+            `;
+
+            infoGrid.parentNode.insertBefore(
+                audioCard,
+                infoGrid
+            );
+        }
+    }
+
+    configurarAudioCategoria(contenido);
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+let vozActiva = null;
+
+function configurarAudioCategoria(contenido) {
+
+    const boton =
+        contenido.querySelector(".btn-audio");
+
+    if (!boton) return;
+
+    boton.addEventListener("click", () => {
+
+        const categoria =
+            categorias[estado.categoriaActual];
+
+        if (!categoria) return;
+
+        if ("speechSynthesis" in window) {
+
+            if (speechSynthesis.speaking) {
+
+                speechSynthesis.cancel();
+
+                boton.textContent =
+                    "🔊 Escuchar información";
+
+                vozActiva = null;
+
+                return;
+            }
+
+            const voz =
+                new SpeechSynthesisUtterance(
+                    categoria.audio
+                );
+
+            voz.lang = "es-ES";
+            voz.rate = 0.95;
+            voz.pitch = 1;
+
+            voz.onstart = () => {
+
+                boton.textContent =
+                    "⏹️ Detener audio";
+
+                vozActiva = voz;
+            };
+
+            voz.onend = () => {
+
+                boton.textContent =
+                    "🔊 Escuchar información";
+
+                vozActiva = null;
+            };
+
+            speechSynthesis.speak(voz);
+
+        } else {
+
+            alert(
+                "Tu navegador no permite reproducir este audio."
+            );
+        }
+    });
+}
+
+
+/* =========================================================
+   CONFIGURAR QUIZ DE CADA CATEGORÍA
+========================================================= */
+
+function configurarQuizCategoria(
+    nombreCategoria,
+    contenido
+) {
+
+    const preguntaElemento =
+        contenido.querySelector(
+            ".preguntaCategoria"
+        );
+
+    const opcionesElemento =
+        contenido.querySelector(
+            ".opcionesCategoria"
+        );
+
+    const siguiente =
+        contenido.querySelector(
+            ".botonSiguienteCategoria"
+        );
+
+    const feedbackElemento =
+        contenido.querySelector(
+            ".feedbackCategoria"
+        );
+
+    const contador =
+        contenido.querySelector(
+            ".contadorCategoria"
         );
 
 
-/* ============================================================
-   ESTADO INICIAL
-============================================================ */
+    function mostrarPreguntaLocal() {
 
-function crearEstadoInicial() {
+        const categoria =
+            categorias[nombreCategoria];
 
-    const estado = {};
+        const pregunta =
+            categoria.preguntas[
+                estado.preguntaActual
+            ];
 
-    Object.keys(temas).forEach(nombre => {
+        if (!pregunta) return;
 
-        estado[nombre] = {
-            respondidas: [],
-            completada: false
-        };
+        estado.respondida = false;
 
-    });
 
-    return estado;
+        if (preguntaElemento) {
+
+            preguntaElemento.textContent =
+                pregunta[0];
+        }
+
+
+        if (contador) {
+
+            contador.textContent =
+                estado.preguntaActual + 1;
+        }
+
+
+        if (opcionesElemento) {
+
+            opcionesElemento.innerHTML = "";
+
+            pregunta[1].forEach(
+                (respuesta, indice) => {
+
+                    const boton =
+                        document.createElement("button");
+
+                    boton.type = "button";
+
+                    boton.className =
+                        "option";
+
+                    boton.textContent =
+                        respuesta;
+
+                    boton.addEventListener(
+                        "click",
+                        () => {
+
+                            comprobarRespuestaLocal(
+                                nombreCategoria,
+                                indice,
+                                boton
+                            );
+
+                        }
+                    );
+
+                    opcionesElemento.appendChild(
+                        boton
+                    );
+                }
+            );
+        }
+
+
+        if (feedbackElemento) {
+
+            feedbackElemento.textContent = "";
+
+            feedbackElemento.className =
+                "feedback feedbackCategoria";
+        }
+
+
+        if (siguiente) {
+            siguiente.disabled = true;
+        }
+    }
+
+
+    function comprobarRespuestaLocal(
+        nombre,
+        indice,
+        botonSeleccionado
+    ) {
+
+        if (estado.respondida) return;
+
+        if (estado.vidas <= 0) {
+
+            mostrarRecuperacion();
+
+            return;
+        }
+
+        const pregunta =
+            categorias[nombre].preguntas[
+                estado.preguntaActual
+            ];
+
+        const correcta = pregunta[2];
+
+        estado.respondida = true;
+
+
+        opcionesElemento
+            .querySelectorAll(".option")
+            .forEach(boton => {
+
+                boton.disabled = true;
+
+            });
+
+
+        if (indice === correcta) {
+
+            botonSeleccionado.classList.add(
+                "correct"
+            );
+
+            estado.puntos += 10;
+            estado.correctas++;
+
+
+            if (feedbackElemento) {
+
+                feedbackElemento.textContent =
+                    "✓ ¡Respuesta correcta! +10 puntos";
+
+                feedbackElemento.className =
+                    "feedback feedbackCategoria correct";
+            }
+
+        } else {
+
+            botonSeleccionado.classList.add(
+                "incorrect"
+            );
+
+
+            const botones =
+                opcionesElemento.querySelectorAll(
+                    ".option"
+                );
+
+            if (botones[correcta]) {
+
+                botones[correcta].classList.add(
+                    "correct"
+                );
+            }
+
+
+            estado.vidas--;
+
+
+            if (feedbackElemento) {
+
+                feedbackElemento.textContent =
+                    "✗ Respuesta incorrecta. Has perdido una vida.";
+
+                feedbackElemento.className =
+                    "feedback feedbackCategoria incorrect";
+            }
+
+
+            if (estado.vidas <= 0) {
+
+                actualizarPanel();
+
+                guardarProgreso();
+
+                bloquearJuegoCategoria(
+                    contenido
+                );
+
+                return;
+            }
+        }
+
+
+        actualizarPanel();
+
+        guardarProgreso();
+
+
+        if (siguiente) {
+            siguiente.disabled = false;
+        }
+    }
+
+
+    if (siguiente) {
+
+        siguiente.addEventListener(
+            "click",
+            () => {
+
+                if (!estado.respondida) return;
+
+
+                estado.preguntaActual++;
+
+
+                if (
+                    estado.preguntaActual >=
+                    categorias[nombreCategoria].preguntas.length
+                ) {
+
+                    completarCategoriaNueva(
+                        nombreCategoria,
+                        contenido
+                    );
+
+                    return;
+                }
+
+
+                mostrarPreguntaLocal();
+
+            }
+        );
+    }
+
+
+    mostrarPreguntaLocal();
 }
 
 
-/* ============================================================
-   ELEMENTO
-============================================================ */
+/* =========================================================
+   COMPLETAR CATEGORÍA NUEVA
+========================================================= */
 
-function obtenerElemento(id) {
+function completarCategoriaNueva(
+    nombreCategoria,
+    contenido
+) {
 
-    return document.getElementById(id);
+    if (
+        !estado.categoriasCompletadas.includes(
+            nombreCategoria
+        )
+    ) {
 
+        estado.categoriasCompletadas.push(
+            nombreCategoria
+        );
+    }
+
+
+    guardarProgreso();
+
+    actualizarPanel();
+
+
+    const pregunta =
+        contenido.querySelector(
+            ".preguntaCategoria"
+        );
+
+    const opciones =
+        contenido.querySelector(
+            ".opcionesCategoria"
+        );
+
+    const feedbackElemento =
+        contenido.querySelector(
+            ".feedbackCategoria"
+        );
+
+    const siguiente =
+        contenido.querySelector(
+            ".botonSiguienteCategoria"
+        );
+
+
+    if (pregunta) {
+
+        pregunta.textContent =
+            "🎉 ¡Categoría completada!";
+    }
+
+
+    if (opciones) {
+        opciones.innerHTML = "";
+    }
+
+
+    if (feedbackElemento) {
+
+        feedbackElemento.textContent =
+            "Has respondido las 5 preguntas de esta categoría.";
+
+        feedbackElemento.className =
+            "feedback feedbackCategoria correct";
+    }
+
+
+    if (siguiente) {
+        siguiente.disabled = true;
+    }
+
+
+    actualizarPanel();
+
+
+    if (
+        estado.categoriasCompletadas.length ===
+        Object.keys(categorias).length
+    ) {
+
+        setTimeout(() => {
+
+            mostrarRetoFinal();
+
+        }, 700);
+    }
 }
 
 
-/* ============================================================
-   GUARDAR
-============================================================ */
+/* =========================================================
+   BLOQUEAR CATEGORÍA POR VIDAS
+========================================================= */
+
+function bloquearJuegoCategoria(contenido) {
+
+    const pregunta =
+        contenido.querySelector(
+            ".preguntaCategoria"
+        );
+
+    const opciones =
+        contenido.querySelector(
+            ".opcionesCategoria"
+        );
+
+    const feedbackElemento =
+        contenido.querySelector(
+            ".feedbackCategoria"
+        );
+
+    const siguiente =
+        contenido.querySelector(
+            ".botonSiguienteCategoria"
+        );
+
+
+    if (pregunta) {
+
+        pregunta.textContent =
+            "❤️ Te has quedado sin vidas";
+    }
+
+
+    if (opciones) {
+        opciones.innerHTML = "";
+    }
+
+
+    if (siguiente) {
+        siguiente.disabled = true;
+    }
+
+
+    if (feedbackElemento) {
+
+        feedbackElemento.innerHTML = `
+            <div class="recuperacion-mensaje">
+
+                <strong>
+                    ❤️ Recuperación de vida
+                </strong>
+
+                <p>
+                    Has perdido todas tus vidas.
+                    Recupera una para continuar.
+                </p>
+
+                <button
+                    type="button"
+                    class="btn-recuperar"
+                    id="recuperarVidaAutomatico">
+                    Recuperar vida
+                </button>
+
+            </div>
+        `;
+
+        feedbackElemento.className =
+            "feedback feedbackCategoria incorrect";
+
+
+        const boton =
+            document.getElementById(
+                "recuperarVidaAutomatico"
+            );
+
+        if (boton) {
+
+            boton.addEventListener(
+                "click",
+                recuperarVida
+            );
+        }
+    }
+
+
+    mostrarRecuperacion();
+}
+
+
+/* =========================================================
+   CARGAR CATEGORÍA
+========================================================= */
+
+function cargarCategoria(nombreCategoria) {
+
+    if (!categorias[nombreCategoria]) {
+
+        console.log(
+            "Categoría no encontrada:",
+            nombreCategoria
+        );
+
+        return;
+    }
+
+
+    estado.categoriaActual =
+        nombreCategoria;
+
+    estado.preguntaActual = 0;
+    estado.respondida = false;
+
+
+    const categoria =
+        categorias[nombreCategoria];
+
+
+    document
+        .querySelectorAll(".category-content")
+        .forEach(elemento => {
+
+            elemento.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const contenido =
+        document.getElementById(
+            nombreCategoria
+        );
+
+
+    if (contenido) {
+
+        contenido.classList.add("active");
+
+        crearContenidoCategoria(
+            nombreCategoria
+        );
+    }
+
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(item => {
+
+            item.classList.remove("active");
+
+            if (
+                item.dataset.category ===
+                nombreCategoria
+            ) {
+
+                item.classList.add("active");
+            }
+
+        });
+
+
+    if (headerIcon) {
+
+        headerIcon.textContent =
+            categoria.icono;
+    }
+
+
+    if (headerTitle) {
+
+        headerTitle.textContent =
+            categoria.titulo;
+    }
+
+
+    if (headerSubtitle) {
+
+        headerSubtitle.textContent =
+            categoria.subtitulo;
+    }
+
+
+    actualizarPanel();
+}
+
+
+/* =========================================================
+   ACTUALIZAR PANEL
+========================================================= */
+
+function actualizarPanel() {
+
+    if (points) {
+        points.textContent =
+            estado.puntos;
+    }
+
+
+    if (lives) {
+        lives.textContent =
+            estado.vidas;
+    }
+
+
+    if (correctCount) {
+        correctCount.textContent =
+            estado.correctas;
+    }
+
+
+    actualizarProgresoCategorias();
+}
+
+
+/* =========================================================
+   PROGRESO
+========================================================= */
+
+function actualizarProgresoCategorias() {
+
+    const total =
+        Object.keys(categorias).length;
+
+    const completadas =
+        estado.categoriasCompletadas.length;
+
+    const porcentaje =
+        Math.round(
+            (completadas / total) * 100
+        );
+
+
+    const percent =
+        document.querySelector(".percent");
+
+    if (percent) {
+
+        percent.textContent =
+            porcentaje + "%";
+    }
+
+
+    const mensaje =
+        document.querySelector(
+            ".completed-msg"
+        );
+
+
+    if (mensaje) {
+
+        if (completadas === 0) {
+
+            mensaje.textContent =
+                "Comienza a explorar las categorías.";
+
+        } else if (
+            completadas === total
+        ) {
+
+            mensaje.textContent =
+                "¡Has completado todas las categorías!";
+
+        } else {
+
+            mensaje.textContent =
+                `Has completado ${completadas} de ${total} categorías.`;
+        }
+    }
+
+
+    const circle =
+        document.querySelector(
+            ".circle-fg"
+        );
+
+
+    if (circle) {
+
+        const radio = 54;
+
+        const circunferencia =
+            2 * Math.PI * radio;
+
+        circle.style.strokeDasharray =
+            circunferencia;
+
+        circle.style.strokeDashoffset =
+            circunferencia -
+            (porcentaje / 100) *
+            circunferencia;
+    }
+}
+
+
+/* =========================================================
+   GUARDAR PROGRESO
+========================================================= */
 
 function guardarProgreso() {
 
-    const datos = {
-
-        temaActual,
-        puntos,
-        vidas,
-        respuestasCorrectas,
-        estadoPreguntas
-
-    };
-
     localStorage.setItem(
-        CLAVE_GUARDADO,
-        JSON.stringify(datos)
+        CLAVE,
+        JSON.stringify(estado)
     );
 
+
+    if (btnGuardarProgreso) {
+
+        const textoOriginal =
+            btnGuardarProgreso.textContent;
+
+        btnGuardarProgreso.textContent =
+            "✓ Progreso guardado";
+
+
+        setTimeout(() => {
+
+            btnGuardarProgreso.textContent =
+                textoOriginal;
+
+        }, 1800);
+    }
 }
 
 
-/* ============================================================
-   CARGAR
-============================================================ */
+/* =========================================================
+   CARGAR PROGRESO
+========================================================= */
 
 function cargarProgreso() {
 
     const guardado =
-        localStorage.getItem(
-            CLAVE_GUARDADO
-        );
+        localStorage.getItem(CLAVE);
 
-    if (!guardado) {
+    if (!guardado) return;
 
-        estadoPreguntas =
-            crearEstadoInicial();
-
-        return;
-
-    }
 
     try {
 
         const datos =
             JSON.parse(guardado);
 
-        estadoPreguntas =
-            crearEstadoInicial();
 
-        if (datos.estadoPreguntas) {
+        estado = {
 
-            Object.keys(temas).forEach(nombre => {
+            ...estado,
 
-                if (datos.estadoPreguntas[nombre]) {
+            ...datos,
 
-                    estadoPreguntas[nombre] = {
-
-                        respondidas:
-                            Array.isArray(
-                                datos.estadoPreguntas[nombre].respondidas
-                            )
-                                ? datos.estadoPreguntas[nombre].respondidas
-                                : [],
-
-                        completada:
-                            Boolean(
-                                datos.estadoPreguntas[nombre].completada
-                            )
-
-                    };
-
-                }
-
-            });
-
-        }
-
-        temaActual =
-            temas[datos.temaActual]
-                ? datos.temaActual
-                : "gastronomia";
-
-        puntos =
-            Number.isFinite(datos.puntos)
-                ? Math.max(0, datos.puntos)
-                : 0;
-
-        vidas =
-            Number.isFinite(datos.vidas)
-                ? Math.max(
-                    0,
-                    Math.min(
-                        MAX_VIDAS,
-                        datos.vidas
-                    )
+            categoriasCompletadas:
+                Array.isArray(
+                    datos.categoriasCompletadas
                 )
-                : MAX_VIDAS;
+                    ? datos.categoriasCompletadas
+                    : []
 
-        respuestasCorrectas =
-            Number.isFinite(
-                datos.respuestasCorrectas
-            )
-                ? Math.max(
-                    0,
-                    datos.respuestasCorrectas
-                )
-                : 0;
+        };
 
     } catch (error) {
 
-        localStorage.removeItem(
-            CLAVE_GUARDADO
+        console.log(
+            "No se pudo cargar el progreso."
         );
-
-        estadoPreguntas =
-            crearEstadoInicial();
-
-        puntos = 0;
-        vidas = MAX_VIDAS;
-        respuestasCorrectas = 0;
-
     }
-
 }
 
 
-/* ============================================================
-   CAMBIAR TEMA
-============================================================ */
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
 
-function cambiarTema(nombre, boton) {
-
-    if (!temas[nombre]) {
-        return;
-    }
-
-    if (vidas <= 0) {
-
-        mostrarAvisoSinVidas();
-
-        return;
-
-    }
-
-    temaActual = nombre;
+function configurarCategorias() {
 
     document
-        .querySelectorAll(".menu-btn")
-        .forEach(btn =>
-            btn.classList.remove("activo")
-        );
+        .querySelectorAll(".nav-item")
+        .forEach(item => {
 
-    if (boton) {
+            item.addEventListener(
+                "click",
+                () => {
 
-        boton.classList.add("activo");
-
-    }
-
-    cargarTema();
-
-    guardarProgreso();
-
-}
+                    const categoria =
+                        item.dataset.category;
 
 
-/* ============================================================
-   CARGAR TEMA
-============================================================ */
+                    if (!categorias[categoria]) {
 
-function cargarTema() {
+                        console.log(
+                            "No existe información para:",
+                            categoria
+                        );
 
-    const tema =
-        temas[temaActual];
+                        return;
+                    }
 
-    if (!tema) {
-        return;
-    }
 
-    obtenerElemento(
-        "tituloTema"
-    ).textContent =
-        tema.titulo;
+                    if (estado.vidas <= 0) {
 
-    obtenerElemento(
-        "subtituloTema"
-    ).textContent =
-        tema.subtitulo;
+                        mostrarRecuperacion();
 
-    obtenerElemento(
-        "iconoTema"
-    ).textContent =
-        tema.icono;
+                        return;
+                    }
 
-    obtenerElemento(
-        "imagenTema"
-    ).textContent =
-        tema.imagen;
 
-    obtenerElemento(
-        "datoCurioso"
-    ).textContent =
-        tema.dato;
-
-    const regiones =
-        obtenerElemento(
-            "regiones"
-        );
-
-    regiones.innerHTML = "";
-
-    tema.regiones.forEach(region => {
-
-        const span =
-            document.createElement(
-                "span"
+                    cargarCategoria(
+                        categoria
+                    );
+                }
             );
 
-        span.className =
-            "region-tag";
-
-        span.textContent =
-            region;
-
-        regiones.appendChild(span);
-
-    });
-
-    cargarPregunta();
-
+        });
 }
 
 
-/* ============================================================
-   SIGUIENTE PREGUNTA DISPONIBLE
-============================================================ */
+/* =========================================================
+   BOTÓN GUARDAR
+========================================================= */
 
-function obtenerIndiceDisponible() {
+function configurarGuardar() {
 
-    const estado =
-        estadoPreguntas[temaActual];
+    if (!btnGuardarProgreso) return;
 
-    const tema =
-        temas[temaActual];
-
-    if (!estado || !tema) {
-        return -1;
-    }
-
-    for (
-        let i = 0;
-        i < tema.preguntas.length;
-        i++
-    ) {
-
-        if (
-            !estado.respondidas.includes(i)
-        ) {
-
-            return i;
-
-        }
-
-    }
-
-    return -1;
-
-}
-
-
-/* ============================================================
-   CARGAR PREGUNTA
-============================================================ */
-
-function cargarPregunta() {
-
-    const tema =
-        temas[temaActual];
-
-    const estado =
-        estadoPreguntas[temaActual];
-
-    if (!tema || !estado) {
-        return;
-    }
-
-    const indice =
-        obtenerIndiceDisponible();
-
-    respuestaContestada = false;
-
-    if (indice === -1) {
-
-        estado.completada = true;
-
-        mostrarCategoriaCompletada();
-
-        verificarTodasCategorias();
-
-        return;
-
-    }
-
-    indicePregunta = indice;
-
-    preguntaActual =
-        tema.preguntas[indice];
-
-    obtenerElemento(
-        "preguntaReto"
-    ).textContent =
-        preguntaActual.pregunta;
-
-    obtenerElemento(
-        "numeroPregunta"
-    ).textContent =
-        `Pregunta ${indice + 1} de 5`;
-
-    obtenerElemento(
-        "resultado"
-    ).textContent = "";
-
-    obtenerElemento(
-        "resultado"
-    ).className =
-        "resultado";
-
-    const opciones =
-        obtenerElemento(
-            "opcionesReto"
-        );
-
-    opciones.innerHTML = "";
-
-    preguntaActual.opciones.forEach(
-        opcion => {
-
-            const boton =
-                document.createElement(
-                    "button"
-                );
-
-            boton.type = "button";
-
-            boton.className =
-                "opcion";
-
-            boton.textContent =
-                opcion;
-
-            boton.onclick = () =>
-                comprobarRespuesta(
-                    opcion,
-                    boton
-                );
-
-            opciones.appendChild(
-                boton
-            );
-
-        }
+    btnGuardarProgreso.addEventListener(
+        "click",
+        guardarProgreso
     );
-
-    obtenerElemento(
-        "botonSiguiente"
-    ).disabled = true;
-
-    actualizarMensajeBot();
-
 }
 
 
-/* ============================================================
-   COMPROBAR RESPUESTA
-============================================================ */
-
-function comprobarRespuesta(
-    respuesta,
-    boton
-) {
-
-    if (respuestaContestada) {
-        return;
-    }
-
-    if (vidas <= 0) {
-
-        mostrarAvisoSinVidas();
-
-        return;
-
-    }
-
-    respuestaContestada = true;
-
-    const correcta =
-        respuesta ===
-        preguntaActual.correcta;
-
-    const botones =
-        document.querySelectorAll(
-            "#opcionesReto .opcion"
-        );
-
-    botones.forEach(btn => {
-
-        btn.disabled = true;
-
-        if (
-            btn.textContent ===
-            preguntaActual.correcta
-        ) {
-
-            btn.classList.add(
-                "correcta"
-            );
-
-        }
-
-    });
-
-
-    const resultado =
-        obtenerElemento(
-            "resultado"
-        );
-
-
-    if (correcta) {
-
-        boton.classList.add(
-            "correcta"
-        );
-
-        puntos += 10;
-
-        respuestasCorrectas++;
-
-        resultado.className =
-            "resultado correcto";
-
-        resultado.textContent =
-            "✅ ¡Correcto! +10 puntos";
-
-    } else {
-
-        boton.classList.add(
-            "incorrecta"
-        );
-
-        vidas--;
-
-        resultado.className =
-            "resultado incorrecto";
-
-        resultado.textContent =
-            `❌ Incorrecto. La respuesta era: ${preguntaActual.correcta}`;
-
-    }
-
-
-    const estado =
-        estadoPreguntas[temaActual];
-
-    if (
-        !estado.respondidas.includes(
-            indicePregunta
-        )
-    ) {
-
-        estado.respondidas.push(
-            indicePregunta
-        );
-
-    }
-
-
-    if (
-        estado.respondidas.length === 5
-    ) {
-
-        estado.completada = true;
-
-    }
-
-
-    actualizarMarcadores();
-
-    guardarProgreso();
-
-
-    if (vidas <= 0) {
-
-        setTimeout(
-            mostrarAvisoSinVidas,
-            500
-        );
-
-        return;
-
-    }
-
-
-    obtenerElemento(
-        "botonSiguiente"
-    ).disabled = false;
-
-}
-
-
-/* ============================================================
-   SIGUIENTE
-============================================================ */
-
-function siguientePregunta() {
-
-    if (!respuestaContestada) {
-        return;
-    }
-
-    if (vidas <= 0) {
-
-        mostrarAvisoSinVidas();
-
-        return;
-
-    }
-
-    cargarPregunta();
-
-}
-
-
-/* ============================================================
-   CATEGORÍA COMPLETADA
-============================================================ */
-
-function mostrarCategoriaCompletada() {
-
-    const tema =
-        temas[temaActual];
-
-    obtenerElemento(
-        "preguntaReto"
-    ).innerHTML =
-        `🎉 ¡Terminaste ${tema.titulo}!`;
-
-    obtenerElemento(
-        "opcionesReto"
-    ).innerHTML = "";
-
-    obtenerElemento(
-        "resultado"
-    ).textContent =
-        "Puedes elegir otra subcategoría.";
-
-    obtenerElemento(
-        "numeroPregunta"
-    ).textContent =
-        "5 de 5 completadas";
-
-    obtenerElemento(
-        "botonSiguiente"
-    ).disabled = true;
-
-    actualizarMensajeBot(
-        `¡Excelente! Terminaste ${tema.titulo}. Elige otra categoría.`
-    );
-
-}
-
-
-/* ============================================================
-   VERIFICAR TODAS LAS CATEGORÍAS
-============================================================ */
-
-function verificarTodasCategorias() {
-
-    const todas =
-        Object.values(
-            estadoPreguntas
-        ).every(
-            estado =>
-                estado.completada
-        );
-
-    if (!todas) {
-        return;
-    }
-
-    setTimeout(
-        mostrarAvisoRetoFinal,
-        700
-    );
-
-}
-
-
-/* ============================================================
-   MOSTRAR RETO FINAL
-============================================================ */
-
-function mostrarAvisoRetoFinal() {
+/* =========================================================
+   RECUPERACIÓN DE VIDA
+========================================================= */
+
+function mostrarRecuperacion() {
 
     const modal =
-        obtenerElemento(
-            "modalRetoFinal"
-        );
-
-    if (!modal) {
-        return;
-    }
-
-    modal.classList.add(
-        "visible"
-    );
-
-}
-
-
-/* ============================================================
-   INICIAR RETO FINAL
-============================================================ */
-
-function iniciarRetoFinal() {
-
-    const modal =
-        obtenerElemento(
-            "modalRetoFinal"
-        );
-
-    modal.classList.remove(
-        "visible"
-    );
-
-    indicePreguntaFinal = 0;
-
-    cargarPreguntaFinal();
-
-    obtenerElemento(
-        "modalPreguntasFinales"
-    ).classList.add(
-        "visible"
-    );
-
-}
-
-
-/* ============================================================
-   CARGAR PREGUNTA FINAL
-============================================================ */
-
-function cargarPreguntaFinal() {
-
-    preguntaFinalActual =
-        preguntasFinales[
-            indicePreguntaFinal
-        ];
-
-    respuestaFinalContestada =
-        false;
-
-    obtenerElemento(
-        "numeroFinal"
-    ).textContent =
-        indicePreguntaFinal + 1;
-
-    obtenerElemento(
-        "preguntaFinal"
-    ).textContent =
-        preguntaFinalActual.pregunta;
-
-    obtenerElemento(
-        "resultadoFinalPregunta"
-    ).textContent = "";
-
-    obtenerElemento(
-        "resultadoFinalPregunta"
-    ).className =
-        "resultado";
-
-    obtenerElemento(
-        "btnSiguienteFinal"
-    ).disabled = true;
-
-    const contenedor =
-        obtenerElemento(
-            "opcionesFinales"
-        );
-
-    contenedor.innerHTML = "";
-
-    preguntaFinalActual.opciones.forEach(
-        opcion => {
-
-            const boton =
-                document.createElement(
-                    "button"
-                );
-
-            boton.type = "button";
-
-            boton.className =
-                "opcion";
-
-            boton.textContent =
-                opcion;
-
-            boton.onclick = () =>
-                comprobarPreguntaFinal(
-                    opcion,
-                    boton
-                );
-
-            contenedor.appendChild(
-                boton
-            );
-
-        }
-    );
-
-}
-
-
-/* ============================================================
-   COMPROBAR FINAL
-============================================================ */
-
-function comprobarPreguntaFinal(
-    respuesta,
-    boton
-) {
-
-    if (respuestaFinalContestada) {
-        return;
-    }
-
-    respuestaFinalContestada = true;
-
-    const correcta =
-        respuesta ===
-        preguntaFinalActual.correcta;
-
-    const botones =
-        document.querySelectorAll(
-            "#opcionesFinales .opcion"
-        );
-
-    botones.forEach(btn => {
-
-        btn.disabled = true;
-
-        if (
-            btn.textContent ===
-            preguntaFinalActual.correcta
-        ) {
-
-            btn.classList.add(
-                "correcta"
-            );
-
-        }
-
-    });
-
-
-    const resultado =
-        obtenerElemento(
-            "resultadoFinalPregunta"
-        );
-
-
-    if (correcta) {
-
-        boton.classList.add(
-            "correcta"
-        );
-
-        puntos += 10;
-
-        respuestasCorrectas++;
-
-        resultado.className =
-            "resultado correcto";
-
-        resultado.textContent =
-            "✅ ¡Correcto! +10 puntos";
-
-    } else {
-
-        boton.classList.add(
-            "incorrecta"
-        );
-
-        resultado.className =
-            "resultado incorrecto";
-
-        resultado.textContent =
-            `❌ Incorrecto. Era: ${preguntaFinalActual.correcta}`;
-
-    }
-
-
-    actualizarMarcadores();
-
-    guardarProgreso();
-
-
-    obtenerElemento(
-        "btnSiguienteFinal"
-    ).disabled = false;
-
-}
-
-
-/* ============================================================
-   SIGUIENTE FINAL
-============================================================ */
-
-function siguientePreguntaFinal() {
-
-    if (!respuestaFinalContestada) {
-        return;
-    }
-
-    indicePreguntaFinal++;
-
-    if (
-        indicePreguntaFinal >=
-        preguntasFinales.length
-    ) {
-
-        terminarRetoFinal();
-
-        return;
-
-    }
-
-    cargarPreguntaFinal();
-
-}
-
-
-/* ============================================================
-   TERMINAR RETO FINAL
-============================================================ */
-
-function terminarRetoFinal() {
-
-    obtenerElemento(
-        "modalPreguntasFinales"
-    ).classList.remove(
-        "visible"
-    );
-
-
-    const porcentaje =
-        Math.round(
-            (
-                respuestasCorrectas /
-                (TOTAL_PREGUNTAS + 30)
-            ) * 100
-        );
-
-
-    obtenerElemento(
-        "puntosFinales"
-    ).textContent =
-        puntos;
-
-
-    obtenerElemento(
-        "correctasFinales"
-    ).textContent =
-        respuestasCorrectas;
-
-
-    obtenerElemento(
-        "textoResultadoFinal"
-    ).textContent =
-        `Has terminado toda la aventura de Francia. Tu progreso general es del ${porcentaje}%.`;
-
-
-    obtenerElemento(
-        "modalResultadoFinal"
-    ).classList.add(
-        "visible"
-    );
-
-
-    localStorage.setItem(
-        CLAVE_GUARDADO + "_completado",
-        "true"
-    );
-
-}
-
-
-/* ============================================================
-   CERRAR RESULTADO FINAL
-============================================================ */
-
-function cerrarResultadoFinal() {
-
-    obtenerElemento(
-        "modalResultadoFinal"
-    ).classList.remove(
-        "visible"
-    );
-
-}
-
-
-/* ============================================================
-   RECUPERACIÓN
-============================================================ */
-
-function mostrarAvisoSinVidas() {
-
-    if (vidas > 0) {
-        return;
-    }
-
-    juegoBloqueadoPorVidas = true;
-
-    const modal =
-        obtenerElemento(
+        document.getElementById(
             "modalRecuperacion"
         );
 
-    if (!modal) {
-        return;
-    }
 
-    obtenerElemento(
-        "inicioRecuperacion"
-    ).style.display =
-        "block";
+    if (modal) {
 
-    obtenerElemento(
-        "preguntaRecuperacionBox"
-    ).style.display =
-        "none";
-
-    obtenerElemento(
-        "resultadoRecuperacion"
-    ).textContent = "";
-
-    modal.classList.add(
-        "visible"
-    );
-
-}
-
-
-/* ============================================================
-   COMENZAR RECUPERACIÓN
-============================================================ */
-
-function comenzarRetoRecuperacion() {
-
-    retoRecuperacionActivo = true;
-
-    retoRecuperacionSuperado = false;
-
-    obtenerElemento(
-        "inicioRecuperacion"
-    ).style.display =
-        "none";
-
-    const box =
-        obtenerElemento(
-            "preguntaRecuperacionBox"
+        modal.classList.add(
+            "mostrar"
         );
 
-    box.style.display =
-        "block";
-
-    box.classList.add(
-        "activa"
-    );
-
-    cargarPreguntaRecuperacion();
-
-}
-
-
-/* ============================================================
-   CARGAR RECUPERACIÓN
-============================================================ */
-
-function cargarPreguntaRecuperacion() {
-
-    const pregunta =
-        preguntasRecuperacion[
-            Math.floor(
-                Math.random() *
-                preguntasRecuperacion.length
-            )
-        ];
-
-
-    obtenerElemento(
-        "preguntaRecuperacion"
-    ).textContent =
-        pregunta.pregunta;
-
-
-    obtenerElemento(
-        "resultadoRecuperacion"
-    ).textContent = "";
-
-
-    const contenedor =
-        obtenerElemento(
-            "opcionesRecuperacion"
-        );
-
-    contenedor.innerHTML = "";
-
-
-    preguntasRecuperacionPreguntaActual =
-        pregunta;
-
-
-    pregunta.opciones.forEach(
-        opcion => {
-
-            const boton =
-                document.createElement(
-                    "button"
-                );
-
-            boton.className =
-                "opcion-recuperacion";
-
-            boton.textContent =
-                opcion;
-
-            boton.onclick = () =>
-                comprobarRecuperacion(
-                    opcion,
-                    boton
-                );
-
-            contenedor.appendChild(
-                boton
-            );
-
-        }
-    );
-
-}
-
-
-/* ============================================================
-   VARIABLE RECUPERACIÓN
-============================================================ */
-
-let preguntasRecuperacionPreguntaActual = null;
-
-
-/* ============================================================
-   COMPROBAR RECUPERACIÓN
-============================================================ */
-
-function comprobarRecuperacion(
-    respuesta,
-    boton
-) {
-
-    if (
-        !retoRecuperacionActivo ||
-        retoRecuperacionSuperado
-    ) {
         return;
     }
 
 
-    const correcta =
-        respuesta ===
-        preguntasRecuperacionPreguntaActual.correcta;
-
-
-    if (correcta) {
-
-        retoRecuperacionSuperado =
-            true;
-
-
-        document
-            .querySelectorAll(
-                "#opcionesRecuperacion .opcion-recuperacion"
-            )
-            .forEach(btn => {
-
-                btn.disabled = true;
-
-                if (
-                    btn.textContent ===
-                    preguntasRecuperacionPreguntaActual.correcta
-                ) {
-
-                    btn.classList.add(
-                        "correcta"
-                    );
-
-                }
-
-            });
-
-
-        boton.classList.add(
-            "correcta"
+    const existente =
+        document.getElementById(
+            "recuperacionVidaAutomatico"
         );
 
 
-        obtenerElemento(
-            "resultadoRecuperacion"
-        ).className =
-            "resultado-recuperacion correcto";
-
-
-        obtenerElemento(
-            "resultadoRecuperacion"
-        ).textContent =
-            "🎉 ¡Correcto! Has recuperado tus 5 vidas.";
-
-
-        const continuar =
-            obtenerElemento(
-                "btnContinuarRecuperacion"
-            );
-
-        continuar.style.display =
-            "inline-block";
-
-
-    } else {
-
-        boton.disabled = true;
-
-        boton.classList.add(
-            "incorrecta"
-        );
-
-
-        obtenerElemento(
-            "resultadoRecuperacion"
-        ).className =
-            "resultado-recuperacion incorrecto";
-
-
-        obtenerElemento(
-            "resultadoRecuperacion"
-        ).textContent =
-            "❌ Incorrecto. Intenta con otra opción.";
-
-    }
-
+    if (existente) return;
 }
 
 
-/* ============================================================
-   CONTINUAR
-============================================================ */
+function recuperarVida() {
 
-function continuarDespuesRecuperacion() {
+    estado.vidas = 1;
 
-    if (!retoRecuperacionSuperado) {
-        return;
-    }
-
-
-    vidas = MAX_VIDAS;
-
-    juegoBloqueadoPorVidas = false;
-
-    retoRecuperacionActivo = false;
-
-    retoRecuperacionSuperado = false;
-
-
-    obtenerElemento(
-        "modalRecuperacion"
-    ).classList.remove(
-        "visible"
-    );
-
-
-    actualizarMarcadores();
-
-    cargarPregunta();
+    estado.respondida = false;
 
     guardarProgreso();
 
-    actualizarMensajeBot(
-        "❤️‍🩹 ¡Vidas recuperadas! Puedes continuar."
+    actualizarPanel();
+
+
+    const modal =
+        document.getElementById(
+            "modalRecuperacion"
+        );
+
+
+    if (modal) {
+
+        modal.classList.remove(
+            "mostrar"
+        );
+    }
+
+
+    cargarCategoria(
+        estado.categoriaActual
+    );
+}
+
+
+/* =========================================================
+   RETO FINAL
+========================================================= */
+
+let preguntaFinalActual = 0;
+let correctasFinal = 0;
+let puntosFinal = 0;
+
+
+function mostrarRetoFinal() {
+
+    const modal =
+        document.getElementById(
+            "modalRetoFinal"
+        );
+
+
+    if (modal) {
+
+        iniciarRetoFinal();
+
+        return;
+    }
+
+
+    iniciarRetoFinalEnPantalla();
+}
+
+
+/* =========================================================
+   INICIAR RETO FINAL
+========================================================= */
+
+function iniciarRetoFinal() {
+
+    preguntaFinalActual = 0;
+    correctasFinal = 0;
+    puntosFinal = 0;
+
+
+    const modal =
+        document.getElementById(
+            "modalRetoFinal"
+        );
+
+
+    if (!modal) {
+
+        iniciarRetoFinalEnPantalla();
+
+        return;
+    }
+
+
+    modal.innerHTML = `
+
+        <div class="reto-final-estilo">
+
+            <button
+                type="button"
+                class="cerrar-modal"
+                id="cerrarRetoFinal">
+                ×
+            </button>
+
+
+            <small>
+                RETO FINAL
+            </small>
+
+
+            <h2>
+                🏆 Demuestra lo que aprendiste
+            </h2>
+
+
+            <p id="contadorFinal">
+                Pregunta 1 de ${preguntasRetoFinal.length}
+            </p>
+
+
+            <div
+                id="preguntaFinal">
+            </div>
+
+
+            <div
+                id="opcionesFinal">
+            </div>
+
+
+            <div
+                id="feedbackFinal">
+            </div>
+
+
+            <button
+                type="button"
+                id="btnSiguienteFinal"
+                disabled>
+                Siguiente
+            </button>
+
+        </div>
+    `;
+
+
+    modal.classList.add(
+        "mostrar"
     );
 
+
+    document
+        .getElementById(
+            "cerrarRetoFinal"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                modal.classList.remove(
+                    "mostrar"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            "btnSiguienteFinal"
+        )
+        .addEventListener(
+            "click",
+            siguientePreguntaFinal
+        );
+
+
+    mostrarPreguntaFinal();
 }
 
 
-/* ============================================================
-   MARCADORES
-============================================================ */
+/* =========================================================
+   MOSTRAR PREGUNTA FINAL
+========================================================= */
 
-function actualizarMarcadores() {
+function mostrarPreguntaFinal() {
 
-    obtenerElemento(
-        "puntos"
-    ).textContent =
-        puntos;
-
-
-    obtenerElemento(
-        "vidas"
-    ).textContent =
-        vidas;
+    const pregunta =
+        preguntasRetoFinal[
+            preguntaFinalActual
+        ];
 
 
-    actualizarProgreso();
+    if (!pregunta) return;
 
+
+    const preguntaFinal =
+        document.getElementById(
+            "preguntaFinal"
+        );
+
+    const opcionesFinal =
+        document.getElementById(
+            "opcionesFinal"
+        );
+
+    const feedbackFinal =
+        document.getElementById(
+            "feedbackFinal"
+        );
+
+    const contadorFinal =
+        document.getElementById(
+            "contadorFinal"
+        );
+
+    const siguiente =
+        document.getElementById(
+            "btnSiguienteFinal"
+        );
+
+
+    if (contadorFinal) {
+
+        contadorFinal.textContent =
+            `Pregunta ${preguntaFinalActual + 1} de ${preguntasRetoFinal.length}`;
+    }
+
+
+    if (preguntaFinal) {
+
+        preguntaFinal.textContent =
+            pregunta[0];
+    }
+
+
+    if (opcionesFinal) {
+
+        opcionesFinal.innerHTML = "";
+
+
+        pregunta[1].forEach(
+            (respuesta, indice) => {
+
+                const boton =
+                    document.createElement(
+                        "button"
+                    );
+
+                boton.type = "button";
+
+                boton.className =
+                    "option";
+
+                boton.textContent =
+                    respuesta;
+
+
+                boton.addEventListener(
+                    "click",
+                    () => {
+
+                        comprobarRespuestaFinal(
+                            indice,
+                            boton
+                        );
+
+                    }
+                );
+
+
+                opcionesFinal.appendChild(
+                    boton
+                );
+
+            }
+        );
+    }
+
+
+    if (feedbackFinal) {
+
+        feedbackFinal.textContent = "";
+
+        feedbackFinal.className =
+            "";
+    }
+
+
+    if (siguiente) {
+
+        siguiente.disabled = true;
+    }
 }
 
 
-/* ============================================================
-   PROGRESO
-============================================================ */
+/* =========================================================
+   COMPROBAR RETO FINAL
+========================================================= */
 
-function actualizarProgreso() {
+function comprobarRespuestaFinal(
+    indice,
+    boton
+) {
 
-    let total =
-        0;
+    const pregunta =
+        preguntasRetoFinal[
+            preguntaFinalActual
+        ];
 
 
-    Object.values(
-        estadoPreguntas
-    ).forEach(
-        estado => {
+    const correcta =
+        pregunta[2];
 
-            total +=
-                estado.respondidas.length;
 
+    document
+        .querySelectorAll(
+            "#opcionesFinal .option"
+        )
+        .forEach(elemento => {
+
+            elemento.disabled = true;
+
+        });
+
+
+    const feedbackFinal =
+        document.getElementById(
+            "feedbackFinal"
+        );
+
+
+    if (indice === correcta) {
+
+        boton.classList.add(
+            "correct"
+        );
+
+        correctasFinal++;
+
+        puntosFinal += 10;
+
+
+        if (feedbackFinal) {
+
+            feedbackFinal.textContent =
+                "✓ ¡Correcto! +10 puntos";
+
+            feedbackFinal.className =
+                "feedback correct";
         }
-    );
 
+    } else {
+
+        boton.classList.add(
+            "incorrect"
+        );
+
+
+        const botones =
+            document.querySelectorAll(
+                "#opcionesFinal .option"
+            );
+
+
+        if (botones[correcta]) {
+
+            botones[correcta].classList.add(
+                "correct"
+            );
+        }
+
+
+        if (feedbackFinal) {
+
+            feedbackFinal.textContent =
+                "✗ Respuesta incorrecta.";
+
+            feedbackFinal.className =
+                "feedback incorrect";
+        }
+    }
+
+
+    const siguiente =
+        document.getElementById(
+            "btnSiguienteFinal"
+        );
+
+
+    if (siguiente) {
+
+        siguiente.disabled = false;
+    }
+}
+
+
+/* =========================================================
+   SIGUIENTE RETO FINAL
+========================================================= */
+
+function siguientePreguntaFinal() {
+
+    preguntaFinalActual++;
+
+
+    if (
+        preguntaFinalActual >=
+        preguntasRetoFinal.length
+    ) {
+
+        finalizarRetoFinal();
+
+        return;
+    }
+
+
+    mostrarPreguntaFinal();
+}
+
+
+/* =========================================================
+   FINALIZAR RETO FINAL
+========================================================= */
+
+function finalizarRetoFinal() {
 
     const porcentaje =
         Math.round(
             (
-                total /
-                TOTAL_PREGUNTAS
+                correctasFinal /
+                preguntasRetoFinal.length
             ) * 100
         );
 
 
-    obtenerElemento(
-        "porcentaje"
-    ).textContent =
-        `${porcentaje}%`;
+    estado.mejorRetoFinal = {
+
+        correctas:
+            correctasFinal,
+
+        puntos:
+            puntosFinal,
+
+        porcentaje:
+            porcentaje
+
+    };
 
 
-    obtenerElemento(
-        "retosCompletados"
-    ).textContent =
-        total;
+    estado.puntos +=
+        puntosFinal;
 
 
-    obtenerElemento(
-        "respuestasCorrectas"
-    ).textContent =
-        respuestasCorrectas;
+    guardarProgreso();
+
+    actualizarPanel();
 
 
-    const circulo =
-        obtenerElemento(
-            "circuloProgreso"
+    const modal =
+        document.getElementById(
+            "modalRetoFinal"
         );
 
 
-    const radio = 50;
-
-    const circunferencia =
-        2 *
-        Math.PI *
-        radio;
+    if (!modal) return;
 
 
-    circulo.style.strokeDasharray =
-        circunferencia;
+    modal.innerHTML = `
+
+        <div class="reto-final-estilo">
+
+            <div
+                style="font-size:50px;">
+                🏆
+            </div>
 
 
-    circulo.style.strokeDashoffset =
-        circunferencia *
-        (
-            1 -
-            porcentaje / 100
+            <h2>
+                ¡Reto final completado!
+            </h2>
+
+
+            <p>
+                Has terminado el reto final de Francia.
+            </p>
+
+
+            <div style="margin:20px 0;">
+
+                <strong>
+                    ${correctasFinal}
+                    / ${preguntasRetoFinal.length}
+                    respuestas correctas
+                </strong>
+
+
+                <br><br>
+
+
+                <strong>
+                    ${porcentaje}% de aciertos
+                </strong>
+
+
+                <br><br>
+
+
+                <strong>
+                    +${puntosFinal} puntos
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="cerrarFinal">
+                Continuar
+            </button>
+
+        </div>
+    `;
+
+
+    const cerrar =
+        document.getElementById(
+            "cerrarFinal"
         );
 
 
-    let mensaje =
-        "¡Comienza tu aventura!";
+    if (cerrar) {
 
+        cerrar.addEventListener(
+            "click",
+            () => {
 
-    if (porcentaje >= 25 && porcentaje < 50) {
+                modal.classList.remove(
+                    "mostrar"
+                );
 
-        mensaje =
-            "¡Vas avanzando muy bien!";
-
-    } else if (
-        porcentaje >= 50 &&
-        porcentaje < 75
-    ) {
-
-        mensaje =
-            "¡Ya conoces bastante de Francia!";
-
-    } else if (
-        porcentaje >= 75 &&
-        porcentaje < 100
-    ) {
-
-        mensaje =
-            "¡Estás muy cerca de completar Francia!";
-
-    } else if (
-        porcentaje >= 100
-    ) {
-
-        mensaje =
-            "🏆 ¡Completaste las categorías!";
-
+            }
+        );
     }
-
-
-    obtenerElemento(
-        "mensajeProgreso"
-    ).textContent =
-        mensaje;
-
 }
 
 
-/* ============================================================
-   MENSAJE BOT
-============================================================ */
+/* =========================================================
+   RETO FINAL SIN MODAL
+========================================================= */
 
-function actualizarMensajeBot(
-    mensajePersonalizado = null
-) {
+function iniciarRetoFinalEnPantalla() {
 
-    const mensaje =
-        obtenerElemento(
-            "mensajeBot"
+    const contenido =
+        document.getElementById(
+            estado.categoriaActual
         );
 
 
-    if (!mensaje) {
-        return;
-    }
+    if (!contenido) return;
 
 
-    if (mensajePersonalizado) {
-
-        mensaje.textContent =
-            mensajePersonalizado;
-
-        return;
-
-    }
+    const quiz =
+        contenido.querySelector(
+            ".reto-card"
+        );
 
 
-    const estado =
-        estadoPreguntas[temaActual];
+    if (!quiz) return;
 
 
-    const completadas =
-        estado
-            ? estado.respondidas.length
-            : 0;
+    quiz.innerHTML = `
+
+        <div class="reto-header">
+
+            <span class="left">
+                🏆 Reto Final
+            </span>
+
+        </div>
 
 
-    mensaje.textContent =
-        `Has completado ${completadas} de 5 preguntas de esta categoría.`;
+        <div class="question-text">
 
+            Has completado todas las categorías.
+
+        </div>
+
+
+        <p style="margin-top:15px;">
+
+            ¡Excelente trabajo! Ahora puedes realizar
+            el Reto Final de Francia.
+
+        </p>
+
+    `;
 }
 
 
-/* ============================================================
-   AUDIO
-============================================================ */
+/* =========================================================
+   BOTÓN RETO FINAL DEL HTML
+========================================================= */
 
-function escuchar() {
+function configurarRetoFinal() {
 
-    if (
-        !("speechSynthesis" in window)
-    ) {
-
-        alert(
-            "Tu navegador no permite reproducir audio."
-        );
-
-        return;
-
-    }
+    if (!btnRetoFinal) return;
 
 
-    const tema =
-        temas[temaActual];
-
-
-    speechSynthesis.cancel();
-
-
-    const voz =
-        new SpeechSynthesisUtterance(
-            `${tema.titulo}. ${tema.dato}`
-        );
-
-
-    voz.lang = "es-ES";
-
-    voz.rate = 0.9;
-
-    voz.pitch = 1;
-
-
-    speechSynthesis.speak(
-        voz
+    btnRetoFinal.addEventListener(
+        "click",
+        mostrarRetoFinal
     );
-
 }
 
 
-/* ============================================================
-   REINICIAR FRANCIA
-============================================================ */
-
-function reiniciarFrancia() {
-
-    localStorage.removeItem(
-        CLAVE_GUARDADO
-    );
-
-    localStorage.removeItem(
-        CLAVE_GUARDADO + "_completado"
-    );
-
-    location.reload();
-
-}
-
-
-/* ============================================================
-   FUNCIONES GLOBALES
-============================================================ */
-
-window.cambiarTema =
-    cambiarTema;
-
-window.siguientePregunta =
-    siguientePregunta;
-
-window.iniciarRetoFinal =
-    iniciarRetoFinal;
-
-window.siguientePreguntaFinal =
-    siguientePreguntaFinal;
-
-window.comenzarRetoRecuperacion =
-    comenzarRetoRecuperacion;
-
-window.continuarDespuesRecuperacion =
-    continuarDespuesRecuperacion;
-
-window.cerrarResultadoFinal =
-    cerrarResultadoFinal;
-
-window.escuchar =
-    escuchar;
-
-window.reiniciarFrancia =
-    reiniciarFrancia;
-
-
-/* ============================================================
+/* =========================================================
    INICIAR
-============================================================ */
+========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
 
+        obtenerElementos();
+
         cargarProgreso();
 
-        actualizarMarcadores();
+        configurarCategorias();
 
-        document
-            .querySelectorAll(
-                ".menu-btn"
-            )
-            .forEach(btn => {
+        configurarGuardar();
 
-                btn.classList.remove(
-                    "activo"
-                );
+        configurarRetoFinal();
 
-                if (
-                    btn.dataset.tema ===
-                    temaActual
-                ) {
-
-                    btn.classList.add(
-                        "activo"
-                    );
-
-                }
-
-            });
-
-
-        cargarTema();
-
-
-        if (vidas <= 0) {
-
-            setTimeout(
-                mostrarAvisoSinVidas,
-                500
-            );
-
-        }
-
-    }
-);
-
-
-/* ============================================================
-   GUARDAR AL SALIR
-============================================================ */
-
-window.addEventListener(
-    "beforeunload",
-    () => {
-
-        guardarProgreso();
 
         if (
-            "speechSynthesis" in window
+            !categorias[
+                estado.categoriaActual
+            ]
         ) {
 
-            speechSynthesis.cancel();
-
+            estado.categoriaActual =
+                "civilizaciones";
         }
+
+
+        actualizarPanel();
+
+
+        cargarCategoria(
+            estado.categoriaActual
+        );
 
     }
 );

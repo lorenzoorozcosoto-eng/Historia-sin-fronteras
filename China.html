@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Sin Fronteras - China</title>
+    <link rel="stylesheet" href="China.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="logo-area">
+            <div class="logo">🌎</div>
+            <h2>Historia<br>Sin Fronteras</h2>
+        </div>
+
+        <nav class="menu">
+
+            <!-- ================= HISTORIA ================= -->
+            <h3>📜 Historia</h3>
+
+            <button type="button"
+                    class="menu-btn activo"
+                    data-tema="primerasCivilizaciones"
+                    onclick="cambiarTema('primerasCivilizaciones', this)">
+                🏯 Primeras civilizaciones
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="dinastias"
+                    onclick="cambiarTema('dinastias', this)">
+                👑 Dinastías
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="rutaSeda"
+                    onclick="cambiarTema('rutaSeda', this)">
+                🐫 Ruta de la Seda
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="imperio"
+                    onclick="cambiarTema('imperio', this)">
+                🐉 Imperio chino
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="revolucion"
+                    onclick="cambiarTema('revolucion', this)">
+                ⚔️ Revolución china
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="republica"
+                    onclick="cambiarTema('republica', this)">
+                🇨🇳 República Popular China
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="actualidad"
+                    onclick="cambiarTema('actualidad', this)">
+                🌏 China contemporánea
+            </button>
+
+
+            <!-- ================= CULTURA ================= -->
+            <h3>🏺 Cultura</h3>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="gastronomia"
+                    onclick="cambiarTema('gastronomia', this)">
+                🥢 Gastronomía
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="musica"
+                    onclick="cambiarTema('musica', this)">
+                🎵 Música y bailes
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="tradiciones"
+                    onclick="cambiarTema('tradiciones', this)">
+                🏮 Tradiciones
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="fiestas"
+                    onclick="cambiarTema('fiestas', this)">
+                🎉 Fiestas
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="vestimenta"
+                    onclick="cambiarTema('vestimenta', this)">
+                👘 Vestimenta
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="arte"
+                    onclick="cambiarTema('arte', this)">
+                🎨 Arte y literatura
+            </button>
+
+            <button type="button"
+                    class="menu-btn"
+                    data-tema="monumentos"
+                    onclick="cambiarTema('monumentos', this)">
+                🏯 Monumentos y lugares culturales
+            </button>
+
+        </nav>
+
+
+        <!-- ================= PAÍS ================= -->
+        <div class="pais-card">
+
+            <div class="bandera">🇨🇳</div>
+
+            <div>
+                <strong>China</strong>
+                <p>Asia</p>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= CONTENIDO CENTRAL ================= -->
+    <main class="contenido">
+
+        <!-- ================= CABECERA ================= -->
+        <header class="cabecera">
+
+            <div class="titulo">
+
+                <div class="titulo-icono" id="iconoTema">
+                    🏯
+                </div>
+
+                <div>
+
+                    <h1 id="tituloTema">
+                        Primeras civilizaciones
+                    </h1>
+
+                    <p id="subtituloTema">
+                        Conoce las primeras civilizaciones que surgieron en el territorio de China.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ESTADÍSTICAS -->
+            <div class="estadisticas">
+
+                <div class="estadistica puntos">
+
+                    <span>⭐</span>
+
+                    <div>
+                        <span>Puntos</span>
+                        <strong id="puntos">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="estadistica vidas">
+
+                    <span>❤️</span>
+
+                    <div>
+                        <span>Vidas</span>
+                        <strong id="vidas">5</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= MENSAJE DEL ROBOT ================= -->
+        <section class="mensaje-robot">
+
+            <div class="robot">
+                🤖
+            </div>
+
+            <div>
+
+                <strong>¡Hola, explorador!</strong>
+
+                <p id="mensajeBot">
+                    Responde las preguntas y descubre la historia y cultura de China.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= INFORMACIÓN ================= -->
+        <section class="informacion">
+
+            <div class="imagen-container">
+
+                <img id="imagenTema"
+                     src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=80"
+                     alt="Paisaje y cultura de China">
+
+                <button type="button"
+                        class="boton-audio"
+                        onclick="reproducirAudio()">
+
+                    🔊 Escuchar explicación
+
+                </button>
+
+            </div>
+
+
+            <!-- ================= DATO INTERESANTE ================= -->
+            <div class="dato-box">
+
+                <h3>
+                    💡 Dato interesante
+                </h3>
+
+                <p id="datoCurioso">
+                    China posee una de las civilizaciones más antiguas del mundo y cuenta con una historia de miles de años.
+                </p>
+
+            </div>
+
+
+            <!-- ================= LUGARES ================= -->
+            <div class="regiones-box">
+
+                <h3>
+                    📍 Lugares relacionados
+                </h3>
+
+                <p id="regiones">
+                    Beijing • Shanghái • Xi'an • Hong Kong
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MINI RETO ================= -->
+        <section class="reto">
+
+            <div class="reto-titulo">
+
+                <span>🎯</span>
+
+                <div>
+
+                    <h2>Mini reto</h2>
+
+                    <p>
+                        Demuestra lo que aprendiste
+                    </p>
+
+                </div>
+
+                <div style="margin-left:auto; font-size:13px; color:#888;"
+                     id="numeroPregunta">
+
+                    1 / 5
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= PREGUNTA ================= -->
+            <div class="pregunta">
+
+                <h3 id="preguntaReto">
+
+                    ¿Cuál de estas civilizaciones se desarrolló en el territorio de la antigua China?
+
+                </h3>
+
+            </div>
+
+
+            <!-- ================= OPCIONES ================= -->
+            <div class="opciones"
+                 id="opcionesReto">
+            </div>
+
+
+            <!-- ================= RESULTADO ================= -->
+            <div class="resultado"
+                 id="resultado">
+            </div>
+
+
+            <!-- ================= SIGUIENTE ================= -->
+            <button type="button"
+                    class="boton-siguiente"
+                    id="botonSiguiente"
+                    onclick="siguientePregunta()"
+                    disabled>
+
+                Siguiente →
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= PANEL DERECHO ================= -->
+    <aside class="panel-derecho">
+
+
+        <!-- ================= PROGRESO ================= -->
+        <div class="progreso-card">
+
+            <h2>
+                📈 Mi progreso
+            </h2>
+
+
+            <div class="circulo-progreso">
+
+                <svg viewBox="0 0 120 120">
+
+                    <circle class="circulo-fondo"
+                            cx="60"
+                            cy="60"
+                            r="50">
+                    </circle>
+
+                    <circle class="circulo-avance"
+                            id="circuloProgreso"
+                            cx="60"
+                            cy="60"
+                            r="50">
+                    </circle>
+
+                </svg>
+
+
+                <div class="porcentaje">
+
+                    <strong id="porcentaje">
+                        0%
+                    </strong>
+
+                    <span>
+                        completado
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= DATOS ================= -->
+            <div class="datos-progreso">
+
+                <div>
+
+                    <strong id="retosCompletados">
+                        0
+                    </strong>
+
+                    <span>
+                        Retos
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="respuestasCorrectas">
+                        0
+                    </strong>
+
+                    <span>
+                        Correctas
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p id="mensajeProgreso"
+               class="mensaje-progreso">
+
+                ¡Empieza a explorar! 🚀
+
+            </p>
+
+
+            <!-- ================= GUARDAR ================= -->
+            <button type="button"
+                    class="pg-guardar"
+                    onclick="guardarProgreso()"
+                    style="display:block;margin:15px auto 0;padding:10px 16px;border:none;border-radius:12px;background:#eee;cursor:pointer;font-size:13px;">
+
+                💾 Guardar el progreso
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= SOBRE CHINA ================= -->
+        <div class="sobre-card">
+
+            <h2>
+                📚 Explora China
+            </h2>
+
+            <p id="sobreTexto">
+
+                Descubre las antiguas dinastías, la Ruta de la Seda, la Gran Muralla, sus tradiciones, su gastronomía y la gran diversidad cultural de China.
+
+            </p>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<!-- =========================================================
+     BOTÓN RETO FINAL
+========================================================= -->
+
+<div class="contenedor-reto-final">
+
+    <button type="button"
+            id="btnRetoFinal"
+            class="btn-reto-final"
+            onclick="comenzarRetoFinal()"
+            disabled>
+
+        🔒 Reto Final Bloqueado
+
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL RETO FINAL
+========================================================= -->
+
+<div id="modalRetoFinal"
+     class="modal-reto-final"
+     style="display:none;">
+
+    <div class="reto-final-card">
+
+
+        <!-- CERRAR -->
+        <button type="button"
+                class="cerrar-modal"
+                onclick="cerrarRetoFinal()">
+
+            ×
+
+        </button>
+
+
+        <!-- ICONO -->
+        <div class="icono-final">
+            CN
+        </div>
+
+
+        <!-- ENCABEZADO -->
+        <div class="reto-final-header">
+
+            <h2>
+                Reto Final de China
+            </h2>
+
+            <p>
+
+                ¡Has completado todas las categorías! Ahora demuestra todo lo que aprendiste sobre la historia y cultura de China.
+
+            </p>
+
+        </div>
+
+
+        <!-- CONTADOR -->
+        <div class="contador-final">
+
+            Pregunta
+
+            <b id="numeroPreguntaFinal">
+                1
+            </b>
+
+            / 30
+
+        </div>
+
+
+        <!-- PREGUNTA FINAL -->
+        <div class="pregunta-final-box">
+
+            <h3 id="preguntaFinal">
+
+                Aquí aparecerá la pregunta.
+
+            </h3>
+
+        </div>
+
+
+        <!-- OPCIONES -->
+        <div id="opcionesFinal"
+             class="opciones-final">
+        </div>
+
+
+        <!-- RESULTADO -->
+        <div id="resultadoFinal"
+             class="resultado-final">
+        </div>
+
+
+        <!-- MARCADORES -->
+        <div class="marcadores-final">
+
+            <div class="marcador-final">
+
+                <span>⭐</span>
+
+                <strong id="puntosFinales">
+                    0
+                </strong>
+
+                <span>
+                    Puntos
+                </span>
+
+            </div>
+
+
+            <div class="marcador-final">
+
+                <span>🎯</span>
+
+                <strong id="respuestasFinales">
+                    0
+                </strong>
+
+                <span>
+                    Correctas
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- SIGUIENTE -->
+        <button type="button"
+                id="btnSiguienteFinal"
+                class="btn-siguiente-final"
+                onclick="siguientePreguntaFinal()"
+                disabled>
+
+            Siguiente →
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL RECUPERACIÓN DE VIDAS
+========================================================= -->
+
+<div id="modalRecuperacion"
+     class="modal-recuperacion-overlay"
+     style="display:none;">
+
+    <div class="modal-recuperacion">
+
+
+        <!-- ================= INICIO RECUPERACIÓN ================= -->
+        <div id="inicioRecuperacion">
+
+            <div class="icono-modal">
+                ❤️
+            </div>
+
+            <h2>
+                ¡Te quedaste sin vidas!
+            </h2>
+
+            <p>
+                No puedes continuar con los mini retos por ahora.
+            </p>
+
+            <p>
+                Responde 5 preguntas y acierta al menos 3 para recuperar tus 5 vidas.
+            </p>
+
+            <button type="button"
+                    class="boton-recuperar"
+                    onclick="comenzarRetoRecuperacion()">
+
+                🎯 Recuperar vidas
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= PREGUNTAS DE RECUPERACIÓN ================= -->
+        <div id="preguntaRecuperacionBox"
+             style="display:none;">
+
+            <h3 id="preguntaRecuperacion">
+            </h3>
+
+
+            <div id="opcionesRecuperacion"
+                 class="opciones-recuperacion">
+            </div>
+
+
+            <div id="resultadoRecuperacion"
+                 class="resultado-recuperacion">
+            </div>
+
+
+            <button type="button"
+                    id="btnContinuarRecuperacion"
+                    class="boton-recuperar"
+                    onclick="continuarDespuesRecuperacion()"
+                    disabled>
+
+                Continuar →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     AVENTURA COMPLETADA
+========================================================= -->
+
+<div id="aventuraCompletada"
+     class="aventura-completada"
+     style="display:none;">
+
+    <div class="resultado-final-card">
+
+
+        <!-- ICONO -->
+        <div class="icono-final">
+            🏆
+        </div>
+
+
+        <h2>
+            ¡Aventura completada!
+        </h2>
+
+
+        <p>
+
+            Has terminado el Reto Final de China. Tu progreso quedó guardado y puedes empezar una nueva ronda.
+
+        </p>
+
+
+        <!-- RESUMEN -->
+        <div class="resultado-resumen">
+
+            <div>
+
+                <span>⭐</span>
+
+                <strong id="resultadoPuntosFinales">
+                    0
+                </strong>
+
+                <small>
+                    Puntos
+                </small>
+
+            </div>
+
+
+            <div>
+
+                <span>🎯</span>
+
+                <strong id="resultadoCorrectasFinales">
+                    0 / 30
+                </strong>
+
+                <small>
+                    Correctas
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- NUEVA RONDA -->
+        <button type="button"
+                class="boton-recuperar"
+                onclick="cerrarAventura()">
+
+            🌎 Empezar nueva ronda
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+<script src="Chica.js"></script>
+
+</body>
+</html>

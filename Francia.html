@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Historia Sin Fronteras - Francia</title>
+    <title>Historia Sin Fronteras – Francia</title>
 
     <link rel="stylesheet" href="Francia.css">
 </head>
@@ -12,595 +13,846 @@
 <body>
 
     <!-- =====================================================
-         ENCABEZADO
+         SIDEBAR
     ====================================================== -->
 
-    <header class="encabezado">
+    <aside class="sidebar">
 
-        <div class="marca">
-            <div class="logo">🌎</div>
+        <div class="logo">
+            <div class="logo-icon">🌍</div>
 
-            <div>
-                <h1>Historia Sin Fronteras</h1>
-                <p>Explora Francia</p>
+            <div class="logo-text">
+                Historia<br>
+                Sin Fronteras
             </div>
         </div>
 
 
-        <div class="estadisticas">
+        <!-- HISTORIA -->
 
-            <div class="estadistica">
-                <span class="icono">⭐</span>
-                <span id="puntos">0</span>
-            </div>
+        <div class="section-title">
+            Historia
+        </div>
 
-            <div class="estadistica vidas-stat">
-                <span class="icono">❤️</span>
-                <span id="vidas">5</span>
+
+        <div class="nav-item active" data-category="civilizaciones">
+            <span>🏛️</span>
+            Civilizaciones antiguas
+        </div>
+
+        <div class="nav-item" data-category="dinastias">
+            <span>👑</span>
+            Dinastías
+        </div>
+
+        <div class="nav-item" data-category="imperio">
+            <span>⚔️</span>
+            Francia y el Imperio
+        </div>
+
+        <div class="nav-item" data-category="protectorado">
+            <span>🛡️</span>
+            Protectorado
+        </div>
+
+        <div class="nav-item" data-category="independencia">
+            <span>📜</span>
+            Independencia
+        </div>
+
+        <div class="nav-item" data-category="monarquia">
+            <span>🏰</span>
+            Monarquía
+        </div>
+
+        <div class="nav-item" data-category="actual">
+            <span>📍</span>
+            Francia actual
+        </div>
+
+
+        <!-- CULTURA -->
+
+        <div class="section-title">
+            Cultura
+        </div>
+
+
+        <div class="nav-item" data-category="gastronomia">
+            <span>🍽️</span>
+            Gastronomía
+        </div>
+
+        <div class="nav-item" data-category="musica">
+            <span>🎵</span>
+            Música
+        </div>
+
+        <div class="nav-item" data-category="tradiciones">
+            <span>🎭</span>
+            Tradiciones
+        </div>
+
+        <div class="nav-item" data-category="fiestas">
+            <span>🎉</span>
+            Fiestas
+        </div>
+
+        <div class="nav-item" data-category="vestimenta">
+            <span>👕</span>
+            Vestimenta
+        </div>
+
+        <div class="nav-item" data-category="arte">
+            <span>🎨</span>
+            Arte y artesanía
+        </div>
+
+        <div class="nav-item" data-category="monumentos">
+            <span>🏛️</span>
+            Monumentos
+        </div>
+
+
+        <!-- PAÍS -->
+
+        <div class="country-badge">
+
+            <div class="flag"></div>
+
+            <div class="country-text">
+
+                FR Francia
+
+                <span>
+                    Europa
+                </span>
+
             </div>
 
         </div>
 
-    </header>
+    </aside>
+
 
 
     <!-- =====================================================
-         CONTENEDOR PRINCIPAL
+         CONTENIDO PRINCIPAL
     ====================================================== -->
 
-    <main class="contenedor">
+    <main class="main">
 
 
-        <!-- =================================================
-             MENÚ DE CATEGORÍAS
-        ================================================== -->
+        <!-- ENCABEZADO -->
 
-        <aside class="menu">
+        <div class="header">
 
-            <div class="menu-titulo">
-                🇫🇷 Francia
-            </div>
+            <div class="header-left">
 
+                <div class="header-icon" id="headerIcon">
+                    🏛️
+                </div>
 
-            <h3>CULTURA</h3>
+                <div class="header-title">
 
-            <button
-                class="menu-btn activo"
-                data-tema="gastronomia"
-                onclick="cambiarTema('gastronomia', this)">
-                🍽️ Gastronomía
-            </button>
+                    <h1 id="headerTitle">
+                        Civilizaciones antiguas
+                    </h1>
 
-            <button
-                class="menu-btn"
-                data-tema="musica"
-                onclick="cambiarTema('musica', this)">
-                🎵 Música
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="tradiciones"
-                onclick="cambiarTema('tradiciones', this)">
-                🎭 Tradiciones
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="fiestas"
-                onclick="cambiarTema('fiestas', this)">
-                🎉 Fiestas
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="vestimenta"
-                onclick="cambiarTema('vestimenta', this)">
-                👗 Vestimenta
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="arte"
-                onclick="cambiarTema('arte', this)">
-                🎨 Arte y literatura
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="monumentos"
-                onclick="cambiarTema('monumentos', this)">
-                🏛️ Monumentos
-            </button>
-
-
-            <h3>HISTORIA</h3>
-
-            <button
-                class="menu-btn"
-                data-tema="monarquia"
-                onclick="cambiarTema('monarquia', this)">
-                👑 Monarquía
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="revolucion"
-                onclick="cambiarTema('revolucion', this)">
-                ⚔️ Revolución Francesa
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="napoleon"
-                onclick="cambiarTema('napoleon', this)">
-                🦅 Napoleón
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="primera-guerra"
-                onclick="cambiarTema('primera-guerra', this)">
-                ⚔️ Primera Guerra Mundial
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="segunda-guerra"
-                onclick="cambiarTema('segunda-guerra', this)">
-                🕊️ Segunda Guerra Mundial
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="francia-posguerra"
-                onclick="cambiarTema('francia-posguerra', this)">
-                🌍 Francia después de la guerra
-            </button>
-
-            <button
-                class="menu-btn"
-                data-tema="personajes"
-                onclick="cambiarTema('personajes', this)">
-                👤 Personajes históricos
-            </button>
-
-        </aside>
-
-
-        <!-- =================================================
-             CONTENIDO
-        ================================================== -->
-
-        <section class="contenido">
-
-
-            <div class="cabecera-tema">
-
-                <div>
-                    <span id="iconoTema" class="icono-tema">🍽️</span>
-
-                    <h2 id="tituloTema">
-                        Gastronomía
-                    </h2>
-
-                    <p id="subtituloTema">
-                        Sabores que cuentan historias
+                    <p id="headerSubtitle">
+                        Conoce los pueblos que habitaron el territorio de Francia antes de las grandes dinastías.
                     </p>
+
                 </div>
 
             </div>
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <div class="badges">
+
+                <div class="badge points">
+                    ⭐ Puntos
+                    <span id="points">
+                        280
+                    </span>
+                </div>
+
+                <div class="badge lives">
+                    ❤️ Vidas
+                    <span id="lives">
+                        3
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CIVILIZACIONES ANTIGUAS
+        ================================================== -->
+
+        <div class="category-content active" id="civilizaciones">
+
+            <div class="card welcome-card">
+
+                <div class="welcome-icon">
+                    🏛️
+                </div>
+
+                <div>
+
+                    <h3>
+                        Bienvenido, explorador
+                    </h3>
+
+                    <p>
+                        Desde los celtas y galos hasta la influencia romana y franca,
+                        Francia posee una historia milenaria.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <img
+                class="banner"
+                src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80"
+                alt="París, Francia"
+            >
 
 
             <!-- INFORMACIÓN -->
 
-            <section class="informacion">
+            <div class="info-grid">
 
-                <div class="imagen-tema">
-                    <span id="imagenTema">🥐</span>
-                </div>
+                <div class="info-card">
 
-                <div class="informacion-texto">
-
-                    <h3>📚 Aprende sobre Francia</h3>
-
-                    <p id="datoCurioso"></p>
-
-                    <button
-                        class="btn-audio"
-                        onclick="escuchar()">
-                        🔊 Escuchar información
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- DATO / REGIONES -->
-
-            <div class="regiones" id="regiones"></div>
-
-
-            <!-- MINI RETO -->
-
-            <section class="reto">
-
-                <div class="reto-cabecera">
-
-                    <div>
-                        <span class="reto-icono">🎯</span>
-
-                        <div>
-                            <h2>Mini reto</h2>
-
-                            <p id="numeroPregunta">
-                                Pregunta 1 de 5
-                            </p>
-                        </div>
+                    <div class="label">
+                        💡 Dato interesante
                     </div>
 
-                </div>
-
-
-                <div class="pregunta">
-
-                    <h3 id="preguntaReto">
-                        Pregunta
-                    </h3>
+                    <p>
+                        Los galos, pueblos de origen celta, habitaron gran parte
+                        del territorio de la actual Francia antes de la conquista romana.
+                    </p>
 
                 </div>
 
 
-                <div
-                    id="opcionesReto"
-                    class="opciones">
+                <div class="info-card">
+
+                    <div class="label">
+                        📍 Lugares relacionados
+                    </div>
+
+                    <p>
+                        Galia · Lutetia · Provenza · Normandía · Alsacia
+                    </p>
+
                 </div>
-
-
-                <div
-                    id="resultado"
-                    class="resultado">
-                </div>
-
-
-                <button
-                    id="botonSiguiente"
-                    class="btn-siguiente"
-                    onclick="siguientePregunta()"
-                    disabled>
-                    Siguiente ➜
-                </button>
-
-            </section>
-
-
-            <!-- MENSAJE DEL PERSONAJE -->
-
-            <div class="mensaje-bot">
-
-                <div class="bot">
-                    🤖
-                </div>
-
-                <p id="mensajeBot">
-                    ¡Comienza tu aventura por Francia!
-                </p>
 
             </div>
 
-        </section>
 
 
-        <!-- =================================================
-             PANEL DERECHO
-        ================================================== -->
+            <!-- =================================================
+                 MINI RETO
+            ================================================== -->
 
-        <aside class="panel-derecho">
+            <div class="reto-card" id="retoCard">
 
-            <div class="tarjeta-progreso">
+                <div class="reto-header">
 
-                <h3>📊 Tu progreso</h3>
+                    <span class="left">
+                        🎯 Mini reto
+                    </span>
 
-                <div class="circulo">
-
-                    <svg width="130" height="130">
-
-                        <circle
-                            class="circulo-fondo"
-                            cx="65"
-                            cy="65"
-                            r="50">
-                        </circle>
-
-                        <circle
-                            id="circuloProgreso"
-                            class="circulo-progreso"
-                            cx="65"
-                            cy="65"
-                            r="50">
-                        </circle>
-
-                    </svg>
-
-                    <span id="porcentaje">
-                        0%
+                    <span class="right">
+                        Pregunta
+                        <span id="qNumber">
+                            1
+                        </span>
+                        de 5
                     </span>
 
                 </div>
 
 
-                <p id="mensajeProgreso">
-                    ¡Comienza tu aventura!
-                </p>
+                <div id="quizArea">
 
-
-                <div class="datos-progreso">
-
-                    <div>
-                        <strong id="retosCompletados">
-                            0
-                        </strong>
-
-                        <span>Preguntas</span>
+                    <div
+                        class="question-text"
+                        id="questionText">
                     </div>
 
-                    <div>
-                        <strong id="respuestasCorrectas">
-                            0
-                        </strong>
 
-                        <span>Correctas</span>
+                    <div
+                        class="options"
+                        id="options">
+                    </div>
+
+
+                    <button
+                        class="btn btn-primary"
+                        id="btnNext"
+                        disabled>
+                        Siguiente
+                    </button>
+
+
+                    <div
+                        class="feedback"
+                        id="feedback">
+                    </div>
+
+                </div>
+
+
+
+                <!-- RESULTADO -->
+
+                <div
+                    class="completion"
+                    id="completion"
+                    style="display:none;">
+
+                    <h2>
+                        ¡Categoría completada!
+                    </h2>
+
+                    <p>
+                        Has respondido todas las preguntas de esta categoría.
+                    </p>
+
+
+                    <div class="completion-buttons">
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="restartQuiz()">
+                            Volver a intentar
+                        </button>
+
+
+                        <button
+                            class="btn btn-secondary"
+                            id="btnRetoFinal">
+                            Ir al Reto Final
+                        </button>
+
                     </div>
 
                 </div>
 
             </div>
 
+        </div>
 
-            <!-- FINAL -->
 
-            <div
-                id="tarjetaFinal"
-                class="tarjeta-final oculto">
 
-                <div>🏆</div>
+        <!-- =================================================
+             DINASTÍAS
+        ================================================== -->
 
-                <h3>
-                    ¡Francia completada!
-                </h3>
+        <div
+            class="category-content"
+            id="dinastias">
+
+            <div class="card">
+
+                <h2>
+                    Dinastías de Francia
+                </h2>
 
                 <p>
-                    Ahora puedes consultar tu resultado final.
+                    Francia fue gobernada por importantes dinastías como los
+                    Merovingios, Carolingios, Capetos, Valois y Borbones.
+                    Cada una dejó una huella profunda en la historia del país.
                 </p>
 
             </div>
 
-        </aside>
+
+            <div class="info-grid">
+
+                <div class="info-card">
+
+                    <div class="label">
+                        👑 Merovingios
+                    </div>
+
+                    <p>
+                        Primera dinastía de reyes francos. Clodoveo I fue uno
+                        de sus principales gobernantes.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="label">
+                        ⚔️ Carolingios
+                    </div>
+
+                    <p>
+                        La dinastía estuvo relacionada con Carlomagno,
+                        quien fue coronado emperador en el año 800.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FRANCIA Y EL IMPERIO
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="imperio">
+
+            <div class="card">
+
+                <h2>
+                    Francia y el Imperio
+                </h2>
+
+                <p>
+                    La historia francesa estuvo marcada por la expansión
+                    territorial y el Imperio napoleónico.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PROTECTORADO
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="protectorado">
+
+            <div class="card">
+
+                <h2>
+                    Protectorado
+                </h2>
+
+                <p>
+                    Francia estableció protectorados en diferentes territorios
+                    durante su expansión colonial.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             INDEPENDENCIA
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="independencia">
+
+            <div class="card">
+
+                <h2>
+                    Independencia
+                </h2>
+
+                <p>
+                    Los procesos de independencia y descolonización
+                    transformaron las relaciones entre Francia y sus antiguos
+                    territorios coloniales.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MONARQUÍA
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="monarquia">
+
+            <div class="card">
+
+                <h2>
+                    Monarquía
+                </h2>
+
+                <p>
+                    La monarquía francesa tuvo diferentes etapas y dinastías
+                    antes de la Revolución Francesa.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FRANCIA ACTUAL
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="actual">
+
+            <div class="card">
+
+                <h2>
+                    Francia actual
+                </h2>
+
+                <p>
+                    Francia es una república y forma parte de importantes
+                    organizaciones internacionales y europeas.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             GASTRONOMÍA
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="gastronomia">
+
+            <div class="card">
+
+                <h2>
+                    Gastronomía
+                </h2>
+
+                <p>
+                    La gastronomía francesa es conocida por sus panes,
+                    quesos, postres y diferentes preparaciones regionales.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MÚSICA
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="musica">
+
+            <div class="card">
+
+                <h2>
+                    Música
+                </h2>
+
+                <p>
+                    Francia posee una amplia tradición musical que incluye
+                    música clásica, chanson francesa y estilos contemporáneos.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TRADICIONES
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="tradiciones">
+
+            <div class="card">
+
+                <h2>
+                    Tradiciones
+                </h2>
+
+                <p>
+                    Las regiones francesas conservan diferentes costumbres,
+                    celebraciones y tradiciones culturales.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FIESTAS
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="fiestas">
+
+            <div class="card">
+
+                <h2>
+                    Fiestas
+                </h2>
+
+                <p>
+                    Entre las celebraciones más conocidas se encuentran
+                    el Día de la Bastilla, Navidad y diferentes festividades
+                    regionales.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             VESTIMENTA
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="vestimenta">
+
+            <div class="card">
+
+                <h2>
+                    Vestimenta
+                </h2>
+
+                <p>
+                    Francia es reconocida internacionalmente por su tradición
+                    en la moda y por la diversidad de vestimentas regionales.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ARTE Y ARTESANÍA
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="arte">
+
+            <div class="card">
+
+                <h2>
+                    Arte y artesanía
+                </h2>
+
+                <p>
+                    Francia posee una importante tradición artística que incluye
+                    pintura, escultura, arquitectura y diferentes artesanías.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MONUMENTOS
+        ================================================== -->
+
+        <div
+            class="category-content"
+            id="monumentos">
+
+            <div class="card">
+
+                <h2>
+                    Monumentos
+                </h2>
+
+                <p>
+                    La Torre Eiffel, el Museo del Louvre, el Palacio de Versalles
+                    y el Mont-Saint-Michel son algunos de los lugares más
+                    representativos de Francia.
+                </p>
+
+            </div>
+
+        </div>
 
     </main>
 
 
-    <!-- =====================================================
-         MODAL RECUPERACIÓN
-    ====================================================== -->
-
-    <div
-        id="modalRecuperacion"
-        class="modal">
-
-        <div class="modal-contenido">
-
-            <div id="inicioRecuperacion">
-
-                <div class="modal-icono">
-                    ❤️‍🩹
-                </div>
-
-                <h2>
-                    Te quedaste sin vidas
-                </h2>
-
-                <p>
-                    Responde correctamente una pregunta
-                    para recuperar tus vidas.
-                </p>
-
-                <button
-                    id="btnIniciarRecuperacion"
-                    onclick="comenzarRetoRecuperacion()">
-                    Recuperar vidas
-                </button>
-
-            </div>
-
-
-            <div
-                id="preguntaRecuperacionBox"
-                class="pregunta-recuperacion">
-
-                <h3>
-                    ❤️ Reto de recuperación
-                </h3>
-
-                <p id="preguntaRecuperacion"></p>
-
-                <div
-                    id="opcionesRecuperacion"
-                    class="opciones-recuperacion">
-                </div>
-
-                <div
-                    id="resultadoRecuperacion"
-                    class="resultado-recuperacion">
-                </div>
-
-                <button
-                    id="btnContinuarRecuperacion"
-                    onclick="continuarDespuesRecuperacion()">
-                    Continuar
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
 
     <!-- =====================================================
-         MODAL RETO FINAL
+         BARRA LATERAL DERECHA
     ====================================================== -->
 
-    <div
-        id="modalRetoFinal"
-        class="modal">
+    <aside class="right-sidebar">
 
-        <div class="modal-contenido final">
 
-            <div class="modal-icono">
-                🏆
+        <!-- PROGRESO -->
+
+        <div class="progress-card">
+
+            <h3>
+                📊 Mi progreso
+            </h3>
+
+
+            <div class="circle-progress">
+
+                <svg
+                    width="120"
+                    height="120"
+                    viewBox="0 0 120 120">
+
+                    <circle
+                        class="circle-bg"
+                        cx="60"
+                        cy="60"
+                        r="54">
+                    </circle>
+
+                    <circle
+                        class="circle-fg"
+                        cx="60"
+                        cy="60"
+                        r="54">
+                    </circle>
+
+                </svg>
+
+
+                <div class="circle-text">
+
+                    <div class="percent">
+                        0%
+                    </div>
+
+                    <div class="label">
+                        completado
+                    </div>
+
+                </div>
+
             </div>
 
-            <h2>
-                Reto final de Francia
-            </h2>
 
-            <p id="introRetoFinal">
-                Has completado todas las categorías.
-                Ahora demuestra cuánto aprendiste.
+            <!-- ESTADÍSTICAS -->
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <div class="num">
+                        14
+                    </div>
+
+                    <div class="txt">
+                        Retos
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div
+                        class="num"
+                        id="correctCount">
+                        0
+                    </div>
+
+                    <div class="txt">
+                        Correctas
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p class="completed-msg">
+                Comienza a explorar las categorías.
             </p>
 
+
             <button
-                id="btnRetoFinal"
-                onclick="iniciarRetoFinal()">
-                Comenzar reto final
+                class="btn-save"
+                id="btnGuardarProgreso">
+                Guardar el progreso
             </button>
 
         </div>
 
-    </div>
+
+
+        <!-- EXPLORA FRANCIA -->
+
+        <div class="explore-card">
+
+            <h3>
+                Explora Francia
+            </h3>
+
+            <div class="eiffel">
+                🗼
+            </div>
+
+            <p>
+                Descubre la rica historia, las dinastías,
+                la gastronomía y las tradiciones de este país
+                del corazón de Europa.
+            </p>
+
+        </div>
+
+    </aside>
+
 
 
     <!-- =====================================================
-         MODAL PREGUNTAS FINALES
+         JAVASCRIPT
     ====================================================== -->
-
-    <div
-        id="modalPreguntasFinales"
-        class="modal">
-
-        <div class="modal-contenido final-preguntas">
-
-            <div class="final-superior">
-
-                <span>
-                    🏆 Reto final
-                </span>
-
-                <span>
-                    Pregunta
-                    <strong id="numeroFinal">
-                        1
-                    </strong>
-                    / 30
-                </span>
-
-            </div>
-
-
-            <h2 id="preguntaFinal">
-                Pregunta final
-            </h2>
-
-
-            <div
-                id="opcionesFinales"
-                class="opciones">
-            </div>
-
-
-            <div
-                id="resultadoFinalPregunta"
-                class="resultado">
-            </div>
-
-
-            <button
-                id="btnSiguienteFinal"
-                class="btn-siguiente"
-                onclick="siguientePreguntaFinal()"
-                disabled>
-                Siguiente ➜
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         MODAL RESULTADO FINAL
-    ====================================================== -->
-
-    <div
-        id="modalResultadoFinal"
-        class="modal">
-
-        <div class="modal-contenido resultado-final">
-
-            <div class="modal-icono">
-                🏆
-            </div>
-
-            <h1>
-                ¡Reto completado!
-            </h1>
-
-            <h2>
-                🇫🇷 Francia
-            </h2>
-
-            <p id="textoResultadoFinal"></p>
-
-            <div class="resultado-estadisticas">
-
-                <div>
-                    ⭐
-                    <strong id="puntosFinales">
-                        0
-                    </strong>
-                    <span>Puntos</span>
-                </div>
-
-                <div>
-                    ✅
-                    <strong id="correctasFinales">
-                        0
-                    </strong>
-                    <span>Correctas</span>
-                </div>
-
-                <div>
-                    🎯
-                    <strong>
-                        30
-                    </strong>
-                    <span>Preguntas</span>
-                </div>
-
-            </div>
-
-            <button onclick="cerrarResultadoFinal()">
-                Continuar
-            </button>
-
-        </div>
-
-    </div>
-
 
     <script src="Francia.js"></script>
 
 </body>
+
 </html>

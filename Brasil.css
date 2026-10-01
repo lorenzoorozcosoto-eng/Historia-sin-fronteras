@@ -772,29 +772,32 @@ button {
     color: #333;
     line-height: 1.4;
 }
-
 .grid-opciones {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 22px 0 20px;
 }
-
 .opcion-reto {
-    background: white;
-    border: 1.5px solid #e8e6f5;
-    border-radius: 14px;
-    padding: 14px 12px;
-    font-size: 14px;
-    font-weight: 500;
+    min-height: 78px;
+    background: #ffffff;
+    border: 2px solid #e8e6f5;
+    border-radius: 20px;
+    padding: 16px 18px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
     color: #444;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(80, 70, 130, 0.06);
 }
 
 .opcion-reto:hover:not(:disabled) {
+    transform: translateY(-3px);
     border-color: #6b5ce7;
     background: #f8f7ff;
+    box-shadow: 0 7px 18px rgba(80, 70, 130, 0.12);
 }
 
 .opcion-reto.correcta {

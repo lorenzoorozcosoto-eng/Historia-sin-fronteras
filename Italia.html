@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Historia Sin Fronteras - Italia</title>
+
+<link rel="stylesheet" href="Italia.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+```
+
+</head>
+
+<body>
+
+<div class="app">
+
+```
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">🌎</div>
+
+        <div>
+            <h2>Historia</h2>
+            <span>Sin Fronteras</span>
+        </div>
+
+    </div>
+
+
+    <div class="menu">
+
+        <p class="menu-title">CULTURA</p>
+
+        <button class="categoria active" data-categoria="Gastronomía">
+            🍝 Gastronomía
+        </button>
+
+        <button class="categoria" data-categoria="Música">
+            🎵 Música
+        </button>
+
+        <button class="categoria" data-categoria="Tradiciones">
+            🎭 Tradiciones
+        </button>
+
+        <button class="categoria" data-categoria="Fiestas">
+            🎉 Fiestas
+        </button>
+
+        <button class="categoria" data-categoria="Vestimenta">
+            👗 Vestimenta
+        </button>
+
+        <button class="categoria" data-categoria="Arte">
+            🎨 Arte
+        </button>
+
+        <button class="categoria" data-categoria="Monumentos">
+            🏛️ Monumentos
+        </button>
+
+
+        <p class="menu-title historia-title">HISTORIA</p>
+
+        <button class="categoria" data-categoria="Pueblos originarios">
+            🏺 Pueblos originarios
+        </button>
+
+        <button class="categoria" data-categoria="Imperio romano">
+            🏛️ Imperio romano
+        </button>
+
+        <button class="categoria" data-categoria="Edad Media">
+            ⚔️ Edad Media
+        </button>
+
+        <button class="categoria" data-categoria="Unificación italiana">
+            🇮🇹 Unificación italiana
+        </button>
+
+        <button class="categoria" data-categoria="Personajes históricos">
+            👤 Personajes históricos
+        </button>
+
+        <button class="categoria" data-categoria="Conflictos importantes">
+            ⚔️ Conflictos importantes
+        </button>
+
+        <button class="categoria" data-categoria="Italia contemporánea">
+            🏙️ Italia contemporánea
+        </button>
+
+    </div>
+
+
+    <div class="pais-card">
+
+        <div class="bandera">🇮🇹</div>
+
+        <div>
+            <strong>Italia</strong>
+            <small>Europa</small>
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= CONTENIDO ================= -->
+
+<main class="contenido">
+
+    <header class="top">
+
+        <div class="titulo-pais">
+
+            <div class="icono-mapa">🗺️</div>
+
+            <div>
+
+                <small>ITALIA</small>
+
+                <h1 id="tituloCategoria">
+                    Gastronomía italiana
+                </h1>
+
+                <p id="subtituloCategoria">
+                    Sabores y comidas tradicionales de Italia
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="estado-juego">
+
+            <div class="puntos-box">
+
+                <span>⭐</span>
+
+                <div>
+                    <small>PUNTOS</small>
+                    <strong id="puntos">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="vidas-box">
+
+                <small>VIDAS</small>
+
+                <div class="vidas-contenedor">
+
+                    <div id="corazones"></div>
+
+                    <strong id="numeroVidas">5</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MENSAJE ================= -->
+
+    <section class="saludo">
+
+        <div class="robot">🤖</div>
+
+        <div>
+
+            <h3>¡Hola, explorador!</h3>
+
+            <p>
+                Responde las preguntas y descubre la historia y cultura de Italia.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= INFORMACIÓN ================= -->
+
+    <section class="informacion">
+
+        <div class="imagen-pais">
+
+            <img
+                src="img/italia.jpg"
+                alt="Italia"
+                onerror="this.src='https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=900&q=80'"
+            >
+
+        </div>
+
+
+        <div class="info-texto">
+
+            <button class="escuchar" id="btnEscuchar">
+                🔊 Escuchar explicación
+            </button>
+
+
+            <div class="dato">
+
+                <span>💡</span>
+
+                <div>
+
+                    <strong>Dato interesante</strong>
+
+                    <p id="datoInteresante">
+                        Italia es conocida por su gran patrimonio histórico,
+                        artístico y cultural.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <p id="descripcionCategoria">
+
+                La cultura italiana reúne una gran variedad de tradiciones,
+                expresiones artísticas, gastronomía e importantes acontecimientos
+                históricos.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MINI RETO ================= -->
+
+    <section class="reto">
+
+        <div class="reto-cabecera">
+
+            <div>
+
+                <small>MINI RETO</small>
+
+                <h2>Demuestra lo que aprendiste</h2>
+
+            </div>
+
+            <span id="contadorPregunta">
+                1 / 5
+            </span>
+
+        </div>
+
+
+        <div class="pregunta-box">
+
+            <h3 id="preguntaReto">
+                Cargando pregunta...
+            </h3>
+
+            <div id="opcionesReto" class="opciones"></div>
+
+        </div>
+
+
+        <div id="mensajeRespuesta" class="mensaje-respuesta"></div>
+
+
+        <button id="botonSiguiente" class="boton-siguiente" disabled>
+            Siguiente →
+        </button>
+
+    </section>
+
+</main>
+
+
+<!-- ================= PANEL DERECHO ================= -->
+
+<aside class="panel-derecho">
+
+    <section class="progreso-card">
+
+        <div class="progreso-titulo">
+
+            <div>
+
+                <small>TU PROGRESO</small>
+
+                <h3 id="estadoProgreso">
+                    Aventura en progreso
+                </h3>
+
+            </div>
+
+            <span>🏆</span>
+
+        </div>
+
+
+        <div class="circulo-progreso">
+
+            <strong id="porcentaje">
+                0%
+            </strong>
+
+            <small>
+                completado
+            </small>
+
+        </div>
+
+
+        <div class="estadisticas">
+
+            <div>
+
+                <strong id="retosCompletados">
+                    0
+                </strong>
+
+                <small>
+                    Retos
+                </small>
+
+            </div>
+
+
+            <div>
+
+                <strong id="correctas">
+                    0
+                </strong>
+
+                <small>
+                    Correctas
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="categoria-progreso">
+
+            <span id="textoCategorias">
+                Has completado 0 de 14 categorías.
+            </span>
+
+        </div>
+
+
+        <button class="guardar" id="guardarProgreso2">
+            💾 Guardar el progreso
+        </button>
+
+    </section>
+
+
+    <section class="explora-card">
+
+        <div class="explora-icon">
+            🗺️
+        </div>
+
+        <h3>
+            Explora Italia
+        </h3>
+
+        <p id="textoExplora">
+
+            La gastronomía, la música, las tradiciones,
+            el arte y la historia de Italia te esperan.
+            ¡Descubre todo lo que hace único a este país!
+
+        </p>
+
+    </section>
+
+
+    <section class="consejo">
+
+        💜 Lee con atención cada pregunta antes de responder.
+
+    </section>
+
+
+    <button class="borrar" id="guardarelprogreso">
+
+        🗑️ Guardar el progreso
+
+    </button>
+
+</aside>
+```
+
+</div>
+
+<!-- ================= MODAL RECUPERACIÓN ================= -->
+
+<div class="modal" id="modalRecuperacion">
+
+```
+<div class="modal-contenido">
+
+    <div class="modal-icon">
+        ❤️ ❤️ ❤️ ❤️ ❤️
+    </div>
+
+
+    <h2>
+        ¡Te quedaste sin vidas!
+    </h2>
+
+
+    <p>
+
+        Completa este reto de recuperación para obtener
+        una vida y continuar tu aventura por Italia.
+
+    </p>
+
+
+    <h3 id="preguntaRecuperacion">
+
+        ¿Cuál es la capital de Italia?
+
+    </h3>
+
+
+    <div id="opcionesRecuperacion"></div>
+
+
+    <p id="mensajeRecuperacion"></p>
+
+
+    <button id="btnIniciarRecuperacion">
+
+        Recuperar una vida
+
+    </button>
+
+</div>
+```
+
+</div>
+
+<!-- ================= MODAL RETO FINAL ================= -->
+
+<div class="modal" id="modalRetoFinal">
+
+```
+<div class="modal-contenido">
+
+    <div class="modal-icon">
+        🏆
+    </div>
+
+
+    <h2>
+        ¡Reto final de Italia!
+    </h2>
+
+
+    <p>
+
+        Has completado todas las categorías.
+        Demuestra todo lo que aprendiste sobre Italia.
+
+    </p>
+
+
+    <button id="btnRetoFinal">
+
+        Comenzar reto final
+
+    </button>
+
+</div>
+```
+
+</div>
+
+<script src="Italia.js"></script>
+
+</body>
+
+</html>
