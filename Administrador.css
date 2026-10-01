@@ -1,0 +1,295 @@
+/* =========================================================
+   VARIABLES DE PALETA DE COLORES
+========================================================= */
+:root {
+    --color-morado: #8b71d2;
+    --color-morado-badge: #ede9fe;
+    --color-azul: #3b82f6;
+    --color-azul-badge: #dbeafe;
+    --color-verde: #10b981;
+    --color-verde-badge: #d1fae5;
+    
+    --color-fondo-header: #4c82c3;
+    --color-fondo-pagina: #f1f5f9;
+    --color-blanco: #ffffff;
+    --color-texto-principal: #1e293b;
+    --color-texto-suave: #64748b;
+    
+    --sombra-card: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================================
+   ESTILOS BASE
+========================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--color-fondo-pagina);
+    color: var(--color-texto-principal);
+}
+
+.equipo {
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+/* =========================================================
+   ENCABEZADO CON BANNER AZUL
+========================================================= */
+.equipo-titulo {
+    background: linear-gradient(135deg, #3a75c4 0%, #4c82c3 100%);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 50px 20px 80px 20px;
+    position: relative;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.05);
+}
+
+.icono-equipo {
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+.etiqueta-equipo {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.85);
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.equipo-titulo h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.equipo-titulo p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* =========================================================
+   CONTENEDOR Y TARJETAS
+========================================================= */
+.equipo-contenedor {
+    max-width: 1100px;
+    margin: -50px auto 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    position: relative;
+    z-index: 10;
+}
+
+.equipo-card {
+    background: var(--color-blanco);
+    border-radius: 20px;
+    overflow: visible; /* Permite que el elemento de la esquina sobresalga */
+    box-shadow: var(--sombra-card);
+    text-align: center;
+    position: relative;
+    padding-bottom: 35px;
+}
+
+/* Cabeceras Superiores de Color en cada Tarjeta */
+.equipo-card:nth-child(1)::before {
+    content: "";
+    display: block;
+    height: 90px;
+    background: var(--color-morado);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.equipo-card:nth-child(2)::before {
+    content: "";
+    display: block;
+    height: 90px;
+    background: var(--color-azul);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.equipo-card:nth-child(3)::before {
+    content: "";
+    display: block;
+    height: 90px;
+    background: var(--color-verde);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* Avatares Flotantes */
+.equipo-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: -35px auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-blanco);
+    border: 4px solid var(--color-blanco);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 2;
+}
+
+.equipo-avatar.valery { background: var(--color-morado); }
+.equipo-avatar.ximena { background: var(--color-azul); }
+.equipo-avatar.lorenzo { background: var(--color-verde); }
+
+/* =========================================================
+   TEXTO Y ROLES
+========================================================= */
+.equipo-informacion {
+    padding: 0 20px;
+}
+
+.equipo-informacion h2 {
+    font-size: 1.25rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 12px;
+}
+
+.equipo-rol {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    margin: 2px;
+    background-color: var(--color-morado-badge);
+    color: var(--color-morado);
+}
+
+.equipo-rol.secundario {
+    background-color: var(--color-azul-badge);
+    color: var(--color-azul);
+}
+
+.equipo-informacion p {
+    font-size: 0.85rem;
+    color: var(--color-texto-suave);
+    line-height: 1.5;
+    margin-top: 15px;
+}
+
+/* =========================================================
+   ILUSTRACIONES EN LAS ESQUINAS INFERIORES
+========================================================= */
+.ilustracion-esquina {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    font-size: 38px;
+    background: var(--color-blanco);
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    line-height: 1;
+    z-index: 15;
+}
+
+/* =========================================================
+   SECCIÓN PROYECTO (VERDE)
+========================================================= */
+.equipo-proyecto {
+    max-width: 750px;
+    margin: 0 auto 50px auto;
+    background: var(--color-verde);
+    color: var(--color-blanco);
+    border-radius: 18px;
+    padding: 22px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--sombra-card);
+    position: relative;
+    overflow: visible;
+}
+
+.proyecto-icono {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.ilustracion-proyecto {
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    font-size: 40px;
+    background: var(--color-blanco);
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    line-height: 1;
+}
+
+.equipo-proyecto h2 {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+}
+
+.equipo-proyecto p {
+    font-size: 0.88rem;
+    opacity: 0.95;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   BARRA INFERIOR (FOOTER / CONTACTO)
+========================================================= */
+footer, .barra-contacto {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #0d9488;
+    color: var(--color-blanco);
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 100;
+}
+
+/* =========================================================
+   RESPONSIVE (TABLETS Y MÓVILES)
+========================================================= */
+@media (max-width: 850px) {
+    .equipo-contenedor {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        margin-top: -30px;
+    }
+    
+    .equipo-proyecto {
+        margin: 0 20px 50px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+}
