@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Historia Sin Fronteras - Francia</title>
+
+    <link rel="stylesheet" href="Francia.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         ENCABEZADO
+    ====================================================== -->
+
+    <header class="encabezado">
+
+        <div class="marca">
+            <div class="logo">🌎</div>
+
+            <div>
+                <h1>Historia Sin Fronteras</h1>
+                <p>Explora Francia</p>
+            </div>
+        </div>
+
+
+        <div class="estadisticas">
+
+            <div class="estadistica">
+                <span class="icono">⭐</span>
+                <span id="puntos">0</span>
+            </div>
+
+            <div class="estadistica vidas-stat">
+                <span class="icono">❤️</span>
+                <span id="vidas">5</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+    ====================================================== -->
+
+    <main class="contenedor">
+
+
+        <!-- =================================================
+             MENÚ DE CATEGORÍAS
+        ================================================== -->
+
+        <aside class="menu">
+
+            <div class="menu-titulo">
+                🇫🇷 Francia
+            </div>
+
+
+            <h3>CULTURA</h3>
+
+            <button
+                class="menu-btn activo"
+                data-tema="gastronomia"
+                onclick="cambiarTema('gastronomia', this)">
+                🍽️ Gastronomía
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="musica"
+                onclick="cambiarTema('musica', this)">
+                🎵 Música
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="tradiciones"
+                onclick="cambiarTema('tradiciones', this)">
+                🎭 Tradiciones
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="fiestas"
+                onclick="cambiarTema('fiestas', this)">
+                🎉 Fiestas
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="vestimenta"
+                onclick="cambiarTema('vestimenta', this)">
+                👗 Vestimenta
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="arte"
+                onclick="cambiarTema('arte', this)">
+                🎨 Arte y literatura
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="monumentos"
+                onclick="cambiarTema('monumentos', this)">
+                🏛️ Monumentos
+            </button>
+
+
+            <h3>HISTORIA</h3>
+
+            <button
+                class="menu-btn"
+                data-tema="monarquia"
+                onclick="cambiarTema('monarquia', this)">
+                👑 Monarquía
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="revolucion"
+                onclick="cambiarTema('revolucion', this)">
+                ⚔️ Revolución Francesa
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="napoleon"
+                onclick="cambiarTema('napoleon', this)">
+                🦅 Napoleón
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="primera-guerra"
+                onclick="cambiarTema('primera-guerra', this)">
+                ⚔️ Primera Guerra Mundial
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="segunda-guerra"
+                onclick="cambiarTema('segunda-guerra', this)">
+                🕊️ Segunda Guerra Mundial
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="francia-posguerra"
+                onclick="cambiarTema('francia-posguerra', this)">
+                🌍 Francia después de la guerra
+            </button>
+
+            <button
+                class="menu-btn"
+                data-tema="personajes"
+                onclick="cambiarTema('personajes', this)">
+                👤 Personajes históricos
+            </button>
+
+        </aside>
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <section class="contenido">
+
+
+            <div class="cabecera-tema">
+
+                <div>
+                    <span id="iconoTema" class="icono-tema">🍽️</span>
+
+                    <h2 id="tituloTema">
+                        Gastronomía
+                    </h2>
+
+                    <p id="subtituloTema">
+                        Sabores que cuentan historias
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- INFORMACIÓN -->
+
+            <section class="informacion">
+
+                <div class="imagen-tema">
+                    <span id="imagenTema">🥐</span>
+                </div>
+
+                <div class="informacion-texto">
+
+                    <h3>📚 Aprende sobre Francia</h3>
+
+                    <p id="datoCurioso"></p>
+
+                    <button
+                        class="btn-audio"
+                        onclick="escuchar()">
+                        🔊 Escuchar información
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- DATO / REGIONES -->
+
+            <div class="regiones" id="regiones"></div>
+
+
+            <!-- MINI RETO -->
+
+            <section class="reto">
+
+                <div class="reto-cabecera">
+
+                    <div>
+                        <span class="reto-icono">🎯</span>
+
+                        <div>
+                            <h2>Mini reto</h2>
+
+                            <p id="numeroPregunta">
+                                Pregunta 1 de 5
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="pregunta">
+
+                    <h3 id="preguntaReto">
+                        Pregunta
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="opcionesReto"
+                    class="opciones">
+                </div>
+
+
+                <div
+                    id="resultado"
+                    class="resultado">
+                </div>
+
+
+                <button
+                    id="botonSiguiente"
+                    class="btn-siguiente"
+                    onclick="siguientePregunta()"
+                    disabled>
+                    Siguiente ➜
+                </button>
+
+            </section>
+
+
+            <!-- MENSAJE DEL PERSONAJE -->
+
+            <div class="mensaje-bot">
+
+                <div class="bot">
+                    🤖
+                </div>
+
+                <p id="mensajeBot">
+                    ¡Comienza tu aventura por Francia!
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PANEL DERECHO
+        ================================================== -->
+
+        <aside class="panel-derecho">
+
+            <div class="tarjeta-progreso">
+
+                <h3>📊 Tu progreso</h3>
+
+                <div class="circulo">
+
+                    <svg width="130" height="130">
+
+                        <circle
+                            class="circulo-fondo"
+                            cx="65"
+                            cy="65"
+                            r="50">
+                        </circle>
+
+                        <circle
+                            id="circuloProgreso"
+                            class="circulo-progreso"
+                            cx="65"
+                            cy="65"
+                            r="50">
+                        </circle>
+
+                    </svg>
+
+                    <span id="porcentaje">
+                        0%
+                    </span>
+
+                </div>
+
+
+                <p id="mensajeProgreso">
+                    ¡Comienza tu aventura!
+                </p>
+
+
+                <div class="datos-progreso">
+
+                    <div>
+                        <strong id="retosCompletados">
+                            0
+                        </strong>
+
+                        <span>Preguntas</span>
+                    </div>
+
+                    <div>
+                        <strong id="respuestasCorrectas">
+                            0
+                        </strong>
+
+                        <span>Correctas</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FINAL -->
+
+            <div
+                id="tarjetaFinal"
+                class="tarjeta-final oculto">
+
+                <div>🏆</div>
+
+                <h3>
+                    ¡Francia completada!
+                </h3>
+
+                <p>
+                    Ahora puedes consultar tu resultado final.
+                </p>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <!-- =====================================================
+         MODAL RECUPERACIÓN
+    ====================================================== -->
+
+    <div
+        id="modalRecuperacion"
+        class="modal">
+
+        <div class="modal-contenido">
+
+            <div id="inicioRecuperacion">
+
+                <div class="modal-icono">
+                    ❤️‍🩹
+                </div>
+
+                <h2>
+                    Te quedaste sin vidas
+                </h2>
+
+                <p>
+                    Responde correctamente una pregunta
+                    para recuperar tus vidas.
+                </p>
+
+                <button
+                    id="btnIniciarRecuperacion"
+                    onclick="comenzarRetoRecuperacion()">
+                    Recuperar vidas
+                </button>
+
+            </div>
+
+
+            <div
+                id="preguntaRecuperacionBox"
+                class="pregunta-recuperacion">
+
+                <h3>
+                    ❤️ Reto de recuperación
+                </h3>
+
+                <p id="preguntaRecuperacion"></p>
+
+                <div
+                    id="opcionesRecuperacion"
+                    class="opciones-recuperacion">
+                </div>
+
+                <div
+                    id="resultadoRecuperacion"
+                    class="resultado-recuperacion">
+                </div>
+
+                <button
+                    id="btnContinuarRecuperacion"
+                    onclick="continuarDespuesRecuperacion()">
+                    Continuar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL RETO FINAL
+    ====================================================== -->
+
+    <div
+        id="modalRetoFinal"
+        class="modal">
+
+        <div class="modal-contenido final">
+
+            <div class="modal-icono">
+                🏆
+            </div>
+
+            <h2>
+                Reto final de Francia
+            </h2>
+
+            <p id="introRetoFinal">
+                Has completado todas las categorías.
+                Ahora demuestra cuánto aprendiste.
+            </p>
+
+            <button
+                id="btnRetoFinal"
+                onclick="iniciarRetoFinal()">
+                Comenzar reto final
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL PREGUNTAS FINALES
+    ====================================================== -->
+
+    <div
+        id="modalPreguntasFinales"
+        class="modal">
+
+        <div class="modal-contenido final-preguntas">
+
+            <div class="final-superior">
+
+                <span>
+                    🏆 Reto final
+                </span>
+
+                <span>
+                    Pregunta
+                    <strong id="numeroFinal">
+                        1
+                    </strong>
+                    / 30
+                </span>
+
+            </div>
+
+
+            <h2 id="preguntaFinal">
+                Pregunta final
+            </h2>
+
+
+            <div
+                id="opcionesFinales"
+                class="opciones">
+            </div>
+
+
+            <div
+                id="resultadoFinalPregunta"
+                class="resultado">
+            </div>
+
+
+            <button
+                id="btnSiguienteFinal"
+                class="btn-siguiente"
+                onclick="siguientePreguntaFinal()"
+                disabled>
+                Siguiente ➜
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL RESULTADO FINAL
+    ====================================================== -->
+
+    <div
+        id="modalResultadoFinal"
+        class="modal">
+
+        <div class="modal-contenido resultado-final">
+
+            <div class="modal-icono">
+                🏆
+            </div>
+
+            <h1>
+                ¡Reto completado!
+            </h1>
+
+            <h2>
+                🇫🇷 Francia
+            </h2>
+
+            <p id="textoResultadoFinal"></p>
+
+            <div class="resultado-estadisticas">
+
+                <div>
+                    ⭐
+                    <strong id="puntosFinales">
+                        0
+                    </strong>
+                    <span>Puntos</span>
+                </div>
+
+                <div>
+                    ✅
+                    <strong id="correctasFinales">
+                        0
+                    </strong>
+                    <span>Correctas</span>
+                </div>
+
+                <div>
+                    🎯
+                    <strong>
+                        30
+                    </strong>
+                    <span>Preguntas</span>
+                </div>
+
+            </div>
+
+            <button onclick="cerrarResultadoFinal()">
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="Francia.js"></script>
+
+</body>
+</html>

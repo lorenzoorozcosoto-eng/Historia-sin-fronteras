@@ -1,679 +1,256 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Historia Sin Fronteras - Colombia</title>
-
     <link rel="stylesheet" href="Colombia.css">
 </head>
-
 <body>
 
-    <!-- ==================================================
-         PÁGINA PRINCIPAL
-    ================================================== -->
+<div class="pagina">
 
-    <div class="pagina">
+    <!-- ===================== ENCABEZADO ===================== -->
+    <header class="encabezado">
+        <div class="marca">
+            <div class="logo">🌎</div>
+            <div>
+                <h1>Historia<br>Sin Fronteras</h1>
+                <p>Explora el mundo, aprende historia</p>
+            </div>
+        </div>
 
-        <!-- ==================================================
-             ENCABEZADO
-        ================================================== -->
-
-        <header class="encabezado">
-
-            <!-- MARCA -->
-
-            <div class="marca">
-
-                <div class="logo">
-                    🌎
-                </div>
-
+        <div class="informacion-jugador">
+            <div class="jugador">
+                <div class="avatar-jugador">🧒</div>
                 <div>
-                    <h1>
-                        Historia<br>
-                        Sin Fronteras
-                    </h1>
-
-                    <p>
-                        Explora el mundo, aprende historia
-                    </p>
+                    <strong>Explorador</strong>
+                    <span>¡Comencemos!</span>
                 </div>
-
             </div>
 
-
-            <!-- INFORMACIÓN DEL JUGADOR -->
-
-            <div class="informacion-jugador">
-
-                <!-- JUGADOR -->
-
-                <div class="jugador">
-
-                    <div class="avatar-jugador">
-                        👩🏻
-                    </div>
-
-                    <div>
-                        <strong>Hola, Explorador</strong>
-                        <span>🌎 ¡Comencemos!</span>
-                    </div>
-
-                </div>
-
-
-                <!-- PUNTOS -->
-
-                <div class="dato">
-
-                    <span>⭐</span>
-
-                    <strong id="puntos">
-                        0
-                    </strong>
-
-                    <small>
-                        Puntos
-                    </small>
-
-                </div>
-
-
-                <!-- RACHA -->
-
-                <div class="racha">
-
-                    <span>
-                        🔥
-                    </span>
-
-                    <strong id="racha">
-                        0
-                    </strong>
-
-                </div>
-
-
-                <!-- VIDAS -->
-
-                <div class="vidas-contenedor">
-
-                    <span class="corazon">
-                        ❤️
-                    </span>
-
-                    <strong id="vidas">
-                        5
-                    </strong>
-
-                </div>
-
+            <div class="dato">
+                <span>⭐</span>
+                <strong id="puntos">0</strong>
             </div>
 
-        </header>
+            <div class="racha">
+                <span>🔥</span>
+                <strong id="racha">0</strong>
+            </div>
 
+            <div class="vidas-contenedor">
+                <span class="corazon">❤️</span>
+                <strong id="vidas">5</strong>
+            </div>
+        </div>
+    </header>
 
-        <!-- ==================================================
-             CONTENIDO PRINCIPAL
-        ================================================== -->
+    <!-- ===================== CONTENIDO ===================== -->
+    <div class="contenido">
 
-        <main class="contenido">
+        <!-- MENÚ IZQUIERDO -->
+        <aside class="menu">
+            <div class="menu-seccion">
+                <div class="titulo-menu">
+                    <span>📚</span>
+                    <strong>Historia</strong>
+                    <span class="flecha">▾</span>
+                </div>
+                <button type="button" class="menu-btn" data-tema="primeras-civilizaciones" onclick="cambiarTema('primeras-civilizaciones', this)">🏺 Civilizaciones</button>
+                <button type="button" class="menu-btn" data-tema="conquista" onclick="cambiarTema('conquista', this)">⛵ Conquista</button>
+                <button type="button" class="menu-btn" data-tema="epoca-colonial" onclick="cambiarTema('epoca-colonial', this)">🏰 Época colonial</button>
+                <button type="button" class="menu-btn" data-tema="independencia" onclick="cambiarTema('independencia', this)">🇨🇴 Independencia</button>
+                <button type="button" class="menu-btn" data-tema="personajes-historicos" onclick="cambiarTema('personajes-historicos', this)">👤 Personajes</button>
+                <button type="button" class="menu-btn" data-tema="conflictos-importantes" onclick="cambiarTema('conflictos-importantes', this)">⚔️ Conflictos</button>
+            </div>
 
+            <div class="menu-seccion">
+                <div class="titulo-menu">
+                    <span>🎭</span>
+                    <strong>Cultura</strong>
+                    <span class="flecha">▾</span>
+                </div>
+                <button type="button" class="menu-btn" data-tema="gastronomia" onclick="cambiarTema('gastronomia', this)">🍽️ Gastronomía</button>
+                <button type="button" class="menu-btn" data-tema="musica-y-bailes" onclick="cambiarTema('musica-y-bailes', this)">💃 Música y bailes</button>
+                <button type="button" class="menu-btn" data-tema="tradiciones" onclick="cambiarTema('tradiciones', this)">🎭 Tradiciones</button>
+                <button type="button" class="menu-btn" data-tema="religiones" onclick="cambiarTema('religiones', this)">🕊️ Religiones</button>
+                <button type="button" class="menu-btn" data-tema="vestimenta-tipica" onclick="cambiarTema('vestimenta-tipica', this)">👒 Vestimenta</button>
+                <button type="button" class="menu-btn" data-tema="arte-y-literatura" onclick="cambiarTema('arte-y-literatura', this)">🎨 Arte y literatura</button>
+                <button type="button" class="menu-btn" data-tema="monumentos" onclick="cambiarTema('monumentos', this)">🏛️ Monumentos</button>
+                <button type="button" class="menu-btn" data-tema="fiestas" onclick="cambiarTema('fiestas', this)">🎉 Fiestas</button>
+            </div>
+        </aside>
 
-            <!-- ==================================================
-                 MENÚ IZQUIERDO
-            ================================================== -->
+        <!-- CENTRO -->
+        <main class="contenido-central">
 
-            <aside class="menu">
+            <button type="button" class="volver" onclick="reiniciarProgreso()">↺ Reiniciar progreso</button>
 
+            <!-- Título del tema -->
+            <div class="titulo-tema">
+                <div class="icono-tema" id="iconoTema">🏺</div>
+                <div>
+                    <h2 id="tituloTema">Primeras civilizaciones</h2>
+                    <p id="subtituloTema">Conoce los pueblos que habitaron Colombia antes de la llegada de los españoles.</p>
+                </div>
+            </div>
 
-                <!-- ==================================================
-                     HISTORIA
-                ================================================== -->
+            <!-- Mensaje del robot -->
+            <div class="mensaje-bot">
+                <div class="bot">🤖</div>
+                <div class="burbuja-bot">
+                    <p id="mensajeBot">Descubre las grandes culturas indígenas que dejaron una importante huella en Colombia.</p>
+                </div>
+            </div>
 
-                <div class="menu-seccion">
+            <!-- Información del tema -->
+            <div class="informacion-tema">
 
-                    <div class="titulo-menu">
-
-                        <span>📖</span>
-
-                        <strong>
-                            Historia
-                        </strong>
-
-                        <span class="flecha">
-                            ⌄
-                        </span>
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        data-tema="primeras-civilizaciones"
-                        onclick="cambiarTema('primeras-civilizaciones', this)"
-                    >
-                        🏛️ Primeras civilizaciones
+                <div class="imagen-contenedor">
+                    <img id="imagenTema" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800" alt="Tema">
+                    <button type="button" class="boton-audio" onclick="reproducirAudio()">
+                        <span id="estadoAudio">▶</span> Escuchar explicación
                     </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="conquista"
-                        onclick="cambiarTema('conquista', this)"
-                    >
-                        ⚔️ Conquista
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="epoca-colonial"
-                        onclick="cambiarTema('epoca-colonial', this)"
-                    >
-                        🚢 Época colonial
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="independencia"
-                        onclick="cambiarTema('independencia', this)"
-                    >
-                        🚩 Independencia
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="personajes-historicos"
-                        onclick="cambiarTema('personajes-historicos', this)"
-                    >
-                        👤 Personajes históricos
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="conflictos-importantes"
-                        onclick="cambiarTema('conflictos-importantes', this)"
-                    >
-                        💥 Conflictos importantes
-                    </button>
-
                 </div>
 
+                <div class="dato-curioso">
+                    <h3>💡 Dato interesante</h3>
+                    <p id="datoCurioso">Los pueblos indígenas desarrollaron sistemas de agricultura, comercio, arte y organización social.</p>
 
-                <!-- ==================================================
-                     CULTURA
-                ================================================== -->
-
-                <div class="menu-seccion">
-
-                    <div class="titulo-menu">
-
-                        <span>🎭</span>
-
-                        <strong>
-                            Cultura
-                        </strong>
-
-                        <span class="flecha">
-                            ⌃
-                        </span>
-
+                    <h4>Regiones destacadas</h4>
+                    <div class="regiones" id="regiones">
+                        <span>Andina</span>
+                        <span>Caribe</span>
+                        <span>Pacífica</span>
                     </div>
-
-
-                    <button
-                        type="button"
-                        data-tema="gastronomia"
-                        onclick="cambiarTema('gastronomia', this)"
-                    >
-                        🍴 Gastronomía
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="musica-y-bailes"
-                        onclick="cambiarTema('musica-y-bailes', this)"
-                    >
-                        🎵 Música y bailes
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="tradiciones"
-                        onclick="cambiarTema('tradiciones', this)"
-                    >
-                        🌸 Tradiciones
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="religiones"
-                        onclick="cambiarTema('religiones', this)"
-                    >
-                        🪷 Religiones
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="vestimenta-tipica"
-                        onclick="cambiarTema('vestimenta-tipica', this)"
-                    >
-                        👕 Vestimenta típica
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="arte-y-literatura"
-                        onclick="cambiarTema('arte-y-literatura', this)"
-                    >
-                        🎨 Arte y literatura
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="monumentos"
-                        onclick="cambiarTema('monumentos', this)"
-                    >
-                        🏛️ Monumentos
-                    </button>
-
-
-                    <button
-                        type="button"
-                        data-tema="fiestas"
-                        onclick="cambiarTema('fiestas', this)"
-                    >
-                        🎉 Fiestas
-                    </button>
-
                 </div>
+            </div>
 
-            </aside>
-
-
-            <!-- ==================================================
-                 CONTENIDO CENTRAL
-            ================================================== -->
-
-            <section class="contenido-central">
-
-
-                <!-- VOLVER -->
-
-                <button
-                    type="button"
-                    class="volver"
-                    onclick="volverInicio()"
-                >
-                    ← Volver a Cultura
-                </button>
-
-
-                <!-- TÍTULO DEL TEMA -->
-
-                <div class="titulo-tema">
-
-                    <div
-                        class="icono-tema"
-                        id="iconoTema"
-                    >
-                        🍴
-                    </div>
-
+            <!-- MINI RETO -->
+            <div class="reto">
+                <div class="titulo-reto">
+                    <span>🎯</span>
                     <div>
-
-                        <h2 id="tituloTema">
-                            Gastronomía
-                        </h2>
-
-                        <p id="subtituloTema">
-                            Sabores que cuentan historias
-                        </p>
-
+                        <h3>Mini Reto</h3>
+                        <p id="numeroPregunta">Pregunta 1 de 5</p>
                     </div>
-
                 </div>
 
+                <p class="pregunta-reto" id="preguntaReto">
+                    ¿Cuál de estos platos es tradicional de Colombia?
+                </p>
 
-                <!-- ==================================================
-                     MENSAJE DEL BOT
-                ================================================== -->
-
-                <div class="mensaje-bot">
-
-                    <div class="bot">
-                        🤖
-                    </div>
-
-                    <div class="burbuja-bot">
-
-                        <p id="mensajeBot">
-                            ¡Hola! Hoy vamos a descubrir
-                            la gastronomía de Colombia.
-                            Escucha la explicación y
-                            después responde el mini reto.
-                        </p>
-
-                    </div>
-
+                <div class="opciones" id="opcionesReto">
+                    <!-- Las opciones se generan con JavaScript -->
                 </div>
 
+                <div class="resultado" id="resultado"></div>
 
-                <!-- ==================================================
-                     INFORMACIÓN DEL TEMA
-                ================================================== -->
-
-                <div class="informacion-tema">
-
-
-                    <!-- IMAGEN -->
-
-                    <div class="imagen-contenedor">
-
-                        <img
-                            id="imagenTema"
-                            src="https://s3.amazonaws.com/rtvc-assets-senalcolombia.gov.co/s3fs-public/styles/imagen_noticia/public/field/image/Sin%20ti%CC%81tulo-1_10.jpg?itok=NTFf8IdV"
-                            alt="Colombia"
-                        >
-
-
-                        <!-- AUDIO -->
-
-                        <button
-                            type="button"
-                            class="boton-audio"
-                            id="botonAudio"
-                            onclick="reproducirAudio()"
-                        >
-
-                            <span>
-                                🔊 Escuchar explicación
-                            </span>
-
-                            <small id="estadoAudio">
-                                ▶
-                            </small>
-
-                        </button>
-
-                    </div>
-
-
-                    <!-- DATO CURIOSO -->
-
-                    <div class="dato-curioso">
-
-                        <h3>
-                            💡 Dato curioso
-                        </h3>
-
-                        <p id="datoCurioso">
-                            La gastronomía colombiana tiene
-                            una gran diversidad regional.
-                            Cada región posee platos y
-                            preparaciones que reflejan
-                            sus tradiciones.
-                        </p>
-
-
-                        <h4>
-                            🇨🇴 Departamentos destacados
-                        </h4>
-
-
-                        <div
-                            class="regiones"
-                            id="regiones"
-                        >
-
-                            <span>
-                                Antioquia
-                            </span>
-
-                            <span>
-                                Atlántico
-                            </span>
-
-                            <span>
-                                Nariño
-                            </span>
-
-                            <span>
-                                Meta
-                            </span>
-
-                            <span>
-                                Amazonas
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ==================================================
-                     MINI RETO
-                ================================================== -->
-
-                <div class="reto">
-
-
-                    <!-- TÍTULO DEL RETO -->
-
-                    <div class="titulo-reto">
-
-                        <span>
-                            🎮
-                        </span>
-
-                        <div>
-
-                            <h3>
-                                Mini reto
-                            </h3>
-
-                            <p id="numeroPregunta">
-                                Pregunta 1 de 5
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- PREGUNTA -->
-
-                    <div
-                        id="preguntaReto"
-                        class="pregunta-reto"
-                    >
-                    </div>
-
-
-                    <!-- OPCIONES -->
-
-                    <div
-                        id="opcionesReto"
-                        class="opciones"
-                    >
-                    </div>
-
-
-                    <!-- RESULTADO -->
-
-                    <div
-                        id="resultado"
-                        class="resultado"
-                    >
-                    </div>
-
-
-                    <!-- SIGUIENTE -->
-
-                    <button
-                        type="button"
-                        id="botonSiguiente"
-                        class="siguiente"
-                        onclick="siguientePregunta()"
-                        disabled
-                    >
-                        Siguiente →
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 PANEL DERECHO
-            ================================================== -->
-
-            <aside class="panel-derecho">
-
-                <div class="tarjeta explorar">
-
-                    <div class="planeta">
-                        🌎
-                    </div>
-
-                    <h3>
-                        ¡Sigue explorando!
-                    </h3>
-
-                    <p>
-                        Descubre nuevas historias,
-                        culturas y tradiciones
-                        alrededor del mundo.
-                    </p>
-
-                    <div class="decoracion">
-                        ✦
-                    </div>
-
-                </div>
-
-            </aside>
+                <button type="button" id="botonSiguiente" onclick="siguientePregunta()" disabled>Siguiente →</button>
+            </div>
 
         </main>
 
+        <!-- PANEL DERECHO -->
+        <aside class="panel-derecho">
+            <div class="tarjeta explorar">
+                <div class="planeta">🇨🇴</div>
+                <h3>Tu progreso</h3>
+
+                <div style="margin: 12px 0;">
+                    <div style="display:flex; justify-content:space-between; font-size:14px;">
+                        <span>Categorías</span>
+                        <strong id="porcentaje">0%</strong>
+                    </div>
+                    <svg width="120" height="120" viewBox="0 0 120 120" style="display:block; margin:10px auto;">
+                        <circle cx="60" cy="60" r="50" fill="none" stroke="#e5e7eb" stroke-width="10"/>
+                        <circle id="circuloProgreso" cx="60" cy="60" r="50" fill="none" stroke="#22c55e" stroke-width="10"
+                            stroke-linecap="round" transform="rotate(-90 60 60)"
+                            stroke-dasharray="314" stroke-dashoffset="314"/>
+                    </svg>
+                    <p id="mensajeProgreso" style="text-align:center; font-size:13px;">¡Empieza a explorar! 🚀</p>
+                </div>
+
+                <p style="font-size:13px; margin-top:8px;">
+                    ✅ Correctas: <strong id="respuestasCorrectas">0</strong><br>
+                    🏆 Categorías: <strong id="retosCompletados">0</strong><br>
+                    🔁 Rondas: <strong id="rondasCompletadas">0</strong><br>
+                    ⭐ Puntos totales: <strong id="puntosTotales">0</strong>
+                </p>
+            </div>
+        </aside>
+
     </div>
+</div>
 
+<!-- BOTÓN RETO FINAL -->
+<div class="contenedor-reto-final">
+    <button type="button" id="btnRetoFinal" class="btn-reto-final" onclick="comenzarRetoFinal()" disabled>
+        🔒 Reto Final Bloqueado
+    </button>
+</div>
 
-    <!-- ======================================================
-         MODAL DE VIDAS AGOTADAS
-    ====================================================== -->
-<!-- =====================================================
-     AVISO DE VIDAS AGOTADAS
-===================================================== -->
+<!-- MODAL RETO FINAL -->
+<div id="modalRetoFinal" class="modal-reto-final" style="display:none;">
+    <div class="reto-final-card">
+        <button type="button" class="cerrar-modal" onclick="cerrarRetoFinal()">×</button>
+        <div class="icono-final">🏆</div>
+        <div class="reto-final-header">
+            <h2>Reto Final de Colombia</h2>
+            <p>¡Has completado todas las categorías! Ahora demuestra todo lo que aprendiste sobre la historia y cultura de Colombia.</p>
+        </div>
+        <div class="contador-final">
+            Pregunta <b id="numeroPreguntaFinal">1</b> / 30
+        </div>
+        <div class="pregunta-final-box">
+            <h3 id="preguntaFinal">Aquí aparecerá la pregunta</h3>
+        </div>
+        <div id="opcionesFinal" class="opciones-final"></div>
+        <div id="resultadoFinal" class="resultado-final"></div>
+        <div class="marcadores-final">
+            <div class="marcador-final">
+                <span>⭐</span>
+                <strong id="puntosFinales">0</strong>
+                <span>Puntos</span>
+            </div>
+            <div class="marcador-final">
+                <span>🎯</span>
+                <strong id="respuestasFinales">0</strong>
+                <span>Correctas</span>
+            </div>
+        </div>
+        <button type="button" id="btnSiguienteFinal" class="btn-siguiente-final" onclick="siguientePreguntaFinal()" disabled>
+            Siguiente →
+        </button>
+    </div>
+</div>
 
-<div id="modalRecuperacion" class="modal-recuperacion-overlay">
-
+<!-- MODAL DE RECUPERACIÓN -->
+<div id="modalRecuperacion" class="modal-recuperacion-overlay" style="display:none;">
     <div class="modal-recuperacion">
-
-        <div class="icono-modal">
-            ❤️
+        <div id="inicioRecuperacion">
+            <div class="icono-modal">❤️</div>
+            <h2>¡Te quedaste sin vidas!</h2>
+            <p>No puedes continuar con los mini retos por ahora.</p>
+            <p>Responde 5 preguntas y acierta al menos 3 para recuperar tus 5 vidas.</p>
+            <button type="button" id="btnIniciarRecuperacion" class="boton-recuperar" onclick="comenzarRetoRecuperacion()">
+                🎯 Recuperar vidas
+            </button>
         </div>
-
-        <h2>¡Te quedaste sin vidas!</h2>
-
-        <p>
-            No puedes continuar con los mini retos por ahora.
-        </p>
-
-        <p>
-            Completa un reto de recuperación para recuperar tus vidas.
-        </p>
-
-        <button
-            type="button"
-            id="btnIniciarRecuperacion"
-            class="boton-recuperar">
-
-            🎯 Recuperar vidas
-
-        </button>
-
+        <div id="preguntaRecuperacionBox" style="display:none;">
+            <h3 id="preguntaRecuperacion"></h3>
+            <div id="opcionesRecuperacion" class="opciones-recuperacion"></div>
+            <div id="resultadoRecuperacion" class="resultado-recuperacion"></div>
+            <button type="button" id="btnContinuarRecuperacion" class="boton-recuperar" onclick="continuarDespuesRecuperacion()" disabled>
+                Continuar →
+            </button>
+        </div>
     </div>
-
 </div>
 
 
-<!-- =====================================================
-     RETO DE RECUPERACIÓN
-===================================================== -->
-
-<div id="modalRetoRecuperacion" class="modal-recuperacion-overlay">
-
-    <div class="modal-recuperacion reto-recuperacion">
-
-        <div class="icono-modal">
-            🎯
-        </div>
-
-        <h2>
-            Reto de recuperación
-        </h2>
-
-        <p
-            id="preguntaRecuperacion"
-            class="pregunta-recuperacion">
-        </p>
-
-        <!-- OPCIONES -->
-
-        <div
-            id="opcionesRecuperacion"
-            class="opciones-recuperacion">
-        </div>
-
-        <!-- RESULTADO -->
-
-        <div
-            id="resultadoRecuperacion"
-            class="resultado-recuperacion">
-        </div>
-
-        <!-- RESPONDER -->
-
-        <button
-            type="button"
-            id="btnResponderRecuperacion"
-            class="boton-recuperar"
-            disabled>
-
-            Responder
-
-        </button>
-
-    </div>
-
-</div>
-    
-
-    <!-- ======================================================
-         JAVASCRIPT
-    ====================================================== -->
-
-    <script src="Colombia.js"></script>
+<script src="Colombia.js"></script>
 
 </body>
-
 </html>
-

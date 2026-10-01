@@ -1,534 +1,306 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Historia Sin Fronteras - Marruecos</title>
-
     <link rel="stylesheet" href="Marruecos.css">
 </head>
-
 <body>
 
-    <div class="app">
+<div class="app">
 
-        <!-- ================= SIDEBAR ================= -->
-        <aside class="sidebar">
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
 
-            <!-- LOGO -->
-            <div class="logo-area">
-                <div class="logo">🌎</div>
+        <div class="logo-area">
+            <div class="logo">🌎</div>
+            <h2>Historia<br>Sin Fronteras</h2>
+        </div>
 
-                <h2>
-                    Historia<br>
-                    Sin Fronteras
-                </h2>
+        <nav class="menu">
+
+            <h3>📜 Historia</h3>
+
+            <button type="button" class="menu-btn activo" data-tema="civilizaciones" onclick="cambiarTema('civilizaciones', this)">
+                🏛️ Civilizaciones antiguas
+            </button>
+            <button type="button" class="menu-btn" data-tema="dinastias" onclick="cambiarTema('dinastias', this)">
+                👑 Dinastías
+            </button>
+            <button type="button" class="menu-btn" data-tema="andalus" onclick="cambiarTema('andalus', this)">
+                🕌 Marruecos y Al-Ándalus
+            </button>
+            <button type="button" class="menu-btn" data-tema="protectorado" onclick="cambiarTema('protectorado', this)">
+                📜 Protectorado
+            </button>
+            <button type="button" class="menu-btn" data-tema="independencia" onclick="cambiarTema('independencia', this)">
+                🇲🇦 Independencia
+            </button>
+            <button type="button" class="menu-btn" data-tema="monarquia" onclick="cambiarTema('monarquia', this)">
+                👑 Monarquía
+            </button>
+            <button type="button" class="menu-btn" data-tema="actualidad" onclick="cambiarTema('actualidad', this)">
+                🌍 Marruecos actual
+            </button>
+
+            <h3>🏺 Cultura</h3>
+
+            <button type="button" class="menu-btn" data-tema="gastronomia" onclick="cambiarTema('gastronomia', this)">
+                🍲 Gastronomía
+            </button>
+            <button type="button" class="menu-btn" data-tema="musica" onclick="cambiarTema('musica', this)">
+                🎵 Música
+            </button>
+            <button type="button" class="menu-btn" data-tema="tradiciones" onclick="cambiarTema('tradiciones', this)">
+                🪅 Tradiciones
+            </button>
+            <button type="button" class="menu-btn" data-tema="fiestas" onclick="cambiarTema('fiestas', this)">
+                🎉 Fiestas
+            </button>
+            <button type="button" class="menu-btn" data-tema="vestimenta" onclick="cambiarTema('vestimenta', this)">
+                👘 Vestimenta
+            </button>
+            <button type="button" class="menu-btn" data-tema="arte" onclick="cambiarTema('arte', this)">
+                🎨 Arte y artesanía
+            </button>
+            <button type="button" class="menu-btn" data-tema="monumentos" onclick="cambiarTema('monumentos', this)">
+                🕌 Monumentos
+            </button>
+
+        </nav>
+
+        <div class="pais-card">
+            <div class="bandera">🇲🇦</div>
+            <div>
+                <strong>Marruecos</strong>
+                <p>África</p>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= CONTENIDO CENTRAL ================= -->
+    <main class="contenido">
+
+        <header class="cabecera">
+            <div class="titulo">
+                <div class="titulo-icono" id="iconoTema">🏛️</div>
+                <div>
+                    <h1 id="tituloTema">Civilizaciones antiguas</h1>
+                    <p id="subtituloTema">Conoce los pueblos que habitaron el territorio de Marruecos</p>
+                </div>
             </div>
 
-
-            <!-- MENÚ -->
-            <nav class="menu">
-
-                <!-- CULTURA -->
-                <h3>🏺 Cultura</h3>
-
-                <button type="button"
-                    onclick="cambiarTema('gastronomia', this)">
-                    🍲 Gastronomía
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('musica', this)">
-                    🎵 Música
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('tradiciones', this)">
-                    🪅 Tradiciones
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('fiestas', this)">
-                    🎉 Fiestas
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('vestimenta', this)">
-                    👘 Vestimenta
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('arte', this)">
-                    🎨 Arte y artesanía
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('monumentos', this)">
-                    🕌 Monumentos
-                </button>
-
-
-                <!-- HISTORIA -->
-                <h3>📜 Historia</h3>
-
-                <button type="button"
-                    onclick="cambiarTema('civilizaciones', this)">
-                    🏛️ Civilizaciones antiguas
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('dinastias', this)">
-                    👑 Dinastías
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('andalus', this)">
-                    🕌 Marruecos y Al-Ándalus
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('protectorado', this)">
-                    📜 Protectorado
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('independencia', this)">
-                    🇲🇦 Independencia
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('monarquia', this)">
-                    👑 Monarquía
-                </button>
-
-                <button type="button"
-                    onclick="cambiarTema('actualidad', this)">
-                    🌍 Marruecos actual
-                </button>
-
-            </nav>
-
-
-            <!-- TARJETA DEL PAÍS -->
-            <div class="pais-card">
-
-                <div class="bandera">
-                    🇲🇦
+            <div class="estadisticas">
+                <div class="estadistica puntos">
+                    <span>⭐</span>
+                    <div>
+                        <span>Puntos</span>
+                        <strong id="puntos">0</strong>
+                    </div>
                 </div>
-
-                <div>
-                    <strong>Marruecos</strong>
-                    <p>Historia y cultura</p>
+                <div class="estadistica vidas">
+                    <span>❤️</span>
+                    <div>
+                        <span>Vidas</span>
+                        <strong id="vidas">5</strong>
+                    </div>
                 </div>
+            </div>
+        </header>
 
+        <section class="mensaje-robot">
+            <div class="robot">🤖</div>
+            <div>
+                <strong>¡Hola, explorador!</strong>
+                <p id="mensajeBot">Responde las preguntas y descubre la historia y cultura de Marruecos.</p>
+            </div>
+        </section>
+
+        <section class="informacion">
+            <div class="imagen-container">
+                <img id="imagenTema"
+                     src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=900&q=80"
+                     alt="Marruecos">
+                <button type="button" class="boton-audio" onclick="reproducirAudio()">
+                    🔊 Escuchar explicación
+                </button>
             </div>
 
-        </aside>
+            <div class="dato-box">
+                <h3>💡 Dato interesante</h3>
+                <p id="datoCurioso">Los bereberes (amazigh) son el pueblo indígena de África del Norte y habitan Marruecos desde hace miles de años.</p>
+            </div>
 
+            <div class="regiones-box">
+                <h3>📍 Lugares relacionados</h3>
+                <p id="regiones">Atlas • Rif • Costa mediterránea • Sahara</p>
+            </div>
+        </section>
 
-        <!-- ================= CONTENIDO PRINCIPAL ================= -->
-        <main class="contenido">
-
-            <!-- CABECERA -->
-            <header class="cabecera">
-
-                <div class="titulo">
-
-                    <div
-                        class="titulo-icono"
-                        id="iconoTema">
-                        🍲
-                    </div>
-
-                    <div>
-
-                        <h1 id="tituloTema">
-                            Gastronomía marroquí
-                        </h1>
-
-                        <p id="subtituloTema">
-                            Sabores y aromas que cuentan historias
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- PUNTOS Y VIDAS -->
-                <div class="estadisticas">
-
-                    <div class="estadistica puntos">
-
-                        <span>⭐</span>
-
-                        <div>
-                            <span>Puntos</span>
-                            <strong id="puntos">0</strong>
-                        </div>
-
-                    </div>
-
-
-                    <div class="estadistica vidas">
-
-                        <span>❤️</span>
-
-                        <div>
-                            <span>Vidas</span>
-                            <strong id="vidas">5</strong>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </header>
-
-
-            <!-- ================= MENSAJE DEL ROBOT ================= -->
-            <section class="mensaje-robot">
-
-                <div class="robot">
-                    🤖
-                </div>
-
+        <section class="reto">
+            <div class="reto-titulo">
+                <span>🎯</span>
                 <div>
-
-                    <strong>
-                        ¡Hola, explorador!
-                    </strong>
-
-                    <p id="mensajeRobot">
-                        Descubre la historia y cultura de Marruecos.
-                    </p>
-
+                    <h2>Mini reto</h2>
+                    <p>Demuestra lo que aprendiste</p>
                 </div>
+                <div style="margin-left:auto; font-size:13px; color:#888;" id="numeroPregunta">1 / 5</div>
+            </div>
 
-            </section>
+            <div class="pregunta">
+                <h3 id="preguntaReto">¿Cuál es el pueblo indígena originario de Marruecos?</h3>
+            </div>
+
+            <div class="opciones" id="opcionesReto"></div>
+
+            <div class="resultado" id="resultado"></div>
+
+            <button type="button" class="boton-siguiente" id="botonSiguiente" onclick="siguientePregunta()" disabled>
+                Siguiente →
+            </button>
+        </section>
+
+    </main>
 
 
-            <!-- ================= INFORMACIÓN ================= -->
-            <section class="informacion">
+    <!-- ================= PANEL DERECHO ================= -->
+    <aside class="panel-derecho">
 
-                <!-- IMAGEN -->
-                <div class="imagen-container">
+        <div class="progreso-card">
+            <h2>📈 Mi progreso</h2>
 
-                    <img
-                        id="imagenTema"
-                        src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=900&q=80"
-                        alt="Marruecos">
-
-                    <button
-                        type="button"
-                        class="boton-audio"
-                        onclick="escuchar()">
-
-                        🔊 Escuchar
-
-                    </button>
-
+            <div class="circulo-progreso">
+                <svg viewBox="0 0 120 120">
+                    <circle class="circulo-fondo" cx="60" cy="60" r="50"></circle>
+                    <circle class="circulo-avance" id="circuloProgreso" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <div class="porcentaje">
+                    <strong id="porcentaje">0%</strong>
+                    <span>completado</span>
                 </div>
+            </div>
 
-
-                <!-- DATO -->
-                <div class="dato-box">
-
-                    <h3>
-                        💡 ¿Sabías que?
-                    </h3>
-
-                    <p id="datoTema">
-                        La gastronomía marroquí combina
-                        especias, aromas y tradiciones.
-                    </p>
-
+            <div class="datos-progreso">
+                <div>
+                    <strong id="retosCompletados">0</strong>
+                    <span>Retos</span>
                 </div>
-
-
-                <!-- REGIONES -->
-                <div class="regiones-box">
-
-                    <h3>
-                        📍 Lugares relacionados
-                    </h3>
-
-                    <p id="regionesTema">
-                        Marrakech • Fez • Casablanca • Rabat
-                    </p>
-
+                <div>
+                    <strong id="respuestasCorrectas">0</strong>
+                    <span>Correctas</span>
                 </div>
-
-            </section>
-
-
-            <!-- ================= MINI RETO ================= -->
-            <section class="reto">
-
-                <div class="reto-titulo">
-
-                    <span>🎯</span>
-
-                    <div>
-
-                        <h2>
-                            Mini reto
-                        </h2>
-
-                        <p>
-                            Demuestra lo que aprendiste
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- PREGUNTA -->
-                <div class="pregunta">
-
-                    <h3 id="pregunta">
-                        ¿Cuál de estos platos es tradicional
-                        de Marruecos?
-                    </h3>
-
-                </div>
-
-
-                <!-- OPCIONES -->
-                <div
-                    class="opciones"
-                    id="opciones">
-                </div>
-
-
-                <!-- RESULTADO -->
-                <div
-                    class="resultado"
-                    id="resultado">
-                </div>
-
-
-                <!-- SIGUIENTE -->
-                <button
-                    type="button"
-                    class="boton-siguiente"
-                    id="botonSiguiente"
-                    onclick="siguienteTema()"
-                    disabled>
-
-                    Siguiente →
-
-                </button>
-
-            </section>
-
-        </main>
-
-
-        <!-- ================= PANEL DERECHO ================= -->
-        <aside class="panel-derecho">
-
-
-            <!-- PROGRESO -->
-            <section class="progreso-card">
-
-                <h2>
-                    📈 Mi progreso
-                </h2>
-
-
-                <div class="circulo-progreso">
-
-                    <svg
-                        viewBox="0 0 120 120"
-                        aria-label="Progreso del estudiante">
-
-                        <circle
-                            class="circulo-fondo"
-                            cx="60"
-                            cy="60"
-                            r="50">
-                        </circle>
-
-                        <circle
-                            class="circulo-avance"
-                            id="circuloProgreso"
-                            cx="60"
-                            cy="60"
-                            r="50">
-                        </circle>
-
-                    </svg>
-
-
-                    <div class="porcentaje">
-
-                        <strong id="porcentaje">
-                            0%
-                        </strong>
-
-                        <span>
-                            completado
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- DATOS -->
-                <div class="datos-progreso">
-
-                    <div>
-
-                        <strong id="retosCompletados">
-                            0
-                        </strong>
-
-                        <span>
-                            Retos
-                        </span>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong id="respuestasCorrectas">
-                            0
-                        </strong>
-
-                        <span>
-                            Correctas
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <p
-                    id="mensajeProgreso"
-                    class="mensaje-progreso">
-
-                    ¡Comienza tu aventura! 🌎
-
-                </p>
-
-            </section>
-
-
-            <!-- SOBRE ESTE TEMA -->
-            <section class="sobre-card">
-
-                <h2>
-                    📚 Sobre este tema
-                </h2>
-
-                <p id="sobreTexto">
-                    Conoce datos interesantes sobre la
-                    cultura, historia y patrimonio de Marruecos.
-                </p>
-               <!-- =====================================================
-     AVISO DE VIDAS AGOTADAS
-===================================================== -->
-
-<div id="modalRecuperacion" class="modal-recuperacion-overlay">
-
+            </div>
+
+            <p id="mensajeProgreso" class="mensaje-progreso">¡Empieza a explorar! 🚀</p>
+
+            <button type="button" class="pg-guardar" onclick="guardarProgreso()" style="display:block;margin:15px auto 0;padding:10px 16px;border:none;border-radius:12px;background:#eee;cursor:pointer;font-size:13px;">
+                💾 Guardar el progreso
+            </button>
+        </div>
+
+        <div class="sobre-card">
+            <h2>📚 Explora Marruecos</h2>
+            <p id="sobreTexto">Descubre la rica historia, las dinastías, la gastronomía y las tradiciones de este fascinante país del norte de África.</p>
+        </div>
+
+    </aside>
+
+</div>
+
+
+<!-- BOTÓN RETO FINAL -->
+<div class="contenedor-reto-final">
+    <button type="button" id="btnRetoFinal" class="btn-reto-final" onclick="comenzarRetoFinal()" disabled>
+        🔒 Reto Final Bloqueado
+    </button>
+</div>
+
+
+<!-- MODAL RETO FINAL -->
+<div id="modalRetoFinal" class="modal-reto-final" style="display:none;">
+    <div class="reto-final-card">
+        <button type="button" class="cerrar-modal" onclick="cerrarRetoFinal()">×</button>
+        <div class="icono-final">MA</div>
+        <div class="reto-final-header">
+            <h2>Reto Final de Marruecos</h2>
+            <p>¡Has completado todas las categorías! Ahora demuestra todo lo que aprendiste.</p>
+        </div>
+        <div class="contador-final">Pregunta <b id="numeroPreguntaFinal">1</b> / 30</div>
+        <div class="pregunta-final-box">
+            <h3 id="preguntaFinal">Aquí aparecerá la pregunta</h3>
+        </div>
+        <div id="opcionesFinal" class="opciones-final"></div>
+        <div id="resultadoFinal" class="resultado-final"></div>
+        <div class="marcadores-final">
+            <div class="marcador-final">
+                <span>⭐</span>
+                <strong id="puntosFinales">0</strong>
+                <span>Puntos</span>
+            </div>
+            <div class="marcador-final">
+                <span>🎯</span>
+                <strong id="respuestasFinales">0</strong>
+                <span>Correctas</span>
+            </div>
+        </div>
+        <button type="button" id="btnSiguienteFinal" class="btn-siguiente-final" onclick="siguientePreguntaFinal()" disabled>
+            Siguiente →
+        </button>
+    </div>
+</div>
+
+
+<!-- MODAL RECUPERACIÓN -->
+<div id="modalRecuperacion" class="modal-recuperacion-overlay" style="display:none;">
     <div class="modal-recuperacion">
-
-        <div class="icono-modal">
-            ❤️
+        <div id="inicioRecuperacion">
+            <div class="icono-modal">❤️</div>
+            <h2>¡Te quedaste sin vidas!</h2>
+            <p>No puedes continuar con los mini retos por ahora.</p>
+            <p>Responde 5 preguntas y acierta al menos 3 para recuperar tus 5 vidas.</p>
+            <button type="button" class="boton-recuperar" onclick="comenzarRetoRecuperacion()">
+                🎯 Recuperar vidas
+            </button>
         </div>
-
-        <h2>¡Te quedaste sin vidas!</h2>
-
-        <p>
-            No puedes continuar con los mini retos por ahora.
-        </p>
-
-        <p>
-            Completa un reto de recuperación para ganar una vida.
-        </p>
-
-        <button
-            type="button"
-            id="btnIniciarRecuperacion"
-            class="boton-recuperar"
-            onclick="iniciarRecuperacion()">
-
-            🎯 Recuperar una vida
-
-        </button>
-
+        <div id="preguntaRecuperacionBox" style="display:none;">
+            <h3 id="preguntaRecuperacion"></h3>
+            <div id="opcionesRecuperacion" class="opciones-recuperacion"></div>
+            <div id="resultadoRecuperacion" class="resultado-recuperacion"></div>
+            <button type="button" id="btnContinuarRecuperacion" class="boton-recuperar" onclick="continuarDespuesRecuperacion()" disabled>
+                Continuar →
+            </button>
+        </div>
     </div>
-
 </div>
 
 
-<!-- =====================================================
-     RETO DE RECUPERACIÓN
-===================================================== -->
-
-<div id="modalRetoRecuperacion" class="modal-recuperacion-overlay">
-
-    <div class="modal-recuperacion reto-recuperacion">
-
-        <div class="icono-modal">
-            🎯
+<!-- AVENTURA COMPLETADA -->
+<div id="aventuraCompletada" class="aventura-completada" style="display:none;">
+    <div class="resultado-final-card">
+        <div class="icono-final">🏆</div>
+        <h2>¡Aventura completada!</h2>
+        <p>Has terminado el Reto Final de Marruecos. Tu progreso quedó guardado y puedes empezar una nueva ronda.</p>
+        <div class="resultado-resumen">
+            <div>
+                <span>⭐</span>
+                <strong id="resultadoPuntosFinales">0</strong>
+                <small>Puntos</small>
+            </div>
+            <div>
+                <span>🎯</span>
+                <strong id="resultadoCorrectasFinales">0 / 30</strong>
+                <small>Correctas</small>
+            </div>
         </div>
-
-        <h2>Reto de recuperación</h2>
-
-        <p
-            id="preguntaRecuperacion"
-            class="pregunta-recuperacion">
-        </p>
-
-        <!-- AQUÍ APARECERÁN LAS 4 OPCIONES -->
-
-        <div
-            id="opcionesRecuperacion"
-            class="opciones-recuperacion">
-        </div>
-
-        <!-- RESULTADO -->
-
-        <div
-            id="resultadoRecuperacion"
-            class="resultado-recuperacion">
-        </div>
-
-        <!-- BOTÓN RESPONDER -->
-
-        <button
-            type="button"
-            id="btnResponderRecuperacion"
-            class="boton-recuperar"
-            disabled>
-
-            Responder
-
+        <button type="button" class="boton-recuperar" onclick="cerrarAventura()">
+            🌎 Empezar nueva ronda
         </button>
-
     </div>
-
 </div>
 
-            </section>
-
-        </aside>
-
-    </div>
-
-
-    <!-- ================= JAVASCRIPT ================= -->
-
-    <script src="Marruecos.js"></script>
-
+<script src="Marruecos.js"></script>
 </body>
-
 </html>

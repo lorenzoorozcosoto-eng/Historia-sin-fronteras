@@ -1,3763 +1,1284 @@
 /* ============================================================
    HISTORIA SIN FRONTERAS - COLOMBIA
-   JAVASCRIPT COMPLETO
-
-   14 CATEGORÍAS
-   5 PREGUNTAS POR CATEGORÍA
-   SISTEMA DE 5 VIDAS
-   RETO DE RECUPERACIÓN
+   14 categorías × 5 preguntas = 70 preguntas
+   5 vidas · bloqueo al llegar a 0 · reto de recuperación
+   Reto final de 30 preguntas · historial de rondas
 ============================================================ */
 
 
-/* ============================================================
+/* ------------------------------------------------------------
    1. CONFIGURACIÓN
-============================================================ */
+------------------------------------------------------------ */
 
-const CLAVE_GUARDADO =
-    "historiaSinFronterasColombia_v7";
-
+const CLAVE_GUARDADO = "historiaSinFronterasColombia_v2";
 const MAX_VIDAS = 5;
+const PUNTOS_CORRECTA = 10;
+const ACIERTOS_MINIMOS_RECUPERACION = 3;
+
+const nombresTemas = [
+  "primeras-civilizaciones",
+  "conquista",
+  "epoca-colonial",
+  "independencia",
+  "personajes-historicos",
+  "conflictos-importantes",
+  "gastronomia",
+  "musica-y-bailes",
+  "tradiciones",
+  "religiones",
+  "vestimenta-tipica",
+  "arte-y-literatura",
+  "monumentos",
+  "fiestas"
+];
+
+function q(pregunta, opciones, correcta) {
+  return { pregunta, opciones, correcta };
+}
+
+function mezclar(lista) {
+  const copia = [...lista];
+  for (let i = copia.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia;
+}
+
+function obtener(id) {
+  return document.getElementById(id);
+}
 
 
-/* ============================================================
-   2. TEMAS Y PREGUNTAS
-============================================================ */
+/* ------------------------------------------------------------
+   2. TEMAS Y 70 PREGUNTAS
+   (Opcional: agrega imagen: "URL" a un tema para cambiar la foto)
+------------------------------------------------------------ */
 
 const temas = {
 
-    /* ========================================================
-       HISTORIA - PRIMERAS CIVILIZACIONES
-    ======================================================== */
-
-    "primeras-civilizaciones": {
-
-        titulo: "Primeras civilizaciones",
-        subtitulo: "Los pueblos que habitaron Colombia antes de la llegada de los españoles",
-        icono: "🏺",
-        imagen: "🏺",
-
-        dato:
-            "Antes de la llegada de los españoles, el territorio colombiano estaba habitado por diferentes pueblos indígenas como los muiscas, taironas, quimbayas y zenúes.",
-
-        regiones: [
-            "Altiplano Cundiboyacense",
-            "Sierra Nevada de Santa Marta",
-            "Valle del Cauca",
-            "Región Caribe"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Qué pueblo indígena habitó principalmente el Altiplano Cundiboyacense?",
-
-                opciones: [
-                    "Muiscas",
-                    "Taironas",
-                    "Quimbayas",
-                    "Zenúes"
-                ],
-
-                correcta: "Muiscas"
-            },
-
-            {
-                pregunta:
-                    "¿En qué región se desarrolló principalmente la cultura tairona?",
-
-                opciones: [
-                    "Sierra Nevada de Santa Marta",
-                    "Altiplano Cundiboyacense",
-                    "Valle del río Cauca",
-                    "Llanos Orientales"
-                ],
-
-                correcta: "Sierra Nevada de Santa Marta"
-            },
-
-            {
-                pregunta:
-                    "¿Por qué son especialmente conocidos los quimbayas?",
-
-                opciones: [
-                    "Por su orfebrería",
-                    "Por sus grandes murallas",
-                    "Por sus barcos de navegación oceánica",
-                    "Por sus construcciones de hielo"
-                ],
-
-                correcta: "Por su orfebrería"
-            },
-
-            {
-                pregunta:
-                    "¿Qué desarrollaron los zenúes para controlar el agua?",
-
-                opciones: [
-                    "Canales de drenaje y manejo del agua",
-                    "Acueductos romanos",
-                    "Represas industriales",
-                    "Puertos marítimos modernos"
-                ],
-
-                correcta:
-                    "Canales de drenaje y manejo del agua"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál fue una actividad fundamental para muchos pueblos indígenas de la Colombia prehispánica?",
-
-                opciones: [
-                    "Agricultura",
-                    "Producción industrial",
-                    "Fabricación de automóviles",
-                    "Extracción de petróleo"
-                ],
-
-                correcta: "Agricultura"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       HISTORIA - CONQUISTA
-    ======================================================== */
-
-    conquista: {
-
-        titulo: "Conquista",
-        subtitulo: "La llegada de los españoles al territorio colombiano",
-        icono: "⛵",
-        imagen: "🧭",
-
-        dato:
-            "Durante el siglo XVI los españoles exploraron y conquistaron diferentes territorios de la actual Colombia, generando grandes transformaciones sociales y culturales.",
-
-        regiones: [
-            "Caribe",
-            "Altiplano Cundiboyacense",
-            "Santa Marta",
-            "Cartagena"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿En qué siglo comenzó la conquista española del territorio colombiano?",
-
-                opciones: [
-                    "Siglo XVI",
-                    "Siglo XV",
-                    "Siglo XVII",
-                    "Siglo XVIII"
-                ],
-
-                correcta: "Siglo XVI"
-            },
-
-            {
-                pregunta:
-                    "¿Qué conquistador español estuvo relacionado con la exploración del territorio muisca?",
-
-                opciones: [
-                    "Gonzalo Jiménez de Quesada",
-                    "Pedro de Heredia",
-                    "Sebastián de Belalcázar",
-                    "Rodrigo de Bastidas"
-                ],
-
-                correcta:
-                    "Gonzalo Jiménez de Quesada"
-            },
-
-            {
-                pregunta:
-                    "¿En qué región se encontraba gran parte del territorio muisca?",
-
-                opciones: [
-                    "Altiplano Cundiboyacense",
-                    "Sierra Nevada de Santa Marta",
-                    "Llanos Orientales",
-                    "Amazonía"
-                ],
-
-                correcta:
-                    "Altiplano Cundiboyacense"
-            },
-
-            {
-                pregunta:
-                    "¿Qué establecieron los españoles en diferentes lugares durante la conquista?",
-
-                opciones: [
-                    "Nuevos asentamientos y poblaciones",
-                    "Repúblicas independientes",
-                    "Industrias modernas",
-                    "Sistemas democráticos actuales"
-                ],
-
-                correcta:
-                    "Nuevos asentamientos y poblaciones"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál fue una consecuencia de la conquista española?",
-
-                opciones: [
-                    "Transformaciones políticas, sociales y culturales",
-                    "La desaparición inmediata de todas las culturas indígenas",
-                    "La industrialización del territorio",
-                    "La creación inmediata de la República de Colombia"
-                ],
-
-                correcta:
-                    "Transformaciones políticas, sociales y culturales"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       HISTORIA - ÉPOCA COLONIAL
-    ======================================================== */
-
-    "epoca-colonial": {
-
-        titulo: "Época colonial",
-        subtitulo: "Colombia bajo el dominio español",
-        icono: "🏰",
-        imagen: "⛪",
-
-        dato:
-            "Durante la época colonial, el territorio colombiano estuvo bajo el dominio de España y se desarrollaron actividades económicas, instituciones y expresiones culturales propias de ese periodo.",
-
-        regiones: [
-            "Cartagena",
-            "Bogotá",
-            "Popayán",
-            "Santa Marta"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Qué potencia europea dominó el territorio colombiano durante la época colonial?",
-
-                opciones: [
-                    "España",
-                    "Portugal",
-                    "Francia",
-                    "Países Bajos"
-                ],
-
-                correcta: "España"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál fue uno de los principales puertos coloniales del Caribe colombiano?",
-
-                opciones: [
-                    "Cartagena de Indias",
-                    "Tunja",
-                    "Popayán",
-                    "Bogotá"
-                ],
-
-                correcta: "Cartagena de Indias"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál fue una actividad económica importante durante la época colonial?",
-
-                opciones: [
-                    "Minería",
-                    "Industria automotriz",
-                    "Programación informática",
-                    "Industria aeroespacial"
-                ],
-
-                correcta: "Minería"
-            },
-
-            {
-                pregunta:
-                    "¿Qué tipo de instituciones existieron durante el periodo colonial?",
-
-                opciones: [
-                    "Instituciones coloniales",
-                    "Instituciones republicanas modernas",
-                    "Instituciones digitales",
-                    "Instituciones industriales"
-                ],
-
-                correcta: "Instituciones coloniales"
-            },
-
-            {
-                pregunta:
-                    "¿Qué grupos tuvieron influencia en la cultura colonial de Colombia?",
-
-                opciones: [
-                    "Indígenas, españoles y africanos",
-                    "Solamente españoles",
-                    "Solamente indígenas",
-                    "Solamente africanos"
-                ],
-
-                correcta:
-                    "Indígenas, españoles y africanos"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       HISTORIA - INDEPENDENCIA
-    ======================================================== */
-
-    independencia: {
-
-        titulo: "Independencia",
-        subtitulo: "El proceso que llevó a la independencia de Colombia",
-        icono: "🇨🇴",
-        imagen: "🗡️",
-
-        dato:
-            "El proceso de independencia de Colombia comenzó a desarrollarse a comienzos del siglo XIX y tuvo acontecimientos importantes como el 20 de julio de 1810 y la Batalla de Boyacá.",
-
-        regiones: [
-            "Bogotá",
-            "Boyacá",
-            "Cundinamarca",
-            "Nueva Granada"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿En qué año ocurrió la Batalla de Boyacá?",
-
-                opciones: [
-                    "1819",
-                    "1810",
-                    "1821",
-                    "1830"
-                ],
-
-                correcta: "1819"
-            },
-
-            {
-                pregunta:
-                    "¿Qué fecha se relaciona con el inicio del proceso de independencia de Colombia?",
-
-                opciones: [
-                    "20 de julio de 1810",
-                    "7 de agosto de 1819",
-                    "12 de octubre de 1492",
-                    "11 de noviembre de 1811"
-                ],
-
-                correcta:
-                    "20 de julio de 1810"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál de estos personajes tuvo un papel importante en la independencia?",
-
-                opciones: [
-                    "Simón Bolívar",
-                    "José Celestino Mutis",
-                    "Jorge Isaacs",
-                    "Gabriel García Márquez"
-                ],
-
-                correcta: "Simón Bolívar"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál fue una batalla decisiva para la independencia de la Nueva Granada?",
-
-                opciones: [
-                    "Batalla de Boyacá",
-                    "Batalla de Palonegro",
-                    "Batalla de La Humareda",
-                    "Batalla de Peralonso"
-                ],
-
-                correcta: "Batalla de Boyacá"
-            },
-
-            {
-                pregunta:
-                    "¿En qué siglo se desarrolló principalmente el proceso de independencia de Colombia?",
-
-                opciones: [
-                    "Siglo XIX",
-                    "Siglo XVI",
-                    "Siglo XVII",
-                    "Siglo XX"
-                ],
-
-                correcta: "Siglo XIX"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       HISTORIA - PERSONAJES HISTÓRICOS
-    ======================================================== */
-
-    "personajes-historicos": {
-
-        titulo: "Personajes históricos",
-        subtitulo: "Personas que dejaron huella en la historia de Colombia",
-        icono: "👤",
-        imagen: "📜",
-
-        dato:
-            "La historia de Colombia cuenta con personajes que participaron en procesos políticos, científicos, sociales y culturales.",
-
-        regiones: [
-            "Bogotá",
-            "Boyacá",
-            "Santander",
-            "Nueva Granada"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Con qué título es conocido Simón Bolívar?",
-
-                opciones: [
-                    "El Libertador",
-                    "El Sabio",
-                    "El Precursor",
-                    "El Hombre de las Leyes"
-                ],
-
-                correcta: "El Libertador"
-            },
-
-            {
-                pregunta:
-                    "¿Quién fue conocida como La Pola?",
-
-                opciones: [
-                    "Policarpa Salavarrieta",
-                    "Manuela Sáenz",
-                    "Antonia Santos",
-                    "Mercedes Ábrego"
-                ],
-
-                correcta:
-                    "Policarpa Salavarrieta"
-            },
-
-            {
-                pregunta:
-                    "¿Qué personaje fue importante en la organización política de la nueva república?",
-
-                opciones: [
-                    "Francisco de Paula Santander",
-                    "José Celestino Mutis",
-                    "Jorge Isaacs",
-                    "Rafael Pombo"
-                ],
-
-                correcta:
-                    "Francisco de Paula Santander"
-            },
-
-            {
-                pregunta:
-                    "¿Qué personaje participó en los procesos de independencia de varios territorios de Sudamérica?",
-
-                opciones: [
-                    "Simón Bolívar",
-                    "Francisco José de Caldas",
-                    "Jorge Isaacs",
-                    "José Celestino Mutis"
-                ],
-
-                correcta: "Simón Bolívar"
-            },
-
-            {
-                pregunta:
-                    "¿Qué mujer es reconocida como símbolo de la independencia de Colombia?",
-
-                opciones: [
-                    "Policarpa Salavarrieta",
-                    "Débora Arango",
-                    "María Cano",
-                    "Soledad Acosta"
-                ],
-
-                correcta:
-                    "Policarpa Salavarrieta"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       HISTORIA - CONFLICTOS IMPORTANTES
-    ======================================================== */
-
-    "conflictos-importantes": {
-
-        titulo: "Conflictos importantes",
-        subtitulo: "Comprender los conflictos para conocer la historia",
-        icono: "🕊️",
-        imagen: "🤝",
-
-        dato:
-            "Los conflictos forman parte de la historia de las sociedades. Estudiarlos permite comprender sus causas, consecuencias y los procesos utilizados para construir la paz.",
-
-        regiones: [
-            "Colombia",
-            "Región Andina",
-            "Región Caribe",
-            "Región Pacífica"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Qué permite comprender el estudio de los conflictos históricos?",
-
-                opciones: [
-                    "Cambios políticos y sociales",
-                    "Solamente cambios climáticos",
-                    "Solamente avances tecnológicos",
-                    "Solamente cambios en el transporte"
-                ],
-
-                correcta:
-                    "Cambios políticos y sociales"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál puede ser un mecanismo para resolver conflictos?",
-
-                opciones: [
-                    "Diálogo y negociación",
-                    "Imposición y rechazo",
-                    "Aislamiento y confrontación",
-                    "Exclusión y discriminación"
-                ],
-
-                correcta:
-                    "Diálogo y negociación"
-            },
-
-            {
-                pregunta:
-                    "¿A quiénes pueden afectar los conflictos sociales?",
-
-                opciones: [
-                    "A las comunidades y relaciones sociales",
-                    "Solamente a los edificios",
-                    "Solamente a los recursos naturales",
-                    "Solamente a las carreteras"
-                ],
-
-                correcta:
-                    "A las comunidades y relaciones sociales"
-            },
-
-            {
-                pregunta:
-                    "¿Qué busca la construcción de paz?",
-
-                opciones: [
-                    "Mejorar la convivencia y atender las causas de los conflictos",
-                    "Aumentar las diferencias",
-                    "Evitar cualquier tipo de diálogo",
-                    "Mantener las confrontaciones"
-                ],
-
-                correcta:
-                    "Mejorar la convivencia y atender las causas de los conflictos"
-            },
-
-            {
-                pregunta:
-                    "¿Qué debe analizarse para comprender históricamente un conflicto?",
-
-                opciones: [
-                    "Causas, consecuencias y contexto",
-                    "Solamente nombres",
-                    "Solamente fechas",
-                    "Solamente lugares"
-                ],
-
-                correcta:
-                    "Causas, consecuencias y contexto"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       CULTURA - GASTRONOMÍA
-    ======================================================== */
-
-    gastronomia: {
-
-        titulo: "Gastronomía",
-        subtitulo: "Sabores que cuentan historias",
-        icono: "🍽️",
-        imagen: "🫓",
-
-        dato:
-            "La gastronomía colombiana es diversa y refleja las tradiciones de las diferentes regiones del país.",
-
-        regiones: [
-            "Caribe",
-            "Andina",
-            "Pacífica",
-            "Orinoquía"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Cuál de estos alimentos es representativo de la gastronomía colombiana?",
-
-                opciones: [
-                    "Arepa",
-                    "Sushi",
-                    "Ramen",
-                    "Croissant"
-                ],
-
-                correcta: "Arepa"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál de estos platos está relacionado con la región Caribe colombiana?",
-
-                opciones: [
-                    "Arroz con coco",
-                    "Ajiaco santafereño",
-                    "Mute santandereano",
-                    "Lechona tolimense"
-                ],
-
-                correcta:
-                    "Arroz con coco"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál de estos ingredientes es fundamental en muchas preparaciones tradicionales colombianas?",
-
-                opciones: [
-                    "Maíz",
-                    "Alga nori",
-                    "Wasabi",
-                    "Aceituna negra"
-                ],
-
-                correcta: "Maíz"
-            },
-
-            {
-                pregunta:
-                    "¿Con qué lugar se relaciona especialmente el ajiaco santafereño?",
-
-                opciones: [
-                    "Bogotá y la región Andina",
-                    "Región Caribe",
-                    "Región Amazónica",
-                    "Región Orinoquía"
-                ],
-
-                correcta:
-                    "Bogotá y la región Andina"
-            },
-
-            {
-                pregunta:
-                    "¿Qué característica destaca en la gastronomía colombiana?",
-
-                opciones: [
-                    "La diversidad de preparaciones regionales",
-                    "La existencia de un único plato nacional",
-                    "El uso exclusivo de ingredientes importados",
-                    "La ausencia de comidas regionales"
-                ],
-
-                correcta:
-                    "La diversidad de preparaciones regionales"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       CULTURA - MÚSICA Y BAILES
-    ======================================================== */
-
-    "musica-y-bailes": {
-
-        titulo: "Música y bailes",
-        subtitulo: "Ritmos que representan la diversidad de Colombia",
-        icono: "🎵",
-        imagen: "💃",
-
-        dato:
-            "La música y los bailes colombianos reflejan la diversidad cultural del país y las tradiciones de sus diferentes regiones.",
-
-        regiones: [
-            "Caribe",
-            "Pacífico",
-            "Andina",
-            "Orinoquía"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Cuál de estos es un ritmo tradicional colombiano?",
-
-                opciones: [
-                    "Cumbia",
-                    "Tango",
-                    "Flamenco",
-                    "Fado"
-                ],
-
-                correcta: "Cumbia"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál de estos géneros está especialmente relacionado con la región Caribe?",
-
-                opciones: [
-                    "Vallenato",
-                    "Tango",
-                    "Pasodoble",
-                    "Flamenco"
-                ],
-
-                correcta: "Vallenato"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál de estos instrumentos es característico del vallenato?",
-
-                opciones: [
-                    "Acordeón",
-                    "Arpa celta",
-                    "Marimba africana",
-                    "Violín clásico"
-                ],
-
-                correcta: "Acordeón"
-            },
-
-            {
-                pregunta:
-                    "¿En qué región colombiana es tradicional el joropo?",
-
-                opciones: [
-                    "Orinoquía",
-                    "Caribe",
-                    "Pacífico",
-                    "Amazonía"
-                ],
-
-                correcta: "Orinoquía"
-            },
-
-            {
-                pregunta:
-                    "¿Qué ciudad colombiana es reconocida por su tradición salsera?",
-
-                opciones: [
-                    "Cali",
-                    "Pasto",
-                    "Tunja",
-                    "Riohacha"
-                ],
-
-                correcta: "Cali"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       CULTURA - TRADICIONES
-    ======================================================== */
-
-    tradiciones: {
-
-        titulo: "Tradiciones",
-        subtitulo: "Costumbres que pasan de generación en generación",
-        icono: "🎭",
-        imagen: "🪅",
-
-        dato:
-            "Las tradiciones colombianas incluyen celebraciones, comidas, música, costumbres y expresiones culturales que se transmiten entre generaciones.",
-
-        regiones: [
-            "Caribe",
-            "Andina",
-            "Pacífica",
-            "Amazonía"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Cómo se transmiten muchas tradiciones culturales?",
-
-                opciones: [
-                    "De generación en generación",
-                    "Solamente por internet",
-                    "Solamente por los medios de comunicación",
-                    "Solamente en las escuelas"
-                ],
-
-                correcta:
-                    "De generación en generación"
-            },
-
-            {
-                pregunta:
-                    "¿Qué pueden incluir las tradiciones culturales?",
-
-                opciones: [
-                    "Celebraciones, comida, música y costumbres",
-                    "Solamente leyes",
-                    "Solamente deportes",
-                    "Solamente tecnología"
-                ],
-
-                correcta:
-                    "Celebraciones, comida, música y costumbres"
-            },
-
-            {
-                pregunta:
-                    "¿Qué ayudan a conservar las tradiciones?",
-
-                opciones: [
-                    "La identidad y la memoria cultural",
-                    "Solamente la industria",
-                    "Solamente la tecnología",
-                    "Solamente las carreteras"
-                ],
-
-                correcta:
-                    "La identidad y la memoria cultural"
-            },
-
-            {
-                pregunta:
-                    "¿De qué pueden depender las diferencias entre las tradiciones colombianas?",
-
-                opciones: [
-                    "De las regiones y comunidades",
-                    "Solamente del clima",
-                    "Solamente del tamaño de las ciudades",
-                    "Solamente de la edad de las personas"
-                ],
-
-                correcta:
-                    "De las regiones y comunidades"
-            },
-
-            {
-                pregunta:
-                    "¿Por qué es importante conservar las tradiciones?",
-
-                opciones: [
-                    "Porque ayudan a mantener la memoria y la identidad",
-                    "Porque eliminan todas las diferencias",
-                    "Porque reemplazan las costumbres",
-                    "Porque hacen iguales a todas las regiones"
-                ],
-
-                correcta:
-                    "Porque ayudan a mantener la memoria y la identidad"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       CULTURA - RELIGIONES
-    ======================================================== */
-
-    religiones: {
-
-        titulo: "Religiones",
-        subtitulo: "Diversidad de creencias y expresiones culturales",
-        icono: "🕊️",
-        imagen: "⛪",
-
-        dato:
-            "La libertad religiosa permite que las personas puedan practicar diferentes creencias, siempre dentro del respeto hacia los demás.",
-
-        regiones: [
-            "Andina",
-            "Caribe",
-            "Pacífica",
-            "Amazonía"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Qué permite la libertad religiosa?",
-
-                opciones: [
-                    "La existencia de diferentes creencias",
-                    "La obligación de seguir una sola creencia",
-                    "La prohibición de todas las prácticas religiosas",
-                    "La eliminación de las expresiones culturales"
-                ],
-
-                correcta:
-                    "La existencia de diferentes creencias"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál es un valor importante para la convivencia entre diferentes creencias?",
-
-                opciones: [
-                    "Respeto",
-                    "Intolerancia",
-                    "Discriminación",
-                    "Exclusión"
-                ],
-
-                correcta: "Respeto"
-            },
-
-            {
-                pregunta:
-                    "¿De qué forma hace parte la diversidad religiosa de la sociedad?",
-
-                opciones: [
-                    "De la diversidad cultural",
-                    "De la industria",
-                    "De la tecnología",
-                    "De los deportes"
-                ],
-
-                correcta:
-                    "De la diversidad cultural"
-            },
-
-            {
-                pregunta:
-                    "¿Qué pueden tener las comunidades religiosas?",
-
-                opciones: [
-                    "Creencias, prácticas y celebraciones",
-                    "Una sola celebración obligatoria",
-                    "Las mismas prácticas en todos los casos",
-                    "Una única tradición para todas las comunidades"
-                ],
-
-                correcta:
-                    "Creencias, prácticas y celebraciones"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál es una actitud adecuada frente a diferentes creencias?",
-
-                opciones: [
-                    "Reconocer y respetar las diferencias",
-                    "Imponer las propias creencias",
-                    "Excluir a quienes piensan diferente",
-                    "Desacreditar otras creencias"
-                ],
-
-                correcta:
-                    "Reconocer y respetar las diferencias"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       CULTURA - VESTIMENTA TÍPICA
-    ======================================================== */
-
-    "vestimenta-tipica": {
-
-        titulo: "Vestimenta típica",
-        subtitulo: "Ropa que representa tradiciones e identidad",
-        icono: "👗",
-        imagen: "👒",
-
-        dato:
-            "La vestimenta tradicional colombiana varía según la región y suele estar relacionada con fiestas, bailes y otras expresiones culturales.",
-
-        regiones: [
-            "Caribe",
-            "Andina",
-            "Pacífica",
-            "Llanos"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Qué puede influir en la vestimenta típica de una región?",
-
-                opciones: [
-                    "La región y el contexto cultural",
-                    "La tecnología",
-                    "El tamaño de la ciudad",
-                    "La industria"
-                ],
-
-                correcta:
-                    "La región y el contexto cultural"
-            },
-
-            {
-                pregunta:
-                    "¿En qué ocasiones se utiliza especialmente la vestimenta tradicional?",
-
-                opciones: [
-                    "Fiestas, bailes y eventos culturales",
-                    "En fábricas industriales",
-                    "En laboratorios",
-                    "Solamente en oficinas"
-                ],
-
-                correcta:
-                    "Fiestas, bailes y eventos culturales"
-            },
-
-            {
-                pregunta:
-                    "¿Qué elementos pueden formar parte de una vestimenta tradicional?",
-
-                opciones: [
-                    "Colores, prendas y accesorios",
-                    "Solamente zapatos",
-                    "Solamente un color",
-                    "Solamente materiales modernos"
-                ],
-
-                correcta:
-                    "Colores, prendas y accesorios"
-            },
-
-            {
-                pregunta:
-                    "¿Qué puede expresar la vestimenta tradicional?",
-
-                opciones: [
-                    "Identidad cultural",
-                    "Tecnología",
-                    "Economía",
-                    "Política"
-                ],
-
-                correcta: "Identidad cultural"
-            },
-
-            {
-                pregunta:
-                    "¿Con qué expresión cultural se relaciona especialmente la vestimenta típica?",
-
-                opciones: [
-                    "Bailes tradicionales",
-                    "Programación",
-                    "Astronomía",
-                    "Ciencias naturales"
-                ],
-
-                correcta: "Bailes tradicionales"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       CULTURA - ARTE Y LITERATURA
-    ======================================================== */
-
-    "arte-y-literatura": {
-
-        titulo: "Arte y literatura",
-        subtitulo: "Creatividad y expresión cultural de Colombia",
-        icono: "🎨",
-        imagen: "📚",
-
-        dato:
-            "El arte y la literatura colombiana han producido importantes obras y autores que forman parte de la cultura nacional e internacional.",
-
-        regiones: [
-            "Bogotá",
-            "Caribe",
-            "Antioquia",
-            "Región Andina"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Qué escritor colombiano recibió el Premio Nobel de Literatura?",
-
-                opciones: [
-                    "Gabriel García Márquez",
-                    "Jorge Isaacs",
-                    "Rafael Pombo",
-                    "José Asunción Silva"
-                ],
-
-                correcta:
-                    "Gabriel García Márquez"
-            },
-
-            {
-                pregunta:
-                    "¿Quién escribió Cien años de soledad?",
-
-                opciones: [
-                    "Gabriel García Márquez",
-                    "Jorge Isaacs",
-                    "Álvaro Mutis",
-                    "José Eustasio Rivera"
-                ],
-
-                correcta:
-                    "Gabriel García Márquez"
-            },
-
-            {
-                pregunta:
-                    "¿Qué pueden expresar el arte y la literatura?",
-
-                opciones: [
-                    "Ideas, experiencias y elementos culturales",
-                    "Solamente información económica",
-                    "Solamente datos científicos",
-                    "Solamente leyes"
-                ],
-
-                correcta:
-                    "Ideas, experiencias y elementos culturales"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál de estas actividades pertenece principalmente a la literatura?",
-
-                opciones: [
-                    "Escribir novelas",
-                    "Construir carreteras",
-                    "Fabricar máquinas",
-                    "Realizar experimentos químicos"
-                ],
-
-                correcta:
-                    "Escribir novelas"
-            },
-
-            {
-                pregunta:
-                    "¿En qué año recibió Gabriel García Márquez el Premio Nobel de Literatura?",
-
-                opciones: [
-                    "1982",
-                    "1972",
-                    "1992",
-                    "2002"
-                ],
-
-                correcta: "1982"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       CULTURA - MONUMENTOS
-    ======================================================== */
-
-    monumentos: {
-
-        titulo: "Monumentos",
-        subtitulo: "Lugares que conservan la memoria de Colombia",
-        icono: "🏛️",
-        imagen: "⛪",
-
-        dato:
-            "Los monumentos y lugares históricos permiten conservar la memoria y conocer diferentes aspectos de la historia y la cultura colombiana.",
-
-        regiones: [
-            "Nariño",
-            "Bogotá",
-            "Cartagena",
-            "Antioquia"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿Qué ayudan a conservar los monumentos históricos?",
-
-                opciones: [
-                    "La memoria y el patrimonio",
-                    "Solamente el comercio",
-                    "Solamente la tecnología",
-                    "Solamente los deportes"
-                ],
-
-                correcta:
-                    "La memoria y el patrimonio"
-            },
-
-            {
-                pregunta:
-                    "¿En qué departamento se encuentra el Santuario de Las Lajas?",
-
-                opciones: [
-                    "Nariño",
-                    "Antioquia",
-                    "Atlántico",
-                    "Meta"
-                ],
-
-                correcta: "Nariño"
-            },
-
-            {
-                pregunta:
-                    "¿Qué puede representar un monumento histórico?",
-
-                opciones: [
-                    "Historia y cultura",
-                    "Solamente una construcción moderna",
-                    "Solamente comercio",
-                    "Solamente tecnología"
-                ],
-
-                correcta:
-                    "Historia y cultura"
-            },
-
-            {
-                pregunta:
-                    "¿Qué aspecto se puede apreciar especialmente en un monumento?",
-
-                opciones: [
-                    "Arquitectura",
-                    "Programación",
-                    "Química",
-                    "Astronomía"
-                ],
-
-                correcta: "Arquitectura"
-            },
-
-            {
-                pregunta:
-                    "¿Qué permiten conocer los lugares históricos?",
-
-                opciones: [
-                    "Aspectos del pasado",
-                    "El futuro con exactitud",
-                    "Solamente la tecnología",
-                    "Solamente el clima"
-                ],
-
-                correcta: "Aspectos del pasado"
-            }
-
-        ]
-    },
-
-
-    /* ========================================================
-       CULTURA - FIESTAS
-    ======================================================== */
-
-    fiestas: {
-
-        titulo: "Fiestas",
-        subtitulo: "Celebraciones que reúnen música, tradición y cultura",
-        icono: "🎉",
-        imagen: "🎊",
-
-        dato:
-            "Las fiestas tradicionales colombianas reúnen música, danzas, gastronomía, expresiones artísticas y costumbres de diferentes regiones.",
-
-        regiones: [
-            "Barranquilla",
-            "Pasto",
-            "Medellín",
-            "Cali"
-        ],
-
-        preguntas: [
-
-            {
-                pregunta:
-                    "¿En qué ciudad se celebra el Carnaval de Barranquilla?",
-
-                opciones: [
-                    "Barranquilla",
-                    "Pasto",
-                    "Medellín",
-                    "Cali"
-                ],
-
-                correcta: "Barranquilla"
-            },
-
-            {
-                pregunta:
-                    "¿Cuál de estas celebraciones se realiza tradicionalmente en Pasto?",
-
-                opciones: [
-                    "Carnaval de Negros y Blancos",
-                    "Feria de las Flores",
-                    "Feria de Cali",
-                    "Festival Vallenato"
-                ],
-
-                correcta:
-                    "Carnaval de Negros y Blancos"
-            },
-
-            {
-                pregunta:
-                    "¿En qué ciudad se celebra la Feria de las Flores?",
-
-                opciones: [
-                    "Medellín",
-                    "Cartagena",
-                    "Bogotá",
-                    "Santa Marta"
-                ],
-
-                correcta: "Medellín"
-            },
-
-            {
-                pregunta:
-                    "¿En qué ciudad se realiza la Feria de Cali?",
-
-                opciones: [
-                    "Cali",
-                    "Pasto",
-                    "Tunja",
-                    "Sincelejo"
-                ],
-
-                correcta: "Cali"
-            },
-
-            {
-                pregunta:
-                    "¿Qué elementos suelen combinar las fiestas tradicionales colombianas?",
-
-                opciones: [
-                    "Música, danza, gastronomía y costumbres",
-                    "Solamente deportes",
-                    "Solamente tecnología",
-                    "Solamente actividades académicas"
-                ],
-
-                correcta:
-                    "Música, danza, gastronomía y costumbres"
-            }
-
-        ]
-    }
-
+  "primeras-civilizaciones": {
+    titulo: "Primeras civilizaciones",
+    subtitulo: "Conoce los pueblos que habitaron Colombia antes de la llegada de los españoles.",
+    icono: "🏺",
+    mensaje: "Descubre las grandes culturas indígenas que dejaron una importante huella en Colombia.",
+    regiones: ["Andina", "Caribe", "Pacífica"],
+    dato: "Los pueblos indígenas desarrollaron sistemas de agricultura, comercio, arte y organización social.",
+    preguntas: [
+      q("¿Qué pueblo indígena habitó principalmente el altiplano Cundiboyacense?", ["Muisca", "Tairona", "Wayuu", "Emberá"], "Muisca"),
+      q("¿Qué pueblo indígena construyó la Ciudad Perdida?", ["Tairona", "Muisca", "Quimbaya", "Zenú"], "Tairona"),
+      q("¿Por qué fueron reconocidos los Quimbaya?", ["Por su orfebrería", "Por sus barcos", "Por sus pirámides egipcias", "Por sus castillos"], "Por su orfebrería"),
+      q("¿En qué región se desarrolló principalmente la cultura Zenú?", ["Caribe", "Amazonía", "Orinoquía", "Andina"], "Caribe"),
+      q("¿Dónde se encuentra el Parque Arqueológico de San Agustín?", ["Huila", "Atlántico", "La Guajira", "Antioquia"], "Huila")
+    ]
+  },
+
+  "conquista": {
+    titulo: "Conquista",
+    subtitulo: "Conoce el proceso de llegada y expansión española en el territorio colombiano.",
+    icono: "⛵",
+    mensaje: "La conquista transformó profundamente la historia de los pueblos que habitaban el territorio.",
+    regiones: ["Caribe", "Andina"],
+    dato: "Santa Marta fue fundada en 1525 y es una de las ciudades más antiguas fundadas por los españoles en América.",
+    preguntas: [
+      q("¿En qué año fue fundada Santa Marta?", ["1525", "1492", "1600", "1810"], "1525"),
+      q("¿Quién dirigió la expedición española que llegó al territorio del pueblo Muisca?", ["Gonzalo Jiménez de Quesada", "Simón Bolívar", "Francisco de Paula Santander", "Antonio Nariño"], "Gonzalo Jiménez de Quesada"),
+      q("¿En qué año fue fundada Cartagena de Indias por los españoles?", ["1533", "1492", "1605", "1819"], "1533"),
+      q("¿Qué pueblo indígena habitaba gran parte del altiplano Cundiboyacense?", ["Muisca", "Tairona", "Wayuu", "Pijao"], "Muisca"),
+      q("Una consecuencia de la conquista fue:", ["La transformación de las sociedades indígenas", "La desaparición inmediata de toda población indígena", "La creación de internet", "La independencia de Colombia"], "La transformación de las sociedades indígenas")
+    ]
+  },
+
+  "epoca-colonial": {
+    titulo: "Época colonial",
+    subtitulo: "Explora cómo se organizó el territorio durante el dominio español.",
+    icono: "🏰",
+    mensaje: "Durante la época colonial se establecieron nuevas instituciones, formas de gobierno y actividades económicas.",
+    regiones: ["Todo el territorio colonial"],
+    dato: "El territorio colombiano hizo parte del Virreinato de la Nueva Granada.",
+    preguntas: [
+      q("¿Cómo se llamó el territorio colonial que incluía gran parte de la actual Colombia?", ["Virreinato de la Nueva Granada", "Imperio Inca", "Virreinato de México", "República de Colombia"], "Virreinato de la Nueva Granada"),
+      q("¿Cuál fue una actividad económica importante durante la colonia?", ["Minería", "Programación", "Industria espacial", "Cine digital"], "Minería"),
+      q("¿Qué ciudad se convirtió en un importante puerto colonial?", ["Cartagena de Indias", "Bogotá", "Pasto", "Manizales"], "Cartagena de Indias"),
+      q("Durante la colonia existieron diferencias sociales entre:", ["Los diferentes grupos de la sociedad", "Los planetas", "Los continentes", "Los océanos"], "Los diferentes grupos de la sociedad"),
+      q("¿Qué país europeo controlaba el territorio colombiano durante la colonia?", ["España", "Francia", "Italia", "Portugal"], "España")
+    ]
+  },
+
+  "independencia": {
+    titulo: "Independencia",
+    subtitulo: "Conoce los acontecimientos que llevaron a la independencia de Colombia.",
+    icono: "🇨🇴",
+    mensaje: "La independencia fue un proceso histórico que transformó el territorio y dio paso a una nueva organización política.",
+    regiones: ["Nueva Granada"],
+    dato: "La Batalla de Boyacá ocurrió el 7 de agosto de 1819.",
+    preguntas: [
+      q("¿Qué ocurrió el 20 de julio de 1810?", ["El inicio del proceso de independencia en Santa Fe", "La batalla de Boyacá", "La separación de Panamá", "La Constitución de 1991"], "El inicio del proceso de independencia en Santa Fe"),
+      q("¿Quién fue uno de los principales líderes militares de la independencia?", ["Simón Bolívar", "Gabriel García Márquez", "Fernando Botero", "Jorge Eliécer Gaitán"], "Simón Bolívar"),
+      q("¿Cuándo ocurrió la Batalla de Boyacá?", ["1819", "1810", "1825", "1903"], "1819"),
+      q("¿Qué mujer participó activamente en la independencia?", ["Policarpa Salavarrieta", "Débora Arango", "Shakira", "Caterine Ibargüen"], "Policarpa Salavarrieta"),
+      q("¿Qué proceso siguió a la independencia de España?", ["La construcción de una nueva organización política", "La conquista española", "La llegada de los conquistadores", "La fundación de Roma"], "La construcción de una nueva organización política")
+    ]
+  },
+
+  "personajes-historicos": {
+    titulo: "Personajes históricos",
+    subtitulo: "Conoce personas que dejaron una huella importante en la historia de Colombia.",
+    icono: "👤",
+    mensaje: "Muchos personajes contribuyeron a los procesos políticos, sociales y culturales del país.",
+    regiones: ["Todo Colombia"],
+    dato: "Policarpa Salavarrieta es uno de los personajes femeninos más reconocidos de la independencia.",
+    preguntas: [
+      q("¿Quién fue Simón Bolívar?", ["Un líder de la independencia", "Un pintor colombiano", "Un cantante", "Un escritor del siglo XXI"], "Un líder de la independencia"),
+      q("¿Quién fue Francisco de Paula Santander?", ["Un líder político y militar de la independencia", "Un músico", "Un chef", "Un arquitecto"], "Un líder político y militar de la independencia"),
+      q("¿Quién fue Policarpa Salavarrieta?", ["Una mujer vinculada al proceso de independencia", "Una reina española", "Una cantante", "Una pintora contemporánea"], "Una mujer vinculada al proceso de independencia"),
+      q("¿Quién fue Antonio Nariño?", ["Un político y precursor de la independencia", "Un deportista", "Un cantante", "Un científico espacial"], "Un político y precursor de la independencia"),
+      q("¿Quién fue Jorge Eliécer Gaitán?", ["Un líder político colombiano", "Un pintor", "Un músico vallenato", "Un explorador español"], "Un líder político colombiano")
+    ]
+  },
+
+  "conflictos-importantes": {
+    titulo: "Conflictos importantes",
+    subtitulo: "Conoce algunos conflictos que marcaron la historia colombiana.",
+    icono: "⚔️",
+    mensaje: "Los conflictos internos han tenido diferentes causas y consecuencias a lo largo de la historia.",
+    regiones: ["Todo Colombia"],
+    dato: "La Guerra de los Mil Días ocurrió entre 1899 y 1902.",
+    preguntas: [
+      q("¿Entre qué años ocurrió la Guerra de los Mil Días?", ["1899-1902", "1810-1819", "1930-1935", "2000-2005"], "1899-1902"),
+      q("¿En qué año se produjo la separación de Panamá de Colombia?", ["1903", "1810", "1886", "1991"], "1903"),
+      q("¿Cómo se conoce al periodo de violencia política ocurrido principalmente a mediados del siglo XX?", ["La Violencia", "La Colonia", "La Conquista", "La Regeneración"], "La Violencia"),
+      q("¿Qué acontecimiento ocurrió en 2016 relacionado con el conflicto armado?", ["La firma del acuerdo de paz entre el Gobierno y las FARC-EP", "La independencia de Colombia", "La fundación de Cartagena", "La separación de Panamá"], "La firma del acuerdo de paz entre el Gobierno y las FARC-EP"),
+      q("Los conflictos internos pueden producir:", ["Consecuencias sociales, económicas y políticas", "Únicamente cambios deportivos", "Solamente cambios climáticos", "Ninguna consecuencia"], "Consecuencias sociales, económicas y políticas")
+    ]
+  },
+
+  "gastronomia": {
+    titulo: "Gastronomía",
+    subtitulo: "Descubre algunos sabores tradicionales de las regiones colombianas.",
+    icono: "🍲",
+    mensaje: "La gastronomía colombiana refleja la diversidad cultural y regional del país.",
+    regiones: ["Caribe", "Andina", "Pacífica"],
+    dato: "La arepa tiene muchas preparaciones diferentes según la región.",
+    preguntas: [
+      q("¿Cuál de estos platos es tradicional de Antioquia?", ["Bandeja paisa", "Ajiaco santafereño", "Mote de queso", "Mamona"], "Bandeja paisa"),
+      q("¿Qué plato es especialmente representativo de Bogotá?", ["Ajiaco", "Sancocho de gallina", "Arroz con coco", "Mamona"], "Ajiaco"),
+      q("¿Qué alimento es muy representativo de la gastronomía colombiana?", ["Arepa", "Sushi", "Pizza napolitana", "Croissant"], "Arepa"),
+      q("¿Qué ingrediente es característico del arroz con coco?", ["Coco", "Chocolate", "Café", "Manzana"], "Coco"),
+      q("El sancocho es principalmente:", ["Una preparación tradicional con caldo y diferentes ingredientes", "Un postre", "Una bebida", "Un tipo de pan"], "Una preparación tradicional con caldo y diferentes ingredientes")
+    ]
+  },
+
+  "musica-y-bailes": {
+    titulo: "Música y bailes",
+    subtitulo: "Explora los ritmos y danzas tradicionales de Colombia.",
+    icono: "💃",
+    mensaje: "Colombia posee una gran diversidad de ritmos musicales y danzas tradicionales.",
+    regiones: ["Caribe", "Pacífica", "Andina"],
+    dato: "La cumbia es uno de los ritmos colombianos más reconocidos internacionalmente.",
+    preguntas: [
+      q("¿Qué ritmo es uno de los más representativos de la región Caribe?", ["Cumbia", "Bambuco", "Joropo", "Pasillo"], "Cumbia"),
+      q("¿Qué género musical es especialmente asociado con la región Caribe colombiana?", ["Vallenato", "Bambuco", "Carranga", "Guabina"], "Vallenato"),
+      q("¿Qué danza es característica de la región Pacífica?", ["Currulao", "Bambuco", "Pasillo", "Torbellino"], "Currulao"),
+      q("¿Qué baile colombiano se caracteriza por movimientos enérgicos y es tradicional de la región Caribe?", ["Mapalé", "Vals", "Tango", "Flamenco"], "Mapalé"),
+      q("¿Qué ritmo es representativo de la región Andina?", ["Bambuco", "Reggae", "Samba brasileña", "Tango"], "Bambuco")
+    ]
+  },
+
+  "tradiciones": {
+    titulo: "Tradiciones",
+    subtitulo: "Conoce costumbres que forman parte de la identidad cultural colombiana.",
+    icono: "🎭",
+    mensaje: "Las tradiciones se transmiten entre generaciones y ayudan a conservar la identidad cultural.",
+    regiones: ["Todo el país"],
+    dato: "El Día de las Velitas se celebra principalmente el 7 de diciembre.",
+    preguntas: [
+      q("¿Cuándo se celebra tradicionalmente el Día de las Velitas?", ["7 de diciembre", "20 de julio", "1 de mayo", "12 de octubre"], "7 de diciembre"),
+      q("¿Qué tradición cultural es muy conocida en Antioquia?", ["Desfile de Silleteros", "Carnaval de Negros y Blancos", "Festival Vallenato", "Feria de Cali"], "Desfile de Silleteros"),
+      q("Las tradiciones culturales se transmiten principalmente:", ["De generación en generación", "Solo por internet", "Únicamente en las escuelas", "Solo por televisión"], "De generación en generación"),
+      q("La tradición oral permite:", ["Transmitir historias, conocimientos y costumbres", "Eliminar las culturas", "Cambiar los idiomas automáticamente", "Crear mapas digitales"], "Transmitir historias, conocimientos y costumbres"),
+      q("La diversidad de tradiciones colombianas se relaciona con:", ["La diversidad cultural y regional", "Un único pueblo", "Una sola región", "Un solo idioma"], "La diversidad cultural y regional")
+    ]
+  },
+
+  "religiones": {
+    titulo: "Religiones",
+    subtitulo: "Conoce la diversidad religiosa y espiritual presente en Colombia.",
+    icono: "🕊️",
+    mensaje: "La historia colombiana incluye diferentes formas de entender la espiritualidad y la religión.",
+    regiones: ["Todo el país"],
+    dato: "La Constitución de 1991 reconoce la libertad de cultos en Colombia.",
+    preguntas: [
+      q("¿Qué establece la Constitución colombiana sobre la libertad religiosa?", ["Reconoce la libertad de cultos", "Prohíbe todas las religiones", "Establece una religión obligatoria para todos", "Prohíbe las creencias indígenas"], "Reconoce la libertad de cultos"),
+      q("¿Cuál ha sido históricamente una religión con gran presencia en Colombia?", ["Catolicismo", "Sintoísmo", "Hinduismo", "Budismo"], "Catolicismo"),
+      q("Las comunidades indígenas pueden conservar:", ["Sus propias tradiciones espirituales", "Únicamente tradiciones extranjeras", "Ninguna tradición", "Solo costumbres deportivas"], "Sus propias tradiciones espirituales"),
+      q("La diversidad religiosa significa que:", ["Existen diferentes creencias y prácticas religiosas", "Todas las personas tienen exactamente las mismas creencias", "No existen religiones", "Solo existe una tradición cultural"], "Existen diferentes creencias y prácticas religiosas"),
+      q("La libertad religiosa está relacionada con:", ["El respeto por diferentes creencias", "La eliminación de culturas", "La prohibición de tradiciones", "La desaparición de idiomas"], "El respeto por diferentes creencias")
+    ]
+  },
+
+  "vestimenta-tipica": {
+    titulo: "Vestimenta típica",
+    subtitulo: "Descubre prendas y accesorios tradicionales de diferentes regiones.",
+    icono: "👒",
+    mensaje: "La vestimenta tradicional refleja la identidad, historia y costumbres de diferentes comunidades.",
+    regiones: ["Caribe", "Andina", "Pacífica"],
+    dato: "El sombrero vueltiao es uno de los símbolos culturales más conocidos de Colombia.",
+    preguntas: [
+      q("¿De qué región es especialmente representativo el sombrero vueltiao?", ["Caribe", "Amazonía", "Orinoquía", "Pacífica"], "Caribe"),
+      q("¿Con qué material se fabrica tradicionalmente el sombrero vueltiao?", ["Caña flecha", "Algodón industrial", "Lana de oveja", "Cuero"], "Caña flecha"),
+      q("¿Qué prenda es característica de algunas zonas frías de la región Andina?", ["Ruana", "Pollera", "Guayabera", "Sombrero vueltiao"], "Ruana"),
+      q("La vestimenta tradicional Wayuu pertenece principalmente a:", ["La Guajira", "Amazonas", "Nariño", "Boyacá"], "La Guajira"),
+      q("La vestimenta tradicional ayuda a representar:", ["La identidad cultural", "Solo la moda internacional", "Únicamente el clima", "Los avances tecnológicos"], "La identidad cultural")
+    ]
+  },
+
+  "arte-y-literatura": {
+    titulo: "Arte y literatura",
+    subtitulo: "Conoce artistas y escritores importantes de Colombia.",
+    icono: "🎨",
+    mensaje: "El arte y la literatura colombiana han alcanzado reconocimiento nacional e internacional.",
+    regiones: ["Todo Colombia"],
+    dato: "Gabriel García Márquez recibió el Premio Nobel de Literatura en 1982.",
+    preguntas: [
+      q("¿Quién escribió Cien años de soledad?", ["Gabriel García Márquez", "Fernando Botero", "José Asunción Silva", "Jorge Isaacs"], "Gabriel García Márquez"),
+      q("¿Qué artista colombiano es reconocido por sus figuras de formas voluminosas?", ["Fernando Botero", "Gabriel García Márquez", "Jorge Isaacs", "Rafael Pombo"], "Fernando Botero"),
+      q("¿Quién fue Débora Arango?", ["Una importante pintora colombiana", "Una cantante", "Una presidenta", "Una exploradora"], "Una importante pintora colombiana"),
+      q("¿Qué escritor colombiano recibió el Premio Nobel de Literatura?", ["Gabriel García Márquez", "Jorge Isaacs", "Rafael Pombo", "José Asunción Silva"], "Gabriel García Márquez"),
+      q("¿Cuál de estas actividades pertenece a las artes visuales?", ["Pintura", "Agricultura", "Minería", "Pesca"], "Pintura")
+    ]
+  },
+
+  "monumentos": {
+    titulo: "Monumentos",
+    subtitulo: "Descubre lugares históricos y culturales importantes de Colombia.",
+    icono: "🏛️",
+    mensaje: "Colombia posee numerosos lugares que conservan su patrimonio histórico y cultural.",
+    regiones: ["Sierra Nevada", "Cartagena", "Nariño", "Zipaquirá"],
+    dato: "La Ciudad Perdida se encuentra en la Sierra Nevada de Santa Marta.",
+    preguntas: [
+      q("¿Dónde se encuentra la Ciudad Perdida?", ["Sierra Nevada de Santa Marta", "Bogotá", "Valle del Cauca", "Amazonas"], "Sierra Nevada de Santa Marta"),
+      q("¿En qué ciudad se encuentra el Castillo de San Felipe de Barajas?", ["Cartagena", "Medellín", "Cali", "Pereira"], "Cartagena"),
+      q("¿Dónde se encuentra el Santuario de Las Lajas?", ["Nariño", "Atlántico", "Antioquia", "Cesar"], "Nariño"),
+      q("¿Dónde se encuentra la Catedral de Sal?", ["Zipaquirá", "Santa Marta", "Cartagena", "Cali"], "Zipaquirá"),
+      q("¿Qué sitio arqueológico es famoso por sus esculturas monumentales?", ["San Agustín", "Cartagena", "Medellín", "Barranquilla"], "San Agustín")
+    ]
+  },
+
+  "fiestas": {
+    titulo: "Fiestas",
+    subtitulo: "Conoce algunas de las celebraciones culturales más importantes del país.",
+    icono: "🎉",
+    mensaje: "Las fiestas colombianas reúnen música, danza, gastronomía y tradiciones regionales.",
+    regiones: ["Barranquilla", "Medellín", "Pasto", "Valledupar", "Cali"],
+    dato: "El Carnaval de Barranquilla es una de las celebraciones culturales más importantes de Colombia.",
+    preguntas: [
+      q("¿En qué ciudad se celebra el Carnaval de Barranquilla?", ["Barranquilla", "Bogotá", "Cali", "Pasto"], "Barranquilla"),
+      q("¿Dónde se celebra la Feria de las Flores?", ["Medellín", "Cartagena", "Pasto", "Santa Marta"], "Medellín"),
+      q("¿En qué ciudad se celebra el Carnaval de Negros y Blancos?", ["Pasto", "Cali", "Bogotá", "Manizales"], "Pasto"),
+      q("¿Dónde se realiza el Festival de la Leyenda Vallenata?", ["Valledupar", "Medellín", "Bogotá", "Popayán"], "Valledupar"),
+      q("¿Qué ciudad es reconocida por su Feria de Cali?", ["Cali", "Pereira", "Cartagena", "Tunja"], "Cali")
+    ]
+  }
 };
 
 
-/* ============================================================
-   3. ESTADO DEL JUEGO
-============================================================ */
+/* ------------------------------------------------------------
+   3. RETO DE RECUPERACIÓN
+   (5 preguntas · mínimo 3 aciertos)
+------------------------------------------------------------ */
 
-let temaActual = "gastronomia";
+const preguntasRecuperacionBase = [
+  q("¿En qué año ocurrió la Batalla de Boyacá?", ["1819", "1810", "1903", "1991"], "1819"),
+  q("¿Qué ritmo colombiano es especialmente representativo de la región Caribe?", ["Cumbia", "Bambuco", "Currulao", "Pasillo"], "Cumbia"),
+  q("¿Quién escribió Cien años de soledad?", ["Gabriel García Márquez", "Fernando Botero", "Simón Bolívar", "Antonio Nariño"], "Gabriel García Márquez"),
+  q("¿En qué ciudad se celebra el Carnaval de Barranquilla?", ["Barranquilla", "Bogotá", "Cali", "Pasto"], "Barranquilla"),
+  q("¿Qué plato es muy representativo de Bogotá?", ["Ajiaco", "Bandeja paisa", "Mamona", "Arroz con coco"], "Ajiaco")
+];
+
+
+/* ------------------------------------------------------------
+   4. RETO FINAL · 30 PREGUNTAS
+------------------------------------------------------------ */
+
+const preguntasFinales = [
+  q("¿Qué pueblo indígena habitó el altiplano Cundiboyacense?", ["Muisca", "Tairona", "Wayuu", "Quimbaya"], "Muisca"),
+  q("¿Qué pueblo está relacionado con la Ciudad Perdida?", ["Tairona", "Muisca", "Zenú", "Quimbaya"], "Tairona"),
+  q("¿En qué año fue fundada Santa Marta?", ["1525", "1533", "1810", "1903"], "1525"),
+  q("¿Quién dirigió la expedición española hacia el territorio Muisca?", ["Gonzalo Jiménez de Quesada", "Simón Bolívar", "Santander", "Antonio Nariño"], "Gonzalo Jiménez de Quesada"),
+  q("¿Qué territorio colonial incluyó gran parte de la actual Colombia?", ["Virreinato de la Nueva Granada", "Imperio romano", "Virreinato del Perú", "Nueva España"], "Virreinato de la Nueva Granada"),
+  q("¿Cuál fue una actividad económica importante durante la colonia?", ["Minería", "Programación", "Cine", "Aviación"], "Minería"),
+  q("¿Qué ocurrió el 20 de julio de 1810?", ["Un acontecimiento relacionado con el inicio de la independencia", "La separación de Panamá", "La Constitución de 1991", "La Guerra de los Mil Días"], "Un acontecimiento relacionado con el inicio de la independencia"),
+  q("¿Quién fue Simón Bolívar?", ["Líder de la independencia", "Pintor", "Escritor", "Músico"], "Líder de la independencia"),
+  q("¿En qué año ocurrió la Batalla de Boyacá?", ["1819", "1810", "1825", "1903"], "1819"),
+  q("¿Quién fue Policarpa Salavarrieta?", ["Una mujer vinculada a la independencia", "Una pintora", "Una cantante", "Una reina"], "Una mujer vinculada a la independencia"),
+  q("¿Quién fue Francisco de Paula Santander?", ["Un líder político y militar", "Un músico", "Un escritor", "Un pintor"], "Un líder político y militar"),
+  q("¿Entre qué años ocurrió la Guerra de los Mil Días?", ["1899-1902", "1810-1819", "1903-1910", "1930-1940"], "1899-1902"),
+  q("¿En qué año se separó Panamá de Colombia?", ["1903", "1819", "1886", "1991"], "1903"),
+  q("¿Qué ocurrió en 2016 relacionado con el conflicto armado?", ["Se firmó un acuerdo de paz entre el Gobierno y las FARC-EP", "Se fundó Bogotá", "Se produjo la independencia", "Se fundó Cartagena"], "Se firmó un acuerdo de paz entre el Gobierno y las FARC-EP"),
+  q("¿Cuál es un plato tradicional de Antioquia?", ["Bandeja paisa", "Ajiaco", "Arroz con coco", "Mote de queso"], "Bandeja paisa"),
+  q("¿Qué plato es muy representativo de Bogotá?", ["Ajiaco", "Bandeja paisa", "Mamona", "Arroz con coco"], "Ajiaco"),
+  q("¿Qué alimento tiene muchas preparaciones regionales en Colombia?", ["Arepa", "Sushi", "Croissant", "Pasta"], "Arepa"),
+  q("¿Qué ritmo es representativo de la región Caribe?", ["Cumbia", "Bambuco", "Currulao", "Pasillo"], "Cumbia"),
+  q("¿Qué género musical está asociado especialmente con el Caribe colombiano?", ["Vallenato", "Bambuco", "Pasillo", "Guabina"], "Vallenato"),
+  q("¿Qué ritmo es característico de la región Pacífica?", ["Currulao", "Bambuco", "Joropo", "Pasillo"], "Currulao"),
+  q("¿Cuándo se celebra tradicionalmente el Día de las Velitas?", ["7 de diciembre", "20 de julio", "12 de octubre", "1 de enero"], "7 de diciembre"),
+  q("¿Qué tradición es muy conocida en Antioquia?", ["Desfile de Silleteros", "Carnaval de Negros y Blancos", "Feria de Cali", "Festival Vallenato"], "Desfile de Silleteros"),
+  q("¿Qué reconoce la Constitución de 1991 en materia religiosa?", ["Libertad de cultos", "Una única religión obligatoria", "Prohibición de religiones", "Prohibición de tradiciones indígenas"], "Libertad de cultos"),
+  q("¿Cuál ha sido históricamente una religión con gran presencia en Colombia?", ["Catolicismo", "Sintoísmo", "Budismo", "Hinduismo"], "Catolicismo"),
+  q("¿Con qué material se fabrica tradicionalmente el sombrero vueltiao?", ["Caña flecha", "Lana", "Cuero", "Seda"], "Caña flecha"),
+  q("¿Qué prenda es característica de algunas zonas frías de la región Andina?", ["Ruana", "Pollera", "Guayabera", "Sombrero vueltiao"], "Ruana"),
+  q("¿Quién escribió Cien años de soledad?", ["Gabriel García Márquez", "Fernando Botero", "Jorge Isaacs", "Rafael Pombo"], "Gabriel García Márquez"),
+  q("¿Qué artista colombiano es conocido por sus figuras voluminosas?", ["Fernando Botero", "Débora Arango", "Gabo", "Rafael Pombo"], "Fernando Botero"),
+  q("¿Dónde se encuentra la Catedral de Sal?", ["Zipaquirá", "Cartagena", "Medellín", "Pasto"], "Zipaquirá"),
+  q("¿En qué ciudad se celebra el Carnaval de Negros y Blancos?", ["Pasto", "Cali", "Bogotá", "Barranquilla"], "Pasto")
+];
+
+
+/* ------------------------------------------------------------
+   5. ESTADO DEL JUEGO
+------------------------------------------------------------ */
+
+let temaActual = null;
+let indicePregunta = 0;
 
 let puntos = 0;
-
 let vidas = MAX_VIDAS;
-
+let racha = 0;
 let respuestasCorrectas = 0;
-
 let retosCompletados = 0;
-
-let respuestaContestada = false;
 
 let juegoBloqueadoPorVidas = false;
 
-let preguntaActual = null;
+let retoFinalDesbloqueado = false;
+let retoFinalActivo = false;
+let indicePreguntaFinal = 0;
+let puntosFinales = 0;
+let respuestasFinales = 0;
+let preguntasFinalesMezcladas = [];
 
-let indicePregunta = 0;
+let preguntasRecuperacion = [];
+let indiceRecuperacion = 0;
+let recuperacionActiva = false;
+let aciertosRecuperacion = 0;
+let htmlInicioRecuperacion = "";
 
 let estadoPreguntas = {};
-
-let retoRecuperacionActivo = false;
-
-let retoRecuperacionSuperado = false;
+let historial = { rondas: 0, puntosTotales: 0, correctasTotales: 0 };
 
 
-/* ============================================================
-   4. TOTAL DE PREGUNTAS
-============================================================ */
-
-const TOTAL_PREGUNTAS =
-    Object.values(temas)
-        .reduce(
-            (total, tema) =>
-                total + tema.preguntas.length,
-            0
-        );
-
-
-/* ============================================================
-   5. CREAR ESTADO INICIAL
-============================================================ */
+/* ------------------------------------------------------------
+   6. ESTADO INICIAL Y PERSISTENCIA
+------------------------------------------------------------ */
 
 function crearEstadoInicial() {
-
-    const estado = {};
-
-    Object.keys(temas).forEach(nombre => {
-
-        estado[nombre] = {
-
-            respondidas: [],
-            completada: false,
-            preguntaActual: 0
-
-        };
-
-    });
-
-    return estado;
+  const estado = {};
+  nombresTemas.forEach(nombre => {
+    estado[nombre] = { respondidas: [], completado: false };
+  });
+  return estado;
 }
-
-
-/* ============================================================
-   6. GUARDAR PROGRESO
-============================================================ */
-
-function guardarProgreso() {
-
-    try {
-
-        const datos = {
-
-            temaActual,
-            puntos,
-            vidas,
-            respuestasCorrectas,
-            retosCompletados,
-            estadoPreguntas
-
-        };
-
-        localStorage.setItem(
-            CLAVE_GUARDADO,
-            JSON.stringify(datos)
-        );
-
-    } catch (error) {
-
-        console.warn(
-            "No fue posible guardar el progreso.",
-            error
-        );
-
-    }
-
-}
-
-
-/* ============================================================
-   7. CARGAR PROGRESO
-============================================================ */
 
 function cargarProgreso() {
+  try {
+    const guardado = localStorage.getItem(CLAVE_GUARDADO);
 
-    try {
-
-        const guardado =
-            localStorage.getItem(
-                CLAVE_GUARDADO
-            );
-
-
-        if (!guardado) {
-
-            estadoPreguntas =
-                crearEstadoInicial();
-
-            vidas = MAX_VIDAS;
-
-            return;
-
-        }
-
-
-        const datos =
-            JSON.parse(guardado);
-
-
-        if (
-            datos.estadoPreguntas &&
-            typeof datos.estadoPreguntas === "object"
-        ) {
-
-            estadoPreguntas =
-                crearEstadoInicial();
-
-
-            Object.keys(temas).forEach(nombre => {
-
-                if (
-                    datos.estadoPreguntas[nombre]
-                ) {
-
-                    estadoPreguntas[nombre] = {
-
-                        respondidas:
-                            Array.isArray(
-                                datos.estadoPreguntas[nombre].respondidas
-                            )
-                                ? datos.estadoPreguntas[nombre].respondidas
-                                : [],
-
-                        completada:
-                            Boolean(
-                                datos.estadoPreguntas[nombre].completada
-                            ),
-
-                        preguntaActual:
-                            Number.isInteger(
-                                datos.estadoPreguntas[nombre].preguntaActual
-                            )
-                                ? datos.estadoPreguntas[nombre].preguntaActual
-                                : 0
-
-                    };
-
-                }
-
-            });
-
-        } else {
-
-            estadoPreguntas =
-                crearEstadoInicial();
-
-        }
-
-
-        temaActual =
-            temas[datos.temaActual]
-                ? datos.temaActual
-                : "gastronomia";
-
-
-        puntos =
-            Number.isFinite(datos.puntos)
-                ? Math.max(0, datos.puntos)
-                : 0;
-
-
-        vidas =
-            Number.isFinite(datos.vidas)
-                ? Math.max(
-                    0,
-                    Math.min(
-                        MAX_VIDAS,
-                        datos.vidas
-                    )
-                )
-                : MAX_VIDAS;
-
-
-        respuestasCorrectas =
-            Number.isFinite(
-                datos.respuestasCorrectas
-            )
-                ? Math.max(
-                    0,
-                    datos.respuestasCorrectas
-                )
-                : 0;
-
-
-        retosCompletados =
-            Number.isFinite(
-                datos.retosCompletados
-            )
-                ? Math.max(
-                    0,
-                    datos.retosCompletados
-                )
-                : 0;
-
-
-    } catch (error) {
-
-        console.warn(
-            "El progreso guardado estaba dañado. Se iniciará una partida nueva."
-        );
-
-
-        localStorage.removeItem(
-            CLAVE_GUARDADO
-        );
-
-
-        estadoPreguntas =
-            crearEstadoInicial();
-
-
-        vidas = MAX_VIDAS;
-
+    if (!guardado) {
+      estadoPreguntas = crearEstadoInicial();
+      guardarProgreso();
+      return;
     }
 
-}
+    const datos = JSON.parse(guardado);
 
+    estadoPreguntas = datos.estadoPreguntas || crearEstadoInicial();
 
-/* ============================================================
-   8. ELEMENTOS DEL DOM
-============================================================ */
-
-function obtenerElemento(id) {
-
-    return document.getElementById(id);
-
-}
-
-
-/* ============================================================
-   9. CAMBIAR DE TEMA
-============================================================ */
-
-function cambiarTema(nombre, boton) {
-
-    if (!temas[nombre]) {
-
-        console.error(
-            "No existe la categoría:",
-            nombre
-        );
-
-        return;
-
-    }
-
-
-    if (vidas <= 0) {
-
-        juegoBloqueadoPorVidas = true;
-
-        mostrarAvisoSinVidas();
-
-        return;
-
-    }
-
-
-    temaActual = nombre;
-
-
-    marcarTemaActivo(boton);
-
-
-    cargarTema();
-
-
-    guardarProgreso();
-
-}
-
-
-/* ============================================================
-   10. MARCAR BOTÓN ACTIVO
-============================================================ */
-
-function marcarTemaActivo(boton) {
-
-    const botones =
-        document.querySelectorAll(
-            ".menu-btn"
-        );
-
-
-    botones.forEach(btn => {
-
-        btn.classList.remove("activo");
-
+    nombresTemas.forEach(nombre => {
+      if (!estadoPreguntas[nombre]) {
+        estadoPreguntas[nombre] = { respondidas: [], completado: false };
+      }
     });
 
+    puntos = Number(datos.puntos) || 0;
+    vidas = typeof datos.vidas === "number" ? datos.vidas : MAX_VIDAS;
+    racha = Number(datos.racha) || 0;
+    respuestasCorrectas = Number(datos.respuestasCorrectas) || 0;
+    retosCompletados = Number(datos.retosCompletados) || 0;
+    juegoBloqueadoPorVidas = Boolean(datos.juegoBloqueadoPorVidas);
+    historial = datos.historial || { rondas: 0, puntosTotales: 0, correctasTotales: 0 };
 
-    if (boton) {
+    if (vidas < 0) vidas = 0;
+    if (vidas > MAX_VIDAS) vidas = MAX_VIDAS;
+    if (vidas === 0) juegoBloqueadoPorVidas = true;
 
-        boton.classList.add("activo");
+  } catch (error) {
+    console.error("Error al cargar el progreso:", error);
+    estadoPreguntas = crearEstadoInicial();
+    puntos = 0;
+    vidas = MAX_VIDAS;
+    racha = 0;
+    respuestasCorrectas = 0;
+    retosCompletados = 0;
+    juegoBloqueadoPorVidas = false;
+    historial = { rondas: 0, puntosTotales: 0, correctasTotales: 0 };
+  }
+}
 
-        return;
-
-    }
-
-
-    const botonTema =
-        document.querySelector(
-            `.menu-btn[data-tema="${temaActual}"]`
-        );
-
-
-    if (botonTema) {
-
-        botonTema.classList.add("activo");
-
-    }
-
+function guardarProgreso() {
+  try {
+    localStorage.setItem(CLAVE_GUARDADO, JSON.stringify({
+      estadoPreguntas,
+      puntos,
+      vidas,
+      racha,
+      respuestasCorrectas,
+      retosCompletados,
+      juegoBloqueadoPorVidas,
+      historial
+    }));
+  } catch (error) {
+    console.error("No se pudo guardar el progreso:", error);
+  }
 }
 
 
-/* ============================================================
-   11. CARGAR TEMA
-============================================================ */
+/* ------------------------------------------------------------
+   7. INTERFAZ
+------------------------------------------------------------ */
 
-function cargarTema() {
+function actualizarInterfaz() {
+  const set = (id, valor) => {
+    const el = obtener(id);
+    if (el) el.textContent = valor;
+  };
 
-    if (vidas <= 0) {
+  set("puntos", puntos);
+  set("vidas", vidas);
+  set("racha", racha);
+  set("respuestasCorrectas", respuestasCorrectas);
+  set("retosCompletados", retosCompletados);
+  set("rondasCompletadas", historial.rondas);
+  set("puntosTotales", historial.puntosTotales);
 
-        mostrarAvisoSinVidas();
-
-        return;
-
+  // Progreso general
+  let categoriasCompletadas = 0;
+  nombresTemas.forEach(nombre => {
+    if (estadoPreguntas[nombre] && estadoPreguntas[nombre].completado) {
+      categoriasCompletadas++;
     }
+  });
 
+  const porcentaje = Math.round((categoriasCompletadas / nombresTemas.length) * 100);
+  set("porcentaje", porcentaje + "%");
 
-    const tema =
-        temas[temaActual];
+  const circulo = obtener("circuloProgreso");
+  if (circulo) {
+    const circunferencia = 2 * Math.PI * 50;
+    circulo.style.strokeDasharray = circunferencia;
+    circulo.style.strokeDashoffset = circunferencia * (1 - porcentaje / 100);
+  }
 
+  if (porcentaje === 100) {
+    set("mensajeProgreso", "¡Completaste todas las categorías! 🎉");
+  } else if (categoriasCompletadas === 0) {
+    set("mensajeProgreso", "¡Empieza a explorar! 🚀");
+  } else {
+    set("mensajeProgreso", `Has completado ${categoriasCompletadas} de ${nombresTemas.length} categorías.`);
+  }
 
-    if (!tema) {
+  // Botón reto final
+  const desbloqueado = nombresTemas.every(
+    nombre => estadoPreguntas[nombre] && estadoPreguntas[nombre].completado
+  );
+  retoFinalDesbloqueado = desbloqueado;
 
-        return;
+  const botonFinal = obtener("btnRetoFinal");
+  if (botonFinal) {
+    botonFinal.disabled = !desbloqueado;
+    botonFinal.textContent = desbloqueado
+      ? "🏆 Comenzar Reto Final de Colombia"
+      : "🔒 Reto Final Bloqueado";
+  }
 
-    }
-
-
-    const titulo =
-        obtenerElemento("tituloTema");
-
-    const subtitulo =
-        obtenerElemento("subtituloTema");
-
-    const icono =
-        obtenerElemento("iconoTema");
-
-    const imagen =
-        obtenerElemento("imagenTema");
-
-    const dato =
-        obtenerElemento("datoCurioso");
-
-    const regiones =
-        obtenerElemento("regiones");
-
-    const sobreTexto =
-        obtenerElemento("sobreTexto");
-
-
-    if (titulo) {
-
-        titulo.textContent =
-            tema.titulo;
-
-    }
-
-
-    if (subtitulo) {
-
-        subtitulo.textContent =
-            tema.subtitulo;
-
-    }
-
-
-    if (icono) {
-
-        icono.textContent =
-            tema.icono;
-
-    }
-
-
-    if (imagen) {
-
-        imagen.textContent =
-            tema.imagen;
-
-    }
-
-
-    if (dato) {
-
-        dato.textContent =
-            tema.dato;
-
-    }
-
-
-    if (sobreTexto) {
-
-        sobreTexto.textContent =
-            `Explora ${tema.titulo.toLowerCase()} y descubre datos importantes de Colombia.`;
-
-    }
-
-
-    if (regiones) {
-
-        regiones.innerHTML = "";
-
-
-        tema.regiones.forEach(region => {
-
-            const span =
-                document.createElement("span");
-
-
-            span.className =
-                "region-tag";
-
-
-            span.textContent =
-                region;
-
-
-            regiones.appendChild(span);
-
-        });
-
-    }
-
-
-    cargarPregunta();
-
+  guardarProgreso();
 }
 
 
-/* ============================================================
-   12. OBTENER SIGUIENTE PREGUNTA DISPONIBLE
-============================================================ */
+/* ------------------------------------------------------------
+   8. TEMAS Y PREGUNTAS NORMALES
+------------------------------------------------------------ */
 
-function obtenerIndicePreguntaDisponible(nombre) {
+function obtenerSiguientePregunta(nombreTema) {
+  if (!temas[nombreTema]) return null;
 
-    const tema =
-        temas[nombre];
+  const estado = estadoPreguntas[nombreTema];
+  const preguntas = temas[nombreTema].preguntas;
 
-    const estado =
-        estadoPreguntas[nombre];
-
-
-    if (!tema || !estado) {
-
-        return -1;
-
-    }
-
-
-    for (
-        let i = 0;
-        i < tema.preguntas.length;
-        i++
-    ) {
-
-        if (
-            !estado.respondidas.includes(i)
-        ) {
-
-            return i;
-
-        }
-
-    }
-
-
-    return -1;
-
+  for (let i = 0; i < preguntas.length; i++) {
+    if (!estado.respondidas.includes(i)) return i;
+  }
+  return null;
 }
 
+function marcarMenu(slug) {
+  document.querySelectorAll(".menu-btn").forEach(btn => {
+    btn.classList.toggle("activo", btn.getAttribute("data-tema") === slug);
+  });
+}
 
-/* ============================================================
-   13. CARGAR PREGUNTA
-============================================================ */
+function cambiarTema(nombreTema, boton) {
+  if (!temas[nombreTema]) {
+    console.error("Tema no encontrado:", nombreTema);
+    return;
+  }
+
+  if (juegoBloqueadoPorVidas) {
+    abrirModalRecuperacion();
+    return;
+  }
+
+  cargarTema(nombreTema);
+  marcarMenu(nombreTema);
+}
+
+function cargarTema(nombreTema) {
+  if (!temas[nombreTema]) {
+    console.error("No existe el tema:", nombreTema);
+    return;
+  }
+
+  temaActual = nombreTema;
+  const tema = temas[nombreTema];
+
+  // Detener audio al cambiar de categoría
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  const estadoAudio = obtener("estadoAudio");
+  if (estadoAudio) estadoAudio.textContent = "▶";
+
+  const titulo = obtener("tituloTema");
+  const subtitulo = obtener("subtituloTema");
+  const icono = obtener("iconoTema");
+  const mensaje = obtener("mensajeBot");
+  const dato = obtener("datoCurioso");
+  const regiones = obtener("regiones");
+  const imagen = obtener("imagenTema");
+
+  if (titulo) titulo.textContent = tema.titulo;
+  if (subtitulo) subtitulo.textContent = tema.subtitulo;
+  if (icono) icono.textContent = tema.icono;
+  if (mensaje) mensaje.textContent = tema.mensaje;
+  if (dato) dato.textContent = tema.dato;
+
+  if (regiones) {
+    regiones.innerHTML = "";
+    tema.regiones.forEach(nombre => {
+      const span = document.createElement("span");
+      span.textContent = nombre;
+      regiones.appendChild(span);
+    });
+  }
+
+  if (imagen && tema.imagen) imagen.src = tema.imagen;
+
+  cargarPregunta();
+  actualizarInterfaz();
+}
 
 function cargarPregunta() {
+  if (!temaActual) return;
 
-    if (vidas <= 0) {
+  if (juegoBloqueadoPorVidas) {
+    abrirModalRecuperacion();
+    return;
+  }
 
-        mostrarAvisoSinVidas();
+  const tema = temas[temaActual];
+  const estado = estadoPreguntas[temaActual];
 
-        return;
+  if (estado.respondidas.length >= tema.preguntas.length) {
+    finalizarTema();
+    return;
+  }
 
+  const siguiente = obtenerSiguientePregunta(temaActual);
+  if (siguiente === null) {
+    finalizarTema();
+    return;
+  }
+
+  indicePregunta = siguiente;
+  const pregunta = tema.preguntas[indicePregunta];
+
+  const preguntaHTML = obtener("preguntaReto");
+  const opcionesHTML = obtener("opcionesReto");
+  const resultadoHTML = obtener("resultado");
+  const botonSiguiente = obtener("botonSiguiente");
+  const numeroPregunta = obtener("numeroPregunta");
+
+  if (!preguntaHTML || !opcionesHTML) {
+    console.error("No se encontraron preguntaReto u opcionesReto.");
+    return;
+  }
+
+  preguntaHTML.textContent = pregunta.pregunta;
+  opcionesHTML.innerHTML = "";
+
+  if (resultadoHTML) {
+    resultadoHTML.textContent = "";
+    resultadoHTML.className = "resultado";
+  }
+
+  if (botonSiguiente) {
+    botonSiguiente.disabled = true;
+    botonSiguiente.textContent = "Siguiente →";
+  }
+
+  if (numeroPregunta) {
+    numeroPregunta.textContent =
+      `Pregunta ${estado.respondidas.length + 1} de ${tema.preguntas.length}`;
+  }
+
+  mezclar(pregunta.opciones).forEach(opcion => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "opcion";
+    boton.textContent = opcion;
+    boton.addEventListener("click", () => comprobarRespuesta(opcion));
+    opcionesHTML.appendChild(boton);
+  });
+}
+
+function comprobarRespuesta(respuesta) {
+  if (!temaActual) return;
+  if (juegoBloqueadoPorVidas) return;
+
+  const tema = temas[temaActual];
+  const estado = estadoPreguntas[temaActual];
+  const pregunta = tema.preguntas[indicePregunta];
+
+  if (!pregunta) return;
+  if (estado.respondidas.includes(indicePregunta)) return;
+
+  const botones = document.querySelectorAll("#opcionesReto .opcion");
+
+  botones.forEach(boton => {
+    boton.disabled = true;
+    if (boton.textContent === pregunta.correcta) {
+      boton.classList.add("correcta");
     }
+  });
 
+  const resultado = obtener("resultado");
+  const botonSiguiente = obtener("botonSiguiente");
+  const botonSeleccionado = [...botones].find(boton => boton.textContent === respuesta);
 
-    const tema =
-        temas[temaActual];
-
-    const estado =
-        estadoPreguntas[temaActual];
-
-
-    if (!tema || !estado) {
-
-        return;
-
-    }
-
-
-    respuestaContestada = false;
-
-
-    const indice =
-        obtenerIndicePreguntaDisponible(
-            temaActual
-        );
-
-
-    if (indice === -1) {
-
-        estado.completada = true;
-
-        indicePregunta =
-            tema.preguntas.length - 1;
-
-
-        mostrarCategoriaCompletada();
-
-        actualizarMarcadores();
-
-        guardarProgreso();
-
-        return;
-
-    }
-
-
-    indicePregunta = indice;
-
-
-    estado.preguntaActual =
-        indice;
-
-
-    preguntaActual =
-        tema.preguntas[indice];
-
-
-    const pregunta =
-        obtenerElemento("preguntaReto");
-
-    const opciones =
-        obtenerElemento("opcionesReto");
-
-    const resultado =
-        obtenerElemento("resultado");
-
-    const botonSiguiente =
-        obtenerElemento("botonSiguiente");
-
-    const numero =
-        obtenerElemento("numeroPregunta");
-
-
-    if (pregunta) {
-
-        pregunta.textContent =
-            preguntaActual.pregunta;
-
-    }
-
-
-    if (numero) {
-
-        numero.textContent =
-            `Pregunta ${indice + 1} de ${tema.preguntas.length}`;
-
-    }
-
+  if (respuesta === pregunta.correcta) {
+    puntos += PUNTOS_CORRECTA;
+    respuestasCorrectas++;
+    racha++;
 
     if (resultado) {
-
-        resultado.textContent = "";
-
-        resultado.className =
-            "resultado";
-
+      resultado.textContent = "✅ ¡Respuesta correcta! +10 puntos";
+      resultado.className = "resultado correcto";
     }
-
-
-    if (botonSiguiente) {
-
-        botonSiguiente.disabled = true;
-
-    }
-
-
-    if (opciones) {
-
-        opciones.innerHTML = "";
-
-        crearOpciones(preguntaActual);
-
-    }
-
-
-    actualizarMensajeBot();
-
-}
-
-
-/* ============================================================
-   14. CREAR OPCIONES
-============================================================ */
-
-function crearOpciones(pregunta) {
-
-    const contenedor =
-        obtenerElemento("opcionesReto");
-
-
-    if (!contenedor) {
-
-        return;
-
-    }
-
-
-    if (vidas <= 0) {
-
-        return;
-
-    }
-
-
-    pregunta.opciones.forEach(opcionTexto => {
-
-        const boton =
-            document.createElement("button");
-
-
-        boton.type = "button";
-
-
-        boton.className =
-            "opcion";
-
-
-        boton.textContent =
-            opcionTexto;
-
-
-        boton.addEventListener(
-            "click",
-            () => {
-
-                comprobarRespuesta(
-                    opcionTexto,
-                    boton
-                );
-
-            }
-        );
-
-
-        contenedor.appendChild(boton);
-
-    });
-
-}
-
-
-/* ============================================================
-   15. COMPROBAR RESPUESTA
-============================================================ */
-
-function comprobarRespuesta(
-    respuesta,
-    botonSeleccionado
-) {
-
-    if (respuestaContestada) {
-
-        return;
-
-    }
-
-
-    if (vidas <= 0) {
-
-        mostrarAvisoSinVidas();
-
-        return;
-
-    }
-
-
-    if (!preguntaActual) {
-
-        return;
-
-    }
-
-
-    respuestaContestada = true;
-
-
-    const esCorrecta =
-        respuesta ===
-        preguntaActual.correcta;
-
-
-    const botones =
-        document.querySelectorAll(
-            "#opcionesReto .opcion"
-        );
-
-
-    botones.forEach(boton => {
-
-        boton.disabled = true;
-
-
-        if (
-            boton.textContent ===
-            preguntaActual.correcta
-        ) {
-
-            boton.classList.add(
-                "correcta"
-            );
-
-        }
-
-    });
-
-
-    const resultado =
-        obtenerElemento("resultado");
-
-
-    if (esCorrecta) {
-
-        botonSeleccionado.classList.add(
-            "correcta"
-        );
-
-
-        puntos += 10;
-
-        respuestasCorrectas++;
-
-        retosCompletados++;
-
-
-        if (resultado) {
-
-            resultado.className =
-                "resultado correcto";
-
-
-            resultado.textContent =
-                "✅ ¡Correcto! Has ganado 10 puntos.";
-
-        }
-
-
-    } else {
-
-        botonSeleccionado.classList.add(
-            "incorrecta"
-        );
-
-
-        perderVida();
-
-
-        if (resultado) {
-
-            resultado.className =
-                "resultado incorrecto";
-
-
-            resultado.textContent =
-                `❌ Respuesta incorrecta. La respuesta era: ${preguntaActual.correcta}.`;
-
-        }
-
-    }
-
-
-    const estado =
-        estadoPreguntas[temaActual];
-
-
-    if (
-        estado &&
-        !estado.respondidas.includes(
-            indicePregunta
-        )
-    ) {
-
-        estado.respondidas.push(
-            indicePregunta
-        );
-
-    }
-
-
-    if (
-        estado &&
-        estado.respondidas.length >=
-        temas[temaActual].preguntas.length
-    ) {
-
-        estado.completada = true;
-
-    }
-
-
-    actualizarMarcadores();
-
-    guardarProgreso();
-
-
-    if (vidas > 0) {
-
-        activarSiguiente();
-
-    }
-
-}
-
-
-/* ============================================================
-   16. PERDER VIDA
-============================================================ */
-
-function perderVida() {
-
+  } else {
     vidas--;
+    racha = 0;
 
+    if (botonSeleccionado) botonSeleccionado.classList.add("incorrecta");
 
-    if (vidas < 0) {
-
-        vidas = 0;
-
+    if (resultado) {
+      resultado.textContent = `❌ Incorrecto. La respuesta correcta es: ${pregunta.correcta}`;
+      resultado.className = "resultado incorrecto";
     }
-
-
-    actualizarMarcadores();
-
-
-    if (vidas === 0) {
-
-        juegoBloqueadoPorVidas = true;
-
-
-        const botonSiguiente =
-            obtenerElemento(
-                "botonSiguiente"
-            );
-
-
-        if (botonSiguiente) {
-
-            botonSiguiente.disabled = true;
-
-        }
-
-
-        bloquearJuegoPorVidas();
-
-        guardarProgreso();
-
-
-        setTimeout(() => {
-
-            mostrarAvisoSinVidas();
-
-        }, 450);
-
-    }
-
-}
-
-
-/* ============================================================
-   17. ACTIVAR SIGUIENTE
-============================================================ */
-
-function activarSiguiente() {
 
     if (vidas <= 0) {
-
-        return;
-
+      vidas = 0;
+      juegoBloqueadoPorVidas = true;
     }
+  }
 
+  estado.respondidas.push(indicePregunta);
+  guardarProgreso();
+  actualizarInterfaz();
 
-    const boton =
-        obtenerElemento(
-            "botonSiguiente"
-        );
+  if (botonSiguiente) botonSiguiente.disabled = false;
 
-
-    if (!boton) {
-
-        return;
-
-    }
-
-
-    boton.disabled = false;
-
+  if (juegoBloqueadoPorVidas) {
+    setTimeout(() => abrirModalRecuperacion(), 700);
+  }
 }
-
-
-/* ============================================================
-   18. SIGUIENTE PREGUNTA
-============================================================ */
 
 function siguientePregunta() {
+  if (juegoBloqueadoPorVidas) {
+    abrirModalRecuperacion();
+    return;
+  }
 
-    if (!respuestaContestada) {
+  if (!temaActual) return;
 
-        return;
+  const estado = estadoPreguntas[temaActual];
+  const tema = temas[temaActual];
 
-    }
+  if (estado.completado) {
+    irASiguienteCategoria();
+    return;
+  }
 
+  if (estado.respondidas.length >= tema.preguntas.length) {
+    finalizarTema();
+    return;
+  }
 
-    if (vidas <= 0) {
-
-        mostrarAvisoSinVidas();
-
-        return;
-
-    }
-
-
-    const tema =
-        temas[temaActual];
-
-    const estado =
-        estadoPreguntas[temaActual];
-
-
-    if (!tema || !estado) {
-
-        return;
-
-    }
-
-
-    const siguiente =
-        obtenerIndicePreguntaDisponible(
-            temaActual
-        );
-
-
-    if (siguiente === -1) {
-
-        estado.completada = true;
-
-
-        mostrarCategoriaCompletada();
-
-
-        actualizarMarcadores();
-
-
-        guardarProgreso();
-
-
-        return;
-
-    }
-
-
-    cargarPregunta();
-
+  cargarPregunta();
 }
 
+function irASiguienteCategoria() {
+  const indiceActual = nombresTemas.indexOf(temaActual);
+  let destino = null;
 
-/* ============================================================
-   19. CATEGORÍA COMPLETADA
-============================================================ */
-
-function mostrarCategoriaCompletada() {
-
-    const tema =
-        temas[temaActual];
-
-
-    const pregunta =
-        obtenerElemento(
-            "preguntaReto"
-        );
-
-
-    const opciones =
-        obtenerElemento(
-            "opcionesReto"
-        );
-
-
-    const resultado =
-        obtenerElemento(
-            "resultado"
-        );
-
-
-    const botonSiguiente =
-        obtenerElemento(
-            "botonSiguiente"
-        );
-
-
-    const numero =
-        obtenerElemento(
-            "numeroPregunta"
-        );
-
-
-    if (pregunta) {
-
-        pregunta.innerHTML =
-            `
-            <div class="categoria-completada">
-                <div class="icono-completado">🎉</div>
-
-                <h3>¡Categoría completada!</h3>
-
-                <p>
-                    Has terminado las 5 preguntas de
-                    ${tema.titulo}.
-                    <br>
-                    Puedes elegir otra categoría del menú.
-                </p>
-            </div>
-            `;
-
+  for (let i = 1; i <= nombresTemas.length; i++) {
+    const nombre = nombresTemas[(indiceActual + i) % nombresTemas.length];
+    if (!estadoPreguntas[nombre].completado) {
+      destino = nombre;
+      break;
     }
+  }
 
+  if (destino === null) {
+    comenzarRetoFinal();
+    return;
+  }
 
-    if (opciones) {
-
-        opciones.innerHTML = "";
-
-    }
-
-
-    if (resultado) {
-
-        resultado.textContent = "";
-
-    }
-
-
-    if (numero) {
-
-        numero.textContent =
-            "5 de 5 completadas";
-
-    }
-
-
-    if (botonSiguiente) {
-
-        botonSiguiente.disabled = true;
-
-    }
-
-
-    actualizarMensajeBot(
-        `¡Excelente! Terminaste ${tema.titulo}. Elige otra categoría para continuar.`
-    );
-
+  const boton = document.querySelector(`.menu-btn[data-tema="${destino}"]`);
+  cambiarTema(destino, boton);
+  if (boton) boton.scrollIntoView({ block: "nearest", behavior: "smooth" });
 }
 
+function finalizarTema() {
+  if (!temaActual) return;
 
-/* ============================================================
-   20. ACTUALIZAR MENSAJE DEL ROBOT
-============================================================ */
+  const estado = estadoPreguntas[temaActual];
+  const cantidadPreguntas = temas[temaActual].preguntas.length;
 
-function actualizarMensajeBot(
-    mensajePersonalizado = null
-) {
+  if (estado.respondidas.length < cantidadPreguntas) return;
 
-    const mensaje =
-        obtenerElemento(
-            "mensajeBot"
-        );
-
-
-    if (!mensaje) {
-
-        return;
-
-    }
-
-
-    if (mensajePersonalizado) {
-
-        mensaje.textContent =
-            mensajePersonalizado;
-
-        return;
-
-    }
-
-
-    const estado =
-        estadoPreguntas[temaActual];
-
-
-    const total =
-        temas[temaActual].preguntas.length;
-
-
-    const respondidas =
-        estado
-            ? estado.respondidas.length
-            : 0;
-
-
-    mensaje.textContent =
-        `Responde las preguntas de esta categoría. Has completado ${respondidas} de ${total}.`;
-
-}
-
-
-/* ============================================================
-   21. ACTUALIZAR MARCADORES
-============================================================ */
-
-function actualizarMarcadores() {
-
-    const puntosElemento =
-        obtenerElemento("puntos");
-
-
-    const vidasElemento =
-        obtenerElemento("vidas");
-
-
-    if (puntosElemento) {
-
-        puntosElemento.textContent =
-            puntos;
-
-    }
-
-
-    if (vidasElemento) {
-
-        vidasElemento.textContent =
-            vidas;
-
-    }
-
-
-    actualizarProgreso();
-
-
-    const vidasStat =
-        document.querySelector(
-            ".vidas-stat"
-        );
-
-
-    if (vidasStat) {
-
-        vidasStat.classList.remove(
-            "vidas-bajas",
-            "vidas-cero"
-        );
-
-
-        if (vidas <= 2 && vidas > 0) {
-
-            vidasStat.classList.add(
-                "vidas-bajas"
-            );
-
-        }
-
-
-        if (vidas === 0) {
-
-            vidasStat.classList.add(
-                "vidas-cero"
-            );
-
-        }
-
-    }
-
-}
-
-
-/* ============================================================
-   22. ACTUALIZAR PROGRESO
-============================================================ */
-
-function actualizarProgreso() {
-
-    let totalRespondidas = 0;
-
-
-    Object.keys(temas).forEach(nombre => {
-
-        const estado =
-            estadoPreguntas[nombre];
-
-
-        if (estado) {
-
-            totalRespondidas +=
-                estado.respondidas.length;
-
-        }
-
-    });
-
-
-    const porcentaje =
-        Math.round(
-            (
-                totalRespondidas /
-                TOTAL_PREGUNTAS
-            ) * 100
-        );
-
-
-    const porcentajeSeguro =
-        Math.max(
-            0,
-            Math.min(
-                100,
-                porcentaje
-            )
-        );
-
-
-    const porcentajeElemento =
-        obtenerElemento(
-            "porcentaje"
-        );
-
-
-    const retosElemento =
-        obtenerElemento(
-            "retosCompletados"
-        );
-
-
-    const correctasElemento =
-        obtenerElemento(
-            "respuestasCorrectas"
-        );
-
-
-    const circulo =
-        obtenerElemento(
-            "circuloProgreso"
-        );
-
-
-    const mensaje =
-        obtenerElemento(
-            "mensajeProgreso"
-        );
-
-
-    if (porcentajeElemento) {
-
-        porcentajeElemento.textContent =
-            `${porcentajeSeguro}%`;
-
-    }
-
-
-    if (retosElemento) {
-
-        retosElemento.textContent =
-            totalRespondidas;
-
-    }
-
-
-    if (correctasElemento) {
-
-        correctasElemento.textContent =
-            respuestasCorrectas;
-
-    }
-
-
-    if (circulo) {
-
-        const radio = 50;
-
-
-        const circunferencia =
-            2 *
-            Math.PI *
-            radio;
-
-
-        circulo.style.strokeDasharray =
-            circunferencia;
-
-
-        circulo.style.strokeDashoffset =
-            circunferencia *
-            (
-                1 -
-                porcentajeSeguro / 100
-            );
-
-    }
-
-
-    if (mensaje) {
-
-        if (porcentajeSeguro === 0) {
-
-            mensaje.textContent =
-                "¡Comienza tu aventura!";
-
-        }
-
-        else if (
-            porcentajeSeguro < 25
-        ) {
-
-            mensaje.textContent =
-                "¡Buen comienzo! Sigue explorando.";
-
-        }
-
-        else if (
-            porcentajeSeguro < 50
-        ) {
-
-            mensaje.textContent =
-                "¡Vas avanzando muy bien!";
-
-        }
-
-        else if (
-            porcentajeSeguro < 75
-        ) {
-
-            mensaje.textContent =
-                "¡Ya conoces bastante de Colombia!";
-
-        }
-
-        else if (
-            porcentajeSeguro < 100
-        ) {
-
-            mensaje.textContent =
-                "¡Estás muy cerca de completar la aventura!";
-
-        }
-
-        else {
-
-            mensaje.textContent =
-                "🏆 ¡Completaste toda la aventura de Colombia!";
-
-        }
-
-    }
-
-}
-
-
-/* ============================================================
-   23. BLOQUEAR JUEGO POR VIDAS
-============================================================ */
-
-function bloquearJuegoPorVidas() {
-
-    juegoBloqueadoPorVidas = true;
-
-
-    const botonesMenu =
-        document.querySelectorAll(
-            ".menu-btn"
-        );
-
-
-    botonesMenu.forEach(boton => {
-
-        boton.classList.add(
-            "bloqueado-vidas"
-        );
-
-    });
-
-
-    const opciones =
-        document.querySelectorAll(
-            "#opcionesReto .opcion"
-        );
-
-
-    opciones.forEach(opcion => {
-
-        opcion.disabled = true;
-
-    });
-
-
-    const siguiente =
-        obtenerElemento(
-            "botonSiguiente"
-        );
-
-
-    if (siguiente) {
-
-        siguiente.disabled = true;
-
-    }
-
-}
-
-
-/* ============================================================
-   24. MOSTRAR AVISO SIN VIDAS
-============================================================ */
-
-function mostrarAvisoSinVidas() {
-
-    if (vidas > 0) {
-
-        return;
-
-    }
-
-
-    bloquearJuegoPorVidas();
-
-
-    const modal =
-        obtenerElemento(
-            "modalRecuperacion"
-        );
-
-
-    if (!modal) {
-
-        console.error(
-            "No se encontró el modal de recuperación."
-        );
-
-        return;
-
-    }
-
-
-    const inicio =
-        obtenerElemento(
-            "inicioRecuperacion"
-        );
-
-
-    const preguntaBox =
-        obtenerElemento(
-            "preguntaRecuperacionBox"
-        );
-
-
-    const resultado =
-        obtenerElemento(
-            "resultadoRecuperacion"
-        );
-
-
-    const btnContinuar =
-        obtenerElemento(
-            "btnContinuarRecuperacion"
-        );
-
-
-    if (inicio) {
-
-        inicio.style.display =
-            "block";
-
-    }
-
-
-    if (preguntaBox) {
-
-        preguntaBox.classList.remove(
-            "activa"
-        );
-
-
-        preguntaBox.style.display =
-            "none";
-
-    }
-
-
-    if (resultado) {
-
-        resultado.textContent = "";
-
-        resultado.className =
-            "resultado-recuperacion";
-
-    }
-
-
-    if (btnContinuar) {
-
-        btnContinuar.style.display =
-            "none";
-
-    }
-
-
-    retoRecuperacionActivo = false;
-
-    retoRecuperacionSuperado = false;
-
-
-    modal.classList.add(
-        "visible"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-/* ============================================================
-   25. CERRAR MODAL
-============================================================ */
-
-function cerrarModalRecuperacion() {
-
-    const modal =
-        obtenerElemento(
-            "modalRecuperacion"
-        );
-
-
-    if (!modal) {
-
-        return;
-
-    }
-
-
-    modal.classList.remove(
-        "visible"
-    );
-
-
-    if (vidas > 0) {
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-
-    if (vidas <= 0) {
-
-        juegoBloqueadoPorVidas = true;
-
-    }
-
-}
-
-
-/* ============================================================
-   26. COMENZAR RETO DE RECUPERACIÓN
-============================================================ */
-
-function comenzarRetoRecuperacion() {
-
-    if (vidas > 0) {
-
-        cerrarModalRecuperacion();
-
-        return;
-
-    }
-
-
-    retoRecuperacionActivo = true;
-
-    retoRecuperacionSuperado = false;
-
-
-    const inicio =
-        obtenerElemento(
-            "inicioRecuperacion"
-        );
-
-
-    const preguntaBox =
-        obtenerElemento(
-            "preguntaRecuperacionBox"
-        );
-
-
-    if (inicio) {
-
-        inicio.style.display =
-            "none";
-
-    }
-
-
-    if (preguntaBox) {
-
-        preguntaBox.style.display =
-            "block";
-
-
-        preguntaBox.classList.add(
-            "activa"
-        );
-
-    }
-
-
-    cargarPreguntaRecuperacion();
-
-}
-
-
-/* ============================================================
-   27. PREGUNTA DE RECUPERACIÓN
-============================================================ */
-
-function cargarPreguntaRecuperacion() {
-
-    const preguntasRecuperacion = [
-
-        {
-            pregunta:
-                "¿En qué año ocurrió la Batalla de Boyacá?",
-
-            opciones: [
-                "1810",
-                "1819",
-                "1821",
-                "1830"
-            ],
-
-            correcta: "1819"
-        },
-
-
-        {
-            pregunta:
-                "¿Cuál es un ritmo tradicional de Colombia?",
-
-            opciones: [
-                "Cumbia",
-                "Tango",
-                "Flamenco",
-                "Fado"
-            ],
-
-            correcta: "Cumbia"
-        },
-
-
-        {
-            pregunta:
-                "¿En qué departamento se encuentra el Santuario de Las Lajas?",
-
-            opciones: [
-                "Nariño",
-                "Antioquia",
-                "Atlántico",
-                "Cesar"
-            ],
-
-            correcta: "Nariño"
-        }
-
-    ];
-
-
-    const pregunta =
-        preguntasRecuperacion[
-            Math.floor(
-                Math.random() *
-                preguntasRecuperacion.length
-            )
-        ];
-
-
-    const preguntaElemento =
-        obtenerElemento(
-            "preguntaRecuperacion"
-        );
-
-
-    const opcionesElemento =
-        obtenerElemento(
-            "opcionesRecuperacion"
-        );
-
-
-    const resultado =
-        obtenerElemento(
-            "resultadoRecuperacion"
-        );
-
-
-    const btnContinuar =
-        obtenerElemento(
-            "btnContinuarRecuperacion"
-        );
-
-
-    if (preguntaElemento) {
-
-        preguntaElemento.textContent =
-            pregunta.pregunta;
-
-    }
-
-
-    if (opcionesElemento) {
-
-        opcionesElemento.innerHTML = "";
-
-    }
-
-
-    if (resultado) {
-
-        resultado.textContent = "";
-
-        resultado.className =
-            "resultado-recuperacion";
-
-    }
-
-
-    if (btnContinuar) {
-
-        btnContinuar.style.display =
-            "none";
-
-    }
-
-
-    pregunta.opciones.forEach(
-        opcionTexto => {
-
-            const boton =
-                document.createElement(
-                    "button"
-                );
-
-
-            boton.type = "button";
-
-
-            boton.className =
-                "opcion-recuperacion";
-
-
-            boton.textContent =
-                opcionTexto;
-
-
-            boton.addEventListener(
-                "click",
-                () => {
-
-                    comprobarRecuperacion(
-                        opcionTexto,
-                        pregunta,
-                        boton
-                    );
-
-                }
-            );
-
-
-            opcionesElemento.appendChild(
-                boton
-            );
-
-        }
-    );
-
-}
-
-
-/* ============================================================
-   28. COMPROBAR RECUPERACIÓN
-============================================================ */
-
-function comprobarRecuperacion(
-    respuesta,
-    pregunta,
-    botonSeleccionado
-) {
-
-    if (
-        !retoRecuperacionActivo ||
-        retoRecuperacionSuperado
-    ) {
-
-        return;
-
-    }
-
-
-    const botones =
-        document.querySelectorAll(
-            "#opcionesRecuperacion .opcion-recuperacion"
-        );
-
-
-    if (
-        botonSeleccionado.disabled
-    ) {
-
-        return;
-
-    }
-
-
-    const esCorrecta =
-        respuesta ===
-        pregunta.correcta;
-
-
-    if (esCorrecta) {
-
-        retoRecuperacionSuperado =
-            true;
-
-
-        botones.forEach(
-            boton => {
-
-                boton.disabled =
-                    true;
-
-
-                if (
-                    boton.textContent ===
-                    pregunta.correcta
-                ) {
-
-                    boton.classList.add(
-                        "correcta"
-                    );
-
-                }
-
-            }
-        );
-
-
-        botonSeleccionado.classList.add(
-            "correcta"
-        );
-
-
-        const resultado =
-            obtenerElemento(
-                "resultadoRecuperacion"
-            );
-
-
-        if (resultado) {
-
-            resultado.className =
-                "resultado-recuperacion correcto";
-
-
-            resultado.textContent =
-                "🎉 ¡Excelente! Has recuperado 5 vidas.";
-
-        }
-
-
-        const btnContinuar =
-            obtenerElemento(
-                "btnContinuarRecuperacion"
-            );
-
-
-        if (btnContinuar) {
-
-            btnContinuar.style.display =
-                "block";
-
-        }
-
-
-        return;
-
-    }
-
-
-    /* --------------------------------------------
-       RESPUESTA INCORRECTA
-       NO QUITA VIDA
-    -------------------------------------------- */
-
-    botonSeleccionado.disabled =
-        true;
-
-
-    botonSeleccionado.classList.add(
-        "incorrecta"
-    );
-
-
-    const resultado =
-        obtenerElemento(
-            "resultadoRecuperacion"
-        );
-
-
-    if (resultado) {
-
-        resultado.className =
-            "resultado-recuperacion incorrecto";
-
-
-        resultado.textContent =
-            "❌ Esa no es la respuesta. Intenta con otra opción.";
-
-    }
-
-}
-
-
-/* ============================================================
-   29. CONTINUAR DESPUÉS DE RECUPERACIÓN
-============================================================ */
-
-function continuarDespuesRecuperacion() {
-
-    if (!retoRecuperacionSuperado) {
-
-        return;
-
-    }
-
-
-    vidas = MAX_VIDAS;
-
-
-    juegoBloqueadoPorVidas =
-        false;
-
-
-    retoRecuperacionActivo =
-        false;
-
-
-    retoRecuperacionSuperado =
-        false;
-
-
-    actualizarMarcadores();
-
-
-    cerrarModalRecuperacion();
-
-
-    const botonesMenu =
-        document.querySelectorAll(
-            ".menu-btn"
-        );
-
-
-    botonesMenu.forEach(boton => {
-
-        boton.classList.remove(
-            "bloqueado-vidas"
-        );
-
-    });
-
-
-    const botonTema =
-        document.querySelector(
-            `.menu-btn[data-tema="${temaActual}"]`
-        );
-
-
-    marcarTemaActivo(
-        botonTema
-    );
-
-
-    cargarPregunta();
-
-
+  if (!estado.completado) {
+    estado.completado = true;
+    retosCompletados++;
     guardarProgreso();
+  }
 
+  actualizarInterfaz();
 
-    actualizarMensajeBot(
-        "❤️‍🩹 ¡Vidas recuperadas! Puedes continuar tu aventura."
-    );
+  const preguntaHTML = obtener("preguntaReto");
+  const opcionesHTML = obtener("opcionesReto");
+  const resultadoHTML = obtener("resultado");
+  const botonSiguiente = obtener("botonSiguiente");
+  const numeroPregunta = obtener("numeroPregunta");
 
+  if (preguntaHTML) preguntaHTML.textContent = "🎉 ¡Categoría completada!";
+
+  if (opcionesHTML) {
+    opcionesHTML.innerHTML = `
+      <div class="tema-completado">
+        Has completado todas las preguntas de esta categoría.
+      </div>`;
+  }
+
+  if (resultadoHTML) {
+    resultadoHTML.textContent = "¡Excelente trabajo!";
+    resultadoHTML.className = "resultado";
+  }
+
+  if (numeroPregunta) {
+    numeroPregunta.textContent = `Pregunta ${cantidadPreguntas} de ${cantidadPreguntas}`;
+  }
+
+  if (botonSiguiente) {
+    botonSiguiente.disabled = false;
+    botonSiguiente.textContent = retoFinalDesbloqueado
+      ? "🏆 Ir al Reto Final"
+      : "Siguiente categoría →";
+  }
 }
 
 
-/* ============================================================
-   30. AUDIO
-============================================================ */
+/* ------------------------------------------------------------
+   9. AUDIO
+------------------------------------------------------------ */
 
 function reproducirAudio() {
+  if (!("speechSynthesis" in window)) {
+    alert("Tu navegador no permite reproducir audio.");
+    return;
+  }
 
-    if (
-        !("speechSynthesis" in window)
-    ) {
+  const estadoAudio = obtener("estadoAudio");
 
-        alert(
-            "Tu navegador no permite reproducir audio automáticamente."
-        );
-
-        return;
-
-    }
-
-
-    const tema =
-        temas[temaActual];
-
-
-    if (!tema) {
-
-        return;
-
-    }
-
-
+  if (window.speechSynthesis.speaking) {
     window.speechSynthesis.cancel();
+    if (estadoAudio) estadoAudio.textContent = "▶";
+    return;
+  }
 
+  const tema = temaActual ? temas[temaActual] : null;
+  const texto = tema
+    ? `${tema.titulo}. ${tema.mensaje} ${tema.dato}`
+    : "Explora la historia y cultura de Colombia.";
 
-    const texto =
-        `${tema.titulo}. ${tema.dato}`;
+  const voz = new SpeechSynthesisUtterance(texto);
+  voz.lang = "es-CO";
+  voz.rate = 0.95;
 
+  voz.onstart = () => { if (estadoAudio) estadoAudio.textContent = "⏹"; };
+  voz.onend = () => { if (estadoAudio) estadoAudio.textContent = "▶"; };
 
-    const voz =
-        new SpeechSynthesisUtterance(
-            texto
-        );
-
-
-    voz.lang =
-        "es-ES";
-
-
-    voz.rate =
-        0.9;
-
-
-    voz.pitch =
-        1;
-
-
-    window.speechSynthesis.speak(
-        voz
-    );
-
+  window.speechSynthesis.speak(voz);
 }
 
 
-/* ============================================================
-   31. FUNCIÓN ESCUCHAR
-============================================================ */
+/* ------------------------------------------------------------
+   10. RETO DE RECUPERACIÓN
+------------------------------------------------------------ */
 
-function escuchar() {
+function abrirModalRecuperacion() {
+  if (recuperacionActiva) return;
 
-    reproducirAudio();
+  const modal = obtener("modalRecuperacion");
+  const inicio = obtener("inicioRecuperacion");
+  const caja = obtener("preguntaRecuperacionBox");
 
+  if (!modal) return;
+
+  if (inicio && htmlInicioRecuperacion) {
+    inicio.innerHTML = htmlInicioRecuperacion;
+  }
+
+  if (caja) caja.style.display = "none";
+  if (inicio) inicio.style.display = "block";
+
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
 
+function comenzarRetoRecuperacion() {
+  const inicio = obtener("inicioRecuperacion");
+  const caja = obtener("preguntaRecuperacionBox");
+  const modal = obtener("modalRecuperacion");
 
-/* ============================================================
-   32. REINICIAR PARTIDA
-============================================================ */
+  preguntasRecuperacion = mezclar(preguntasRecuperacionBase);
+  indiceRecuperacion = 0;
+  aciertosRecuperacion = 0;
+  recuperacionActiva = true;
 
-function reiniciarColombia() {
+  if (inicio) inicio.style.display = "none";
+  if (caja) caja.style.display = "block";
+  if (modal) modal.style.display = "flex";
 
-    localStorage.removeItem(
-        CLAVE_GUARDADO
-    );
-
-
-    location.reload();
-
+  cargarPreguntaRecuperacion();
 }
 
-
-/* ============================================================
-   33. HACER FUNCIONES VISIBLES PARA EL HTML
-============================================================ */
-
-window.cambiarTema =
-    cambiarTema;
-
-
-window.siguientePregunta =
-    siguientePregunta;
-
-
-window.reproducirAudio =
-    reproducirAudio;
-
-
-window.escuchar =
-    escuchar;
-
-
-window.cerrarModalRecuperacion =
-    cerrarModalRecuperacion;
-
-
-window.comenzarRetoRecuperacion =
-    comenzarRetoRecuperacion;
-
-
-window.continuarDespuesRecuperacion =
-    continuarDespuesRecuperacion;
-
-
-window.reiniciarColombia =
-    reiniciarColombia;
-
-
-/* ============================================================
-   34. INICIAR JUEGO
-============================================================ */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        /* ----------------------------------------
-           CARGAR PROGRESO
-        ----------------------------------------- */
-
-        cargarProgreso();
-
-
-        /* ----------------------------------------
-           GARANTIZAR VALORES VÁLIDOS
-        ----------------------------------------- */
-
-        if (!Number.isFinite(vidas)) {
-
-            vidas = MAX_VIDAS;
-
-        }
-
-
-        vidas =
-            Math.max(
-                0,
-                Math.min(
-                    MAX_VIDAS,
-                    vidas
-                )
-            );
-
-
-        /* ----------------------------------------
-           MARCAR CATEGORÍA
-        ----------------------------------------- */
-
-        marcarTemaActivo();
-
-
-        /* ----------------------------------------
-           ACTUALIZAR MARCADORES
-        ----------------------------------------- */
-
-        actualizarMarcadores();
-
-
-        /* ----------------------------------------
-           CARGAR TEMA
-        ----------------------------------------- */
-
-        if (vidas > 0) {
-
-            cargarTema();
-
-        }
-
-
-        /* ----------------------------------------
-           BOTÓN COMENZAR RECUPERACIÓN
-        ----------------------------------------- */
-
-        const btnComenzar =
-            obtenerElemento(
-                "btnComenzarRecuperacion"
-            );
-
-
-        if (btnComenzar) {
-
-            btnComenzar.addEventListener(
-                "click",
-                comenzarRetoRecuperacion
-            );
-
-        }
-
-
-        /* ----------------------------------------
-           BOTÓN CONTINUAR
-        ----------------------------------------- */
-
-        const btnContinuar =
-            obtenerElemento(
-                "btnContinuarRecuperacion"
-            );
-
-
-        if (btnContinuar) {
-
-            btnContinuar.addEventListener(
-                "click",
-                continuarDespuesRecuperacion
-            );
-
-        }
-
-
-        /* ----------------------------------------
-           SI ESTÁ EN 0 VIDAS
-        ----------------------------------------- */
-
-        if (vidas <= 0) {
-
-            juegoBloqueadoPorVidas =
-                true;
-
-
-            bloquearJuegoPorVidas();
-
-
-            setTimeout(
-                () => {
-
-                    mostrarAvisoSinVidas();
-
-                },
-                500
-            );
-
-        }
-
+function cargarPreguntaRecuperacion() {
+  if (!recuperacionActiva) return;
+
+  const pregunta = preguntasRecuperacion[indiceRecuperacion];
+  if (!pregunta) {
+    terminarRecuperacion();
+    return;
+  }
+
+  const preguntaHTML = obtener("preguntaRecuperacion");
+  const opcionesHTML = obtener("opcionesRecuperacion");
+  const resultadoHTML = obtener("resultadoRecuperacion");
+  const botonContinuar = obtener("btnContinuarRecuperacion");
+
+  if (preguntaHTML) {
+    preguntaHTML.textContent =
+      `Pregunta ${indiceRecuperacion + 1} de ${preguntasRecuperacion.length}: ${pregunta.pregunta}`;
+  }
+
+  if (opcionesHTML) opcionesHTML.innerHTML = "";
+
+  if (resultadoHTML) {
+    resultadoHTML.textContent = "";
+    resultadoHTML.className = "resultado-recuperacion";
+  }
+
+  if (botonContinuar) {
+    botonContinuar.disabled = true;
+    botonContinuar.textContent =
+      indiceRecuperacion === preguntasRecuperacion.length - 1
+        ? "Terminar"
+        : "Continuar →";
+  }
+
+  mezclar(pregunta.opciones).forEach(opcion => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "opcion-recuperacion";
+    boton.textContent = opcion;
+    boton.addEventListener("click", () => comprobarRespuestaRecuperacion(opcion));
+    if (opcionesHTML) opcionesHTML.appendChild(boton);
+  });
+}
+
+function comprobarRespuestaRecuperacion(respuesta) {
+  if (!recuperacionActiva) return;
+
+  const pregunta = preguntasRecuperacion[indiceRecuperacion];
+  if (!pregunta) return;
+
+  const botones = document.querySelectorAll("#opcionesRecuperacion button");
+
+  botones.forEach(boton => {
+    boton.disabled = true;
+    if (boton.textContent === pregunta.correcta) {
+      boton.classList.add("correcta");
+    } else if (boton.textContent === respuesta) {
+      boton.classList.add("incorrecta");
     }
-);
+  });
 
+  const resultado = obtener("resultadoRecuperacion");
+  const botonContinuar = obtener("btnContinuarRecuperacion");
 
-/* ============================================================
-   35. GUARDAR ANTES DE SALIR
-============================================================ */
-
-window.addEventListener(
-    "beforeunload",
-    () => {
-
-        guardarProgreso();
-
-
-        if (
-            "speechSynthesis" in window
-        ) {
-
-            window.speechSynthesis.cancel();
-
-        }
-
+  if (respuesta === pregunta.correcta) {
+    aciertosRecuperacion++;
+    if (resultado) {
+      resultado.textContent = "✅ ¡Correcto!";
+      resultado.className = "resultado-recuperacion correcto";
     }
-);
+  } else if (resultado) {
+    resultado.textContent = `❌ Incorrecto. La respuesta correcta es: ${pregunta.correcta}`;
+    resultado.className = "resultado-recuperacion incorrecto";
+  }
+
+  if (botonContinuar) botonContinuar.disabled = false;
+}
+
+function continuarDespuesRecuperacion() {
+  if (!recuperacionActiva) return;
+
+  const resultado = obtener("resultadoRecuperacion");
+  if (!resultado || !resultado.textContent) return;
+
+  indiceRecuperacion++;
+
+  if (indiceRecuperacion >= preguntasRecuperacion.length) {
+    terminarRecuperacion();
+    return;
+  }
+
+  cargarPreguntaRecuperacion();
+}
+
+function terminarRecuperacion() {
+  recuperacionActiva = false;
+
+  const modal = obtener("modalRecuperacion");
+  const caja = obtener("preguntaRecuperacionBox");
+  const inicio = obtener("inicioRecuperacion");
+
+  if (caja) caja.style.display = "none";
+
+  const aprobado = aciertosRecuperacion >= ACIERTOS_MINIMOS_RECUPERACION;
+
+  if (aprobado) {
+    vidas = MAX_VIDAS;
+    juegoBloqueadoPorVidas = false;
+    guardarProgreso();
+    actualizarInterfaz();
+
+    if (inicio) {
+      inicio.style.display = "block";
+      inicio.innerHTML = `
+        <div class="icono-modal">❤️</div>
+        <h2>¡Vidas recuperadas!</h2>
+        <p>Acertaste ${aciertosRecuperacion} de ${preguntasRecuperacionBase.length}. ¡Sigue aprendiendo!</p>
+        <button type="button" class="boton-recuperar" onclick="cerrarModalRecuperacion()">
+          Continuar
+        </button>`;
+    }
+  } else {
+    if (inicio) {
+      inicio.style.display = "block";
+      inicio.innerHTML = `
+        <div class="icono-modal">💔</div>
+        <h2>Aún no recuperas tus vidas</h2>
+        <p>Acertaste ${aciertosRecuperacion} de ${preguntasRecuperacionBase.length}.
+           Necesitas al menos ${ACIERTOS_MINIMOS_RECUPERACION} para continuar.</p>
+        <button type="button" class="boton-recuperar" onclick="comenzarRetoRecuperacion()">
+          🎯 Intentar de nuevo
+        </button>`;
+    }
+  }
+
+  if (modal) modal.style.display = "flex";
+}
+
+function cerrarModalRecuperacion() {
+  if (juegoBloqueadoPorVidas) return;
+
+  const modal = obtener("modalRecuperacion");
+  if (modal) modal.style.display = "none";
+
+  document.body.style.overflow = "";
+
+  if (temaActual) cargarPregunta();
+}
+
+
+/* ------------------------------------------------------------
+   11. RETO FINAL
+------------------------------------------------------------ */
+
+function comenzarRetoFinal() {
+  const todasCompletadas = nombresTemas.every(
+    nombre => estadoPreguntas[nombre] && estadoPreguntas[nombre].completado
+  );
+
+  if (!todasCompletadas) {
+    alert("Debes completar las 14 categorías antes de comenzar el reto final.");
+    return;
+  }
+
+  if (juegoBloqueadoPorVidas) {
+    abrirModalRecuperacion();
+    return;
+  }
+
+  retoFinalDesbloqueado = true;
+  retoFinalActivo = true;
+  indicePreguntaFinal = 0;
+  puntosFinales = 0;
+  respuestasFinales = 0;
+  preguntasFinalesMezcladas = mezclar(preguntasFinales);
+
+  const modal = obtener("modalRetoFinal");
+  if (modal) modal.style.display = "flex";
+
+  actualizarMarcadoresFinal();
+  cargarPreguntaFinal();
+}
+
+function cargarPreguntaFinal() {
+  if (!retoFinalActivo) return;
+
+  const pregunta = preguntasFinalesMezcladas[indicePreguntaFinal];
+  if (!pregunta) {
+    finalizarRetoFinal();
+    return;
+  }
+
+  const preguntaHTML = obtener("preguntaFinal");
+  const opcionesHTML = obtener("opcionesFinal");
+  const resultadoHTML = obtener("resultadoFinal");
+  const numeroPregunta = obtener("numeroPreguntaFinal");
+  const botonSiguiente = obtener("btnSiguienteFinal");
+
+  if (preguntaHTML) preguntaHTML.textContent = pregunta.pregunta;
+  if (opcionesHTML) opcionesHTML.innerHTML = "";
+
+  if (resultadoHTML) {
+    resultadoHTML.textContent = "";
+    resultadoHTML.className = "resultado-final";
+  }
+
+  if (numeroPregunta) numeroPregunta.textContent = indicePreguntaFinal + 1;
+
+  if (botonSiguiente) {
+    botonSiguiente.disabled = true;
+    botonSiguiente.textContent =
+      indicePreguntaFinal === preguntasFinalesMezcladas.length - 1
+        ? "Ver resultado"
+        : "Siguiente →";
+  }
+
+  mezclar(pregunta.opciones).forEach(opcion => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "opcion-final";
+    boton.textContent = opcion;
+    boton.addEventListener("click", () => comprobarRespuestaFinal(opcion));
+    if (opcionesHTML) opcionesHTML.appendChild(boton);
+  });
+}
+
+function comprobarRespuestaFinal(respuesta) {
+  if (!retoFinalActivo) return;
+
+  const pregunta = preguntasFinalesMezcladas[indicePreguntaFinal];
+  if (!pregunta) return;
+
+  const botones = document.querySelectorAll("#opcionesFinal button");
+
+  botones.forEach(boton => {
+    boton.disabled = true;
+    if (boton.textContent === pregunta.correcta) {
+      boton.classList.add("correcta");
+    } else if (boton.textContent === respuesta) {
+      boton.classList.add("incorrecta");
+    }
+  });
+
+  const resultado = obtener("resultadoFinal");
+  const botonSiguiente = obtener("btnSiguienteFinal");
+
+  if (respuesta === pregunta.correcta) {
+    puntosFinales += PUNTOS_CORRECTA;
+    respuestasFinales++;
+
+    if (resultado) {
+      resultado.textContent = "✅ ¡Correcto! +10 puntos";
+      resultado.className = "resultado-final correcto";
+    }
+  } else if (resultado) {
+    resultado.textContent = `❌ Incorrecto. La respuesta correcta es: ${pregunta.correcta}`;
+    resultado.className = "resultado-final incorrecto";
+  }
+
+  actualizarMarcadoresFinal();
+  if (botonSiguiente) botonSiguiente.disabled = false;
+}
+
+function actualizarMarcadoresFinal() {
+  const p = obtener("puntosFinales");
+  const c = obtener("respuestasFinales");
+  if (p) p.textContent = puntosFinales;
+  if (c) c.textContent = respuestasFinales;
+}
+
+function siguientePreguntaFinal() {
+  if (!retoFinalActivo) return;
+
+  indicePreguntaFinal++;
+
+  if (indicePreguntaFinal >= preguntasFinalesMezcladas.length) {
+    finalizarRetoFinal();
+    return;
+  }
+
+  cargarPreguntaFinal();
+}
+
+function finalizarRetoFinal() {
+  retoFinalActivo = false;
+
+  const modal = obtener("modalRetoFinal");
+  const aventura = obtener("aventuraCompletada");
+  const resultadoPuntos = obtener("resultadoPuntosFinales");
+  const resultadoCorrectas = obtener("resultadoCorrectasFinales");
+
+  if (modal) modal.style.display = "none";
+  if (aventura) aventura.style.display = "flex";
+
+  if (resultadoPuntos) resultadoPuntos.textContent = puntosFinales;
+  if (resultadoCorrectas) {
+    resultadoCorrectas.textContent = `${respuestasFinales} / ${preguntasFinales.length}`;
+  }
+
+  // Guardar ronda en historial
+  historial.rondas++;
+  historial.puntosTotales += puntos + puntosFinales;
+  historial.correctasTotales += respuestasCorrectas + respuestasFinales;
+
+  iniciarNuevaRonda();
+}
+
+function iniciarNuevaRonda() {
+  estadoPreguntas = crearEstadoInicial();
+
+  puntos = 0;
+  vidas = MAX_VIDAS;
+  racha = 0;
+  respuestasCorrectas = 0;
+  retosCompletados = 0;
+
+  juegoBloqueadoPorVidas = false;
+  retoFinalDesbloqueado = false;
+  retoFinalActivo = false;
+
+  guardarProgreso();
+  actualizarInterfaz();
+
+  cargarTema(nombresTemas[0]);
+  marcarMenu(nombresTemas[0]);
+}
+
+function cerrarAventura() {
+  const aventura = obtener("aventuraCompletada");
+  if (aventura) aventura.style.display = "none";
+}
+
+function cerrarRetoFinal() {
+  const modal = obtener("modalRetoFinal");
+  if (modal) modal.style.display = "none";
+  retoFinalActivo = false;
+}
+
+
+/* ------------------------------------------------------------
+   12. REINICIO TOTAL
+------------------------------------------------------------ */
+
+function reiniciarProgreso() {
+  const confirmar = confirm("¿Seguro que quieres borrar todo tu progreso en Colombia?");
+  if (!confirmar) return;
+
+  localStorage.removeItem(CLAVE_GUARDADO);
+
+  estadoPreguntas = crearEstadoInicial();
+  temaActual = null;
+  indicePregunta = 0;
+
+  puntos = 0;
+  vidas = MAX_VIDAS;
+  racha = 0;
+  respuestasCorrectas = 0;
+  retosCompletados = 0;
+
+  juegoBloqueadoPorVidas = false;
+  retoFinalDesbloqueado = false;
+  retoFinalActivo = false;
+
+  indicePreguntaFinal = 0;
+  puntosFinales = 0;
+  respuestasFinales = 0;
+
+  preguntasRecuperacion = [];
+  indiceRecuperacion = 0;
+  recuperacionActiva = false;
+  aciertosRecuperacion = 0;
+
+  historial = { rondas: 0, puntosTotales: 0, correctasTotales: 0 };
+
+  document.body.style.overflow = "";
+
+  guardarProgreso();
+  actualizarInterfaz();
+
+  alert("El progreso se reinició correctamente.");
+  iniciarNuevaRonda();
+}
+
+
+/* ------------------------------------------------------------
+   13. INICIALIZACIÓN
+------------------------------------------------------------ */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const inicio = obtener("inicioRecuperacion");
+  if (inicio) htmlInicioRecuperacion = inicio.innerHTML;
+
+  cargarProgreso();
+  actualizarInterfaz();
+
+  cargarTema(nombresTemas[0]);
+  marcarMenu(nombresTemas[0]);
+
+  // Si recargó la página con 0 vidas, bloquear de inmediato
+  if (juegoBloqueadoPorVidas) {
+    abrirModalRecuperacion();
+  }
+});

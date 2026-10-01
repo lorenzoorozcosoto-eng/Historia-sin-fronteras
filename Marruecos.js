@@ -1,2225 +1,1396 @@
-/* =====================================================
-   HISTORIA SIN FRONTERAS
-   MARRUECOS
-===================================================== */
+/* ============================================================
+   HISTORIA SIN FRONTERAS - MARRUECOS
+   14 categorías x 5 preguntas = 70 preguntas
+   5 vidas, bloqueo al llegar a 0, reto de recuperación,
+   reto final de 30 preguntas, historial de rondas.
+============================================================ */
+
+/* 1. CONFIGURACIÓN */
+
+const CLAVE_GUARDADO = "historiaSinFronterasMarruecos_v2";
+const MAX_VIDAS = 5;
+const PUNTOS_CORRECTA = 10;
+const ACIERTOS_MINIMOS_RECUPERACION = 3;
+
+const nombresTemas = [
+    "civilizaciones", "dinastias", "andalus",
+    "protectorado", "independencia", "monarquia", "actualidad",
+    "gastronomia", "musica", "tradiciones", "fiestas",
+    "vestimenta", "arte", "monumentos"
+];
+
+function q(pregunta, opciones, correcta) {
+    return { pregunta, opciones, correcta };
+}
+
+function mezclar(lista) {
+    const copia = [...lista];
+    for (let i = copia.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copia[i], copia[j]] = [copia[j], copia[i]];
+    }
+    return copia;
+}
+
+function obtener(id) {
+    return document.getElementById(id);
+}
 
 
-/* =====================================================
-   TEMAS
-===================================================== */
+/* 2. INFORMACIÓN Y 70 PREGUNTAS */
 
 const temas = {
 
-    /* ================= CULTURA ================= */
-
-    gastronomia: {
-        titulo: "Gastronomía marroquí",
-        subtitulo: "Sabores y aromas que cuentan historias",
-        icono: "🍲",
-
-        mensaje:
-            "La gastronomía de Marruecos combina especias, ingredientes y tradiciones de diferentes regiones.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "El cuscús y el tajín son algunos de los platos más conocidos de la gastronomía marroquí.",
-
-        regiones:
-            "Marrakech • Fez • Casablanca • Rabat",
-
-        sobre:
-            "La cocina marroquí se caracteriza por el uso de especias, hierbas, verduras, carnes y frutos secos.",
-
-        pregunta:
-            "¿Cuál de estos platos es tradicional de Marruecos?",
-
-        opciones: [
-            "🍲 Tajín",
-            "🍕 Pizza",
-            "🌮 Tacos",
-            "🍣 Sushi"
-        ],
-
-        correcta: "🍲 Tajín",
-
-        audio:
-            "La gastronomía marroquí es famosa por platos como el tajín y el cuscús."
-    },
-
-
-    musica: {
-        titulo: "Música marroquí",
-        subtitulo: "Ritmos y sonidos tradicionales",
-
-        icono: "🎵",
-
-        mensaje:
-            "Marruecos posee una gran diversidad musical influenciada por sus diferentes regiones y pueblos.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1524650359799-842906ca1c06?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "La música tradicional marroquí incluye estilos como la música gnawa y la música andalusí.",
-
-        regiones:
-            "Essaouira • Fez • Marrakech",
-
-        sobre:
-            "La música marroquí combina influencias árabes, amazigh, africanas y andalusíes.",
-
-        pregunta:
-            "¿Cuál es un género musical tradicional de Marruecos?",
-
-        opciones: [
-            "🎵 Gnawa",
-            "🎸 Country",
-            "🎧 K-pop",
-            "🎷 Jazz"
-        ],
-
-        correcta: "🎵 Gnawa",
-
-        audio:
-            "La música marroquí incluye estilos tradicionales como la música gnawa."
-    },
-
-
-    tradiciones: {
-        titulo: "Tradiciones marroquíes",
-        subtitulo: "Costumbres transmitidas de generación en generación",
-
-        icono: "🪅",
-
-        mensaje:
-            "Las tradiciones marroquíes reflejan la diversidad cultural y la historia del país.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "El té de menta es una bebida muy importante dentro de la cultura y la hospitalidad marroquí.",
-
-        regiones:
-            "Todo Marruecos",
-
-        sobre:
-            "La hospitalidad, las reuniones familiares y la preparación del té forman parte de muchas costumbres marroquíes.",
-
-        pregunta:
-            "¿Qué bebida es muy representativa de la hospitalidad marroquí?",
-
-        opciones: [
-            "🍵 Té de menta",
-            "🥤 Refresco",
-            "☕ Café americano",
-            "🧃 Jugo de naranja"
-        ],
-
-        correcta: "🍵 Té de menta",
-
-        audio:
-            "El té de menta es una bebida muy representativa de la hospitalidad marroquí."
-    },
-
-
-    fiestas: {
-        titulo: "Fiestas de Marruecos",
-        subtitulo: "Celebraciones y tradiciones",
-
-        icono: "🎉",
-
-        mensaje:
-            "Marruecos celebra diferentes fiestas religiosas, nacionales y culturales.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "Entre las celebraciones importantes se encuentran el Aid al-Fitr y el Aid al-Adha.",
-
-        regiones:
-            "Todo Marruecos",
-
-        sobre:
-            "Las celebraciones marroquíes reúnen a familias y comunidades y están relacionadas con tradiciones religiosas y nacionales.",
-
-        pregunta:
-            "¿Cuál de estas es una celebración importante para los musulmanes en Marruecos?",
-
-        opciones: [
-            "🌙 Aid al-Fitr",
-            "🎃 Halloween",
-            "🎄 Navidad",
-            "🐰 Pascua occidental"
-        ],
-
-        correcta: "🌙 Aid al-Fitr",
-
-        audio:
-            "El Aid al-Fitr es una celebración importante después del mes de Ramadán."
-    },
-
-
-    vestimenta: {
-        titulo: "Vestimenta tradicional",
-        subtitulo: "Ropa que representa la cultura marroquí",
-
-        icono: "👘",
-
-        mensaje:
-            "La vestimenta tradicional de Marruecos incluye prendas como la djellaba y el caftán.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "La djellaba es una prenda tradicional caracterizada por su forma amplia y, generalmente, una capucha.",
-
-        regiones:
-            "Fez • Marrakech • Rabat",
-
-        sobre:
-            "La ropa tradicional marroquí puede variar según la región, la ocasión y las costumbres.",
-
-        pregunta:
-            "¿Cuál es una prenda tradicional de Marruecos?",
-
-        opciones: [
-            "👘 Djellaba",
-            "👔 Traje de negocios",
-            "👕 Camiseta deportiva",
-            "🧥 Chaqueta de invierno"
-        ],
-
-        correcta: "👘 Djellaba",
-
-        audio:
-            "La djellaba es una de las prendas tradicionales más conocidas de Marruecos."
-    },
-
-
-    arte: {
-        titulo: "Arte y artesanía",
-        subtitulo: "Colores, diseños y técnicas tradicionales",
-
-        icono: "🎨",
-
-        mensaje:
-            "La artesanía marroquí destaca por sus mosaicos, cerámicas, alfombras y trabajos en cuero y metal.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "Los zellige son mosaicos formados por pequeñas piezas de cerámica que crean diseños geométricos.",
-
-        regiones:
-            "Fez • Marrakech • Meknes",
-
-        sobre:
-            "La artesanía es una parte importante del patrimonio cultural marroquí.",
-
-        pregunta:
-            "¿Qué son los zellige?",
-
-        opciones: [
-            "🧩 Mosaicos de cerámica",
-            "🎵 Instrumentos musicales",
-            "👘 Prendas de vestir",
-            "🍲 Platos de comida"
-        ],
-
-        correcta: "🧩 Mosaicos de cerámica",
-
-        audio:
-            "Los zellige son mosaicos de cerámica característicos de la artesanía marroquí."
-    },
-
-
-    monumentos: {
-        titulo: "Monumentos de Marruecos",
-        subtitulo: "Patrimonio histórico y arquitectónico",
-
-        icono: "🕌",
-
-        mensaje:
-            "Marruecos cuenta con ciudades históricas, mezquitas, palacios y otros lugares de gran importancia cultural.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "La plaza Jemaa el-Fna de Marrakech es uno de los lugares más conocidos de la ciudad.",
-
-        regiones:
-            "Marrakech • Fez • Rabat • Meknes",
-
-        sobre:
-            "La arquitectura marroquí combina elementos históricos, religiosos y regionales.",
-
-        pregunta:
-            "¿En qué ciudad se encuentra la famosa plaza Jemaa el-Fna?",
-
-        opciones: [
-            "🏜️ Marrakech",
-            "🌊 Casablanca",
-            "🏔️ Tánger",
-            "🌴 Agadir"
-        ],
-
-        correcta: "🏜️ Marrakech",
-
-        audio:
-            "La plaza Jemaa el-Fna se encuentra en la ciudad de Marrakech."
-    },
-
-
-    /* ================= HISTORIA ================= */
-
-    civilizaciones: {
+    "civilizaciones": {
         titulo: "Civilizaciones antiguas",
-        subtitulo: "Los primeros pueblos de Marruecos",
-
+        subtitulo: "Conoce los pueblos que habitaron el territorio de Marruecos antes de las grandes dinastías.",
         icono: "🏛️",
-
-        mensaje:
-            "Antes de la formación del Marruecos moderno, diferentes pueblos y civilizaciones ocuparon esta región.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "Los fenicios establecieron contactos comerciales en las costas del norte de África.",
-
-        regiones:
-            "Norte de Marruecos • Costa mediterránea",
-
-        sobre:
-            "La historia antigua de Marruecos estuvo relacionada con pueblos amazigh, fenicios, cartagineses, romanos y otros grupos.",
-
-        pregunta:
-            "¿Qué pueblo antiguo tuvo presencia en el norte de África y estableció asentamientos comerciales?",
-
-        opciones: [
-            "⛵ Fenicios",
-            "🗿 Aztecas",
-            "🏯 Samuráis",
-            "⚔️ Vikingos"
-        ],
-
-        correcta: "⛵ Fenicios",
-
-        audio:
-            "Los fenicios establecieron asentamientos comerciales en diferentes zonas del Mediterráneo."
+        mensaje: "Desde los bereberes hasta la influencia fenicia y romana, Marruecos tiene una historia milenaria.",
+        regiones: ["Atlas", "Rif", "Costa mediterránea", "Sahara"],
+        dato: "Los bereberes (amazigh) son el pueblo indígena de África del Norte y habitan Marruecos desde hace miles de años.",
+        preguntas: [
+            q("¿Cuál es el pueblo indígena originario de Marruecos?", ["Bereberes (Amazigh)", "Árabes", "Fenicios", "Romanos"], "Bereberes (Amazigh)"),
+            q("¿Qué civilización antigua estableció colonias comerciales en la costa de Marruecos?", ["Fenicios", "Incas", "Mayas", "Vikingos"], "Fenicios"),
+            q("¿Cómo se llamaba la ciudad romana importante en el norte de Marruecos?", ["Volubilis", "Cartago", "Alejandría", "Pompeya"], "Volubilis"),
+            q("¿Qué pueblo dominó gran parte del Magreb antes de la llegada del islam?", ["Bereberes", "Persas", "Otomanos", "Mongoles"], "Bereberes"),
+            q("La antigua ciudad de Lixus se encuentra cerca de:", ["Larache", "Marrakech", "Fez", "Agadir"], "Larache")
+        ]
     },
 
-
-    dinastias: {
-        titulo: "Dinastías de Marruecos",
-        subtitulo: "Familias que gobernaron diferentes periodos",
-
+    "dinastias": {
+        titulo: "Dinastías",
+        subtitulo: "Explora las grandes dinastías que gobernaron Marruecos a lo largo de la historia.",
         icono: "👑",
-
-        mensaje:
-            "La historia de Marruecos incluye varias dinastías que dejaron importantes huellas políticas y culturales.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "Entre las dinastías importantes de la historia marroquí se encuentran los almorávides, almohades, meriníes, saadíes y alauitas.",
-
-        regiones:
-            "Marrakech • Fez • Meknes",
-
-        sobre:
-            "Las dinastías contribuyeron al desarrollo político, arquitectónico y cultural del territorio marroquí.",
-
-        pregunta:
-            "¿Cuál de estas fue una dinastía de Marruecos?",
-
-        opciones: [
-            "👑 Almohades",
-            "🏯 Tokugawa",
-            "👑 Tudor",
-            "⚔️ Habsburgo"
-        ],
-
-        correcta: "👑 Almohades",
-
-        audio:
-            "Los almohades fueron una importante dinastía de la historia del Magreb."
+        mensaje: "Desde los Idrisíes hasta los Alauíes, las dinastías han marcado la identidad del país.",
+        regiones: ["Fez", "Marrakech", "Meknes", "Rabat"],
+        dato: "La dinastía alauí, que reina actualmente, llegó al poder en el siglo XVII.",
+        preguntas: [
+            q("¿Cuál fue la primera dinastía islámica de Marruecos?", ["Idrisí", "Almorávide", "Almohade", "Mariní"], "Idrisí"),
+            q("¿Qué dinastía fundó la ciudad de Marrakech?", ["Almorávide", "Idrisí", "Saadí", "Alauí"], "Almorávide"),
+            q("¿Qué dinastía unificó el Magreb y Al-Ándalus en el siglo XII?", ["Almohade", "Mariní", "Wattasí", "Saadí"], "Almohade"),
+            q("¿Qué dinastía construyó la Madraza Bou Inania de Fez?", ["Mariní", "Almorávide", "Idrisí", "Alauí"], "Mariní"),
+            q("¿Qué dinastía reina actualmente en Marruecos?", ["Alauí", "Saadí", "Mariní", "Almohade"], "Alauí")
+        ]
     },
 
-
-    andalus: {
+    "andalus": {
         titulo: "Marruecos y Al-Ándalus",
-        subtitulo: "Intercambios culturales a través del Mediterráneo",
-
+        subtitulo: "Descubre la estrecha relación histórica entre Marruecos y la península ibérica musulmana.",
         icono: "🕌",
-
-        mensaje:
-            "Durante siglos existieron relaciones políticas, comerciales y culturales entre el Magreb y Al-Ándalus.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "Los intercambios entre el norte de África y la península ibérica dejaron huellas en la arquitectura, la música y otros aspectos culturales.",
-
-        regiones:
-            "Marruecos • Andalucía • Fez",
-
-        sobre:
-            "Las conexiones entre ambas orillas del Mediterráneo fueron importantes durante diferentes periodos históricos.",
-
-        pregunta:
-            "¿Qué región europea estuvo históricamente conectada con Marruecos a través del Mediterráneo?",
-
-        opciones: [
-            "🇪🇸 Al-Ándalus",
-            "🇳🇴 Noruega",
-            "🇮🇸 Islandia",
-            "🇫🇮 Finlandia"
-        ],
-
-        correcta: "🇪🇸 Al-Ándalus",
-
-        audio:
-            "Marruecos y Al-Ándalus mantuvieron importantes intercambios culturales y políticos."
+        mensaje: "Durante siglos existió un intenso intercambio cultural, político y comercial entre ambos territorios.",
+        regiones: ["Estrecho de Gibraltar", "Fez", "Córdoba", "Granada"],
+        dato: "Tras la caída de Granada en 1492, muchos musulmanes y judíos andalusíes se refugiaron en Marruecos.",
+        preguntas: [
+            q("¿Qué dinastía marroquí controló gran parte de Al-Ándalus?", ["Almorávide y Almohade", "Idrisí", "Saadí", "Wattasí"], "Almorávide y Almohade"),
+            q("¿Qué ciudad andalusí fue capital del califato y estuvo muy ligada a Marruecos?", ["Córdoba", "Sevilla", "Toledo", "Zaragoza"], "Córdoba"),
+            q("Tras 1492, muchos andalusíes se establecieron principalmente en:", ["Fez y Tánger", "El Cairo", "Estambul", "Bagdad"], "Fez y Tánger"),
+            q("¿Qué estilo arquitectónico se compartió entre Marruecos y Al-Ándalus?", ["Arte hispanomusulmán", "Gótico", "Románico", "Barroco"], "Arte hispanomusulmán"),
+            q("El Estrecho de Gibraltar separa Marruecos de:", ["España", "Francia", "Italia", "Portugal"], "España")
+        ]
     },
 
-
-    protectorado: {
-        titulo: "El Protectorado",
-        subtitulo: "Marruecos durante el siglo XX",
-
+    "protectorado": {
+        titulo: "Protectorado",
+        subtitulo: "Conoce el periodo en el que Marruecos estuvo bajo control de Francia y España.",
         icono: "📜",
-
-        mensaje:
-            "A comienzos del siglo XX, Marruecos quedó dividido en diferentes zonas de influencia europea.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "En 1912 se establecieron los protectorados francés y español sobre diferentes zonas de Marruecos.",
-
-        regiones:
-            "Zona francesa • Zona española • Tánger",
-
-        sobre:
-            "El periodo del Protectorado fue una etapa importante en la historia contemporánea de Marruecos.",
-
-        pregunta:
-            "¿En qué año se establecieron los protectorados francés y español en Marruecos?",
-
-        opciones: [
-            "📅 1912",
-            "📅 1492",
-            "📅 1810",
-            "📅 1945"
-        ],
-
-        correcta: "📅 1912",
-
-        audio:
-            "En 1912 se establecieron los protectorados francés y español en Marruecos."
+        mensaje: "Entre 1912 y 1956 Marruecos estuvo dividido entre el protectorado francés y el español.",
+        regiones: ["Rabat", "Casablanca", "Tánger", "Tetuán"],
+        dato: "El Tratado de Fez de 1912 estableció el protectorado francés sobre la mayor parte de Marruecos.",
+        preguntas: [
+            q("¿En qué año se firmó el Tratado de Fez que estableció el protectorado?", ["1912", "1900", "1956", "1880"], "1912"),
+            q("¿Qué dos países europeos controlaron Marruecos durante el protectorado?", ["Francia y España", "Francia e Italia", "España y Portugal", "Inglaterra y Francia"], "Francia y España"),
+            q("¿Qué ciudad fue la capital del protectorado francés?", ["Rabat", "Marrakech", "Fez", "Agadir"], "Rabat"),
+            q("¿Qué zona de Marruecos estuvo bajo control español?", ["Norte (Rif) y sur (Sáhara)", "Solo el Atlas", "Solo la costa atlántica", "Todo el país"], "Norte (Rif) y sur (Sáhara)"),
+            q("¿Qué ciudad internacional existió durante el protectorado?", ["Tánger", "Casablanca", "Meknes", "Ouarzazate"], "Tánger")
+        ]
     },
 
-
-    independencia: {
-        titulo: "Independencia de Marruecos",
-        subtitulo: "El camino hacia un Estado independiente",
-
+    "independencia": {
+        titulo: "Independencia",
+        subtitulo: "Conoce el proceso que llevó a la independencia de Marruecos en 1956.",
         icono: "🇲🇦",
-
-        mensaje:
-            "Marruecos recuperó su independencia a mediados del siglo XX después del periodo del Protectorado.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "Marruecos obtuvo su independencia de Francia y España en 1956.",
-
-        regiones:
-            "Rabat • Casablanca • Fez",
-
-        sobre:
-            "El proceso de independencia estuvo acompañado por movimientos políticos y sociales que buscaban recuperar la soberanía.",
-
-        pregunta:
-            "¿En qué año obtuvo Marruecos su independencia?",
-
-        opciones: [
-            "🇲🇦 1956",
-            "🇲🇦 1940",
-            "🇲🇦 1968",
-            "🇲🇦 1930"
-        ],
-
-        correcta: "🇲🇦 1956",
-
-        audio:
-            "Marruecos obtuvo su independencia en 1956."
+        mensaje: "La independencia marcó el fin del protectorado y el inicio de la soberanía plena del país.",
+        regiones: ["Todo Marruecos"],
+        dato: "Mohammed V fue una figura clave en la lucha por la independencia y regresó del exilio en 1955.",
+        preguntas: [
+            q("¿En qué año obtuvo Marruecos su independencia?", ["1956", "1912", "1945", "1960"], "1956"),
+            q("¿Quién fue el sultán clave en el proceso de independencia?", ["Mohammed V", "Hassan II", "Mohammed VI", "Yusuf ibn Tachfin"], "Mohammed V"),
+            q("¿A dónde fue exiliado Mohammed V por las autoridades francesas?", ["Madagascar", "Egipto", "España", "Argelia"], "Madagascar"),
+            q("¿Qué movimiento nacionalista impulsó la independencia?", ["Istiqlal", "FLN", "ANC", "Sinn Féin"], "Istiqlal"),
+            q("Tras la independencia, Mohammed V se convirtió en:", ["Rey de Marruecos", "Presidente", "Califa", "Emir"], "Rey de Marruecos")
+        ]
     },
 
-
-    monarquia: {
-        titulo: "La monarquía marroquí",
-        subtitulo: "Una institución importante del país",
-
+    "monarquia": {
+        titulo: "Monarquía",
+        subtitulo: "Explora la institución monárquica y la dinastía alauí en Marruecos.",
         icono: "👑",
-
-        mensaje:
-            "Marruecos es una monarquía constitucional.",
-
-        imagen:
-            "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80",
-
-        dato:
-            "La monarquía forma parte de las instituciones políticas de Marruecos.",
-
-        regiones:
-            "Rabat • Todo Marruecos",
-
-        sobre:
-            "La Constitución establece las instituciones y la organización política del Reino de Marruecos.",
-
-        pregunta:
-            "¿Qué tipo de Estado es Marruecos?",
-
-        opciones: [
-            "👑 Monarquía constitucional",
-            "🏛️ República federal",
-            "🏰 Imperio",
-            "🗺️ Confederación"
-        ],
-
-        correcta: "👑 Monarquía constitucional",
-
-        audio:
-            "Marruecos es una monarquía constitucional."
+        mensaje: "Marruecos es una monarquía constitucional con una dinastía que reina desde el siglo XVII.",
+        regiones: ["Rabat", "Fez", "Marrakech"],
+        dato: "El actual rey es Mohammed VI, quien ascendió al trono en 1999.",
+        preguntas: [
+            q("¿Qué dinastía reina actualmente en Marruecos?", ["Alauí", "Saadí", "Mariní", "Almohade"], "Alauí"),
+            q("¿Quién es el rey actual de Marruecos?", ["Mohammed VI", "Hassan II", "Mohammed V", "Abdallah"], "Mohammed VI"),
+            q("¿En qué año ascendió al trono Mohammed VI?", ["1999", "1961", "1956", "2000"], "1999"),
+            q("¿Quién fue el padre de Mohammed VI?", ["Hassan II", "Mohammed V", "Yusuf", "Ismail"], "Hassan II"),
+            q("La monarquía marroquí es de tipo:", ["Constitucional", "Absoluta sin límites", "Electiva", "Federal"], "Constitucional")
+        ]
     },
 
-
-    actualidad: {
+    "actualidad": {
         titulo: "Marruecos actual",
-        subtitulo: "Un país entre África, Europa y el mundo árabe",
-
+        subtitulo: "Conoce algunos aspectos de la Marruecos contemporánea.",
         icono: "🌍",
+        mensaje: "Hoy Marruecos es un país moderno que combina tradición y desarrollo económico.",
+        regiones: ["Casablanca", "Rabat", "Tánger", "Marrakech"],
+        dato: "Casablanca es la ciudad más grande y el principal centro económico de Marruecos.",
+        preguntas: [
+            q("¿Cuál es la capital política de Marruecos?", ["Rabat", "Casablanca", "Fez", "Marrakech"], "Rabat"),
+            q("¿Cuál es la ciudad más grande y el centro económico del país?", ["Casablanca", "Rabat", "Fez", "Agadir"], "Casablanca"),
+            q("¿Qué estrecho separa Marruecos de Europa?", ["Estrecho de Gibraltar", "Estrecho de Magallanes", "Canal de Suez", "Estrecho de Bering"], "Estrecho de Gibraltar"),
+            q("¿Qué idioma es oficial junto al árabe en Marruecos?", ["Amazigh (bereber)", "Francés", "Español", "Inglés"], "Amazigh (bereber)"),
+            q("Marruecos forma parte del continente:", ["África", "Europa", "Asia", "América"], "África")
+        ]
+    },
 
-        mensaje:
-            "Marruecos se encuentra en el norte de África y tiene una posición estratégica entre el océano Atlántico y el mar Mediterráneo.",
+    "gastronomia": {
+        titulo: "Gastronomía marroquí",
+        subtitulo: "Sabores y aromas que cuentan historias.",
+        icono: "🍲",
+        mensaje: "La cocina marroquí es famosa por sus especias, el cuscús y el tajine.",
+        regiones: ["Marrakech", "Fez", "Casablanca", "Rabat"],
+        dato: "El cuscús es considerado el plato nacional de Marruecos y se come tradicionalmente los viernes.",
+        preguntas: [
+            q("¿Cuál es el plato nacional más representativo de Marruecos?", ["Cuscús", "Paella", "Sushi", "Pizza"], "Cuscús"),
+            q("¿Qué es un tajine?", ["Un guiso cocinado en una olla de barro cónica", "Un postre", "Una bebida", "Un tipo de pan"], "Un guiso cocinado en una olla de barro cónica"),
+            q("¿Qué especia es muy característica de la cocina marroquí?", ["Comino y azafrán", "Curry indio", "Wasabi", "Pimentón húngaro"], "Comino y azafrán"),
+            q("¿Qué bebida se ofrece tradicionalmente a los visitantes?", ["Té a la menta", "Café espresso", "Mate", "Chocolate caliente"], "Té a la menta"),
+            q("¿Qué postre de hojaldre y almendras es típico de Marruecos?", ["Pastilla o bastela", "Tiramisú", "Cheesecake", "Baklava turco únicamente"], "Pastilla o bastela")
+        ]
+    },
 
-        imagen:
-            "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80",
+    "musica": {
+        titulo: "Música",
+        subtitulo: "Descubre los ritmos y estilos musicales de Marruecos.",
+        icono: "🎵",
+        mensaje: "Desde el andalusí hasta el gnawa y el chaabi, la música refleja la diversidad cultural.",
+        regiones: ["Fez", "Marrakech", "Essaouira", "Rif"],
+        dato: "La música gnawa tiene raíces africanas y se caracteriza por el uso del guembri y las qraqeb.",
+        preguntas: [
+            q("¿Qué estilo musical tiene raíces africanas y se asocia a rituales?", ["Gnawa", "Flamenco", "Samba", "Reggae"], "Gnawa"),
+            q("¿Qué instrumento de cuerda es típico de la música gnawa?", ["Guembri", "Guitarra eléctrica", "Violín", "Arpa"], "Guembri"),
+            q("¿Qué tradición musical proviene de Al-Ándalus?", ["Música andalusí", "Rock", "Jazz", "Hip-hop"], "Música andalusí"),
+            q("¿Qué festival internacional de música se celebra en Essaouira?", ["Festival Gnawa", "Tomorrowland", "Coachella", "Oktoberfest"], "Festival Gnawa"),
+            q("El chaabi es un estilo de música:", ["Popular marroquí", "Clásica europea", "Ópera", "Electrónica"], "Popular marroquí")
+        ]
+    },
 
-        dato:
-            "La capital de Marruecos es Rabat y Casablanca es una de sus ciudades más importantes.",
+    "tradiciones": {
+        titulo: "Tradiciones",
+        subtitulo: "Conoce costumbres que forman parte de la identidad cultural marroquí.",
+        icono: "🪅",
+        mensaje: "Las tradiciones se viven en la hospitalidad, las celebraciones y la vida cotidiana.",
+        regiones: ["Todo el país"],
+        dato: "Ofrecer té a la menta es un gesto de hospitalidad muy importante en la cultura marroquí.",
+        preguntas: [
+            q("¿Qué gesto de hospitalidad es muy importante en Marruecos?", ["Ofrecer té a la menta", "Dar la mano solo una vez", "No mirar a los ojos", "Evitar hablar"], "Ofrecer té a la menta"),
+            q("¿Qué se celebra al final del ramadán?", ["Aid al-Fitr", "Navidad", "Halloween", "Año Nuevo chino"], "Aid al-Fitr"),
+            q("El hammam es una tradición de:", ["Baño público o privado", "Danza", "Cocina", "Música"], "Baño público o privado"),
+            q("¿Qué se hace tradicionalmente en las bodas marroquíes?", ["Ceremonias elaboradas con música y henna", "Solo firmar un documento", "Nada especial", "Viajar inmediatamente"], "Ceremonias elaboradas con música y henna"),
+            q("La henna se usa tradicionalmente para:", ["Decorar las manos en celebraciones", "Cocinar", "Construir casas", "Fabricar ropa"], "Decorar las manos en celebraciones")
+        ]
+    },
 
-        regiones:
-            "Rabat • Casablanca • Tánger • Marrakech",
+    "fiestas": {
+        titulo: "Fiestas",
+        subtitulo: "Conoce algunas de las celebraciones más importantes de Marruecos.",
+        icono: "🎉",
+        mensaje: "Las fiestas religiosas y populares reúnen a las familias y comunidades.",
+        regiones: ["Todo el país", "Marrakech", "Fez", "Imilchil"],
+        dato: "El Aid al-Adha (Fiesta del Cordero) es una de las celebraciones más importantes del año.",
+        preguntas: [
+            q("¿Qué fiesta se celebra al final del mes de ramadán?", ["Aid al-Fitr", "Aid al-Adha", "Mawlid", "Ashura"], "Aid al-Fitr"),
+            q("¿Cómo se conoce también al Aid al-Adha?", ["Fiesta del Cordero", "Fiesta de la Primavera", "Fiesta del Sol", "Fiesta del Mar"], "Fiesta del Cordero"),
+            q("¿Qué festival de matrimonio bereber es famoso en el Atlas?", ["Moussem de Imilchil", "Carnaval de Río", "Oktoberfest", "Día de Muertos"], "Moussem de Imilchil"),
+            q("El Mawlid celebra el nacimiento de:", ["El profeta Mahoma", "Un rey antiguo", "Un santo cristiano", "Un filósofo griego"], "El profeta Mahoma"),
+            q("Durante el ramadán, los musulmanes:", ["Ayunan desde el alba hasta el atardecer", "Comen todo el día", "No rezan", "Viajan obligatoriamente"], "Ayunan desde el alba hasta el atardecer")
+        ]
+    },
 
-        sobre:
-            "Marruecos posee una gran diversidad geográfica y cultural, desde zonas costeras hasta montañas y desiertos.",
+    "vestimenta": {
+        titulo: "Vestimenta",
+        subtitulo: "Descubre las prendas tradicionales de Marruecos.",
+        icono: "👘",
+        mensaje: "La vestimenta tradicional refleja la identidad, el clima y las costumbres de cada región.",
+        regiones: ["Todo el país", "Atlas", "Sahara", "Ciudades"],
+        dato: "La chilaba (djellaba) es una prenda larga con capucha muy usada por hombres y mujeres.",
+        preguntas: [
+            q("¿Cómo se llama la prenda larga con capucha típica de Marruecos?", ["Chilaba o djellaba", "Kimono", "Sari", "Poncho"], "Chilaba o djellaba"),
+            q("¿Qué prenda femenina elaborada se usa en ocasiones especiales?", ["Caftán", "Jeans", "Traje de chaqueta", "Chándal"], "Caftán"),
+            q("¿Qué calzado tradicional de cuero se fabrica en Fez y Marrakech?", ["Babuchas", "Zapatillas deportivas", "Botas de goma", "Sandalias griegas"], "Babuchas"),
+            q("El turbante o rezza se usa especialmente en:", ["El sur y el desierto", "Solo en la costa", "Únicamente en Europa", "Nunca en Marruecos"], "El sur y el desierto"),
+            q("La vestimenta tradicional ayuda a representar:", ["La identidad cultural", "Solo la moda internacional", "Únicamente el clima", "Los avances tecnológicos"], "La identidad cultural")
+        ]
+    },
 
-        pregunta:
-            "¿Cuál es la capital de Marruecos?",
+    "arte": {
+        titulo: "Arte y artesanía",
+        subtitulo: "Conoce las expresiones artísticas y artesanales de Marruecos.",
+        icono: "🎨",
+        mensaje: "La artesanía marroquí es reconocida mundialmente por su calidad y belleza.",
+        regiones: ["Fez", "Marrakech", "Essaouira", "Safi"],
+        dato: "Fez es famosa por sus curtidurías tradicionales y su cerámica azul.",
+        preguntas: [
+            q("¿Por qué es especialmente conocida la ciudad de Fez en artesanía?", ["Curtidurías y cerámica", "Relojes suizos", "Coches", "Electrónica"], "Curtidurías y cerámica"),
+            q("¿Qué material se usa en la famosa artesanía de zellige?", ["Mosaico de azulejos", "Plástico", "Vidrio moderno", "Acero"], "Mosaico de azulejos"),
+            q("¿Qué ciudad es famosa por su madera tallada y marquetería?", ["Essaouira y Fez", "Nueva York", "Tokio", "Sídney"], "Essaouira y Fez"),
+            q("Los tejidos y alfombras bereberes se elaboran principalmente en:", ["El Atlas y el Rif", "Solo en casinos", "Fábricas europeas", "El Ártico"], "El Atlas y el Rif"),
+            q("¿Qué metal se trabaja tradicionalmente en joyería y objetos decorativos?", ["Plata y latón", "Uranio", "Titanio", "Plástico"], "Plata y latón")
+        ]
+    },
 
-        opciones: [
-            "🏛️ Rabat",
-            "🌊 Casablanca",
-            "🏜️ Marrakech",
-            "🏔️ Fez"
-        ],
-
-        correcta: "🏛️ Rabat",
-
-        audio:
-            "La capital de Marruecos es Rabat."
+    "monumentos": {
+        titulo: "Monumentos",
+        subtitulo: "Descubre lugares históricos y culturales importantes de Marruecos.",
+        icono: "🕌",
+        mensaje: "Marruecos posee un patrimonio arquitectónico excepcional reconocido por la UNESCO.",
+        regiones: ["Marrakech", "Fez", "Meknes", "Volubilis", "Casablanca"],
+        dato: "La mezquita Hassan II de Casablanca tiene uno de los minaretes más altos del mundo.",
+        preguntas: [
+            q("¿En qué ciudad se encuentra la Koutoubia?", ["Marrakech", "Rabat", "Tánger", "Agadir"], "Marrakech"),
+            q("¿Qué ciudad es conocida como la capital espiritual y tiene una medina Patrimonio de la Humanidad?", ["Fez", "Casablanca", "Agadir", "Dakhla"], "Fez"),
+            q("¿Dónde se encuentra la mezquita Hassan II?", ["Casablanca", "Fez", "Marrakech", "Meknes"], "Casablanca"),
+            q("¿Qué yacimiento romano es famoso en Marruecos?", ["Volubilis", "Pompeya", "Éfeso", "Machu Picchu"], "Volubilis"),
+            q("¿Qué puerta monumental es símbolo de Meknes?", ["Bab Mansour", "Arco de Triunfo", "Puerta de Brandeburgo", "Torre Eiffel"], "Bab Mansour")
+        ]
     }
-
 };
 
 
-/* =====================================================
-   VARIABLES DEL JUEGO
-===================================================== */
+/* 3. RETO DE RECUPERACIÓN (5 preguntas, mínimo 3 aciertos) */
 
-let temaActual = "gastronomia";
+const preguntasRecuperacionBase = [
+    q("¿Cuál es el plato nacional más representativo de Marruecos?", ["Cuscús", "Paella", "Sushi", "Pizza"], "Cuscús"),
+    q("¿En qué año obtuvo Marruecos su independencia?", ["1956", "1912", "1945", "1960"], "1956"),
+    q("¿Qué dinastía reina actualmente en Marruecos?", ["Alauí", "Saadí", "Mariní", "Almohade"], "Alauí"),
+    q("¿Cómo se llama la prenda larga con capucha típica de Marruecos?", ["Chilaba o djellaba", "Kimono", "Sari", "Poncho"], "Chilaba o djellaba"),
+    q("¿En qué ciudad se encuentra la Koutoubia?", ["Marrakech", "Rabat", "Tánger", "Agadir"], "Marrakech")
+];
+
+
+/* 4. RETO FINAL - 30 PREGUNTAS */
+
+const preguntasFinales = [
+    q("¿Cuál es el pueblo indígena originario de Marruecos?", ["Bereberes (Amazigh)", "Árabes", "Fenicios", "Romanos"], "Bereberes (Amazigh)"),
+    q("¿Qué civilización antigua estableció colonias en la costa marroquí?", ["Fenicios", "Incas", "Mayas", "Vikingos"], "Fenicios"),
+    q("¿Cuál fue la primera dinastía islámica de Marruecos?", ["Idrisí", "Almorávide", "Almohade", "Mariní"], "Idrisí"),
+    q("¿Qué dinastía fundó Marrakech?", ["Almorávide", "Idrisí", "Saadí", "Alauí"], "Almorávide"),
+    q("¿Qué dinastías controlaron gran parte de Al-Ándalus?", ["Almorávide y Almohade", "Idrisí", "Saadí", "Wattasí"], "Almorávide y Almohade"),
+    q("¿En qué año se firmó el Tratado de Fez?", ["1912", "1900", "1956", "1880"], "1912"),
+    q("¿Qué dos países controlaron Marruecos durante el protectorado?", ["Francia y España", "Francia e Italia", "España y Portugal", "Inglaterra y Francia"], "Francia y España"),
+    q("¿En qué año obtuvo Marruecos la independencia?", ["1956", "1912", "1945", "1960"], "1956"),
+    q("¿Quién fue el sultán clave en la independencia?", ["Mohammed V", "Hassan II", "Mohammed VI", "Yusuf"], "Mohammed V"),
+    q("¿Qué dinastía reina actualmente?", ["Alauí", "Saadí", "Mariní", "Almohade"], "Alauí"),
+    q("¿Quién es el rey actual de Marruecos?", ["Mohammed VI", "Hassan II", "Mohammed V", "Abdallah"], "Mohammed VI"),
+    q("¿Cuál es la capital política de Marruecos?", ["Rabat", "Casablanca", "Fez", "Marrakech"], "Rabat"),
+    q("¿Cuál es la ciudad más grande de Marruecos?", ["Casablanca", "Rabat", "Fez", "Agadir"], "Casablanca"),
+    q("¿Cuál es el plato nacional de Marruecos?", ["Cuscús", "Paella", "Sushi", "Pizza"], "Cuscús"),
+    q("¿Qué es un tajine?", ["Un guiso en olla de barro cónica", "Un postre", "Una bebida", "Un pan"], "Un guiso en olla de barro cónica"),
+    q("¿Qué bebida se ofrece como gesto de hospitalidad?", ["Té a la menta", "Café solo", "Mate", "Refresco"], "Té a la menta"),
+    q("¿Qué estilo musical tiene raíces africanas?", ["Gnawa", "Flamenco", "Samba", "Rock"], "Gnawa"),
+    q("¿Qué instrumento es típico de la música gnawa?", ["Guembri", "Guitarra", "Violín", "Arpa"], "Guembri"),
+    q("¿Cómo se llama la prenda larga con capucha?", ["Chilaba o djellaba", "Kimono", "Sari", "Poncho"], "Chilaba o djellaba"),
+    q("¿Qué prenda femenina se usa en ocasiones especiales?", ["Caftán", "Jeans", "Traje", "Chándal"], "Caftán"),
+    q("¿Por qué es famosa Fez en artesanía?", ["Curtidurías y cerámica", "Relojes", "Coches", "Electrónica"], "Curtidurías y cerámica"),
+    q("¿Qué material se usa en el zellige?", ["Mosaico de azulejos", "Plástico", "Vidrio", "Acero"], "Mosaico de azulejos"),
+    q("¿En qué ciudad está la Koutoubia?", ["Marrakech", "Rabat", "Tánger", "Agadir"], "Marrakech"),
+    q("¿Dónde se encuentra la mezquita Hassan II?", ["Casablanca", "Fez", "Marrakech", "Meknes"], "Casablanca"),
+    q("¿Qué yacimiento romano es famoso en Marruecos?", ["Volubilis", "Pompeya", "Éfeso", "Machu Picchu"], "Volubilis"),
+    q("¿Qué fiesta se celebra al final del ramadán?", ["Aid al-Fitr", "Aid al-Adha", "Navidad", "Halloween"], "Aid al-Fitr"),
+    q("¿Cómo se conoce al Aid al-Adha?", ["Fiesta del Cordero", "Fiesta de la Primavera", "Fiesta del Sol", "Fiesta del Mar"], "Fiesta del Cordero"),
+    q("¿Qué idioma es oficial junto al árabe?", ["Amazigh (bereber)", "Francés", "Español", "Inglés"], "Amazigh (bereber)"),
+    q("¿Qué estrecho separa Marruecos de Europa?", ["Estrecho de Gibraltar", "Magallanes", "Suez", "Bering"], "Estrecho de Gibraltar"),
+    q("Tras 1492, muchos andalusíes se refugiaron en:", ["Fez y Tánger", "El Cairo", "Estambul", "Bagdad"], "Fez y Tánger")
+];
+
+
+/* 5. VARIABLES DEL JUEGO */
+
+let temaActual = null;
+let indicePregunta = 0;
 
 let puntos = 0;
-
-let vidas = 5;
-
-let respuestaContestada = false;
-
+let vidas = MAX_VIDAS;
+let racha = 0;
+let respuestasCorrectas = 0;
 let retosCompletados = 0;
 
-let respuestasCorrectas = 0;
+let juegoBloqueadoPorVidas = false;
 
-const totalRetos = Object.keys(temas).length;
+let retoFinalDesbloqueado = false;
+let retoFinalActivo = false;
+let indicePreguntaFinal = 0;
+let puntosFinales = 0;
+let respuestasFinales = 0;
+let preguntasFinalesMezcladas = [];
 
+let preguntasRecuperacion = [];
+let indiceRecuperacion = 0;
+let recuperacionActiva = false;
+let aciertosRecuperacion = 0;
+let htmlInicioRecuperacion = "";
 
-/* =====================================================
-   VARIABLES DEL RETO DE RECUPERACIÓN
-===================================================== */
-
-let respuestaRecuperacion = null;
-
-let recuperacionContestada = false;
-
-const preguntaRecuperacion = {
-
-    pregunta:
-        "¿Cuál de estos elementos es representativo de la cultura marroquí?",
-
-    opciones: [
-        "🍵 Té de menta",
-        "🍕 Pizza",
-        "🍣 Sushi",
-        "🌮 Tacos"
-    ],
-
-    correcta:
-        "🍵 Té de menta"
-
-};
+let estadoPreguntas = {};
+let historial = { rondas: 0, puntosTotales: 0, correctasTotales: 0 };
 
 
-/* =====================================================
-   CAMBIAR TEMA
-===================================================== */
+/* 6. ESTADO INICIAL */
 
-function cambiarTema(nombre, boton = null) {
-
-    if (vidas <= 0) {
-
-        mostrarModalRecuperacion();
-
-        return;
-
-    }
-
-
-    const tema = temas[nombre];
-
-    if (!tema) {
-
-        return;
-
-    }
-
-
-    temaActual = nombre;
-
-    respuestaContestada = false;
-
-
-    /* TÍTULO */
-
-    document.getElementById("iconoTema").textContent =
-        tema.icono;
-
-    document.getElementById("tituloTema").textContent =
-        tema.titulo;
-
-    document.getElementById("subtituloTema").textContent =
-        tema.subtitulo;
-
-
-    /* INFORMACIÓN */
-
-    document.getElementById("mensajeRobot").textContent =
-        tema.mensaje;
-
-    document.getElementById("imagenTema").src =
-        tema.imagen;
-
-    document.getElementById("datoTema").textContent =
-        tema.dato;
-
-    document.getElementById("regionesTema").textContent =
-        tema.regiones;
-
-    document.getElementById("sobreTexto").textContent =
-        tema.sobre;
-
-
-    /* PREGUNTA */
-
-    document.getElementById("pregunta").textContent =
-        tema.pregunta;
-
-
-    /* RESULTADO */
-
-    const resultado =
-        document.getElementById("resultado");
-
-    resultado.textContent = "";
-
-    resultado.className = "resultado";
-
-
-    /* BOTÓN SIGUIENTE */
-
-    document.getElementById("botonSiguiente").disabled =
-        true;
-
-
-    /* MENÚ */
-
-    document.querySelectorAll(".menu button").forEach(btn => {
-
-        btn.classList.remove("activo");
-
+function crearEstadoInicial() {
+    const estado = {};
+    nombresTemas.forEach(nombre => {
+        estado[nombre] = { respondidas: [], completado: false };
     });
-
-
-    if (boton) {
-
-        boton.classList.add("activo");
-
-    }
-
-
-    /* CREAR OPCIONES */
-
-    crearOpciones(tema);
-
+    return estado;
 }
 
 
-/* =====================================================
-   CREAR OPCIONES
-===================================================== */
+/* 7. CARGAR PROGRESO */
 
-function crearOpciones(tema) {
+function cargarProgreso() {
+    try {
+        const guardado = localStorage.getItem(CLAVE_GUARDADO);
 
-    const contenedor =
-        document.getElementById("opciones");
-
-    if (!contenedor) {
-
-        return;
-
-    }
-
-
-    contenedor.innerHTML = "";
-
-
-    const opcionesMezcladas =
-        [...tema.opciones];
-
-
-    opcionesMezcladas.sort(
-        () => Math.random() - 0.5
-    );
-
-
-    opcionesMezcladas.forEach(opcion => {
-
-        const boton =
-            document.createElement("button");
-
-
-        boton.className = "opcion";
-
-        boton.type = "button";
-
-        boton.textContent = opcion;
-
-
-        if (vidas <= 0) {
-
-            boton.disabled = true;
-
+        if (!guardado) {
+            estadoPreguntas = crearEstadoInicial();
+            guardarProgreso();
+            return;
         }
 
+        const datos = JSON.parse(guardado);
 
-        boton.addEventListener(
-            "click",
-            function () {
+        estadoPreguntas = datos.estadoPreguntas || crearEstadoInicial();
 
-                comprobarRespuesta(
-                    opcion,
-                    boton,
-                    tema
-                );
-
+        nombresTemas.forEach(nombre => {
+            if (!estadoPreguntas[nombre]) {
+                estadoPreguntas[nombre] = { respondidas: [], completado: false };
             }
-        );
-
-
-        contenedor.appendChild(boton);
-
-    });
-
-}
-
-
-/* =====================================================
-   COMPROBAR RESPUESTA
-===================================================== */
-
-function comprobarRespuesta(
-    respuesta,
-    boton,
-    tema
-) {
-
-    if (vidas <= 0) {
-
-        mostrarModalRecuperacion();
-
-        return;
-
-    }
-
-
-    if (respuestaContestada) {
-
-        return;
-
-    }
-
-
-    respuestaContestada = true;
-
-
-    const botones =
-        document.querySelectorAll(".opcion");
-
-
-    botones.forEach(btn => {
-
-        btn.disabled = true;
-
-    });
-
-
-    const resultado =
-        document.getElementById("resultado");
-
-
-    /* ================= CORRECTA ================= */
-
-    if (respuesta === tema.correcta) {
-
-        boton.classList.add("correcta");
-
-
-        puntos += 10;
-
-        respuestasCorrectas++;
-
-        retosCompletados++;
-
-
-        document.getElementById("puntos").textContent =
-            puntos;
-
-
-        resultado.textContent =
-            "✅ ¡Correcto! +10 puntos 🎉";
-
-
-        resultado.style.background =
-            "#edf9f1";
-
-        resultado.style.color =
-            "#287746";
-
-        resultado.classList.add("mostrar");
-
-
-        const puntosElemento =
-            document.querySelector(".puntos");
-
-
-        if (puntosElemento) {
-
-            puntosElemento.animate(
-
-                [
-                    {
-                        transform: "scale(1)"
-                    },
-
-                    {
-                        transform: "scale(1.08)"
-                    },
-
-                    {
-                        transform: "scale(1)"
-                    }
-                ],
-
-                {
-                    duration: 400
-                }
-
-            );
-
-        }
-
-
-    } else {
-
-        /* ================= INCORRECTA ================= */
-
-        boton.classList.add("incorrecta");
-
-
-        vidas--;
-
-
-        if (vidas < 0) {
-
-            vidas = 0;
-
-        }
-
-
-        retosCompletados++;
-
-
-        document.getElementById("vidas").textContent =
-            vidas;
-
-
-        resultado.textContent =
-            "❌ Incorrecto. La respuesta correcta es: " +
-            tema.correcta;
-
-
-        resultado.style.background =
-            "#fff0f0";
-
-        resultado.style.color =
-            "#a23c3c";
-
-        resultado.classList.add("mostrar");
-
-
-        botones.forEach(btn => {
-
-            if (
-                btn.textContent ===
-                tema.correcta
-            ) {
-
-                btn.classList.add("correcta");
-
-            }
-
         });
 
+        puntos = Number(datos.puntos) || 0;
+        vidas = typeof datos.vidas === "number" ? datos.vidas : MAX_VIDAS;
+        racha = Number(datos.racha) || 0;
+        respuestasCorrectas = Number(datos.respuestasCorrectas) || 0;
+        retosCompletados = Number(datos.retosCompletados) || 0;
+        juegoBloqueadoPorVidas = Boolean(datos.juegoBloqueadoPorVidas);
+        historial = datos.historial || { rondas: 0, puntosTotales: 0, correctasTotales: 0 };
 
-        /* ================= VIDAS EN 0 ================= */
+        if (vidas < 0) vidas = 0;
+        if (vidas > MAX_VIDAS) vidas = MAX_VIDAS;
+        if (vidas === 0) juegoBloqueadoPorVidas = true;
 
-        if (vidas === 0) {
+    } catch (error) {
+        console.error("Error al cargar el progreso:", error);
 
-            document.getElementById(
-                "botonSiguiente"
-            ).disabled = true;
-
-
-            /*
-               Bloquear inmediatamente
-               los mini retos.
-            */
-
-            botones.forEach(btn => {
-
-                btn.disabled = true;
-
-            });
-
-
-            /*
-               Mostrar pantalla de recuperación
-               después de un pequeño momento.
-            */
-
-            setTimeout(() => {
-
-                mostrarModalRecuperacion();
-
-            }, 700);
-
-        }
-
+        estadoPreguntas = crearEstadoInicial();
+        puntos = 0;
+        vidas = MAX_VIDAS;
+        racha = 0;
+        respuestasCorrectas = 0;
+        retosCompletados = 0;
+        juegoBloqueadoPorVidas = false;
+        historial = { rondas: 0, puntosTotales: 0, correctasTotales: 0 };
     }
-
-
-    actualizarProgreso();
-
-
-    /*
-       Solo activar siguiente si
-       todavía tiene vidas.
-    */
-
-    if (vidas > 0) {
-
-        document.getElementById(
-            "botonSiguiente"
-        ).disabled = false;
-
-    }
-
 }
 
 
-/* =====================================================
-   ACTUALIZAR PROGRESO
-===================================================== */
+/* 8. GUARDAR PROGRESO */
 
-function actualizarProgreso() {
-
-    let porcentaje =
-        Math.round(
-            (retosCompletados / totalRetos) * 100
-        );
-
-
-    if (porcentaje > 100) {
-
-        porcentaje = 100;
-
+function guardarProgreso() {
+    try {
+        localStorage.setItem(CLAVE_GUARDADO, JSON.stringify({
+            estadoPreguntas,
+            puntos,
+            vidas,
+            racha,
+            respuestasCorrectas,
+            retosCompletados,
+            juegoBloqueadoPorVidas,
+            historial
+        }));
+    } catch (error) {
+        console.error("No se pudo guardar el progreso:", error);
     }
+}
 
 
-    document.getElementById("porcentaje").textContent =
-        porcentaje + "%";
+/* 9. ACTUALIZAR INTERFAZ */
 
+function actualizarInterfaz() {
 
-    document.getElementById(
-        "retosCompletados"
-    ).textContent =
-        retosCompletados;
+    const set = (id, valor) => {
+        const el = obtener(id);
+        if (el) el.textContent = valor;
+    };
 
+    set("puntos", puntos);
+    set("vidas", vidas);
+    set("racha", racha);
+    set("respuestasCorrectas", respuestasCorrectas);
+    set("retosCompletados", retosCompletados);
+    set("rondasCompletadas", historial.rondas);
+    set("puntosTotales", historial.puntosTotales);
 
-    document.getElementById(
-        "respuestasCorrectas"
-    ).textContent =
-        respuestasCorrectas;
+    /* Progreso general */
 
+    let categoriasCompletadas = 0;
 
-    const circulo =
-        document.getElementById(
-            "circuloProgreso"
-        );
+    nombresTemas.forEach(nombre => {
+        if (estadoPreguntas[nombre] && estadoPreguntas[nombre].completado) {
+            categoriasCompletadas++;
+        }
+    });
 
+    const porcentaje = Math.round(
+        (categoriasCompletadas / nombresTemas.length) * 100
+    );
+
+    set("porcentaje", porcentaje + "%");
+
+    const circulo = obtener("circuloProgreso");
 
     if (circulo) {
-
-        const circunferencia = 314;
-
-
-        const desplazamiento =
-            circunferencia -
-            (
-                circunferencia *
-                porcentaje /
-                100
-            );
-
-
+        const circunferencia = 2 * Math.PI * 50;
+        circulo.style.strokeDasharray = circunferencia;
         circulo.style.strokeDashoffset =
-            desplazamiento;
-
+            circunferencia * (1 - porcentaje / 100);
     }
 
+    if (porcentaje === 100) {
+        set("mensajeProgreso", "¡Completaste todas las categorías! 🎉");
+    } else if (categoriasCompletadas === 0) {
+        set("mensajeProgreso", "¡Empieza a explorar! 🚀");
+    } else {
+        set("mensajeProgreso",
+            `Has completado ${categoriasCompletadas} de ${nombresTemas.length} categorías.`);
+    }
 
-    const mensaje =
-        document.getElementById(
-            "mensajeProgreso"
-        );
+    /* Botón reto final */
+
+    const desbloqueado = nombresTemas.every(nombre =>
+        estadoPreguntas[nombre] && estadoPreguntas[nombre].completado
+    );
+
+    retoFinalDesbloqueado = desbloqueado;
+
+    const botonFinal = obtener("btnRetoFinal");
+
+    if (botonFinal) {
+        botonFinal.disabled = !desbloqueado;
+        botonFinal.textContent = desbloqueado
+            ? "🏆 Comenzar Reto Final de Marruecos"
+            : "🔒 Reto Final Bloqueado";
+    }
+
+    guardarProgreso();
+}
 
 
-    if (!mensaje) {
+/* 10. OBTENER SIGUIENTE PREGUNTA */
 
+function obtenerSiguientePregunta(nombreTema) {
+
+    if (!temas[nombreTema]) return null;
+
+    const estado = estadoPreguntas[nombreTema];
+    const preguntas = temas[nombreTema].preguntas;
+
+    for (let i = 0; i < preguntas.length; i++) {
+        if (!estado.respondidas.includes(i)) return i;
+    }
+
+    return null;
+}
+
+
+/* 11. CAMBIAR TEMA */
+
+function marcarMenu(slug) {
+    document.querySelectorAll(".menu-btn").forEach(btn => {
+        btn.classList.toggle("activo", btn.getAttribute("data-tema") === slug);
+    });
+}
+
+function cambiarTema(nombreTema, boton) {
+
+    if (!temas[nombreTema]) {
+        console.error("Tema no encontrado:", nombreTema);
         return;
-
     }
 
+    if (juegoBloqueadoPorVidas) {
+        abrirModalRecuperacion();
+        return;
+    }
 
-    if (porcentaje === 0) {
+    cargarTema(nombreTema);
+    marcarMenu(nombreTema);
+}
 
-        mensaje.textContent =
-            "¡Comienza tu aventura! 🌎";
 
-    } else if (porcentaje < 30) {
+/* 12. CARGAR TEMA */
 
-        mensaje.textContent =
-            "¡Muy buen comienzo! 🚀";
+function cargarTema(nombreTema) {
 
-    } else if (porcentaje < 70) {
+    if (!temas[nombreTema]) {
+        console.error("No existe el tema:", nombreTema);
+        return;
+    }
 
-        mensaje.textContent =
-            "¡Sigue explorando! 📚";
+    temaActual = nombreTema;
 
-    } else if (porcentaje < 100) {
+    const tema = temas[nombreTema];
 
-        mensaje.textContent =
-            "¡Ya casi terminas! ⭐";
+    // Detener audio al cambiar de categoría
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    const estadoAudio = obtener("estadoAudio");
+    if (estadoAudio) estadoAudio.textContent = "▶";
+
+    const titulo = obtener("tituloTema");
+    const subtitulo = obtener("subtituloTema");
+    const icono = obtener("iconoTema");
+    const mensaje = obtener("mensajeBot");
+    const dato = obtener("datoCurioso");
+    const regiones = obtener("regiones");
+    const imagen = obtener("imagenTema");
+
+    if (titulo) titulo.textContent = tema.titulo;
+    if (subtitulo) subtitulo.textContent = tema.subtitulo;
+    if (icono) icono.textContent = tema.icono;
+    if (mensaje) mensaje.textContent = tema.mensaje;
+    if (dato) dato.textContent = tema.dato;
+
+    if (regiones) {
+        regiones.innerHTML = "";
+        tema.regiones.forEach(nombre => {
+            const span = document.createElement("span");
+            span.textContent = nombre;
+            regiones.appendChild(span);
+        });
+    }
+
+    if (imagen && tema.imagen) imagen.src = tema.imagen;
+
+    cargarPregunta();
+    actualizarInterfaz();
+}
+
+
+/* 13. CARGAR PREGUNTA NORMAL */
+
+function cargarPregunta() {
+
+    if (!temaActual) return;
+
+    if (juegoBloqueadoPorVidas) {
+        abrirModalRecuperacion();
+        return;
+    }
+
+    const tema = temas[temaActual];
+    const estado = estadoPreguntas[temaActual];
+
+    if (estado.respondidas.length >= tema.preguntas.length) {
+        finalizarTema();
+        return;
+    }
+
+    const siguiente = obtenerSiguientePregunta(temaActual);
+
+    if (siguiente === null) {
+        finalizarTema();
+        return;
+    }
+
+    indicePregunta = siguiente;
+
+    const pregunta = tema.preguntas[indicePregunta];
+
+    const preguntaHTML = obtener("preguntaReto");
+    const opcionesHTML = obtener("opcionesReto");
+    const resultadoHTML = obtener("resultado");
+    const botonSiguiente = obtener("botonSiguiente");
+    const numeroPregunta = obtener("numeroPregunta");
+
+    if (!preguntaHTML || !opcionesHTML) {
+        console.error("No se encontraron preguntaReto u opcionesReto.");
+        return;
+    }
+
+    preguntaHTML.textContent = pregunta.pregunta;
+    opcionesHTML.innerHTML = "";
+
+    if (resultadoHTML) {
+        resultadoHTML.textContent = "";
+        resultadoHTML.className = "resultado";
+    }
+
+    if (botonSiguiente) {
+        botonSiguiente.disabled = true;
+        botonSiguiente.textContent = "Siguiente →";
+    }
+
+    if (numeroPregunta) {
+        numeroPregunta.textContent =
+            `Pregunta ${estado.respondidas.length + 1} de ${tema.preguntas.length}`;
+    }
+
+    mezclar(pregunta.opciones).forEach(opcion => {
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.className = "opcion";
+        boton.textContent = opcion;
+        boton.addEventListener("click", function () {
+            comprobarRespuesta(opcion);
+        });
+        opcionesHTML.appendChild(boton);
+    });
+}
+
+
+/* 14. COMPROBAR RESPUESTA */
+
+function comprobarRespuesta(respuesta) {
+
+    if (!temaActual) return;
+    if (juegoBloqueadoPorVidas) return;
+
+    const tema = temas[temaActual];
+    const estado = estadoPreguntas[temaActual];
+    const pregunta = tema.preguntas[indicePregunta];
+
+    if (!pregunta) return;
+
+    if (estado.respondidas.includes(indicePregunta)) return;
+
+    const botones = document.querySelectorAll("#opcionesReto .opcion");
+
+    botones.forEach(boton => {
+        boton.disabled = true;
+        if (boton.textContent === pregunta.correcta) {
+            boton.classList.add("correcta");
+        }
+    });
+
+    const resultado = obtener("resultado");
+    const botonSiguiente = obtener("botonSiguiente");
+
+    const botonSeleccionado =
+        [...botones].find(boton => boton.textContent === respuesta);
+
+    if (respuesta === pregunta.correcta) {
+
+        puntos += PUNTOS_CORRECTA;
+        respuestasCorrectas++;
+        racha++;
+
+        if (resultado) {
+            resultado.textContent = "✅ ¡Respuesta correcta! +10 puntos";
+            resultado.className = "resultado correcto";
+        }
 
     } else {
 
-        mensaje.textContent =
-            "¡Aventura completada! 🏆";
+        vidas--;
+        racha = 0;
 
+        if (botonSeleccionado) botonSeleccionado.classList.add("incorrecta");
+
+        if (resultado) {
+            resultado.textContent =
+                `❌ Incorrecto. La respuesta correcta es: ${pregunta.correcta}`;
+            resultado.className = "resultado incorrecto";
+        }
+
+        if (vidas <= 0) {
+            vidas = 0;
+            juegoBloqueadoPorVidas = true;
+        }
     }
 
+    estado.respondidas.push(indicePregunta);
+
+    guardarProgreso();
+    actualizarInterfaz();
+
+    if (botonSiguiente) botonSiguiente.disabled = false;
+
+    // Sin vidas: bloquear la pantalla
+    if (juegoBloqueadoPorVidas) {
+        setTimeout(() => {
+            abrirModalRecuperacion();
+        }, 700);
+    }
 }
 
 
-/* =====================================================
-   ESCUCHAR
-===================================================== */
+/* 15. SIGUIENTE PREGUNTA / SIGUIENTE CATEGORÍA */
 
-function escuchar() {
+function siguientePregunta() {
 
-    const tema =
-        temas[temaActual];
+    if (juegoBloqueadoPorVidas) {
+        abrirModalRecuperacion();
+        return;
+    }
 
+    if (!temaActual) return;
+
+    const estado = estadoPreguntas[temaActual];
+    const tema = temas[temaActual];
+
+    // Categoría ya completada: pasar a la siguiente (o al reto final)
+    if (estado.completado) {
+        irASiguienteCategoria();
+        return;
+    }
+
+    if (estado.respondidas.length >= tema.preguntas.length) {
+        finalizarTema();
+        return;
+    }
+
+    cargarPregunta();
+}
+
+
+function irASiguienteCategoria() {
+
+    const indiceActual = nombresTemas.indexOf(temaActual);
+
+    let destino = null;
+
+    for (let i = 1; i <= nombresTemas.length; i++) {
+        const nombre = nombresTemas[(indiceActual + i) % nombresTemas.length];
+        if (!estadoPreguntas[nombre].completado) {
+            destino = nombre;
+            break;
+        }
+    }
+
+    // Ya completó las 14: abrir el reto final
+    if (destino === null) {
+        comenzarRetoFinal();
+        return;
+    }
+
+    const boton = document.querySelector(`.menu-btn[data-tema="${destino}"]`);
+
+    cambiarTema(destino, boton);
+
+    if (boton) boton.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+
+/* 16. FINALIZAR TEMA */
+
+function finalizarTema() {
+
+    if (!temaActual) return;
+
+    const estado = estadoPreguntas[temaActual];
+    const cantidadPreguntas = temas[temaActual].preguntas.length;
+
+    if (estado.respondidas.length < cantidadPreguntas) return;
+
+    if (!estado.completado) {
+        estado.completado = true;
+        retosCompletados++;
+        guardarProgreso();
+    }
+
+    actualizarInterfaz();
+
+    const preguntaHTML = obtener("preguntaReto");
+    const opcionesHTML = obtener("opcionesReto");
+    const resultadoHTML = obtener("resultado");
+    const botonSiguiente = obtener("botonSiguiente");
+    const numeroPregunta = obtener("numeroPregunta");
+
+    if (preguntaHTML) preguntaHTML.textContent = "🎉 ¡Categoría completada!";
+
+    if (opcionesHTML) {
+        opcionesHTML.innerHTML =
+            `<div class="tema-completado">
+                Has completado todas las preguntas de esta categoría.
+            </div>`;
+    }
+
+    if (resultadoHTML) {
+        resultadoHTML.textContent = "¡Excelente trabajo!";
+        resultadoHTML.className = "resultado";
+    }
+
+    if (numeroPregunta) {
+        numeroPregunta.textContent =
+            `Pregunta ${cantidadPreguntas} de ${cantidadPreguntas}`;
+    }
+
+    if (botonSiguiente) {
+        botonSiguiente.disabled = false;
+        botonSiguiente.textContent = retoFinalDesbloqueado
+            ? "🏆 Ir al Reto Final"
+            : "Siguiente categoría →";
+    }
+}
+
+
+/* 17. AUDIO */
+
+function reproducirAudio() {
 
     if (!("speechSynthesis" in window)) {
-
-        alert(
-            "Tu navegador no permite reproducir audio."
-        );
-
+        alert("Tu navegador no permite reproducir audio.");
         return;
-
     }
 
+    const estadoAudio = obtener("estadoAudio");
 
-    window.speechSynthesis.cancel();
+    if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        if (estadoAudio) estadoAudio.textContent = "▶";
+        return;
+    }
 
+    const tema = temaActual ? temas[temaActual] : null;
 
-    const voz =
-        new SpeechSynthesisUtterance(
-            tema.audio
-        );
+    const texto = tema
+        ? `${tema.titulo}. ${tema.mensaje} ${tema.dato}`
+        : "Explora la historia y cultura de Marruecos.";
 
-
+    const voz = new SpeechSynthesisUtterance(texto);
     voz.lang = "es-ES";
+    voz.rate = 0.95;
 
-    voz.rate = 0.9;
-
-    voz.pitch = 1;
-
+    voz.onstart = () => { if (estadoAudio) estadoAudio.textContent = "⏹"; };
+    voz.onend = () => { if (estadoAudio) estadoAudio.textContent = "▶"; };
 
     window.speechSynthesis.speak(voz);
-
 }
 
 
-/* =====================================================
-   SIGUIENTE TEMA
-===================================================== */
+/* 18. MODAL DE RECUPERACIÓN (BLOQUEA LA PANTALLA) */
 
-function siguienteTema() {
+function abrirModalRecuperacion() {
 
-    if (vidas <= 0) {
+    if (recuperacionActiva) return;
 
-        mostrarModalRecuperacion();
+    const modal = obtener("modalRecuperacion");
+    const inicio = obtener("inicioRecuperacion");
+    const caja = obtener("preguntaRecuperacionBox");
 
-        return;
+    if (!modal) return;
 
+    if (inicio && htmlInicioRecuperacion) {
+        inicio.innerHTML = htmlInicioRecuperacion;
     }
 
-
-    const nombres =
-        Object.keys(temas);
-
-
-    let indice =
-        nombres.indexOf(temaActual);
-
-
-    indice++;
-
-
-    if (indice >= nombres.length) {
-
-        indice = 0;
-
-    }
-
-
-    cambiarTema(
-        nombres[indice]
-    );
-
-}
-
-
-/* =====================================================
-   MOSTRAR MODAL DE VIDAS AGOTADAS
-===================================================== */
-
-function mostrarModalRecuperacion() {
-
-    const modal =
-        document.getElementById(
-            "modalRecuperacion"
-        );
-
-
-    if (!modal) {
-
-        console.error(
-            "No se encontró #modalRecuperacion."
-        );
-
-        return;
-
-    }
-
-
-    /*
-       BLOQUEAR TODA LA PANTALLA
-    */
+    if (caja) caja.style.display = "none";
+    if (inicio) inicio.style.display = "block";
 
     modal.style.display = "flex";
-
     document.body.style.overflow = "hidden";
-
-
-    /*
-       Asegurar que el reto anterior
-       no quede visible por encima.
-    */
-
-    const modalReto =
-        document.getElementById(
-            "modalRetoRecuperacion"
-        );
-
-
-    if (modalReto) {
-
-        modalReto.style.display = "none";
-
-    }
-
 }
 
 
-/* =====================================================
-   INICIAR RETO DE RECUPERACIÓN
-===================================================== */
+/* 19. COMENZAR RETO DE RECUPERACIÓN */
 
-function iniciarRecuperacion() {
+function comenzarRetoRecuperacion() {
 
-    const modalAviso =
-        document.getElementById(
-            "modalRecuperacion"
-        );
+    const inicio = obtener("inicioRecuperacion");
+    const caja = obtener("preguntaRecuperacionBox");
+    const modal = obtener("modalRecuperacion");
 
+    preguntasRecuperacion = mezclar(preguntasRecuperacionBase);
+    indiceRecuperacion = 0;
+    aciertosRecuperacion = 0;
+    recuperacionActiva = true;
 
-    const modalReto =
-        document.getElementById(
-            "modalRetoRecuperacion"
-        );
+    if (inicio) inicio.style.display = "none";
+    if (caja) caja.style.display = "block";
+    if (modal) modal.style.display = "flex";
 
-
-    if (modalAviso) {
-
-        modalAviso.style.display =
-            "none";
-
-    }
-
-
-    if (!modalReto) {
-
-        console.error(
-            "No se encontró #modalRetoRecuperacion."
-        );
-
-        return;
-
-    }
-
-
-    modalReto.style.display =
-        "flex";
-
-
-    document.body.style.overflow =
-        "hidden";
-
-
-    crearRetoRecuperacion();
-
+    cargarPreguntaRecuperacion();
 }
 
 
-/* =====================================================
-   CREAR RETO DE RECUPERACIÓN
-===================================================== */
+/* 20. CARGAR PREGUNTA DE RECUPERACIÓN */
 
-function crearRetoRecuperacion() {
+function cargarPreguntaRecuperacion() {
 
-    const pregunta =
-        document.getElementById(
-            "preguntaRecuperacion"
-        );
+    if (!recuperacionActiva) return;
 
+    const pregunta = preguntasRecuperacion[indiceRecuperacion];
 
-    const contenedor =
-        document.getElementById(
-            "opcionesRecuperacion"
-        );
-
-
-    const resultado =
-        document.getElementById(
-            "resultadoRecuperacion"
-        );
-
-
-    const botonResponder =
-        document.getElementById(
-            "btnResponderRecuperacion"
-        );
-
-
-    /*
-       COMPROBAR HTML
-    */
-
-    if (
-        !pregunta ||
-        !contenedor ||
-        !resultado ||
-        !botonResponder
-    ) {
-
-        console.error(
-            "Faltan elementos del reto de recuperación en el HTML."
-        );
-
+    if (!pregunta) {
+        terminarRecuperacion();
         return;
-
     }
 
+    const preguntaHTML = obtener("preguntaRecuperacion");
+    const opcionesHTML = obtener("opcionesRecuperacion");
+    const resultadoHTML = obtener("resultadoRecuperacion");
+    const botonContinuar = obtener("btnContinuarRecuperacion");
 
-    /*
-       REINICIAR
-    */
+    if (preguntaHTML) {
+        preguntaHTML.textContent =
+            `Pregunta ${indiceRecuperacion + 1} de ${preguntasRecuperacion.length}: ${pregunta.pregunta}`;
+    }
 
-    recuperacionContestada =
-        false;
+    if (opcionesHTML) opcionesHTML.innerHTML = "";
 
-    respuestaRecuperacion =
-        null;
+    if (resultadoHTML) {
+        resultadoHTML.textContent = "";
+        resultadoHTML.className = "resultado-recuperacion";
+    }
 
+    if (botonContinuar) {
+        botonContinuar.disabled = true;
+        botonContinuar.textContent =
+            indiceRecuperacion === preguntasRecuperacion.length - 1
+                ? "Terminar"
+                : "Continuar →";
+    }
 
-    /*
-       MOSTRAR PREGUNTA
-    */
-
-    pregunta.textContent =
-        preguntaRecuperacion.pregunta;
-
-
-    /*
-       LIMPIAR OPCIONES
-    */
-
-    contenedor.innerHTML = "";
-
-
-    /*
-       LIMPIAR RESULTADO
-    */
-
-    resultado.textContent = "";
-
-    resultado.className =
-        "resultado-recuperacion";
-
-
-    /*
-       DESACTIVAR RESPONDER
-    */
-
-    botonResponder.disabled =
-        true;
+    mezclar(pregunta.opciones).forEach(opcion => {
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.className = "opcion-recuperacion";
+        boton.textContent = opcion;
+        boton.addEventListener("click", () => {
+            comprobarRespuestaRecuperacion(opcion);
+        });
+        if (opcionesHTML) opcionesHTML.appendChild(boton);
+    });
+}
 
 
-    /*
-       MEZCLAR OPCIONES
-    */
+/* 21. COMPROBAR RECUPERACIÓN */
 
-    const opciones =
-        [...preguntaRecuperacion.opciones];
+function comprobarRespuestaRecuperacion(respuesta) {
+
+    if (!recuperacionActiva) return;
+
+    const pregunta = preguntasRecuperacion[indiceRecuperacion];
+    if (!pregunta) return;
+
+    const botones = document.querySelectorAll("#opcionesRecuperacion button");
+
+    botones.forEach(boton => {
+        boton.disabled = true;
+
+        if (boton.textContent === pregunta.correcta) {
+            boton.classList.add("correcta");
+        } else if (boton.textContent === respuesta) {
+            boton.classList.add("incorrecta");
+        }
+    });
+
+    const resultado = obtener("resultadoRecuperacion");
+    const botonContinuar = obtener("btnContinuarRecuperacion");
+
+    if (respuesta === pregunta.correcta) {
+
+        aciertosRecuperacion++;
+
+        if (resultado) {
+            resultado.textContent = "✅ ¡Correcto!";
+            resultado.className = "resultado-recuperacion correcto";
+        }
+
+    } else if (resultado) {
+        resultado.textContent =
+            `❌ Incorrecto. La respuesta correcta es: ${pregunta.correcta}`;
+        resultado.className = "resultado-recuperacion incorrecto";
+    }
+
+    if (botonContinuar) botonContinuar.disabled = false;
+}
 
 
-    opciones.sort(
-        () => Math.random() - 0.5
+/* 22. CONTINUAR RECUPERACIÓN */
+
+function continuarDespuesRecuperacion() {
+
+    if (!recuperacionActiva) return;
+
+    const resultado = obtener("resultadoRecuperacion");
+    if (!resultado || !resultado.textContent) return;
+
+    indiceRecuperacion++;
+
+    if (indiceRecuperacion >= preguntasRecuperacion.length) {
+        terminarRecuperacion();
+        return;
+    }
+
+    cargarPreguntaRecuperacion();
+}
+
+
+/* 23. TERMINAR RECUPERACIÓN */
+
+function terminarRecuperacion() {
+
+    recuperacionActiva = false;
+
+    const modal = obtener("modalRecuperacion");
+    const caja = obtener("preguntaRecuperacionBox");
+    const inicio = obtener("inicioRecuperacion");
+
+    if (caja) caja.style.display = "none";
+
+    const aprobado = aciertosRecuperacion >= ACIERTOS_MINIMOS_RECUPERACION;
+
+    if (aprobado) {
+
+        vidas = MAX_VIDAS;
+        juegoBloqueadoPorVidas = false;
+
+        guardarProgreso();
+        actualizarInterfaz();
+
+        if (inicio) {
+            inicio.style.display = "block";
+            inicio.innerHTML = `
+                <div class="icono-modal">❤️</div>
+                <h2>¡Vidas recuperadas!</h2>
+                <p>Acertaste ${aciertosRecuperacion} de ${preguntasRecuperacionBase.length}. ¡Sigue aprendiendo!</p>
+                <button type="button" class="boton-recuperar" onclick="cerrarModalRecuperacion()">
+                    Continuar
+                </button>`;
+        }
+
+    } else {
+
+        // Sigue bloqueado: puede intentarlo otra vez
+        if (inicio) {
+            inicio.style.display = "block";
+            inicio.innerHTML = `
+                <div class="icono-modal">💔</div>
+                <h2>Aún no recuperas tus vidas</h2>
+                <p>Acertaste ${aciertosRecuperacion} de ${preguntasRecuperacionBase.length}.
+                   Necesitas al menos ${ACIERTOS_MINIMOS_RECUPERACION} para continuar.</p>
+                <button type="button" class="boton-recuperar" onclick="comenzarRetoRecuperacion()">
+                    🎯 Intentar de nuevo
+                </button>`;
+        }
+    }
+
+    if (modal) modal.style.display = "flex";
+}
+
+
+/* 24. CERRAR MODAL (solo si ya recuperó las vidas) */
+
+function cerrarModalRecuperacion() {
+
+    if (juegoBloqueadoPorVidas) return;
+
+    const modal = obtener("modalRecuperacion");
+    if (modal) modal.style.display = "none";
+
+    document.body.style.overflow = "";
+
+    if (temaActual) cargarPregunta();
+}
+
+
+/* 25. COMENZAR RETO FINAL */
+
+function comenzarRetoFinal() {
+
+    const todasCompletadas = nombresTemas.every(nombre =>
+        estadoPreguntas[nombre] && estadoPreguntas[nombre].completado
     );
 
-
-    /*
-       CREAR OPCIONES
-    */
-
-    opciones.forEach(opcion => {
-
-        const boton =
-            document.createElement(
-                "button"
-            );
-
-
-        boton.type =
-            "button";
-
-
-        boton.className =
-            "opcion-recuperacion";
-
-
-        boton.textContent =
-            opcion;
-
-
-        /*
-           SELECCIONAR OPCIÓN
-        */
-
-        boton.addEventListener(
-            "click",
-            function () {
-
-                if (
-                    recuperacionContestada
-                ) {
-
-                    return;
-
-                }
-
-
-                /*
-                   Quitar selección
-                */
-
-                document
-                    .querySelectorAll(
-                        ".opcion-recuperacion"
-                    )
-                    .forEach(btn => {
-
-                        btn.classList.remove(
-                            "seleccionada"
-                        );
-
-                    });
-
-
-                /*
-                   Seleccionar actual
-                */
-
-                boton.classList.add(
-                    "seleccionada"
-                );
-
-
-                /*
-                   Guardar respuesta
-                */
-
-                respuestaRecuperacion =
-                    opcion;
-
-
-                /*
-                   Activar responder
-                */
-
-                botonResponder.disabled =
-                    false;
-
-            }
-        );
-
-
-        /*
-           AGREGAR BOTÓN
-        */
-
-        contenedor.appendChild(
-            boton
-        );
-
-    });
-
-
-    /*
-       CONFIGURAR RESPONDER
-    */
-
-    botonResponder.onclick =
-        responderRecuperacion;
-
-}
-
-
-function responderRecuperacion() {
-
-    if (!respuestaRecuperacion || recuperacionContestada) {
+    if (!todasCompletadas) {
+        alert("Debes completar las 14 categorías antes de comenzar el reto final.");
         return;
     }
 
-    recuperacionContestada = true;
+    if (juegoBloqueadoPorVidas) {
+        abrirModalRecuperacion();
+        return;
+    }
 
-    const botones = document.querySelectorAll(".opcion-recuperacion");
-    const botonResponder = document.getElementById("btnResponderRecuperacion");
-    const resultado = document.getElementById("resultadoRecuperacion");
+    retoFinalDesbloqueado = true;
+    retoFinalActivo = true;
+    indicePreguntaFinal = 0;
+    puntosFinales = 0;
+    respuestasFinales = 0;
+    preguntasFinalesMezcladas = mezclar(preguntasFinales);
 
-    // Bloquear las opciones mientras se revisa
-    botones.forEach(function(boton) {
+    const modal = obtener("modalRetoFinal");
+    if (modal) modal.style.display = "flex";
+
+    actualizarMarcadoresFinal();
+    cargarPreguntaFinal();
+}
+
+
+/* 26. CARGAR PREGUNTA FINAL */
+
+function cargarPreguntaFinal() {
+
+    if (!retoFinalActivo) return;
+
+    const pregunta = preguntasFinalesMezcladas[indicePreguntaFinal];
+
+    if (!pregunta) {
+        finalizarRetoFinal();
+        return;
+    }
+
+    const preguntaHTML = obtener("preguntaFinal");
+    const opcionesHTML = obtener("opcionesFinal");
+    const resultadoHTML = obtener("resultadoFinal");
+    const numeroPregunta = obtener("numeroPreguntaFinal");
+    const botonSiguiente = obtener("btnSiguienteFinal");
+
+    if (preguntaHTML) preguntaHTML.textContent = pregunta.pregunta;
+    if (opcionesHTML) opcionesHTML.innerHTML = "";
+
+    if (resultadoHTML) {
+        resultadoHTML.textContent = "";
+        resultadoHTML.className = "resultado-final";
+    }
+
+    if (numeroPregunta) numeroPregunta.textContent = indicePreguntaFinal + 1;
+
+    if (botonSiguiente) {
+        botonSiguiente.disabled = true;
+        botonSiguiente.textContent =
+            indicePreguntaFinal === preguntasFinalesMezcladas.length - 1
+                ? "Ver resultado"
+                : "Siguiente →";
+    }
+
+    mezclar(pregunta.opciones).forEach(opcion => {
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.className = "opcion-final";
+        boton.textContent = opcion;
+        boton.addEventListener("click", () => {
+            comprobarRespuestaFinal(opcion);
+        });
+        if (opcionesHTML) opcionesHTML.appendChild(boton);
+    });
+}
+
+
+/* 27. COMPROBAR RESPUESTA FINAL */
+
+function comprobarRespuestaFinal(respuesta) {
+
+    if (!retoFinalActivo) return;
+
+    const pregunta = preguntasFinalesMezcladas[indicePreguntaFinal];
+    if (!pregunta) return;
+
+    const botones = document.querySelectorAll("#opcionesFinal button");
+
+    botones.forEach(boton => {
         boton.disabled = true;
+
+        if (boton.textContent === pregunta.correcta) {
+            boton.classList.add("correcta");
+        } else if (boton.textContent === respuesta) {
+            boton.classList.add("incorrecta");
+        }
     });
 
-    if (botonResponder) {
-        botonResponder.disabled = true;
-    }
+    const resultado = obtener("resultadoFinal");
+    const botonSiguiente = obtener("btnSiguienteFinal");
 
-    // ==========================================
-    // RESPUESTA CORRECTA
-    // ==========================================
+    if (respuesta === pregunta.correcta) {
 
-    if (respuestaRecuperacion === preguntaRecuperacion.correcta) {
+        puntosFinales += PUNTOS_CORRECTA;
+        respuestasFinales++;
 
-        // RECUPERA LAS 5 VIDAS
-        vidas = 5;
-
-        // Actualizar contador de vidas
-        const vidasElemento = document.getElementById("vidas");
-
-        if (vidasElemento) {
-            vidasElemento.textContent = vidas;
-        }
-
-        // Marcar respuesta correcta
-        botones.forEach(function(boton) {
-            if (boton.textContent === preguntaRecuperacion.correcta) {
-                boton.classList.add("correcta");
-            }
-        });
-
-        // Mostrar mensaje
         if (resultado) {
-            resultado.textContent =
-                "🎉 ¡Correcto! Recuperaste tus 5 vidas. ¡Puedes continuar jugando!";
-            
-            resultado.className =
-                "resultado-recuperacion mostrar correcta";
+            resultado.textContent = "✅ ¡Correcto! +10 puntos";
+            resultado.className = "resultado-final correcto";
         }
 
-        // Esperar un momento y cerrar
-        setTimeout(function() {
-
-            const modal = document.getElementById("modalRetoRecuperacion");
-
-            if (modal) {
-                modal.style.display = "none";
-            }
-
-            // Volver a permitir el desplazamiento
-            document.body.style.overflow = "";
-
-            // Preparar nuevamente el mini reto actual
-            respuestaContestada = false;
-
-            crearOpciones(temas[temaActual]);
-
-            const resultadoNormal =
-                document.getElementById("resultado");
-
-            if (resultadoNormal) {
-                resultadoNormal.textContent = "";
-            }
-
-            // Activar botón siguiente si corresponde
-            const botonSiguiente =
-                document.getElementById("botonSiguiente");
-
-            if (botonSiguiente) {
-                botonSiguiente.disabled = true;
-            }
-
-            // También por si tu HTML usa btnSiguiente
-            const btnSiguiente =
-                document.getElementById("btnSiguiente");
-
-            if (btnSiguiente) {
-                btnSiguiente.disabled = true;
-            }
-
-        }, 1500);
-
+    } else if (resultado) {
+        resultado.textContent =
+            `❌ Incorrecto. La respuesta correcta es: ${pregunta.correcta}`;
+        resultado.className = "resultado-final incorrecto";
     }
 
-    // ==========================================
-    // RESPUESTA INCORRECTA
-    // ==========================================
+    actualizarMarcadoresFinal();
 
-    else {
-
-        // Sigue teniendo 0 vidas
-        vidas = 0;
-
-        const vidasElemento = document.getElementById("vidas");
-
-        if (vidasElemento) {
-            vidasElemento.textContent = vidas;
-        }
-
-        // Marcar respuesta correcta
-        botones.forEach(function(boton) {
-
-            if (boton.textContent === preguntaRecuperacion.correcta) {
-                boton.classList.add("correcta");
-            }
-
-            if (boton.textContent === respuestaRecuperacion) {
-                boton.classList.add("incorrecta");
-            }
-
-        });
-
-        // Mostrar mensaje
-        if (resultado) {
-            resultado.textContent =
-                "❌ Incorrecto. Inténtalo nuevamente.";
-            
-            resultado.className =
-                "resultado-recuperacion mostrar incorrecta";
-        }
-
-        // Después de un momento, crear nuevamente el reto
-        setTimeout(function() {
-            crearRetoRecuperacion();
-        }, 1500);
-    }
+    if (botonSiguiente) botonSiguiente.disabled = false;
 }
 
-/* =====================================================
-   CREAR RETO DE RECUPERACIÓN
-===================================================== */
-
-function crearRetoRecuperacion() {
-
-    const pregunta =
-        document.getElementById("preguntaRecuperacion");
-
-    const contenedor =
-        document.getElementById("opcionesRecuperacion");
-
-    const resultado =
-        document.getElementById("resultadoRecuperacion");
-
-    const botonResponder =
-        document.getElementById("btnResponderRecuperacion");
-
-
-    /* COMPROBAR ELEMENTOS */
-
-    if (!pregunta) {
-        console.error("No existe #preguntaRecuperacion");
-        return;
-    }
-
-    if (!contenedor) {
-        console.error("No existe #opcionesRecuperacion");
-        return;
-    }
-
-    if (!resultado) {
-        console.error("No existe #resultadoRecuperacion");
-        return;
-    }
-
-    if (!botonResponder) {
-        console.error("No existe #btnResponderRecuperacion");
-        return;
-    }
-
-
-    /* REINICIAR */
-
-    respuestaRecuperacion = null;
-    recuperacionContestada = false;
-
-
-    /* MOSTRAR PREGUNTA */
-
-    pregunta.textContent =
-        preguntaRecuperacion.pregunta;
-
-
-    /* LIMPIAR OPCIONES */
-
-    contenedor.innerHTML = "";
-
-
-    /* LIMPIAR RESULTADO */
-
-    resultado.textContent = "";
-    resultado.className = "resultado-recuperacion";
-
-
-    /* BLOQUEAR RESPONDER */
-
-    botonResponder.disabled = true;
-
-
-    /* =================================================
-       CREAR LAS 4 OPCIONES
-    ================================================= */
-
-    preguntaRecuperacion.opciones.forEach(function(opcion) {
-
-        const boton = document.createElement("button");
-
-        boton.type = "button";
-
-        boton.className = "opcion-recuperacion";
-
-        boton.textContent = opcion;
-
-
-        /* SELECCIONAR OPCIÓN */
-
-        boton.addEventListener("click", function() {
-
-            if (recuperacionContestada) {
-                return;
-            }
-
-
-            /* Quitar selección */
-
-            const todasLasOpciones =
-                contenedor.querySelectorAll(
-                    ".opcion-recuperacion"
-                );
-
-            todasLasOpciones.forEach(function(btn) {
-
-                btn.classList.remove("seleccionada");
-
-            });
-
-
-            /* Seleccionar actual */
-
-            boton.classList.add("seleccionada");
-
-
-            /* Guardar respuesta */
-
-            respuestaRecuperacion = opcion;
-
-
-            /* Activar responder */
-
-            botonResponder.disabled = false;
-
-        });
-
-
-        /* AGREGAR AL CONTENEDOR */
-
-        contenedor.appendChild(boton);
-
-    });
-
-
-    /* BOTÓN RESPONDER */
-
-    botonResponder.onclick =
-        responderRecuperacion;
-
+function actualizarMarcadoresFinal() {
+    const p = obtener("puntosFinales");
+    const c = obtener("respuestasFinales");
+    if (p) p.textContent = puntosFinales;
+    if (c) c.textContent = respuestasFinales;
 }
 
-/* =====================================================
-   CREAR RETO DE RECUPERACIÓN
-===================================================== */
 
-function crearRetoRecuperacion() {
+/* 28. SIGUIENTE PREGUNTA FINAL */
 
-    const pregunta =
-        document.getElementById("preguntaRecuperacion");
+function siguientePreguntaFinal() {
 
-    const contenedor =
-        document.getElementById("opcionesRecuperacion");
+    if (!retoFinalActivo) return;
 
-    const resultado =
-        document.getElementById("resultadoRecuperacion");
+    indicePreguntaFinal++;
 
-    const botonResponder =
-        document.getElementById("btnResponderRecuperacion");
-
-
-    /* COMPROBAR ELEMENTOS */
-
-    if (!pregunta) {
-        console.error("No existe #preguntaRecuperacion");
+    if (indicePreguntaFinal >= preguntasFinalesMezcladas.length) {
+        finalizarRetoFinal();
         return;
     }
 
-    if (!contenedor) {
-        console.error("No existe #opcionesRecuperacion");
-        return;
-    }
-
-    if (!resultado) {
-        console.error("No existe #resultadoRecuperacion");
-        return;
-    }
-
-    if (!botonResponder) {
-        console.error("No existe #btnResponderRecuperacion");
-        return;
-    }
-
-
-    /* REINICIAR */
-
-    respuestaRecuperacion = null;
-    recuperacionContestada = false;
-
-
-    /* MOSTRAR PREGUNTA */
-
-    pregunta.textContent =
-        preguntaRecuperacion.pregunta;
-
-
-    /* LIMPIAR OPCIONES */
-
-    contenedor.innerHTML = "";
-
-
-    /* LIMPIAR RESULTADO */
-
-    resultado.textContent = "";
-    resultado.className = "resultado-recuperacion";
-
-
-    /* BLOQUEAR RESPONDER */
-
-    botonResponder.disabled = true;
-
-
-    /* =================================================
-       CREAR LAS 4 OPCIONES
-    ================================================= */
-
-    preguntaRecuperacion.opciones.forEach(function(opcion) {
-
-        const boton = document.createElement("button");
-
-        boton.type = "button";
-
-        boton.className = "opcion-recuperacion";
-
-        boton.textContent = opcion;
-
-
-        /* SELECCIONAR OPCIÓN */
-
-        boton.addEventListener("click", function() {
-
-            if (recuperacionContestada) {
-                return;
-            }
-
-
-            /* Quitar selección */
-
-            const todasLasOpciones =
-                contenedor.querySelectorAll(
-                    ".opcion-recuperacion"
-                );
-
-            todasLasOpciones.forEach(function(btn) {
-
-                btn.classList.remove("seleccionada");
-
-            });
-
-
-            /* Seleccionar actual */
-
-            boton.classList.add("seleccionada");
-
-
-            /* Guardar respuesta */
-
-            respuestaRecuperacion = opcion;
-
-
-            /* Activar responder */
-
-            botonResponder.disabled = false;
-
-        });
-
-
-        /* AGREGAR AL CONTENEDOR */
-
-        contenedor.appendChild(boton);
-
-    });
-
-
-    /* BOTÓN RESPONDER */
-
-    botonResponder.onclick =
-        responderRecuperacion;
-
+    cargarPreguntaFinal();
 }
 
-/* =====================================================
-   CREAR RETO DE RECUPERACIÓN
-===================================================== */
 
-function crearRetoRecuperacion() {
+/* 29. FINALIZAR RETO FINAL (guarda historial y limpia el panel) */
 
-    const pregunta =
-        document.getElementById("preguntaRecuperacion");
+function finalizarRetoFinal() {
 
-    const contenedor =
-        document.getElementById("opcionesRecuperacion");
+    retoFinalActivo = false;
 
-    const resultado =
-        document.getElementById("resultadoRecuperacion");
+    const modal = obtener("modalRetoFinal");
+    const aventura = obtener("aventuraCompletada");
+    const resultadoPuntos = obtener("resultadoPuntosFinales");
+    const resultadoCorrectas = obtener("resultadoCorrectasFinales");
 
-    const botonResponder =
-        document.getElementById("btnResponderRecuperacion");
+    if (modal) modal.style.display = "none";
+    if (aventura) aventura.style.display = "flex";
 
+    if (resultadoPuntos) resultadoPuntos.textContent = puntosFinales;
 
-    /* COMPROBAR ELEMENTOS */
-
-    if (!pregunta) {
-        console.error("No existe #preguntaRecuperacion");
-        return;
+    if (resultadoCorrectas) {
+        resultadoCorrectas.textContent =
+            `${respuestasFinales} / ${preguntasFinales.length}`;
     }
 
-    if (!contenedor) {
-        console.error("No existe #opcionesRecuperacion");
-        return;
-    }
+    // 1. Guardar la ronda en el historial
+    historial.rondas++;
+    historial.puntosTotales += puntos + puntosFinales;
+    historial.correctasTotales += respuestasCorrectas + respuestasFinales;
 
-    if (!resultado) {
-        console.error("No existe #resultadoRecuperacion");
-        return;
-    }
-
-    if (!botonResponder) {
-        console.error("No existe #btnResponderRecuperacion");
-        return;
-    }
-
-
-    /* REINICIAR */
-
-    respuestaRecuperacion = null;
-    recuperacionContestada = false;
-
-
-    /* MOSTRAR PREGUNTA */
-
-    pregunta.textContent =
-        preguntaRecuperacion.pregunta;
-
-
-    /* LIMPIAR OPCIONES */
-
-    contenedor.innerHTML = "";
-
-
-    /* LIMPIAR RESULTADO */
-
-    resultado.textContent = "";
-    resultado.className = "resultado-recuperacion";
-
-
-    /* BLOQUEAR RESPONDER */
-
-    botonResponder.disabled = true;
-
-
-    /* =================================================
-       CREAR LAS 4 OPCIONES
-    ================================================= */
-
-    preguntaRecuperacion.opciones.forEach(function(opcion) {
-
-        const boton = document.createElement("button");
-
-        boton.type = "button";
-
-        boton.className = "opcion-recuperacion";
-
-        boton.textContent = opcion;
-
-
-        /* SELECCIONAR OPCIÓN */
-
-        boton.addEventListener("click", function() {
-
-            if (recuperacionContestada) {
-                return;
-            }
-
-
-            /* Quitar selección */
-
-            const todasLasOpciones =
-                contenedor.querySelectorAll(
-                    ".opcion-recuperacion"
-                );
-
-            todasLasOpciones.forEach(function(btn) {
-
-                btn.classList.remove("seleccionada");
-
-            });
-
-
-            /* Seleccionar actual */
-
-            boton.classList.add("seleccionada");
-
-
-            /* Guardar respuesta */
-
-            respuestaRecuperacion = opcion;
-
-
-            /* Activar responder */
-
-            botonResponder.disabled = false;
-
-        });
-
-
-        /* AGREGAR AL CONTENEDOR */
-
-        contenedor.appendChild(boton);
-
-    });
-
-
-    /* BOTÓN RESPONDER */
-
-    botonResponder.onclick =
-        responderRecuperacion;
-
+    // 2. Limpiar el panel derecho y las categorías
+    iniciarNuevaRonda();
 }
 
-/* =====================================================
-   CREAR RETO DE RECUPERACIÓN
-===================================================== */
 
-function crearRetoRecuperacion() {
+/* NUEVA RONDA: deja todo limpio para volver a empezar */
 
-    const pregunta =
-        document.getElementById("preguntaRecuperacion");
+function iniciarNuevaRonda() {
 
-    const contenedor =
-        document.getElementById("opcionesRecuperacion");
+    estadoPreguntas = crearEstadoInicial();
 
-    const resultado =
-        document.getElementById("resultadoRecuperacion");
+    puntos = 0;
+    vidas = MAX_VIDAS;
+    racha = 0;
+    respuestasCorrectas = 0;
+    retosCompletados = 0;
 
-    const botonResponder =
-        document.getElementById("btnResponderRecuperacion");
+    juegoBloqueadoPorVidas = false;
+    retoFinalDesbloqueado = false;
+    retoFinalActivo = false;
 
+    guardarProgreso();
+    actualizarInterfaz();
 
-    /* COMPROBAR ELEMENTOS */
-
-    if (!pregunta) {
-        console.error("No existe #preguntaRecuperacion");
-        return;
-    }
-
-    if (!contenedor) {
-        console.error("No existe #opcionesRecuperacion");
-        return;
-    }
-
-    if (!resultado) {
-        console.error("No existe #resultadoRecuperacion");
-        return;
-    }
-
-    if (!botonResponder) {
-        console.error("No existe #btnResponderRecuperacion");
-        return;
-    }
-
-
-    /* REINICIAR */
-
-    respuestaRecuperacion = null;
-    recuperacionContestada = false;
-
-
-    /* MOSTRAR PREGUNTA */
-
-    pregunta.textContent =
-        preguntaRecuperacion.pregunta;
-
-
-    /* LIMPIAR OPCIONES */
-
-    contenedor.innerHTML = "";
-
-
-    /* LIMPIAR RESULTADO */
-
-    resultado.textContent = "";
-    resultado.className = "resultado-recuperacion";
-
-
-    /* BLOQUEAR RESPONDER */
-
-    botonResponder.disabled = true;
-
-
-    /* =================================================
-       CREAR LAS 4 OPCIONES
-    ================================================= */
-
-    preguntaRecuperacion.opciones.forEach(function(opcion) {
-
-        const boton = document.createElement("button");
-
-        boton.type = "button";
-
-        boton.className = "opcion-recuperacion";
-
-        boton.textContent = opcion;
-
-
-        /* SELECCIONAR OPCIÓN */
-
-        boton.addEventListener("click", function() {
-
-            if (recuperacionContestada) {
-                return;
-            }
-
-
-            /* Quitar selección */
-
-            const todasLasOpciones =
-                contenedor.querySelectorAll(
-                    ".opcion-recuperacion"
-                );
-
-            todasLasOpciones.forEach(function(btn) {
-
-                btn.classList.remove("seleccionada");
-
-            });
-
-
-            /* Seleccionar actual */
-
-            boton.classList.add("seleccionada");
-
-
-            /* Guardar respuesta */
-
-            respuestaRecuperacion = opcion;
-
-
-            /* Activar responder */
-
-            botonResponder.disabled = false;
-
-        });
-
-
-        /* AGREGAR AL CONTENEDOR */
-
-        contenedor.appendChild(boton);
-
-    });
-
-
-    /* BOTÓN RESPONDER */
-
-    botonResponder.onclick =
-        responderRecuperacion;
-
+    cargarTema(nombresTemas[0]);
+    marcarMenu(nombresTemas[0]);
 }
-/* =====================================================
-   INICIO
-===================================================== */
 
-window.addEventListener(
-    "load",
-    function () {
-
-        /*
-           SIEMPRE EMPIEZA CON 5 VIDAS
-        */
-
-        vidas = 5;
+function cerrarAventura() {
+    const aventura = obtener("aventuraCompletada");
+    if (aventura) aventura.style.display = "none";
+}
 
 
-        const elementoVidas =
-            document.getElementById(
-                "vidas"
-            );
+/* 30. CERRAR RETO FINAL */
+
+function cerrarRetoFinal() {
+
+    const modal = obtener("modalRetoFinal");
+    if (modal) modal.style.display = "none";
+
+    retoFinalActivo = false;
+}
 
 
-        if (elementoVidas) {
+/* 31. REINICIAR TODO EL PROGRESO */
 
-            elementoVidas.textContent =
-                vidas;
+function reiniciarProgreso() {
 
-        }
+    const confirmar = confirm(
+        "¿Seguro que quieres borrar todo tu progreso en Marruecos?"
+    );
+
+    if (!confirmar) return;
+
+    localStorage.removeItem(CLAVE_GUARDADO);
+
+    estadoPreguntas = crearEstadoInicial();
+    temaActual = null;
+    indicePregunta = 0;
+
+    puntos = 0;
+    vidas = MAX_VIDAS;
+    racha = 0;
+    respuestasCorrectas = 0;
+    retosCompletados = 0;
+
+    juegoBloqueadoPorVidas = false;
+    retoFinalDesbloqueado = false;
+    retoFinalActivo = false;
+
+    indicePreguntaFinal = 0;
+    puntosFinales = 0;
+    respuestasFinales = 0;
+
+    preguntasRecuperacion = [];
+    indiceRecuperacion = 0;
+    recuperacionActiva = false;
+    aciertosRecuperacion = 0;
+
+    historial = { rondas: 0, puntosTotales: 0, correctasTotales: 0 };
+
+    document.body.style.overflow = "";
+
+    guardarProgreso();
+    actualizarInterfaz();
+
+    alert("El progreso se reinició correctamente.");
+
+    iniciarNuevaRonda();
+}
 
 
-        /*
-           CARGAR PRIMER TEMA
-        */
+/* 32. INICIALIZACIÓN */
 
-        cambiarTema(
-            "gastronomia"
-        );
+document.addEventListener("DOMContentLoaded", function () {
 
+    const inicio = obtener("inicioRecuperacion");
+    if (inicio) htmlInicioRecuperacion = inicio.innerHTML;
 
-        /*
-           ACTUALIZAR PROGRESO
-        */
+    cargarProgreso();
+    actualizarInterfaz();
 
-        actualizarProgreso();
+    cargarTema(nombresTemas[0]);
+    marcarMenu(nombresTemas[0]);
 
+    // Si recargó la página con 0 vidas, bloquear de inmediato
+    if (juegoBloqueadoPorVidas) {
+        abrirModalRecuperacion();
     }
-);
+});

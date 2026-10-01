@@ -1609,7 +1609,463 @@ button {
     color: #c84756;
 }
 
+/* =========================================================
+   RETO FINAL DE ALEMANIA
+========================================================= */
 
+.modal-reto-final {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(35, 32, 70, 0.65);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 9998;
+
+    overflow-y: auto;
+}
+
+.modal-reto-final.visible {
+    display: flex;
+}
+
+.reto-final-card {
+    width: min(600px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: var(--blanco);
+
+    border-radius: 25px;
+
+    padding: 28px;
+
+    position: relative;
+
+    box-shadow:
+        0 25px 80px
+        rgba(23, 20, 55, 0.3);
+
+    animation:
+        aparecerModal 0.25s ease;
+}
+
+
+/* ENCABEZADO */
+
+.reto-final-header {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.reto-final-header .icono-final {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 12px;
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eeeaff,
+            #eaf5ff
+        );
+
+    font-size: 36px;
+}
+
+.reto-final-header h2 {
+    font-size: 22px;
+
+    color: var(--morado);
+
+    margin-bottom: 5px;
+}
+
+.reto-final-header p {
+    color: var(--texto-suave);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* CONTADOR */
+
+.contador-final {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    color: var(--morado);
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.contador-final span {
+    background: var(--morado-claro);
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+}
+
+
+/* PREGUNTA */
+
+.pregunta-final-box {
+    background: #f8f8fc;
+
+    border:
+        1px solid #ecebf2;
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+    margin-bottom: 15px;
+}
+
+.pregunta-final-box h3 {
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    color: #353247;
+}
+
+
+/* OPCIONES */
+
+.opciones-final {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.opcion-final {
+    width: 100%;
+
+    background: white;
+
+    border:
+        1.5px solid #e4e3eb;
+
+    border-radius: 12px;
+
+    padding: 13px 14px;
+
+    color: #555266;
+
+    text-align: left;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.18s ease;
+}
+
+.opcion-final:hover:not(:disabled) {
+    border-color: #aaa1dc;
+
+    background: #faf9ff;
+
+    transform: translateY(-1px);
+}
+
+.opcion-final:disabled {
+    cursor: default;
+
+    opacity: 0.9;
+}
+
+.opcion-final.correcta {
+    background: var(--verde-claro);
+
+    border-color: var(--verde);
+
+    color: #257052;
+}
+
+.opcion-final.incorrecta {
+    background: var(--rojo-claro);
+
+    border-color: var(--rojo);
+
+    color: #a83d49;
+}
+
+
+/* RESULTADO */
+
+.resultado-final {
+    min-height: 25px;
+
+    margin-top: 12px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+.resultado-final.correcto {
+    color: #2c936b;
+}
+
+.resultado-final.incorrecto {
+    color: #c84756;
+}
+
+
+/* MARCADORES */
+
+.marcadores-final {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    gap: 9px;
+
+    margin-top: 16px;
+}
+
+.marcador-final {
+    background: #f8f8fc;
+
+    border:
+        1px solid var(--borde);
+
+    border-radius: 11px;
+
+    padding: 10px;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    color: var(--texto-suave);
+}
+
+.marcador-final strong {
+    display: block;
+
+    font-size: 16px;
+
+    margin-top: 2px;
+
+    color: var(--morado);
+}
+
+
+/* BOTÓN SIGUIENTE */
+
+.btn-siguiente-final {
+    width: 100%;
+
+    border: none;
+
+    background: var(--morado);
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 11px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-top: 15px;
+
+    transition: 0.2s ease;
+}
+
+.btn-siguiente-final:hover:not(:disabled) {
+    background: var(--morado-oscuro);
+
+    transform: translateY(-1px);
+}
+
+.btn-siguiente-final:disabled {
+    background: #d4d1df;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* RESULTADO FINAL */
+
+.resultado-reto-final {
+    text-align: center;
+
+    padding: 25px 10px;
+}
+
+.resultado-reto-final .trofeo-final {
+    font-size: 50px;
+
+    margin-bottom: 10px;
+}
+
+.resultado-reto-final h2 {
+    font-size: 21px;
+
+    color: var(--morado);
+
+    margin-bottom: 8px;
+}
+
+.resultado-reto-final p {
+    color: var(--texto-suave);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+}
+
+.resultado-final-datos {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.resultado-final-dato {
+    background: #f8f8fc;
+
+    border-radius: 12px;
+
+    padding: 12px;
+}
+
+.resultado-final-dato strong {
+    display: block;
+
+    font-size: 19px;
+
+    color: var(--morado);
+}
+
+.resultado-final-dato span {
+    font-size: 9px;
+
+    color: var(--texto-suave);
+}
+
+
+/* BOTÓN RETO FINAL */
+
+.btn-reto-final {
+    width: 100%;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--morado),
+            var(--azul)
+        );
+
+    color: white;
+
+    padding: 13px 18px;
+
+    border-radius: 12px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 15px;
+
+    transition: 0.2s ease;
+}
+
+.btn-reto-final.desbloqueado {
+    display: flex;
+}
+
+.btn-reto-final:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(102, 87, 200, 0.22);
+}
+
+
+/* RESPONSIVE DEL RETO FINAL */
+
+@media (max-width: 550px) {
+
+    .reto-final-card {
+        padding: 22px 17px;
+    }
+
+    .opciones-final {
+        grid-template-columns: 1fr;
+    }
+
+    .marcadores-final {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+}
 /* =========================================================
    ESTADOS
 ========================================================= */

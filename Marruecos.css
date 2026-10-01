@@ -617,324 +617,486 @@ button {
     margin-top: 12px;
 }
 
+
 /* =====================================================
    BLOQUEO DE PANTALLA - RECUPERACIÓN DE VIDAS
 ===================================================== */
 
 .modal-recuperacion-overlay {
-
     position: fixed;
-
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     background: rgba(30, 27, 55, 0.72);
-
     display: none;
-
     justify-content: center;
     align-items: center;
-
     z-index: 99999;
-
     padding: 20px;
-
 }
 
-
-/* =====================================================
-   VENTANA DEL MODAL
-===================================================== */
 
 .modal-recuperacion {
-
     width: min(430px, 100%);
-
     background: white;
-
     border-radius: 24px;
-
     padding: 35px 30px;
-
     text-align: center;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.25);
-
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
     animation: aparecerModal 0.3s ease;
-
 }
 
-
-/* =====================================================
-   ANIMACIÓN
-===================================================== */
 
 @keyframes aparecerModal {
-
     from {
-
         opacity: 0;
-
         transform: scale(0.85);
-
     }
-
     to {
-
         opacity: 1;
-
         transform: scale(1);
-
     }
-
 }
 
-
-/* =====================================================
-   ICONO
-===================================================== */
 
 .icono-modal {
-
     width: 75px;
     height: 75px;
-
     margin: 0 auto 18px;
-
     border-radius: 50%;
-
     background: #f5f1ff;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     font-size: 38px;
-
 }
 
-
-/* =====================================================
-   TÍTULO
-===================================================== */
 
 .modal-recuperacion h2 {
-
     margin: 0 0 15px;
-
     color: #4d419f;
-
     font-size: 25px;
-
 }
 
-
-/* =====================================================
-   TEXTOS
-===================================================== */
 
 .modal-recuperacion p {
-
     color: #666;
-
     line-height: 1.6;
-
     margin: 8px 0;
-
 }
 
 
-/* =====================================================
-   BOTÓN RECUPERAR
-===================================================== */
-
 .boton-recuperar {
-
     width: 100%;
-
     border: none;
-
     border-radius: 14px;
-
     padding: 14px 20px;
-
     margin-top: 20px;
-
     background: #6657c8;
-
     color: white;
-
     font-size: 16px;
-
     font-weight: 600;
-
     cursor: pointer;
-
     transition: 0.2s ease;
-
 }
 
 
 .boton-recuperar:hover {
-
     background: #4d419f;
-
     transform: translateY(-2px);
-
 }
 
-
-/* =====================================================
-   PREGUNTA DE RECUPERACIÓN
-===================================================== */
 
 .pregunta-recuperacion {
-
     font-size: 17px;
-
     font-weight: 600;
-
     color: #333 !important;
-
     margin: 20px 0 !important;
-
 }
 
 
-/* =====================================================
-   OPCIONES DE RECUPERACIÓN
-===================================================== */
-
 .opciones-recuperacion {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 10px;
-
     margin-top: 15px;
-
 }
 
 
 .opcion-recuperacion {
-
     width: 100%;
-
     padding: 13px 15px;
-
     border-radius: 12px;
-
     border: 2px solid #e3e0f4;
-
     background: #faf9ff;
-
     color: #333;
-
     font-size: 15px;
-
     cursor: pointer;
-
     transition: 0.2s ease;
-
 }
 
 
 .opcion-recuperacion:hover {
-
     border-color: #6657c8;
-
     background: #f2efff;
-
 }
 
 
 .opcion-recuperacion.seleccionada {
-
     border-color: #6657c8;
-
     background: #ebe7ff;
-
     font-weight: 600;
-
 }
 
 
 .opcion-recuperacion:disabled {
-
     cursor: default;
-
 }
 
 
-/* =====================================================
-   RESULTADO
-===================================================== */
-
 .resultado-recuperacion {
-
     display: none;
-
     margin-top: 15px;
-
     padding: 12px;
-
     border-radius: 10px;
-
     font-size: 14px;
-
 }
 
 
 .resultado-recuperacion.mostrar {
-
     display: block;
-
 }
 
-
-/* =====================================================
-   CORRECTA
-===================================================== */
 
 .opcion-recuperacion.correcta {
-
     border-color: #45a968;
-
     background: #edf9f1;
-
     color: #287746;
+}
 
+.opcion-recuperacion.incorrecta {
+    border-color: #e05252;
+    background: #fff0f0;
+    color: #b33a3a;
 }
 
 
 /* =====================================================
-   RESPONSIVE
+   BOTÓN RETO FINAL
 ===================================================== */
 
-@media (max-width: 600px) {
-
-    .modal-recuperacion {
-
-        padding: 28px 20px;
-
-        border-radius: 20px;
-
-    }
-
-    .modal-recuperacion h2 {
-
-        font-size: 22px;
-
-    }
-
+.contenedor-reto-final {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
 }
+
+.btn-reto-final {
+    border: none;
+    border-radius: 30px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #cfcde0;
+    color: white;
+    box-shadow: 0 8px 25px rgba(104, 70, 217, 0.25);
+    transition: 0.25s;
+}
+
+.btn-reto-final:not(:disabled) {
+    background: linear-gradient(135deg, #6846d9, #3978e8);
+    cursor: pointer;
+}
+
+.btn-reto-final:not(:disabled):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(104, 70, 217, 0.35);
+}
+
+.btn-reto-final:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+/* =====================================================
+   MODAL RETO FINAL
+===================================================== */
+
+.modal-reto-final {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 27, 55, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 999999;
+}
+
+.reto-final-card {
+    width: min(560px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 24px;
+    padding: 30px 28px;
+    position: relative;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    animation: aparecerModal 0.3s ease;
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    border: none;
+    background: #f0edff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    color: #6846d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cerrar-modal:hover {
+    background: #e4e0ff;
+}
+
+.icono-final {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6846d9, #3978e8);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.reto-final-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reto-final-header h2 {
+    color: #4d419f;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.reto-final-header p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.contador-final {
+    text-align: center;
+    font-size: 14px;
+    color: #6846d9;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.pregunta-final-box {
+    background: #f8f7ff;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+.pregunta-final-box h3 {
+    font-size: 17px;
+    color: #393952;
+    line-height: 1.4;
+}
+
+.opciones-final {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.opcion-final {
+    width: 100%;
+    min-height: 50px;
+    padding: 13px 16px;
+    border: 2px solid #e3e0f4;
+    border-radius: 12px;
+    background: #faf9ff;
+    color: #333;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.opcion-final:hover {
+    border-color: #6657c8;
+    background: #f2efff;
+}
+
+.opcion-final.correcta {
+    border-color: #45a968;
+    background: #edf9f1;
+    color: #287746;
+}
+
+.opcion-final.incorrecta {
+    border-color: #e05252;
+    background: #fff0f0;
+    color: #b33a3a;
+}
+
+.resultado-final {
+    min-height: 28px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.resultado-final.correcto {
+    color: #287746;
+}
+
+.resultado-final.incorrecto {
+    color: #b33a3a;
+}
+
+.marcadores-final {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 18px 0;
+}
+
+.marcador-final {
+    text-align: center;
+}
+
+.marcador-final span:first-child {
+    font-size: 22px;
+}
+
+.marcador-final strong {
+    display: block;
+    font-size: 22px;
+    color: #6846d9;
+}
+
+.marcador-final span:last-child {
+    font-size: 12px;
+    color: #777;
+}
+
+.btn-siguiente-final {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 14px 20px;
+    background: #cfcde0;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: not-allowed;
+    margin-top: 10px;
+}
+
+.btn-siguiente-final:not(:disabled) {
+    background: linear-gradient(135deg, #6846d9, #3978e8);
+    cursor: pointer;
+}
+
+.btn-siguiente-final:not(:disabled):hover {
+    opacity: 0.95;
+}
+
+
+/* =====================================================
+   AVENTURA COMPLETADA
+===================================================== */
+
+.aventura-completada {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 27, 55, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 999999;
+}
+
+.resultado-final-card {
+    width: min(420px, 100%);
+    background: white;
+    border-radius: 24px;
+    padding: 35px 28px;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    animation: aparecerModal 0.3s ease;
+}
+
+.resultado-final-card .icono-final {
+    background: linear-gradient(135deg, #f7b731, #f5a623);
+    font-size: 36px;
+}
+
+.resultado-final-card h2 {
+    color: #4d419f;
+    font-size: 26px;
+    margin: 15px 0 10px;
+}
+
+.resultado-final-card p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.resultado-resumen {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 25px;
+}
+
+.resultado-resumen div {
+    text-align: center;
+}
+
+.resultado-resumen span {
+    font-size: 24px;
+}
+
+.resultado-resumen strong {
+    display: block;
+    font-size: 24px;
+    color: #6846d9;
+    margin: 4px 0;
+}
+
+.resultado-resumen small {
+    font-size: 12px;
+    color: #888;
+}
+
 
 /* ================= RESPONSIVE ================= */
 
@@ -980,6 +1142,28 @@ button {
 
     .opciones {
         grid-template-columns: 1fr;
+    }
+
+    .contenedor-reto-final {
+        bottom: 15px;
+    }
+
+    .btn-reto-final {
+        padding: 14px 24px;
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .modal-recuperacion {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .modal-recuperacion h2 {
+        font-size: 22px;
     }
 
 }
