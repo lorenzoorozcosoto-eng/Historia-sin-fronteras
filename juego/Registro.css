@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2b5fd9, #32b36b);
+    /* CAMBIO 1: Se quitó 'overflow: hidden' y se añade padding para que no se pegue a los bordes */
+    padding: 20px;
+    position: relative;
+}
+
+/* Fondo decorativo */
+body::before {
+    content: "";
+    position: fixed; /* Se cambió a fixed para que el fondo no afecte el scroll */
+    width: 450px;
+    height: 450px;
+    background: rgba(255, 255, 255, .10);
+    border-radius: 50%;
+    top: -120px;
+    right: -120px;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed; /* Se cambió a fixed */
+    width: 350px;
+    height: 350px;
+    background: rgba(255, 255, 255, .08);
+    border-radius: 50%;
+    bottom: -100px;
+    left: -100px;
+    pointer-events: none;
+}
+
+/* CONTENEDOR */
+.contenedor {
+    /* CAMBIO 2: Usar max-width y max-height responsivos en lugar de píxeles fijos */
+    width: 100%;
+    max-width: 1200px;
+    max-height: 90vh; /* Altura máxima adaptable a la pantalla */
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .25);
+    z-index: 2;
+}
+
+/* PANEL IZQUIERDO (Formulario) */
+.panel-izquierdo {
+    width: 45%;
+    padding: 40px;
+    background: white;
+    /* CAMBIO 3: Si el formulario no cabe en alto, permite hacer scroll interno */
+    overflow-y: auto; 
+}
+
+.logo {
+    width: 90px;
+    display: block;
+    margin: 0 auto;
+}
+
+.panel-izquierdo h1 {
+    text-align: center;
+    color: #1e88e5;
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.frase {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid #d8d8d8;
+    outline: none;
+    transition: .3s;
+    font-size: 14px;
+}
+
+input:focus {
+    border: 2px solid #1e88e5;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    color: #555;
+    font-size: 14px;
+}
+
+.check input {
+    width: 18px;
+    height: 18px;
+}
+
+
+.login {
+    text-align: center;
+    margin-top: 25px;
+    color: #666;
+    font-size: 14px;
+}
+
+.login a {
+    color: #1e88e5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+/* PANEL DERECHO */
+.panel-derecho {
+    width: 55%;
+    background: linear-gradient(180deg, #ffffff, #eef5ff);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 40px;
+}
+
+.contenido {
+    text-align: center;
+    width: 85%;
+    z-index: 1;
+}
+
+.contenido h2 {
+    font-size: 40px;
+    color: #23395d;
+    margin-bottom: 20px;
+}
+
+.contenido p {
+    font-size: 16px;
+    color: #666;
+    line-height: 28px;
+}
+
+.beneficios {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.beneficios div {
+    background: white;
+    padding: 15px;
+    border-radius: 18px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+}
+
+/* ICONOS DECORATIVOS */
+.icono {
+    position: absolute;
+    font-size: 45px;
+    animation: flotar 3s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+.icono1 { top: 40px; left: 40px; }
+.icono2 { top: 40px; right: 40px; }
+.icono3 { bottom: 40px; left: 40px; }
+.icono4 { bottom: 40px; right: 40px; }
+
+@keyframes flotar {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+/* CAMBIO 4: Adaptabilidad para celulares y tablets (Diseño Responsivo) */
+@media (max-width: 900px) {
+    .contenedor {
+        flex-direction: column;
+        max-height: none;
+        height: auto;
+    }
+
+    .panel-izquierdo, .panel-derecho {
+        width: 100%;
+        overflow-y: visible;
+    }
+
+    .panel-derecho {
+        padding: 60px 20px;
+    }
+}
+
+.btn-register{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    border:2px solid var(--verde);
+
+    background: #048b0f;
+
+    color:var(--verde);
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    color: white;
+}
+
+.btn-register:hover{
+
+    background:var(--verde);
+
+    color:#048b0f;
+}

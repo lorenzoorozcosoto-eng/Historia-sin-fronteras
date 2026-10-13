@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Historia Sin Fronteras</title>
+
+    <link rel="stylesheet" href="nivelesrangos.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- PANTALLA PRINCIPAL -->
+    <!-- ========================================= -->
+
+    <div id="inicio" class="pantalla activa">
+
+        <div class="logo">🌎</div>
+
+        <h1>Historia Sin Fronteras</h1>
+
+        <p class="subtitulo">
+            ¡Aprende historia y cultura mientras recorres el mundo!
+        </p>
+
+        <div class="tarjeta-inicio">
+
+            <div class="dato">
+                <span>♾️</span>
+                <strong>Niveles infinitos</strong>
+            </div>
+
+            <div class="dato">
+                <span>❤️</span>
+                <strong>10 vidas</strong>
+            </div>
+
+            <div class="dato">
+                <span>📚</span>
+                <strong>20 preguntas</strong>
+            </div>
+
+            <div class="dato">
+                <span>🏆</span>
+                <strong>2 retos finales</strong>
+            </div>
+
+        </div>
+
+        <button class="boton-principal" onclick="iniciarJuego()">
+            🚀 COMENZAR AVENTURA
+        </button>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- PANTALLA DEL JUEGO -->
+    <!-- ========================================= -->
+
+    <div id="juego" class="pantalla">
+
+        <!-- ENCABEZADO -->
+
+        <header class="encabezado">
+
+            <div>
+                <span class="mini-titulo">
+                    HISTORIA SIN FRONTERAS
+                </span>
+
+                <h2 id="tituloNivel">
+                    Nivel 1
+                </h2>
+            </div>
+
+        </header>
+
+
+        <!-- BARRA DE PROGRESO -->
+
+        <div class="barra-contenedor">
+
+            <div id="barraProgreso" class="barra"></div>
+
+        </div>
+
+
+        <!-- INFORMACIÓN DE LA PREGUNTA -->
+
+        <div class="informacion">
+
+            <span id="numeroPregunta">
+                Pregunta 1 de 20
+            </span>
+
+            <span id="paisPregunta">
+                🌎 Mundo
+            </span>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- TARJETA DE LA PREGUNTA -->
+        <!-- ========================================= -->
+
+        <main class="zona-pregunta">
+
+            <div
+                class="categoria"
+                id="categoria"
+            >
+                Historia · Básico
+            </div>
+
+
+            <h3 id="pregunta">
+                Pregunta
+            </h3>
+
+
+            <!-- RESPUESTAS -->
+
+            <div
+                id="respuestas"
+                class="respuestas"
+            ></div>
+
+
+            <!-- MENSAJE -->
+
+            <div
+                id="mensaje"
+                class="mensaje"
+            ></div>
+
+        </main>
+
+
+        <!-- ========================================= -->
+        <!-- ❤️ VIDAS FUERA DE LA TARJETA -->
+        <!-- ========================================= -->
+
+        <div
+            class="vidas"
+            id="vidas"
+            aria-label="Vidas restantes"
+        >
+            ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- PANTALLA GAME OVER -->
+    <!-- ========================================= -->
+
+    <div id="gameOver" class="pantalla">
+
+        <div class="icono-final">
+            💔
+        </div>
+
+        <h1>
+            ¡Oh no!
+        </h1>
+
+        <h2>
+            Te quedaste sin corazones
+        </h2>
+
+        <p>
+            No te preocupes. Puedes volver a intentarlo.
+        </p>
+
+        <button
+            class="boton-principal"
+            onclick="reiniciarNivel()"
+        >
+            🔄 INTENTAR DE NUEVO
+        </button>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- PANTALLA DE RETOS -->
+    <!-- ========================================= -->
+
+    <div id="retos" class="pantalla">
+
+        <div class="icono-final">
+            🏆
+        </div>
+
+        <h1>
+            ¡Nivel terminado!
+        </h1>
+
+        <p class="subtitulo">
+            Ahora demuestra todo lo que aprendiste.
+        </p>
+
+
+        <div class="retos-contenedor">
+
+
+            <!-- RETO 1 -->
+
+            <div
+                id="reto1"
+                class="reto"
+            >
+
+                <span>🏆</span>
+
+                <h2>
+                    Reto 1
+                </h2>
+
+                <p>
+                    Preparando reto...
+                </p>
+
+                <button onclick="comenzarReto(1)">
+                    COMENZAR
+                </button>
+
+            </div>
+
+
+            <!-- RETO 2 -->
+
+            <div
+                id="reto2"
+                class="reto bloqueado"
+            >
+
+                <span>🔒</span>
+
+                <h2>
+                    Reto 2
+                </h2>
+
+                <p>
+                    Supera el reto 1 primero.
+                </p>
+
+                <button disabled>
+                    BLOQUEADO
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- PANTALLA DEL RETO -->
+    <!-- ========================================= -->
+
+    <div id="juegoReto" class="pantalla">
+
+
+        <!-- PARTE SUPERIOR DEL RETO -->
+
+        <div class="reto-superior">
+
+            <span id="numeroReto">
+                RETO 1
+            </span>
+
+            <span id="vidasReto">
+                ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️
+            </span>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- TARJETA DEL RETO -->
+        <!-- ========================================= -->
+
+        <main class="zona-pregunta">
+
+
+            <div
+                class="categoria"
+                id="categoriaReto"
+            >
+                Historia · Básico
+            </div>
+
+
+            <h3 id="preguntaReto">
+                Pregunta
+            </h3>
+
+
+            <!-- RESPUESTAS DEL RETO -->
+
+            <div
+                id="respuestasReto"
+                class="respuestas"
+            ></div>
+
+
+            <!-- MENSAJE DEL RETO -->
+
+            <div
+                id="mensajeReto"
+                class="mensaje"
+            ></div>
+
+        </main>
+
+
+        <!-- ❤️ VIDAS DEL RETO -->
+
+        <div
+            class="vidas"
+            id="vidasRetoInferior"
+            aria-label="Vidas del reto"
+        >
+            ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- NIVEL COMPLETADO -->
+    <!-- ========================================= -->
+
+    <div id="nivelCompletado" class="pantalla">
+
+
+        <div class="celebracion">
+            🎉
+        </div>
+
+
+        <h1>
+            ¡NIVEL COMPLETADO!
+        </h1>
+
+
+        <p id="resumenNivel">
+            Has completado el nivel.
+        </p>
+
+
+        <!-- ESTADÍSTICAS -->
+
+        <div class="estadisticas">
+
+
+            <div>
+
+                <strong id="resultadoPreguntas">
+                    20/20
+                </strong>
+
+                <span>
+                    Preguntas
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    2/2
+                </strong>
+
+                <span>
+                    Retos
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="boton-principal"
+            onclick="siguienteNivel()"
+        >
+            🚀 SIGUIENTE NIVEL
+        </button>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
