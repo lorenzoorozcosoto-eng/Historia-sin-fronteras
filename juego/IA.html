@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA: Historia y Cultura</title>
+  <link rel="stylesheet" href="IA.CSS">
+  <!-- FontAwesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Panel Lateral Izquierdo -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+                <i><a href="inicio.html"><img src="celstatecontenido-s-removebg-preview.png" width="60" height="60" alt=""></a></i>
+        </div>
+        <div class="brand-title">
+          <h2>Historia</h2>
+          <span>Sin Fronteras</span>
+        </div>
+      </div>
+
+      <button class="btn-back">
+        <i class="fa-solid fa-arrow-left"></i>
+        <a href="explorarmapa.html" style="text-decoration: none; color: black;"><h3>volver al mapa</h3></a>
+      </button>
+
+      <nav class="nav-menu">
+        <div class="nav-section">
+          <p class="section-title">INTERACCIÓN CON IA</p>
+          <ul>
+            <li>
+              <a href="#" class="nav-link active" data-view="nueva-pregunta" onclick="switchView('nueva-pregunta')">
+                <i class="fa-solid fa-circle-question"></i> Nueva Pregunta
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" data-view="consultas-rapidas" onclick="switchView('consultas-rapidas')">
+                <i class="fa-solid fa-bolt"></i> Consultas rápidas
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" data-view="consultas-pasadas" onclick="switchView('consultas-pasadas')">
+                <i class="fa-solid fa-clock-rotate-left"></i> Mis consultas pasadas
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <p class="section-title">EXPLORACIÓN</p>
+          <ul>
+            <li>
+              <a href="#" class="nav-link" onclick="openModal('modal-visual')">
+                <i class="fa-solid fa-camera"></i> Búsqueda visual
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" onclick="openModal('modal-voz')">
+                <i class="fa-solid fa-microphone"></i> Asistencia de voz
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Área Principal -->
+    <main class="main-content">
+      
+      <!-- Encabezado Común -->
+      <header class="header-banner">
+        <div class="header-left">
+          <div class="header-icon">
+            <i class="fa-solid fa-landmark"></i>
+          </div>
+          <div>
+            <h1 id="viewTitle">Asistente AI: Tu Puerta al Conocimiento</h1>
+            <p id="viewSubtitle">Escribe tu consulta para explorar la historia, el arte y la cultura</p>
+          </div>
+        </div>
+        <div class="header-stats">
+          <div class="stat-badge">
+            <span class="stat-icon yellow"><i class="fa-solid fa-star"></i></span>
+            <div class="stat-info">
+              <span class="stat-title">Capacidad</span>
+              <span class="stat-value">100%</span>
+            </div>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-icon red"><i class="fa-solid fa-heart"></i></span>
+            <div class="stat-info">
+              <span class="stat-title">Guardadas</span>
+              <span class="stat-value" id="savedCount">3</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- VISTA 1: NUEVA PREGUNTA -->
+      <section id="view-nueva-pregunta" class="view-section active">
+        <div class="welcome-card">
+          <div class="bot-avatar">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div>
+            <h3>¡Hola, explorador!</h3>
+            <p>Escribe tu pregunta a continuación o explora las sugerencias rápidas.</p>
+          </div>
+        </div>
+
+        <div class="card query-card">
+          <div class="suggestions-bar">
+            <span class="suggestions-label"><i class="fa-solid fa-lightbulb"></i> Sugerencias rápidas:</span>
+            <button class="tag-btn" onclick="useTag('Arte precolombino')">Arte precolombino</button>
+            <button class="tag-btn" onclick="useTag('Cultura contemporánea')">Cultura contemporánea</button>
+            <button class="tag-btn" onclick="useTag('Revolución Industrial')">Revolución Industrial</button>
+          </div>
+
+          <div class="input-wrapper">
+            <textarea id="userInput" placeholder="Escribe tu pregunta detallada aquí... (ej. ¿Cuáles fueron las causas principales de la Revolución Industrial en América Latina?)"></textarea>
+          </div>
+
+          <div class="input-actions">
+            <div class="action-options">
+              <button class="btn-secondary" title="Opciones"><i class="fa-solid fa-sliders"></i></button>
+              <button class="btn-secondary" onclick="openModal('modal-visual')"><i class="fa-solid fa-image"></i> Incluir imagen</button>
+              <button class="btn-secondary"><i class="fa-solid fa-book"></i> Especificar fuentes</button>
+            </div>
+            <button class="btn-primary" id="sendBtn" onclick="askAI()">
+              <i class="fa-solid fa-paper-plane"></i> Enviar Pregunta
+            </button>
+          </div>
+        </div>
+
+        <!-- Tarjeta de Respuesta de la IA -->
+        <div class="card response-card" id="responseContainer" style="display: none;">
+          <div class="response-header">
+            <div class="bot-avatar-sm">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <h4>Respuesta de la IA</h4>
+            <span class="time-stamp" id="timestamp">Justo ahora</span>
+          </div>
+          <div class="response-body" id="responseBody"></div>
+          <div class="response-actions">
+            <button class="btn-icon" title="Me gusta"><i class="fa-regular fa-thumbs-up"></i></button>
+            <button class="btn-icon" id="favBtn" onclick="toggleFavoriteCurrent()"><i class="fa-regular fa-heart"></i></button>
+            <button class="btn-icon" title="Copiar" onclick="copyResponse()"><i class="fa-regular fa-copy"></i></button>
+          </div>
+        </div>
+
+        <div class="card tip-card">
+          <i class="fa-solid fa-lightbulb tip-icon"></i>
+          <div>
+            <strong>Dato curioso / Sugerencia:</strong>
+            <p id="tipText">Prueba preguntar: "Resume la importancia de los códices Mayas y su sistema numérico."</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISTA 2: CONSULTAS RÁPIDAS -->
+      <section id="view-consultas-rapidas" class="view-section">
+        <div class="quick-grid">
+          
+          <div class="card category-card">
+            <div class="cat-header">
+              <div class="cat-icon bg-purple"><i class="fa-solid fa-pyramid"></i></div>
+              <h3>Civilizaciones Prehispánicas</h3>
+            </div>
+            <p class="cat-desc">Explora las grandes culturas antes de la llegada de los españoles.</p>
+            <div class="cat-actions">
+              <button class="quick-ask-btn" onclick="quickAsk('¿Cuáles fueron las principales aportaciones científicas de la cultura Maya?')">
+                <i class="fa-solid fa-angle-right"></i> Aportaciones de la cultura Maya
+              </button>
+              <button class="quick-ask-btn" onclick="quickAsk('Explica la estructura social y económica del Imperio Azteca.')">
+                <i class="fa-solid fa-angle-right"></i> Estructura del Imperio Azteca
+              </button>
+              <button class="quick-ask-btn" onclick="quickAsk('¿Qué papel jugaba la astronomía en las culturas Mesoamericanas?')">
+                <i class="fa-solid fa-angle-right"></i> Astronomía Mesoamericana
+              </button>
+            </div>
+          </div>
+
+          <div class="card category-card">
+            <div class="cat-header">
+              <div class="cat-icon bg-blue"><i class="fa-solid fa-utensils"></i></div>
+              <h3>Gastronomía e Identidad</h3>
+            </div>
+            <p class="cat-desc">Descubre el origen y evolución de los platillos tradicionales.</p>
+            <div class="cat-actions">
+              <button class="quick-ask-btn" onclick="quickAsk('¿Cuál es el origen e historia del maíz en las culturas ancestrales?')">
+                <i class="fa-solid fa-angle-right"></i> Origen e historia del Maíz
+              </button>
+              <button class="quick-ask-btn" onclick="quickAsk('¿Cómo influenciaron los ingredientes prehispánicos a la cocina actual?')">
+                <i class="fa-solid fa-angle-right"></i> Herencia Culinaria
+              </button>
+            </div>
+          </div>
+
+          <div class="card category-card">
+            <div class="cat-header">
+              <div class="cat-icon bg-orange"><i class="fa-solid fa-palette"></i></div>
+              <h3>Arte y Tradiciones</h3>
+            </div>
+            <p class="cat-desc">Manifestaciones artísticas, arquitectura, mitos y pintura.</p>
+            <div class="cat-actions">
+              <button class="quick-ask-btn" onclick="quickAsk('¿Qué simbolismo representan las esculturas Olmecas?')">
+                <i class="fa-solid fa-angle-right"></i> Esculturas Cabeza Olmeca
+              </button>
+              <button class="quick-ask-btn" onclick="quickAsk('Resume la evolución de la música y bailes folclóricos en México.')">
+                <i class="fa-solid fa-angle-right"></i> Música y Danzas Folclóricas
+              </button>
+            </div>
+          </div>
+
+          <div class="card category-card">
+            <div class="cat-header">
+              <div class="cat-icon bg-green"><i class="fa-solid fa-scroll"></i></div>
+              <h3>Independencia y Revolución</h3>
+            </div>
+            <p class="cat-desc">Sucesos históricos cruciales en el desarrollo contemporáneo.</p>
+            <div class="cat-actions">
+              <button class="quick-ask-btn" onclick="quickAsk('¿Cuáles fueron las causas determinantes de la Revolución Mexicana?')">
+                <i class="fa-solid fa-angle-right"></i> Causas de la Revolución Mexicana
+              </button>
+              <button class="quick-ask-btn" onclick="quickAsk('Describe a las figuras más destacadas de la Independencia.')">
+                <i class="fa-solid fa-angle-right"></i> Personajes Ilustres
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- VISTA 3: MIS CONSULTAS PASADAS -->
+      <section id="view-consultas-pasadas" class="view-section">
+        <div class="card history-filters">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="historySearch" placeholder="Buscar en mi historial..." oninput="filterHistory()">
+          </div>
+          <div class="filter-tabs">
+            <button class="filter-btn active" onclick="setHistoryFilter('all', this)">Todas</button>
+            <button class="filter-btn" onclick="setHistoryFilter('fav', this)">Favoritas (<span id="favFilterCount">3</span>)</button>
+          </div>
+        </div>
+
+        <div class="history-list" id="historyListContainer">
+          <!-- Se renderiza dinámicamente desde JavaScript -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Panel Lateral Derecho -->
+    <aside class="right-panel">
+      <div class="card progress-widget">
+        <div class="widget-title">
+          <i class="fa-solid fa-chart-line"></i> Resumen de Consultas
+        </div>
+
+        <div class="token-tracker">
+          <div class="token-header">
+            <span>Uso diario de consultas</span>
+            <strong id="tokenCount">15/50 hoy</strong>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="tokenProgress" style="width: 30%;"></div>
+          </div>
+          <span class="sub-label">Límite diario 30% utilizado</span>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <span class="metric-num" id="totalQueries">12</span>
+            <span class="metric-label">Consultas Respondidas</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-num" id="savedItems">3</span>
+            <span class="metric-label">Temas Guardados</span>
+          </div>
+        </div>
+
+        <button class="btn-outline" onclick="switchView('consultas-pasadas')">
+          <i class="fa-solid fa-clock-rotate-left"></i> Ver historial detallado
+        </button>
+      </div>
+
+      <div class="card resources-widget">
+        <div class="widget-title">
+          <i class="fa-solid fa-book-bookmark"></i> Recursos Recomendados
+        </div>
+        <ul class="resource-list">
+          <li onclick="quickAsk('Recomiéndame documentales clave sobre civilizaciones mesoamericanas.')">
+            <i class="fa-solid fa-film"></i>
+            <span>Documental sobre Civilizaciones</span>
+          </li>
+          <li onclick="quickAsk('Cuentame un mito o leyenda tradicional prehispánica.')">
+            <i class="fa-solid fa-podcast"></i>
+            <span>Podcast: Mitos y Leyendas</span>
+          </li>
+          <li onclick="quickAsk('¿Cuáles son los descubrimientos arqueológicos más recientes en México?')">
+            <i class="fa-solid fa-scroll"></i>
+            <span>Lecturas sobre Arqueología</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- MODAL BÚSQUEDA VISUAL -->
+  <div class="modal-overlay" id="modal-visual">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-camera"></i> Búsqueda Visual por Imagen</h3>
+        <button class="close-modal" onclick="closeModal('modal-visual')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="drop-zone" id="dropZone" onclick="simulateUpload()">
+          <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+          <p>Haz clic para subir o arrastra una fotografía de una escultura, monumento o mapa histórico</p>
+          <span class="small-text">Soporta JPG, PNG o WEBP</span>
+        </div>
+        <div class="image-preview-area" id="imagePreview" style="display: none;">
+          <img id="previewImg" src="" alt="Vista previa">
+          <p class="img-name" id="imgName">imagen_ejemplo.jpg</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeModal('modal-visual')">Cancelar</button>
+        <button class="btn-primary" onclick="processImageQuery()"><i class="fa-solid fa-wand-magic-sparkles"></i> Analizar con IA</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ASISTENCIA DE VOZ -->
+  <div class="modal-overlay" id="modal-voz">
+    <div class="modal-box text-center">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-microphone"></i> Asistente de Voz</h3>
+        <button class="close-modal" onclick="closeModal('modal-voz')">&times;</button>
+      </div>
+      <div class="modal-body voice-body">
+        <div class="mic-circle" id="micCircle" onclick="toggleRecording()">
+          <i class="fa-solid fa-microphone"></i>
+        </div>
+        <p class="voice-status" id="voiceStatus">Haz clic en el micrófono para empezar a hablar...</p>
+        <div class="wave-lines" id="waveLines">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="transcript-preview" id="transcriptText"></p>
+      </div>
+      <div class="modal-footer flex-center">
+        <button class="btn-primary" id="btnVoiceSend" style="display: none;" onclick="sendVoiceQuery()">
+          <i class="fa-solid fa-paper-plane"></i> Consultar lo grabado
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="IA.js"></script>
+</body>
+</html>

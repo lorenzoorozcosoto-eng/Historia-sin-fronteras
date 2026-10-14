@@ -23,19 +23,19 @@
                     <span class="fw-extrabold text-primary d-block h5 mb-0">HISTORIA</span>
                     <span class="text-success fw-bold small">SIN FRONTERAS</span>
                 </div>
-            </a>
+            </a>aqas
             
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link nav-link-custom active" href="inicio.html"><i class="bi bi-house-door-fill me-1"></i> Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-custom" href="explorarmapa.html"><i class="bi bi-compass me-1"></i> Explorar</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href=IA.html><i class="bi bi-compass me-1"></i> IA</a></li>
                 </ul>
             </div>
 
             <div class="d-flex align-items-center">
                 <div class="text-end me-2">
                     <span class="fw-bold d-block small">Explorador</span>
-                    <span class="text-muted text-xs block" style="font-size: 0.8rem;">Nivel 7</span>
+                    <span class="text-muted text-xs block" style="font-size: 0.8rem;">Nivel x</span>
                 </div>
                 <i class="bi bi-person-circle fs-2 text-secondary"></i>
             </div>
@@ -44,14 +44,13 @@
 
     <div class="container-fluid px-4">
         <div class="row">
-            
-            <!-- Columna Izquierda (Menú y Progreso) -->
+
             <div class="col-12 col-lg-3">
 
                 <div class="custom-card text-center">
                     <h6 class="fw-bold text-start text-primary mb-3"><i class="bi bi-person-badge me-1"></i> Mi progreso</h6>
                     <div class="progress-circle mb-3">
-                        <div class="progress-circle-inner">75%</div>
+                        <div class="progress-circle-inner">1%</div>
                     </div>
                     <p class="small text-muted mb-3">Explorador mundial</p>
                     <div class="text-start small">
@@ -62,7 +61,7 @@
                 </div>
             </div>
 
-            <!-- Columna Derecha (Ocupa todo el espacio restante con col-lg-9) -->
+            <!-- Columna Derecha -->
             <div class="col-12 col-lg-9">
                 <div class="custom-card p-3">
                     <div class="alert alert-info border-0 rounded-4 d-flex align-items-center mb-3 py-2" style="background-color: #e3f2fd;">
@@ -73,14 +72,13 @@
                         </div>
                     </div>
                     
-                    <!-- Contenedor del Mapa adaptado al espacio -->
+                    <!-- Contenedor del Mapa -->
                     <div class="map-container">
                         <div id="world-map"></div>
                         <div id="countryInfo">
                             🌎 Pasa el cursor sobre un país
                         </div>
                     </div>
-
 
                 </div>
             </div>
@@ -92,13 +90,15 @@
         const countries = {
             CO: "Colombia 🇨🇴", MX: "México 🇲🇽", AR: "Argentina 🇦🇷", PE: "Perú 🇵🇪", BR: "Brasil 🇧🇷",
             US: "Estados Unidos 🇺🇸", CA: "Canadá 🇨🇦", ES: "España 🇪🇸", FR: "Francia 🇫🇷", DE: "Alemania 🇩🇪",
-            IT: "Italia 🇮🇹", JP: "Japón 🇯🇵", CN: "China 🇨🇳", RU: "Rusia 🇷🇺", EG: "Egipto 🇪🇬"
+            IT: "Italia 🇮🇹", JP: "Japón 🇯🇵", CN: "China 🇨🇳", RU: "Rusia 🇷🇺", EG: "Egipto 🇪🇬",
+            MA: "Marruecos 🇲🇦" // <--- Agregado aquí
         };
 
         const countryUrls = {
             CO: "colombia.html", MX: "mexico.html", AR: "argentina.html", PE: "peru.html", BR: "brasil.html",
             US: "estados_unidos.html", CA: "canada.html", ES: "espana.html", FR: "francia.html", DE: "alemania.html",
-            IT: "italia.html", JP: "japon.html", CN: "china.html", RU: "rusia.html", EG: "egipto.html"
+            IT: "italia.html", JP: "japon.html", CN: "china.html", RU: "rusia.html", EG: "egipto.html",
+            MA: "marruecos.html" // <--- Agregado aquí
         };
 
         const map = new jsVectorMap({
