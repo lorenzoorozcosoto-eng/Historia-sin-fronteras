@@ -2,3 +2,6 @@ node_modules/
 .env
 *.log
 backend/uploads/
+
+# Datos de conexión de Aiven (con contraseñas)
+.env.aiven
