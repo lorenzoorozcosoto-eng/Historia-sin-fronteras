@@ -1,0 +1,76 @@
+# Despliegue en Render (Blueprint). Sube este archivo a la raíz del repositorio, junto a las carpetas backend/ y frontend/.
+# En Render: New > Blueprint > elige el repositorio. Render te pedirá los valores marcados como "sync: false".
+#
+# Cómo funciona: un solo servicio web de Node (backend/app.js) que también sirve el frontend,
+# porque el servidor lee la carpeta ../frontend. Por eso la raíz del servicio es la raíz del repositorio.
+#
+# La base de datos MySQL NO se crea aquí: Render no ofrece MySQL gestionado.
+# Usa una externa (por ejemplo Aiven, gratis) y pon sus datos en las variables MYSQL_*.
+# Las tablas se crean solas al arrancar (migraciones del backend).
+
+services:
+  - type: web
+    name: historia-sin-fronteras
+    runtime: node
+    plan: free              # cambia a starter si no quieres que el servicio se duerma tras 15 min sin visitas
+    region: ohio            # la más cercana a Colombia entre las de Render
+    branch: main
+    buildCommand: cd backend && npm ci
+    startCommand: cd backend && npm start
+    healthCheckPath: /inicio/inicio.html
+    autoDeploy: true
+
+    # Fotos de perfil: se guardan en backend/uploads. En el plan free el disco se borra en cada despliegue.
+    # Para conservarlas, usa un plan de pago y quita el comentario de este bloque:
+    # disk:
+    #   name: uploads
+    #   mountPath: /opt/render/project/src/backend/uploads
+    #   sizeGB: 1
+
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+
+      # Render asigna PORT solo (10000); el servidor ya lo lee de process.env.PORT. No lo definas.
+
+      # ---------- Base de datos MySQL (externa) ----------
+      - key: MYSQL_HOST
+        sync: false
+      - key: MYSQL_PORT
+        sync: false
+      - key: MYSQL_DATABASE
+        sync: false
+      - key: MYSQL_USER
+        sync: false
+      - key: MYSQL_PASSWORD
+        sync: false
+      - key: MYSQL_SSL            # las bases en internet piden conexión segura
+        value: "true"
+      - key: MYSQL_SSL_CA         # certificado del proveedor (Aiven lo da); si no lo pones, se acepta sin verificar
+        sync: false
+      - key: MYSQL_ZONA_HORARIA
+        value: "-05:00"
+
+      # ---------- Seguridad e inicio de sesión ----------
+      - key: JWT_SECRET
+        generateValue: true       # Render crea una clave aleatoria
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+
+      # ---------- Inteligencia artificial ----------
+      - key: AI_PROVIDER
+        value: gemini
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-flash-lite-latest
+      - key: GEMINI_MODEL_CHAT
+        value: gemini-flash-latest
+      - key: GEMINI_MODEL_RESPALDO
+        value: gemini-3.8-flash
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: AI_LIMITE_DIARIO
+        value: "50"
