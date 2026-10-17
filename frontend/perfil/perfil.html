@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil | Historia Sin Fronteras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="perfil.css">
+    <script src="../js/sesion.js"></script>
+</head>
+<body>
+
+<header class="barra">
+    <a class="marca" href="../explorarmapa/explorarmapa.html" aria-label="Volver al mapa">
+        <img src="../img/logo.png" alt="" width="44" height="44">
+        <span>Historia<br>Sin Fronteras</span>
+    </a>
+    <a class="volver" href="../explorarmapa/explorarmapa.html">← Volver al mapa</a>
+    <div id="perfil-widget" style="margin-left:auto"></div>
+</header>
+
+<main class="contenido">
+
+    <!-- Resumen -->
+    <section class="tarjeta cabecera">
+        <div class="foto-wrap">
+            <div class="foto" id="foto" aria-label="Foto de perfil"><span id="fotoInicial">?</span><img id="fotoImg" alt="" hidden></div>
+            <input type="file" id="archivoFoto" accept="image/jpeg,image/png,image/webp" hidden>
+        </div>
+        <div class="resumen">
+            <h1 id="resNombre">Mi perfil</h1>
+            <p id="resUsuario" class="gris"></p>
+            <div class="chips">
+                <span class="chip" id="resRango">🏅 Explorador</span>
+                <span class="chip" id="resPuntos">⭐ 0 puntos</span>
+                <span class="chip" id="resRol">🎓 Estudiante</span>
+                <span class="chip" id="resDesde">📅 Miembro desde…</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="rejilla">
+
+        <!-- Foto -->
+        <section class="tarjeta">
+            <h2>📷 Foto de perfil</h2>
+            <p class="gris">Sube una imagen JPG, PNG o WEBP. Se recorta en cuadrado automáticamente.</p>
+            <div class="acciones">
+                <button type="button" class="btn principal" id="btnSubirFoto">Subir foto</button>
+                <button type="button" class="btn secundario" id="btnQuitarFoto" hidden>Quitar foto</button>
+            </div>
+            <p class="mensaje" id="msgFoto" role="status"></p>
+        </section>
+
+        <!-- Datos personales -->
+        <section class="tarjeta">
+            <h2>👤 Datos personales</h2>
+            <form id="formDatos" novalidate>
+                <label for="nombreCompleto">Nombre completo</label>
+                <input id="nombreCompleto" name="nombreCompleto" type="text" maxlength="120" autocomplete="name" required>
+
+                <label for="correo">Correo electrónico</label>
+                <input id="correo" name="correo" type="email" maxlength="150" autocomplete="email" required>
+
+                <label for="nombreUsuario">Nombre de usuario</label>
+                <input id="nombreUsuario" name="nombreUsuario" type="text" maxlength="40" autocomplete="username" required>
+                <small class="gris">3 a 40 caracteres: letras, números, "_" o "."</small>
+
+                <div class="acciones">
+                    <button type="submit" class="btn principal" id="btnGuardar">Guardar cambios</button>
+                    <button type="button" class="btn secundario" id="btnDeshacer">Deshacer</button>
+                </div>
+                <p class="mensaje" id="msgDatos" role="status"></p>
+            </form>
+        </section>
+
+        <!-- Contraseña -->
+        <section class="tarjeta">
+            <h2>🔒 Cambiar contraseña</h2>
+            <p class="gris" id="notaContrasena"></p>
+            <form id="formContrasena" novalidate>
+                <div id="bloqueActual">
+                    <label for="actual">Contraseña actual</label>
+                    <input id="actual" name="actual" type="password" autocomplete="current-password">
+                </div>
+
+                <label for="nueva">Nueva contraseña</label>
+                <input id="nueva" name="nueva" type="password" minlength="6" autocomplete="new-password">
+
+                <label for="confirmar">Confirmar nueva contraseña</label>
+                <input id="confirmar" name="confirmar" type="password" minlength="6" autocomplete="new-password">
+
+                <label class="ver"><input type="checkbox" id="verClaves"> Mostrar contraseñas</label>
+
+                <div class="acciones">
+                    <button type="submit" class="btn principal" id="btnClave">Cambiar contraseña</button>
+                </div>
+                <p class="mensaje" id="msgClave" role="status"></p>
+            </form>
+        </section>
+
+        <!-- Sesión -->
+        <section class="tarjeta">
+            <h2>🚪 Sesión</h2>
+            <p class="gris">Cierra la sesión en este dispositivo cuando termines.</p>
+            <div class="acciones">
+                <button type="button" class="btn peligro" id="btnSalir">Cerrar sesión</button>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script src="perfil.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Sin Fronteras - Burkina Faso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/pais.css">
+    <link rel="stylesheet" href="../css/juego.css">
+    <script src="../js/sesion.js"></script>
+</head>
+<body>
+
+<!-- BARRA SUPERIOR: país, vidas, puntos y perfil -->
+<header class="topbar">
+    <a class="marca" href="../explorarmapa/explorarmapa.html" aria-label="Volver al mapa">
+        <img src="../img/logo.png" alt="" width="44" height="44">
+        <span>Historia<br>Sin Fronteras</span>
+    </a>
+    <a class="volver" href="../explorarmapa/explorarmapa.html">← Volver al mapa</a>
+    <div class="pais-nombre"><img id="banderaPais" alt="" width="36"> <strong id="nombrePais"></strong></div>
+
+    <div class="marcadores">
+        <div class="marcador" title="Tus vidas">
+            <span class="marcador-icono">❤️</span>
+            <div><small>Vidas</small><strong id="vidas">5</strong><small id="vidasEspera" class="vidas-espera"></small></div>
+        </div>
+        <div class="marcador" title="Tus puntos">
+            <span class="marcador-icono">⭐</span>
+            <div><small>Puntos</small><strong id="puntos">0</strong></div>
+        </div>
+    </div>
+    <div id="perfil-widget"></div>
+</header>
+
+<div class="app">
+
+    <!-- TEMAS POR CATEGORÍA -->
+    <aside class="menu" aria-label="Temas">
+        <button type="button" class="menu-toggle" id="menuToggle">☰ Elegir tema</button>
+        <nav id="menuTemas"></nav>
+    </aside>
+
+    <!-- CONTENIDO DEL TEMA -->
+    <main class="contenido" id="contenido">
+
+        <div class="tema-cabecera">
+            <span class="categoria" id="categoriaTema"></span>
+            <h1 id="tituloTema"></h1>
+        </div>
+
+        <section class="imagen-dato">
+            <figure class="imagen-tema">
+                <div class="imagen-fallback" id="imagenFallback"></div>
+                <img id="imagenTema" alt="" hidden>
+                <figcaption id="pieImagen"></figcaption>
+            </figure>
+            <div class="dato">
+                <h2>💡 Dato curioso</h2>
+                <p id="datoCurioso"></p>
+                <h3>📍 Lugares para conocer</h3>
+                <p id="lugaresTema"></p>
+            </div>
+        </section>
+
+        <section class="aprender">
+            <h2>Aprende como más te guste</h2>
+            <p class="ayuda">Elige una forma de aprender. Todas explican lo mismo, y puedes cambiar cuando quieras.</p>
+
+            <div class="modos" role="tablist" id="modos">
+                <button role="tab" data-modo="lectura" class="activo">Lectura</button>
+                <button role="tab" data-modo="audio">Escuchar</button>
+                <button role="tab" data-modo="historieta">Historieta</button>
+                <button role="tab" data-modo="mapa">Mapa mental</button>
+                <button role="tab" data-modo="tarjetas">Tarjetas</button>
+                <button role="tab" data-modo="parejas">Parejas</button>
+            </div>
+
+            <div class="panel-modo" id="panelModo" role="tabpanel" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <!-- PROGRESO Y RETO -->
+    <aside class="lateral">
+        <button type="button" class="btn-reto" id="btnReto">EMPEZAR RETO</button>
+        <p class="reto-nota" id="retoNota"></p>
+
+        <div class="tarjeta progreso">
+            <h2>Mi progreso</h2>
+            <div class="anillo">
+                <svg viewBox="0 0 120 120" aria-hidden="true">
+                    <circle class="anillo-fondo" cx="60" cy="60" r="50"></circle>
+                    <circle class="anillo-avance" id="anilloAvance" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <div class="anillo-texto"><strong id="porcentaje">0%</strong><span>completado</span></div>
+            </div>
+            <div class="datos-progreso">
+                <div><strong id="retosCompletados">0</strong><span>Retos completados</span></div>
+                <div><strong id="respuestasCorrectas">0</strong><span>Correctas</span></div>
+            </div>
+            <button type="button" class="btn-ver-mas" id="btnVerMas">Ver más</button>
+        </div>
+    </aside>
+
+    <!-- JUEGO: reto con IA (ocupa el lugar del contenido y del progreso; el menú de temas sigue visible) -->
+    <section class="juego" id="juego" hidden aria-label="Reto con inteligencia artificial">
+        <header class="j-barra">
+            <button type="button" class="j-salir" data-salir aria-label="Salir del reto">✕ Salir</button>
+            <div class="j-progreso" role="progressbar" aria-label="Progreso del reto"><div id="jProgreso"></div></div>
+            <div class="j-stats">
+                <span title="Racha de aciertos"><b id="jRacha">0</b></span>
+                <span title="Vidas">❤️ <b id="jVidas">5</b></span>
+                <span title="Puntos">⭐ <b id="jPuntos">0</b></span>
+            </div>
+        </header>
+        <main class="j-cuerpo" id="juegoCuerpo"></main>
+        <footer class="j-pie" id="juegoPie"></footer>
+    </section>
+</div>
+
+<!-- MODAL: VER MÁS -->
+<div class="modal" id="modalVerMas" aria-hidden="true">
+    <div class="modal-caja ancha" role="dialog" aria-labelledby="verMasTitulo">
+        <button type="button" class="modal-cerrar" data-cerrar aria-label="Cerrar">×</button>
+        <h2 id="verMasTitulo">Tu avance</h2>
+        <div id="verMasContenido"></div>
+    </div>
+</div>
+
+<script src="burkina-faso-datos.js"></script>
+<script src="../js/juego.js"></script>
+<script src="../js/dibujo.js"></script>
+<script src="../js/dibujo-items.js"></script>
+<script src="../js/dibujo-generico.js"></script>
+<script src="../js/pais.js"></script>
+</body>
+</html>

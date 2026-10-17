@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA: Historia y Cultura</title>
+  <link rel="stylesheet" href="ia.css">
+  <link rel="stylesheet" href="ia-extra.css">
+  <!-- FontAwesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="../js/sesion.js"></script>
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Panel Lateral Izquierdo -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <i><a href="../explorarmapa/explorarmapa.html"><img src="../img/logo.png" width="60" height="60" alt=""></a></i>
+        </div>
+        <div class="brand-title">
+          <h2>Historia</h2>
+          <span>Sin Fronteras</span>
+        </div>
+      </div>
+
+      <button class="btn-back">
+        
+        <a href="../explorarmapa/explorarmapa.html" style="text-decoration: none; color: black;"><h3>volver al mapa</h3></a>
+      </button>
+
+      <nav class="nav-menu">
+        <div class="nav-section">
+          <p class="section-title">INTERACCIÓN CON IA</p>
+          <ul>
+            <li>
+              <a href="#" class="nav-link active" data-view="nueva-pregunta">
+                Nueva Pregunta
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" data-view="consultas-pasadas">
+                Mis consultas pasadas
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </nav>
+    </aside>
+
+    <!-- Área Principal -->
+    <main class="main-content">
+
+      <!-- Encabezado Común -->
+      <header class="header-banner">
+        <div class="header-left">
+          <div>
+            <h1 id="viewTitle">Asistente AI: Tu Puerta al Conocimiento</h1>
+            <p id="viewSubtitle">Escribe tu consulta para explorar la historia, el arte y la cultura</p>
+          </div>
+        </div>
+        <div id="perfil-widget" style="margin-left:auto"></div>
+      </header>
+
+      <!-- VISTA 1: NUEVA PREGUNTA -->
+      <section id="view-nueva-pregunta" class="view-section active">
+        <div class="card query-card">
+          <div class="input-wrapper">
+            <textarea id="userInput" maxlength="1200" placeholder="Escribe tu pregunta detallada aquí... (ej. ¿Qué significan los colores de un huipil oaxaqueño?)"></textarea>
+          </div>
+
+          <div class="panel-opciones" id="panelOpciones" hidden>
+            <label>Extensión de la respuesta
+              <select id="optExtension">
+                <option value="breve">Breve</option>
+                <option value="normal" selected>Normal</option>
+                <option value="detallada">Detallada</option>
+              </select>
+            </label>
+            <label>Nivel de explicación
+              <select id="optNivel">
+                <option value="simple">Muy sencillo</option>
+                <option value="normal" selected>Normal</option>
+                <option value="avanzado">Avanzado</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="input-actions">
+            <div class="action-options">
+              <button class="btn-secondary" id="btnOpciones" title="Opciones de la respuesta">Opciones</button>
+            </div>
+            <button class="btn-primary" id="sendBtn">
+              Enviar Pregunta
+            </button>
+          </div>
+        </div>
+
+        <!-- Aviso de error -->
+        <div class="card aviso-error" id="avisoError" hidden role="alert"></div>
+
+        <!-- Tarjeta de Respuesta de la IA -->
+        <div class="card response-card" id="responseContainer" style="display: none;">
+          <div class="response-header">
+            <h4>Respuesta de la IA</h4>
+            <span class="time-stamp" id="timestamp">Justo ahora</span>
+          </div>
+          <p class="pregunta-hecha" id="preguntaHecha"></p>
+          <div class="response-body markdown" id="responseBody"></div>
+          <div class="response-actions">
+            <button class="btn-icon" id="likeBtn" title="Me gusta">Me gusta</button>
+            <button class="btn-icon" id="favBtn" title="Guardar en favoritas">Favorita</button>
+            <button class="btn-icon" id="copyBtn" title="Copiar">Copiar</button>
+          </div>
+        </div>
+
+        <div class="card tip-card">
+          <i class="fa-solid fa-lightbulb tip-icon"></i>
+          <div>
+            <strong>Dato curioso / Sugerencia:</strong>
+            <p id="tipText">Prueba preguntar: "Resume la importancia de los códices mayas y su sistema numérico."</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISTA 2: MIS CONSULTAS PASADAS -->
+      <section id="view-consultas-pasadas" class="view-section">
+        <div class="card history-filters">
+          <div class="search-box">
+            <input type="text" id="historySearch" placeholder="Buscar en mi historial...">
+          </div>
+          <div class="filter-tabs">
+            <button class="filter-btn active" data-filtro="all">Todas</button>
+            <button class="filter-btn" data-filtro="fav">Favoritas (<span id="favFilterCount">0</span>)</button>
+          </div>
+        </div>
+
+        <div class="history-list" id="historyListContainer"></div>
+      </section>
+
+    </main>
+
+    <!-- Panel Lateral Derecho -->
+    <aside class="right-panel">
+      <div class="card resources-widget">
+        <div class="widget-title">
+          Recursos recomendados
+        </div>
+        <p class="recursos-vacio" id="recursosVacio">Haz una pregunta y aquí aparecerán recursos para profundizar en ese tema.</p>
+        <div id="recursosLista"></div>
+        <div id="siguientesBloque" hidden>
+          <p class="recursos-sub">Para seguir preguntando</p>
+          <ul class="resource-list" id="siguientesLista"></ul>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="ia.js"></script>
+</body>
+</html>

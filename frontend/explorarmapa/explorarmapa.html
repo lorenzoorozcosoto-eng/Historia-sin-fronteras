@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Sin Fronteras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="explorarmapa.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/css/jsvectormap.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/maps/world.js"></script>
+    <script src="../js/sesion.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-custom py-3 mb-4 container-fluid px-4">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i><a href="../inicio/inicio.html"><img src="../img/logo.png" width="60" height="60" alt=""></a></i>
+                <div class="lh-1">
+                    <span class="fw-extrabold text-primary d-block h5 mb-0">HISTORIA</span>
+                    <span class="text-success fw-bold small">SIN FRONTERAS</span>
+                </div>
+            </a>
+            
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link nav-link-custom active" href="../inicio/inicio.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="../ia/ia.html">IA</a></li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <div id="perfil-widget"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4">
+        <div class="row">
+
+            <div class="col-12 col-lg-3">
+
+                <div class="custom-card text-center">
+                    <h6 class="fw-bold text-start text-primary mb-3">Mi progreso general</h6>
+                    <div class="progress-circle mb-3" id="circuloGeneral">
+                        <div class="progress-circle-inner" id="pctGeneral">0%</div>
+                    </div>
+                    <p class="fw-bold mb-1" id="rangoNombre">Explorador</p>
+                    <div class="barra-rango" title="Avance hacia el siguiente rango"><div id="barraRango"></div></div>
+                    <p class="small text-muted mb-3" id="rangoFalta"></p>
+                    <div class="text-start small resumen-lista">
+                        <div><span>⭐ Puntos</span><b id="resPuntos">0</b></div>
+                        <div><span>🏅 Insignias</span><b id="resInsignias">0/0</b></div>
+                        <div><span>🌍 Países explorados</span><b id="resPaises">0/0</b></div>
+                        <div><span>📘 Temas completados</span><b id="resTemas">0/0</b></div>
+                        <div><span>🔥 Racha</span><b id="resRacha">0 días</b></div>
+                    </div>
+                </div>
+
+                <div class="custom-card">
+                    <h6 class="fw-bold text-primary mb-3" id="insigniasTitulo">🏅 Mis insignias</h6>
+                    <div class="insignias-grid" id="insigniasGrid"><p class="small text-muted">Cargando…</p></div>
+                    <div class="insignia-detalle" id="insigniaDetalle" hidden></div>
+                    <p class="small text-muted mt-2 mb-0">Gana insignias sumando puntos y completando retos. Toca una para ver cómo conseguirla.</p>
+                </div>
+            </div>
+
+            <!-- Columna Derecha -->
+            <div class="col-12 col-lg-9">
+                <div class="custom-card p-3">
+                    <div class="alert alert-info border-0 rounded-4 d-flex align-items-center mb-3 py-2" style="background-color: #e3f2fd;">
+                        
+                        <div>
+                            <strong class="text-primary">Explora el mundo sin fronteras</strong><br>
+                            <span class="small text-muted">Elige un país y descubre su historia, cultura y mucho más.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenedor del Mapa -->
+                    <div class="map-container">
+                        <div id="world-map"></div>
+                        <div id="countryInfo">
+                            🌎 Pasa el cursor sobre un país
+                        </div>
+                    </div>
+
+                    <!-- Información del país sobre el que pasa el cursor -->
+                    <div id="infoPais" class="info-pais">
+                        <p class="info-pais-vacio">🌎 Pasa el cursor sobre un país para ver su bandera e información.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/paises-info.js"></script>
+    <script src="../js/resumen.js"></script>
+    <script>
+        const countries = {
+            ST: "Santo Tomé y Príncipe 🇸🇹",
+            SC: "Seychelles 🇸🇨",
+            MU: "Mauricio 🇲🇺",
+            KM: "Comoras 🇰🇲",
+            CV: "Cabo Verde 🇨🇻",
+            SZ: "Esuatini 🇸🇿",
+            DJ: "Yibuti 🇩🇯",
+            CG: "República del Congo 🇨🇬",
+            GQ: "Guinea Ecuatorial 🇬🇶",
+            GW: "Guinea-Bisáu 🇬🇼",
+            GA: "Gabón 🇬🇦",
+            GM: "Gambia 🇬🇲",
+            LS: "Lesoto 🇱🇸",
+            BW: "Botsuana 🇧🇼",
+            NA: "Namibia 🇳🇦",
+            MR: "Mauritania 🇲🇷",
+            MH: "Islas Marshall 🇲🇭",
+            FM: "Micronesia 🇫🇲",
+            PW: "Palaos 🇵🇼",
+            TV: "Tuvalu 🇹🇻",
+            NR: "Nauru 🇳🇷",
+            KI: "Kiribati 🇰🇮",
+            SB: "Islas Salomón 🇸🇧",
+            VU: "Vanuatu 🇻🇺",
+            TO: "Tonga 🇹🇴",
+            WS: "Samoa 🇼🇸",
+            FJ: "Fiyi 🇫🇯",
+            PG: "Papúa Nueva Guinea 🇵🇬",
+            NZ: "Nueva Zelanda 🇳🇿",
+            AU: "Australia 🇦🇺",
+            AG: "Antigua y Barbuda 🇦🇬",
+            KN: "San Cristóbal y Nieves 🇰🇳",
+            DM: "Dominica 🇩🇲",
+            VC: "San Vicente y las Granadinas 🇻🇨",
+            GD: "Granada 🇬🇩",
+            LC: "Santa Lucía 🇱🇨",
+            BB: "Barbados 🇧🇧",
+            BS: "Bahamas 🇧🇸",
+            BZ: "Belice 🇧🇿",
+            TT: "Trinidad y Tobago 🇹🇹",
+            JM: "Jamaica 🇯🇲",
+            HT: "Haití 🇭🇹",
+            DO: "República Dominicana 🇩🇴",
+            SV: "El Salvador 🇸🇻",
+            NI: "Nicaragua 🇳🇮",
+            HN: "Honduras 🇭🇳",
+            PA: "Panamá 🇵🇦",
+            CR: "Costa Rica 🇨🇷",
+            CU: "Cuba 🇨🇺",
+            ER: "Eritrea 🇪🇷",
+            TG: "Togo 🇹🇬",
+            CF: "República Centroafricana 🇨🇫",
+            LR: "Liberia 🇱🇷",
+            LY: "Libia 🇱🇾",
+            SL: "Sierra Leona 🇸🇱",
+            SS: "Sudán del Sur 🇸🇸",
+            TN: "Túnez 🇹🇳",
+            BI: "Burundi 🇧🇮",
+            BJ: "Benín 🇧🇯",
+            RW: "Ruanda 🇷🇼",
+            GN: "Guinea 🇬🇳",
+            BF: "Burkina Faso 🇧🇫",
+            ZW: "Zimbabue 🇿🇼",
+            SO: "Somalia 🇸🇴",
+            TD: "Chad 🇹🇩",
+            SN: "Senegal 🇸🇳",
+            ZM: "Zambia 🇿🇲",
+            MW: "Malaui 🇲🇼",
+            ML: "Malí 🇲🇱",
+            NE: "Níger 🇳🇪",
+            CM: "Camerún 🇨🇲",
+            MG: "Madagascar 🇲🇬",
+            CI: "Costa de Marfil 🇨🇮",
+            MZ: "Mozambique 🇲🇿",
+            GH: "Ghana 🇬🇭",
+            AO: "Angola 🇦🇴",
+            UG: "Uganda 🇺🇬",
+            SD: "Sudán 🇸🇩",
+            DZ: "Argelia 🇩🇿",
+            VA: "Ciudad del Vaticano 🇻🇦",
+            SM: "San Marino 🇸🇲",
+            LI: "Liechtenstein 🇱🇮",
+            MC: "Mónaco 🇲🇨",
+            AD: "Andorra 🇦🇩",
+            IS: "Islandia 🇮🇸",
+            MT: "Malta 🇲🇹",
+            LU: "Luxemburgo 🇱🇺",
+            ME: "Montenegro 🇲🇪",
+            MD: "Moldavia 🇲🇩",
+            MK: "Macedonia del Norte 🇲🇰",
+            EE: "Estonia 🇪🇪",
+            LV: "Letonia 🇱🇻",
+            SI: "Eslovenia 🇸🇮",
+            LT: "Lituania 🇱🇹",
+            AL: "Albania 🇦🇱",
+            BA: "Bosnia y Herzegovina 🇧🇦",
+            HR: "Croacia 🇭🇷",
+            SK: "Eslovaquia 🇸🇰",
+            BY: "Bielorrusia 🇧🇾",
+            IE: "Irlanda 🇮🇪",
+            NO: "Noruega 🇳🇴",
+            FI: "Finlandia 🇫🇮",
+            DK: "Dinamarca 🇩🇰",
+            BG: "Bulgaria 🇧🇬",
+            RS: "Serbia 🇷🇸",
+            CH: "Suiza 🇨🇭",
+            AT: "Austria 🇦🇹",
+            HU: "Hungría 🇭🇺",
+            CZ: "Chequia 🇨🇿",
+            RO: "Rumanía 🇷🇴",
+            PT: "Portugal 🇵🇹",
+            GR: "Grecia 🇬🇷",
+            SE: "Suecia 🇸🇪",
+            BE: "Bélgica 🇧🇪",
+            NL: "Países Bajos 🇳🇱",
+            UA: "Ucrania 🇺🇦",
+            PL: "Polonia 🇵🇱",
+            TL: "Timor Oriental 🇹🇱",
+            MV: "Maldivas 🇲🇻",
+            BN: "Brunéi 🇧🇳",
+            BT: "Bután 🇧🇹",
+            TM: "Turkmenistán 🇹🇲",
+            AE: "Emiratos Árabes Unidos 🇦🇪",
+            BH: "Baréin 🇧🇭",
+            QA: "Catar 🇶🇦",
+            KW: "Kuwait 🇰🇼",
+            OM: "Omán 🇴🇲",
+            LA: "Laos 🇱🇦",
+            KG: "Kirguistán 🇰🇬",
+            TJ: "Tayikistán 🇹🇯",
+            SG: "Singapur 🇸🇬",
+            CY: "Chipre 🇨🇾",
+            AZ: "Azerbaiyán 🇦🇿",
+            AM: "Armenia 🇦🇲",
+            GE: "Georgia 🇬🇪",
+            PS: "Palestina 🇵🇸",
+            MN: "Mongolia 🇲🇳",
+            KP: "Corea del Norte 🇰🇵",
+            LB: "Líbano 🇱🇧",
+            JO: "Jordania 🇯🇴",
+            IL: "Israel 🇮🇱",
+            KH: "Camboya 🇰🇭",
+            SY: "Siria 🇸🇾",
+            KZ: "Kazajistán 🇰🇿",
+            LK: "Sri Lanka 🇱🇰",
+            NP: "Nepal 🇳🇵",
+            YE: "Yemen 🇾🇪",
+            SA: "Arabia Saudí 🇸🇦",
+            MY: "Malasia 🇲🇾",
+            UZ: "Uzbekistán 🇺🇿",
+            AF: "Afganistán 🇦🇫",
+            IQ: "Irak 🇮🇶",
+            KE: "Kenia 🇰🇪",
+            MM: "Birmania (Myanmar) 🇲🇲",
+            TZ: "Tanzania 🇹🇿",
+            GB: "Reino Unido 🇬🇧",
+            TH: "Tailandia 🇹🇭",
+            TR: "Turquía 🇹🇷",
+            IR: "Irán 🇮🇷",
+            VN: "Vietnam 🇻🇳",
+            CD: "República Democrática del Congo 🇨🇩",
+            PH: "Filipinas 🇵🇭",
+            ET: "Etiopía 🇪🇹",
+            BD: "Bangladés 🇧🇩",
+            NG: "Nigeria 🇳🇬",
+            PK: "Pakistán 🇵🇰",
+            ID: "Indonesia 🇮🇩",
+            IN: "India 🇮🇳",
+            PY: "Paraguay 🇵🇾",
+            UY: "Uruguay 🇺🇾",
+            BO: "Bolivia 🇧🇴",
+            CL: "Chile 🇨🇱",
+            EC: "Ecuador 🇪🇨",
+            SR: "Surinam 🇸🇷",
+            GY: "Guyana 🇬🇾",
+            GT: "Guatemala 🇬🇹",
+            VE: "Venezuela 🇻🇪",
+            CO: "Colombia 🇨🇴", MX: "México 🇲🇽", AR: "Argentina 🇦🇷", PE: "Perú 🇵🇪", BR: "Brasil 🇧🇷",
+            US: "Estados Unidos 🇺🇸", CA: "Canadá 🇨🇦", ES: "España 🇪🇸", FR: "Francia 🇫🇷", DE: "Alemania 🇩🇪",
+            IT: "Italia 🇮🇹", JP: "Japón 🇯🇵", CN: "China 🇨🇳", RU: "Rusia 🇷🇺", EG: "Egipto 🇪🇬",
+            MA: "Marruecos 🇲🇦",
+            ZA: "Sudáfrica 🇿🇦",
+            KR: "Corea del Sur 🇰🇷"
+        };
+
+        const countryUrls = {
+            ST: "../santo-tome-y-principe/santo-tome-y-principe.html",
+            SC: "../seychelles/seychelles.html",
+            MU: "../mauricio/mauricio.html",
+            KM: "../comoras/comoras.html",
+            CV: "../cabo-verde/cabo-verde.html",
+            SZ: "../esuatini/esuatini.html",
+            DJ: "../yibuti/yibuti.html",
+            CG: "../republica-del-congo/republica-del-congo.html",
+            GQ: "../guinea-ecuatorial/guinea-ecuatorial.html",
+            GW: "../guinea-bisau/guinea-bisau.html",
+            GA: "../gabon/gabon.html",
+            GM: "../gambia/gambia.html",
+            LS: "../lesoto/lesoto.html",
+            BW: "../botsuana/botsuana.html",
+            NA: "../namibia/namibia.html",
+            MR: "../mauritania/mauritania.html",
+            MH: "../islas-marshall/islas-marshall.html",
+            FM: "../micronesia/micronesia.html",
+            PW: "../palaos/palaos.html",
+            TV: "../tuvalu/tuvalu.html",
+            NR: "../nauru/nauru.html",
+            KI: "../kiribati/kiribati.html",
+            SB: "../islas-salomon/islas-salomon.html",
+            VU: "../vanuatu/vanuatu.html",
+            TO: "../tonga/tonga.html",
+            WS: "../samoa/samoa.html",
+            FJ: "../fiyi/fiyi.html",
+            PG: "../papua-nueva-guinea/papua-nueva-guinea.html",
+            NZ: "../nueva-zelanda/nueva-zelanda.html",
+            AU: "../australia/australia.html",
+            AG: "../antigua-y-barbuda/antigua-y-barbuda.html",
+            KN: "../san-cristobal-y-nieves/san-cristobal-y-nieves.html",
+            DM: "../dominica/dominica.html",
+            VC: "../san-vicente-y-las-granadinas/san-vicente-y-las-granadinas.html",
+            GD: "../granada/granada.html",
+            LC: "../santa-lucia/santa-lucia.html",
+            BB: "../barbados/barbados.html",
+            BS: "../bahamas/bahamas.html",
+            BZ: "../belice/belice.html",
+            SR: "../surinam/surinam.html",
+            TT: "../trinidad-y-tobago/trinidad-y-tobago.html",
+            JM: "../jamaica/jamaica.html",
+            HT: "../haiti/haiti.html",
+            DO: "../republica-dominicana/republica-dominicana.html",
+            SV: "../el-salvador/el-salvador.html",
+            NI: "../nicaragua/nicaragua.html",
+            HN: "../honduras/honduras.html",
+            PA: "../panama/panama.html",
+            CR: "../costa-rica/costa-rica.html",
+            PY: "../paraguay/paraguay.html",
+            UY: "../uruguay/uruguay.html",
+            CL: "../chile/chile.html",
+            BO: "../bolivia/bolivia.html",
+            EC: "../ecuador/ecuador.html",
+            CU: "../cuba/cuba.html",
+            ER: "../eritrea/eritrea.html",
+            TG: "../togo/togo.html",
+            CF: "../republica-centroafricana/republica-centroafricana.html",
+            LR: "../liberia/liberia.html",
+            LY: "../libia/libia.html",
+            SL: "../sierra-leona/sierra-leona.html",
+            SS: "../sudan-del-sur/sudan-del-sur.html",
+            TN: "../tunez/tunez.html",
+            BI: "../burundi/burundi.html",
+            BJ: "../benin/benin.html",
+            RW: "../ruanda/ruanda.html",
+            GN: "../guinea/guinea.html",
+            BF: "../burkina-faso/burkina-faso.html",
+            ZW: "../zimbabue/zimbabue.html",
+            SO: "../somalia/somalia.html",
+            TD: "../chad/chad.html",
+            SN: "../senegal/senegal.html",
+            ZM: "../zambia/zambia.html",
+            MW: "../malaui/malaui.html",
+            ML: "../mali/mali.html",
+            NE: "../niger/niger.html",
+            CM: "../camerun/camerun.html",
+            MG: "../madagascar/madagascar.html",
+            CI: "../costa-de-marfil/costa-de-marfil.html",
+            MZ: "../mozambique/mozambique.html",
+            GH: "../ghana/ghana.html",
+            AO: "../angola/angola.html",
+            UG: "../uganda/uganda.html",
+            SD: "../sudan/sudan.html",
+            DZ: "../argelia/argelia.html",
+            VA: "../ciudad-del-vaticano/ciudad-del-vaticano.html",
+            SM: "../san-marino/san-marino.html",
+            LI: "../liechtenstein/liechtenstein.html",
+            MC: "../monaco/monaco.html",
+            AD: "../andorra/andorra.html",
+            IS: "../islandia/islandia.html",
+            MT: "../malta/malta.html",
+            LU: "../luxemburgo/luxemburgo.html",
+            ME: "../montenegro/montenegro.html",
+            MD: "../moldavia/moldavia.html",
+            MK: "../macedonia-del-norte/macedonia-del-norte.html",
+            EE: "../estonia/estonia.html",
+            LV: "../letonia/letonia.html",
+            SI: "../eslovenia/eslovenia.html",
+            LT: "../lituania/lituania.html",
+            AL: "../albania/albania.html",
+            BA: "../bosnia-y-herzegovina/bosnia-y-herzegovina.html",
+            HR: "../croacia/croacia.html",
+            SK: "../eslovaquia/eslovaquia.html",
+            BY: "../bielorrusia/bielorrusia.html",
+            IE: "../irlanda/irlanda.html",
+            NO: "../noruega/noruega.html",
+            FI: "../finlandia/finlandia.html",
+            DK: "../dinamarca/dinamarca.html",
+            BG: "../bulgaria/bulgaria.html",
+            RS: "../serbia/serbia.html",
+            CH: "../suiza/suiza.html",
+            AT: "../austria/austria.html",
+            HU: "../hungria/hungria.html",
+            CZ: "../chequia/chequia.html",
+            RO: "../rumania/rumania.html",
+            PT: "../portugal/portugal.html",
+            GR: "../grecia/grecia.html",
+            SE: "../suecia/suecia.html",
+            BE: "../belgica/belgica.html",
+            NL: "../paises-bajos/paises-bajos.html",
+            UA: "../ucrania/ucrania.html",
+            PL: "../polonia/polonia.html",
+            TL: "../timor-oriental/timor-oriental.html",
+            MV: "../maldivas/maldivas.html",
+            BN: "../brunei/brunei.html",
+            BT: "../butan/butan.html",
+            TM: "../turkmenistan/turkmenistan.html",
+            AE: "../emiratos-arabes-unidos/emiratos-arabes-unidos.html",
+            BH: "../barein/barein.html",
+            QA: "../catar/catar.html",
+            KW: "../kuwait/kuwait.html",
+            OM: "../oman/oman.html",
+            LA: "../laos/laos.html",
+            KG: "../kirguistan/kirguistan.html",
+            TJ: "../tayikistan/tayikistan.html",
+            SG: "../singapur/singapur.html",
+            CY: "../chipre/chipre.html",
+            AZ: "../azerbaiyan/azerbaiyan.html",
+            AM: "../armenia/armenia.html",
+            GE: "../georgia/georgia.html",
+            PS: "../palestina/palestina.html",
+            MN: "../mongolia/mongolia.html",
+            KP: "../corea-del-norte/corea-del-norte.html",
+            LB: "../libano/libano.html",
+            JO: "../jordania/jordania.html",
+            IL: "../israel/israel.html",
+            KH: "../camboya/camboya.html",
+            SY: "../siria/siria.html",
+            KZ: "../kazajistan/kazajistan.html",
+            LK: "../sri-lanka/sri-lanka.html",
+            NP: "../nepal/nepal.html",
+            YE: "../yemen/yemen.html",
+            SA: "../arabia-saudi/arabia-saudi.html",
+            MY: "../malasia/malasia.html",
+            UZ: "../uzbekistan/uzbekistan.html",
+            AF: "../afganistan/afganistan.html",
+            IQ: "../irak/irak.html",
+            KE: "../kenia/kenia.html",
+            MM: "../birmania/birmania.html",
+            TZ: "../tanzania/tanzania.html",
+            KR: "../corea-del-sur/corea-del-sur.html",
+            ES: "../espana/espana.html",
+            GB: "../reino-unido/reino-unido.html",
+            TH: "../tailandia/tailandia.html",
+            TR: "../turquia/turquia.html",
+            IR: "../iran/iran.html",
+            VN: "../vietnam/vietnam.html",
+            CD: "../republica-democratica-del-congo/republica-democratica-del-congo.html",
+            EG: "../egipto/egipto.html",
+            PH: "../filipinas/filipinas.html",
+            ET: "../etiopia/etiopia.html",
+            JP: "../japon/japon.html",
+            BD: "../banglades/banglades.html",
+            NG: "../nigeria/nigeria.html",
+            PK: "../pakistan/pakistan.html",
+            ID: "../indonesia/indonesia.html",
+            RU: "../rusia/rusia.html",
+            IN: "../india/india.html",
+            VE: "../venezuela/venezuela.html",
+            GT: "../guatemala/guatemala.html", GY: "../guyana/guyana.html",
+            CA: "../canada/canada.html",
+            US: "../estados-unidos/estados-unidos.html",
+            PE: "../peru/peru.html",
+            AR: "../argentina/argentina.html",
+            CO: "../colombia/colombia.html", MX: "../mexico/mexico.html", BR: "../brasil/brasil.html",
+            FR: "../francia/francia.html", DE: "../alemania/alemania.html",
+            IT: "../italia/italia.html", CN: "../china/china.html", ZA: "../sudafrica/sudafrica.html",
+            MA: "../marruecos/marruecos.html"
+        };
+
+        // Panel de información (bandera + datos) bajo el mapa.
+        // Al pasar el cursor se muestra la información; al hacer clic se entra al país.
+        const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+        function mostrarInfoPais(code) {
+            const panel = document.getElementById("infoPais");
+            const info = (window.PAISES_INFO || {})[code];
+            const nombre = info ? info.nombre : (countries[code] || code);
+            const bandera = "https://flagcdn.com/w160/" + code.toLowerCase() + ".png";
+            const disponible = Boolean(countryUrls[code]);
+            const mio = window.RESUMEN && window.RESUMEN.porPais && window.RESUMEN.porPais[code];
+
+            const filas = info
+                ? "<ul><li><b>Capital:</b> " + esc(info.capital) + "</li><li><b>Idioma:</b> " + esc(info.idioma) +
+                  "</li><li><b>Población:</b> " + esc(info.poblacion) + "</li><li><b>Continente:</b> " + esc(info.continente) +
+                  "</li></ul><p class='info-pais-dato'>💡 " + esc(info.dato) + "</p>"
+                : "<p class='info-pais-dato'>Pronto tendremos información de este país.</p>";
+            const progreso = mio && (mio.puntos || mio.temas)
+                ? "<p class='info-pais-progreso'>🎒 Tu avance: " + (mio.total ? mio.temas + "/" + mio.total + " temas · " : "") + "⭐ " + mio.puntos + " puntos</p>" : "";
+            const pie = disponible
+                ? "<small class='ir-pais'>👆 Haz clic para explorar su historia y cultura</small>"
+                : "<small class='no-disp'>Aún no está disponible para explorar</small>";
+            panel.classList.toggle("fijo", disponible);
+            panel.innerHTML =
+                "<img src='" + bandera + "' alt='Bandera de " + esc(nombre) + "' onerror=\"this.style.display='none'\">" +
+                "<div><h5>" + esc(nombre) + "</h5>" + filas + progreso + pie + "</div>";
+        }
+        let ultimoPais = null;
+        document.addEventListener("resumen-listo", () => { if (ultimoPais) mostrarInfoPais(ultimoPais); });
+
+        const map = new jsVectorMap({
+            selector: "#world-map",
+            map: "world",
+            zoomButtons: true,
+            zoomOnScroll: true,
+            regionStyle: {
+                initial: { fill: "#6bb5ff", stroke: "#ffffff", strokeWidth: 0.8 },
+                hover: { fill: "#28a745", cursor: "pointer" },
+                selected: { fill: "#ff9800" }
+            },
+            // Este evento se dispara al pasar el cursor por un país: se muestra su bandera e información
+            onRegionTooltipShow(event, tooltip, code) {
+                tooltip.text(countries[code] || tooltip.text());
+                ultimoPais = code;
+                document.getElementById("countryInfo").innerHTML = countries[code] || code;
+                mostrarInfoPais(code);
+            },
+            onRegionClick(event, code) {
+                // Un clic lleva a la página del país (si ya está disponible)
+                if (countryUrls[code]) window.location.href = countryUrls[code];
+            }
+        });
+    </script>
+</body>
+</html>
