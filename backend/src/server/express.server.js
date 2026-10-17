@@ -26,6 +26,8 @@ class Server {
 
         // El front se sirve desde el mismo servidor (nunca se publica backend/, ahí está el .env)
         this.app.use(express.static(carpetaFrontend));
+        // Los navegadores piden /favicon.ico por su cuenta
+        this.app.get('/favicon.ico', (req, res) => res.sendFile(carpetaFrontend + '/img/favicon-32.png'));
         this.app.get('/', (req, res) => res.redirect('/inicio/inicio.html'));
     }
 
