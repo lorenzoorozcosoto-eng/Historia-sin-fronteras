@@ -2,6 +2,7 @@ import './src/config/env.js';
 import Server from './src/server/express.server.js';
 import { dbConnectMysql } from './src/config/mysql/dbmysql.js';
 import { migrar, migrarProgresoTemas } from './src/config/mysql/migraciones.js';
+import { asegurarEsquema } from './src/config/mysql/esquema.js';
 import { prepararInsignias } from './src/services/insignias.js';
 
 
@@ -10,6 +11,7 @@ async function main() {
         // Conexión a la base de datos
         //await dbConnectMongoose();
         await dbConnectMysql();
+        await asegurarEsquema(); // en una base vacía crea las tablas
         await migrar();
         await migrarProgresoTemas();
         await prepararInsignias();
