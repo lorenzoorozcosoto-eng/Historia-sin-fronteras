@@ -2,7 +2,7 @@
 // y hace que "Inicio" lleve al mapa cuando ya se inició sesión.
 
 (() => {
-    const API = location.port === '4000' ? '/api' : 'http://localhost:4000/api';
+    const API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') && location.port !== '4000' ? 'http://localhost:4000/api' : '/api';
     const PAGINAS_PUBLICAS = ['inicio', 'iniciosesion', 'registro'];
     const carpeta = location.pathname.split('/').filter(Boolean).slice(-2, -1)[0] || '';
     const esPublica = PAGINAS_PUBLICAS.includes(carpeta);

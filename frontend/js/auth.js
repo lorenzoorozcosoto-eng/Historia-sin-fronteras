@@ -1,7 +1,7 @@
 // Conexión del front con el backend (registro, inicio de sesión y Google)
 
 // Si la página no la sirve el backend (Live Server, archivo suelto), se usa el backend en el puerto 4000
-const API = location.port === '4000' ? '/api' : 'http://localhost:4000/api';
+const API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') && location.port !== '4000' ? 'http://localhost:4000/api' : '/api';
 
 const PAGINA_DESTINO = '../explorarmapa/explorarmapa.html';
 const PAGINA_ADMIN = '../administrador/administrador.html';
